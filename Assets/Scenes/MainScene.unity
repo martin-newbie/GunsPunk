@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 292316964}
   - component: {fileID: 292316966}
   - component: {fileID: 292316965}
+  - component: {fileID: 292316967}
   m_Layer: 5
   m_Name: BestScore
   m_TagString: Untagged
@@ -395,6 +396,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292316963}
   m_CullTransparentMesh: 1
+--- !u!114 &292316967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292316963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46855e38514dfd4aa8cf177b38cef85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bestScore: {fileID: 1574312868}
 --- !u!1 &320368984
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,6 +619,7 @@ GameObject:
   - component: {fileID: 593983423}
   - component: {fileID: 593983422}
   - component: {fileID: 593983421}
+  - component: {fileID: 593983425}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -697,6 +712,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &593983425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593983420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39113b1e45f9c9642b09a1998a8e3b9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnergyTxt: {fileID: 440051497}
+  CoinTxt: {fileID: 698329764}
+  Quest: {fileID: 1565688633}
+  BestScore: {fileID: 292316967}
+  Profile: {fileID: 946703792}
 --- !u!1 &698329762
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,7 +1040,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 800779590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 593983425}
+        m_TargetAssemblyTypeName: HomeUIManager, Assembly-CSharp
+        m_MethodName: GameStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &800779590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1269,7 +1313,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 884712598}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 593983425}
+        m_TargetAssemblyTypeName: HomeUIManager, Assembly-CSharp
+        m_MethodName: Shop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &884712598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1469,6 +1525,7 @@ GameObject:
   - component: {fileID: 946703789}
   - component: {fileID: 946703791}
   - component: {fileID: 946703790}
+  - component: {fileID: 946703792}
   m_Layer: 5
   m_Name: Profile
   m_TagString: Untagged
@@ -1536,6 +1593,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946703788}
   m_CullTransparentMesh: 1
+--- !u!114 &946703792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946703788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d35f88bf98b4ac499b0ad9f9010c54c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExpBar: {fileID: 1045237211}
+  Icon: {fileID: 0}
+  Name: {fileID: 118957722}
+  Level: {fileID: 118957722}
 --- !u!1 &1030110483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,7 +2228,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -41.69995, y: -7}
+  m_AnchoredPosition: {x: -41.700195, y: -7}
   m_SizeDelta: {x: 113, y: 118}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1559538843
@@ -2201,7 +2274,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1559538844}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 593983425}
+        m_TargetAssemblyTypeName: HomeUIManager, Assembly-CSharp
+        m_MethodName: Setting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1559538844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2251,6 +2336,7 @@ GameObject:
   - component: {fileID: 1565688630}
   - component: {fileID: 1565688632}
   - component: {fileID: 1565688631}
+  - component: {fileID: 1565688633}
   m_Layer: 5
   m_Name: QuestBG
   m_TagString: Untagged
@@ -2316,6 +2402,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1565688629}
   m_CullTransparentMesh: 1
+--- !u!114 &1565688633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565688629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720fe4f7447cd914e9fa8a77c03c5470, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1574312866
 GameObject:
   m_ObjectHideFlags: 0

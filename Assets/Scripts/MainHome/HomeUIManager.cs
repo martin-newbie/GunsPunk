@@ -26,4 +26,19 @@ public class HomeUIManager : MonoBehaviour
         BestScore.SetUI(GameManager.Instance.bestScore.ToString());
         Profile.SetUI(GameManager.Instance.playerName, GameManager.Instance.level, null);
     }
+
+    public void GameStart()
+    {
+
+    }
+
+    public void Shop()
+    {
+
+    }
+
+    public void Setting()
+    {
+
+    }
 }

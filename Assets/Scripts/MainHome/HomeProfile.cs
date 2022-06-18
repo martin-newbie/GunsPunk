@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HomeProfile : HomeUI
 {
+    public Image ExpBar;
     public Image Icon;
     public Text Name;
     public Text Level;
@@ -15,5 +16,10 @@ public class HomeProfile : HomeUI
         Level.text = "Lv. " + _level.ToString();
 
         Icon.sprite = icon;
+    }
+
+    public void SetPlayerExpBar()
+    {
+        ExpBar.fillAmount = GameManager.Instance.curExp / GameManager.Instance.maxExp;
     }
 }
