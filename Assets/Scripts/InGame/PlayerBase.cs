@@ -36,6 +36,8 @@ public abstract class PlayerBase : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(TopPos.position, CheckRadius);
+
+        transform.position = new Vector2(-4.5f, -3.7f);
     }
 
     protected virtual void Start()

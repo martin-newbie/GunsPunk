@@ -1,13 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HoldFirePlayer : PlayerBase
 {
     [Header("Hold Fire Player")]
+    public GameObject gaugeObject;
     public float maxHold = 5f;
     public float curHold;
     public bool isHold;
+
+    Image gaugeUI;
+    GameObject gaugeObj;
+
+    protected override void Start()
+    {
+        base.Start();
+        gaugeObj = Instantiate(gaugeObject, InGameManager.Instance.canvas.transform);
+        gaugeUI = gaugeObj.GetComponentsInChildren<Image>()[1];
+    }
 
     protected override void Update()
     {
@@ -25,6 +37,9 @@ public class HoldFirePlayer : PlayerBase
                 curHold = 0f;
             }
         }
+
+        gaugeUI.fillAmount = curHold / maxHold;
+        gaugeObj.transform.position = transform.position + new Vector3(0, 1.3f, 0);
     }
 
     public override void OnAttackEnd()

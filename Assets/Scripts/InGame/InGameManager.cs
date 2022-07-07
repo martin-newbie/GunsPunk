@@ -5,7 +5,7 @@ using UnityEngine;
 public class InGameManager : Singleton<InGameManager>
 {
 
-
+    public Canvas canvas;
     public PlayerBase CurPlayer;
 
 }
