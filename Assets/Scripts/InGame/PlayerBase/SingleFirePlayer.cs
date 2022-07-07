@@ -2,17 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingleFirePlayer : MonoBehaviour
+public class SingleFirePlayer : PlayerBase
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Single Fire Player")]
+    bool isFire;
+
+    protected override void Update()
     {
-        
+        base.Update();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnAttackEnd()
     {
-        
+    }
+
+    public override void OnAttackStart()
+    {
+        if (!isFire) StartCoroutine(SingleFireCoroutine());
+    }
+
+    IEnumerator SingleFireCoroutine()
+    {
+        isFire = true;
+        Bullet _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
+        _bullet.Init(speed, damage);
+        yield return new WaitForSeconds(fireDelay);
+        isFire = false;
     }
 }
