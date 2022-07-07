@@ -6,7 +6,6 @@ public class AutoFirePlayer : PlayerBase
 {
 
     public float fireRate;
-    public float damage;
     float fireDelay;
     float curDelay;
     bool isFire;
@@ -27,7 +26,8 @@ public class AutoFirePlayer : PlayerBase
         {
             if (curDelay >= fireDelay)
             {
-                Bullet _bullet = Instantiate(bullet, FirePos.position, Quaternion.Euler(0, 0, 90f));
+                Bullet _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
+                _bullet.Init(speed, damage);
                 curDelay = 0f;
             }
 

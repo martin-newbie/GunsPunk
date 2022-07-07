@@ -8,6 +8,8 @@ public abstract class PlayerBase : MonoBehaviour
     public float JumpForce;
     public float CheckRadius;
     public int curPosIdx;
+    public float damage;
+    public float speed;
 
     [Header("Transform")]
     public Transform FeetPos;
