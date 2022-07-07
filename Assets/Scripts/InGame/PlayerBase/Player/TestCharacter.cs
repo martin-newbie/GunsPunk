@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestCharacter : SingleFirePlayer
+public class TestCharacter : HoldFirePlayer
 {
     protected override void Update()
     {
