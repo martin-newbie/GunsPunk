@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public abstract class PlayerBase : MonoBehaviour
 {
     [Header("Value")]
     public float JumpForce;
@@ -29,19 +29,20 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(TopPos.position, CheckRadius);
     }
 
-    void Start()
+    protected virtual void Start()
     {
         bodyCol = GetComponent<Collider2D>();
         RB = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         GoingUpAction();
         GoingDownAction();
         PCInput();
     }
 
+    #region AllPlayerSame
     void PCInput()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -107,11 +108,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void ShootGun()
-    {
-
-    }
-
     public void GoUp()
     {
         if (curPosIdx < 2 && !isActing)
@@ -135,4 +131,8 @@ public class PlayerController : MonoBehaviour
             curPosIdx--;
         }
     }
+    #endregion
+
+    public abstract void OnAttackStart();
+    public abstract void OnAttackEnd();
 }
