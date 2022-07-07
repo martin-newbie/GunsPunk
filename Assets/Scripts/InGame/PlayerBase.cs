@@ -5,8 +5,8 @@ using UnityEngine;
 public abstract class PlayerBase : MonoBehaviour
 {
     [Header("Value")]
-    public float JumpForce;
-    public float CheckRadius;
+    public float JumpForce = 13f;
+    public float CheckRadius = 0.05f;
     public int curPosIdx;
     public float damage;
     public float speed;

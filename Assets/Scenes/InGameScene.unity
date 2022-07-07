@@ -123,6 +123,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &168932452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 168932453}
+  m_Layer: 0
+  m_Name: ShootPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &168932453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168932452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.12, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 289607110}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &234170659
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,6 +307,7 @@ GameObject:
   - component: {fileID: 289607109}
   - component: {fileID: 289607112}
   - component: {fileID: 289607111}
+  - component: {fileID: 289607113}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -348,6 +379,7 @@ Transform:
   m_Children:
   - {fileID: 1744399143}
   - {fileID: 1059234977}
+  - {fileID: 168932453}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -398,6 +430,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.93, y: 1.98}
   m_EdgeRadius: 0
+--- !u!114 &289607113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289607108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e5534e6888ac447b5bdf6d0054be6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JumpForce: 13
+  CheckRadius: 0.05
+  curPosIdx: 0
+  damage: 15
+  speed: 50
+  FeetPos: {fileID: 1744399143}
+  TopPos: {fileID: 1059234977}
+  FirePos: {fileID: 168932453}
+  bullet: {fileID: 7145292585738048927, guid: 2d2bfc26052d9094dbf1a6e9be745574, type: 3}
+  fireRate: 600
 --- !u!1 &575461069
 GameObject:
   m_ObjectHideFlags: 0
