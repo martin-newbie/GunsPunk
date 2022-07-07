@@ -446,12 +446,13 @@ MonoBehaviour:
   CheckRadius: 0.05
   curPosIdx: 0
   damage: 15
-  speed: 50
+  speed: 30
+  fireRate: 600
   FeetPos: {fileID: 1744399143}
   TopPos: {fileID: 1059234977}
   FirePos: {fileID: 168932453}
   bullet: {fileID: 7145292585738048927, guid: 2d2bfc26052d9094dbf1a6e9be745574, type: 3}
-  fireRate: 600
+  shootCount: 3
 --- !u!1 &575461069
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,6 +801,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 289607110}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1082696160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1082696162}
+  - component: {fileID: 1082696161}
+  m_Layer: 0
+  m_Name: InGameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1082696161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082696160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb3688d8bb90cfc449de6f061c58ef70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurPlayer: {fileID: 289607113}
+--- !u!4 &1082696162
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082696160}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1375170933
 GameObject:

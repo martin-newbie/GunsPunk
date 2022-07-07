@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class AutoFirePlayer : PlayerBase
 {
-
-    public float fireRate;
-    float fireDelay;
-    float curDelay;
-    bool isFire;
+    [Header("Auto Fire Player")]
+    protected bool isFire;
 
     protected override void Start()
     {
         base.Start();
 
-        fireDelay = 1f / (fireRate / 60f);
+        curDelay = fireDelay;
     }
 
     protected override void Update()
     {
         base.Update();
-
 
         if (isFire)
         {
@@ -38,7 +34,7 @@ public class AutoFirePlayer : PlayerBase
     public override void OnAttackEnd()
     {
         isFire = false;
-        curDelay = 0f;
+        curDelay = fireDelay;
     }
 
     public override void OnAttackStart()

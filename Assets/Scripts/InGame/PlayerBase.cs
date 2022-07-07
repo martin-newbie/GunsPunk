@@ -10,6 +10,9 @@ public abstract class PlayerBase : MonoBehaviour
     public int curPosIdx;
     public float damage;
     public float speed;
+    public float fireRate;
+    protected float fireDelay => 1f / (fireRate / 60f);
+    protected float curDelay;
 
     [Header("Transform")]
     public Transform FeetPos;

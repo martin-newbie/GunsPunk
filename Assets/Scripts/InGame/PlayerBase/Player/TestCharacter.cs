@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestCharacter : AutoFirePlayer
+public class TestCharacter : BurstFirePlayer
 {
-
+    protected override void Update()
+    {
+        base.Update();
+    }
 }
