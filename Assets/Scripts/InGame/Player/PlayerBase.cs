@@ -14,7 +14,8 @@ public abstract class PlayerBase : MonoBehaviour
     public Transform TopPos;
 
     [Header("Objects")]
-    public GameObject Bullet;
+    public Transform FirePos;
+    public Bullet bullet;
 
     bool isActing;
     bool goUpTrigger;

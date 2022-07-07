@@ -6,6 +6,7 @@ public class AutoFirePlayer : PlayerBase
 {
 
     public float fireRate;
+    public float damage;
     float fireDelay;
     float curDelay;
     bool isFire;
@@ -14,7 +15,7 @@ public class AutoFirePlayer : PlayerBase
     {
         base.Start();
 
-        fireDelay = 6f / (fireRate / 60f);
+        fireDelay = 1f / (fireRate / 60f);
     }
 
     protected override void Update()
@@ -24,9 +25,10 @@ public class AutoFirePlayer : PlayerBase
 
         if (isFire)
         {
-            if(curDelay >= fireDelay)
+            if (curDelay >= fireDelay)
             {
-
+                Bullet _bullet = Instantiate(bullet, FirePos.position, Quaternion.Euler(0, 0, 90f));
+                curDelay = 0f;
             }
 
             curDelay += Time.deltaTime;
