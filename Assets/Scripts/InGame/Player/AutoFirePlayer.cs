@@ -14,7 +14,7 @@ public class AutoFirePlayer : PlayerBase
     {
         base.Start();
 
-        fireDelay = 60f / (fireRate / 60f);
+        fireDelay = 6f / (fireRate / 60f);
     }
 
     protected override void Update()
