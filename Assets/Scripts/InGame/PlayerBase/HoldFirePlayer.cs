@@ -5,7 +5,7 @@ using UnityEngine;
 public class HoldFirePlayer : PlayerBase
 {
     [Header("Hold Fire Player")]
-    public float maxHold;
+    public float maxHold = 5f;
     public float curHold;
     public bool isHold;
 
@@ -20,6 +20,7 @@ public class HoldFirePlayer : PlayerBase
                 curHold += Time.deltaTime;
             else
             {
+                curHold = 0f;
                 FireBullet();
             }
         }

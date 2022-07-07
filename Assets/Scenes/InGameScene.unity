@@ -452,7 +452,9 @@ MonoBehaviour:
   TopPos: {fileID: 1059234977}
   FirePos: {fileID: 168932453}
   bullet: {fileID: 7145292585738048927, guid: 2d2bfc26052d9094dbf1a6e9be745574, type: 3}
-  shootCount: 3
+  maxHold: 3
+  curHold: 0
+  isHold: 0
 --- !u!1 &575461069
 GameObject:
   m_ObjectHideFlags: 0
