@@ -20,8 +20,9 @@ public class HoldFirePlayer : PlayerBase
                 curHold += Time.deltaTime;
             else
             {
+                Bullet temp = FireBullet();
+                temp.notDestroy = true;
                 curHold = 0f;
-                FireBullet();
             }
         }
     }
@@ -38,9 +39,11 @@ public class HoldFirePlayer : PlayerBase
         isHold = true;
     }
 
-    void FireBullet()
+    Bullet FireBullet()
     {
         Bullet _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
-        _bullet.Init(speed * (curHold / maxHold), damage * (curHold / maxHold));
+        _bullet.Init(speed / 2f + speed * (curHold / maxHold), damage / 2 + damage * (curHold / maxHold));
+
+        return _bullet;
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed, damage;
+    public bool notDestroy;
 
     void Update()
     {
