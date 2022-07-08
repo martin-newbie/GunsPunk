@@ -448,6 +448,8 @@ MonoBehaviour:
   damage: 15
   speed: 30
   fireRate: 600
+  maxHP: 0
+  HP: 0
   FeetPos: {fileID: 1744399143}
   TopPos: {fileID: 1059234977}
   FirePos: {fileID: 168932453}
@@ -863,6 +865,7 @@ GameObject:
   - component: {fileID: 1089245390}
   - component: {fileID: 1089245389}
   - component: {fileID: 1089245388}
+  - component: {fileID: 1089245391}
   m_Layer: 5
   m_Name: TouchField
   m_TagString: Untagged
@@ -940,6 +943,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089245386}
   m_CullTransparentMesh: 1
+--- !u!114 &1089245391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089245386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cacee7fce61da84585ce40964ad848d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasRT: {fileID: 575461073}
 --- !u!1 &1375170933
 GameObject:
   m_ObjectHideFlags: 0
