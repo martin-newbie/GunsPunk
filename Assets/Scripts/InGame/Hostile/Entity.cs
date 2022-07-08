@@ -8,25 +8,29 @@ public abstract class Entity : MonoBehaviour
     [Header("Entity")]
     public float maxHP;
     public float HP;
-    public float moveSpeed = 3f;
     public float damage;
     public Vector2 HP_Gauge_Offset = new Vector2(0, -1.3f);
+    protected float moveSpeed;
     protected GaugeContainer hpGauge;
 
     protected Action OnHitAction;
     protected Action OnDestroyAction;
 
-    private void Awake()
+    protected virtual void Start()
     {
         maxHP = HP;
         hpGauge = InGameManager.Instance.SpawnGaugeBar();
         hpGauge.SetColor(Color.black, Color.red);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
+        moveSpeed = InGameManager.Instance.objectSpeed;
+
         hpGauge.SetGauge(HP, maxHP);
         hpGauge.FollowTarget(HP_Gauge_Offset, transform);
+
+        MoveLogic();
     }
 
     protected virtual void MoveLogic()
@@ -36,7 +40,7 @@ public abstract class Entity : MonoBehaviour
 
     virtual protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("PlayerBullet"))
+        if (collision.CompareTag("PlayerBullet") && HP > 0)
         {
             Bullet temp = collision.GetComponent<Bullet>();
             temp.OnHostileHit();

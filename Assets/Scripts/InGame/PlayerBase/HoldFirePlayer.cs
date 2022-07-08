@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class HoldFirePlayer : PlayerBase
 {
     [Header("Hold Fire Player")]
-    public float maxHold = 5f;
+    public float maxHold = 1.5f;
+    public float minHold = 0.3f;
     public float curHold;
     public bool isHold;
 
@@ -42,7 +43,9 @@ public class HoldFirePlayer : PlayerBase
 
     public override void OnAttackEnd()
     {
-        FireBullet();
+        if (curHold >= minHold)
+            FireBullet();
+
         curHold = 0f;
         isHold = false;
     }
