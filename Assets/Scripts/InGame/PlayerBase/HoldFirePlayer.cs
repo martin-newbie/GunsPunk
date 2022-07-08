@@ -16,6 +16,7 @@ public class HoldFirePlayer : PlayerBase
     {
         base.Start();
         gauge = InGameManager.Instance.SpawnGaugeBar();
+        gauge.SetColor(Color.gray, Color.white);
     }
 
     protected override void Update()

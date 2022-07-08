@@ -14,6 +14,11 @@ public class GaugeContainer : MonoBehaviour
         rect = GetComponent<RectTransform>();
     }
 
+    public void SetSize(float width, float height)
+    {
+        rect.sizeDelta = new Vector2(width, height);
+    }
+
     public void SetSprite(Sprite back, Sprite gauge)
     {
         Back.sprite = back;
@@ -26,9 +31,9 @@ public class GaugeContainer : MonoBehaviour
         Gauge.color = gauge;
     }
 
-    public void FollowTarget(Vector3 offset, Transform target)
+    public void FollowTarget(Vector2 offset, Transform target)
     {
-        transform.position = target.position + offset;
+        transform.position = target.position + (Vector3)offset;
     }
 
     public void SetGauge(float cur, float max)

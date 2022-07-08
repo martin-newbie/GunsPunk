@@ -7,7 +7,7 @@ public abstract class Entity : MonoBehaviour
 {
     public float maxHP;
     public float HP;
-    public Vector3 HP_Gauge_Offset;
+    public Vector2 HP_Gauge_Offset = new Vector2(0, -1.3f);
     protected Action OnHitAction;
     protected GaugeContainer hpGauge;
 
@@ -15,6 +15,7 @@ public abstract class Entity : MonoBehaviour
     {
         maxHP = HP;
         hpGauge = InGameManager.Instance.SpawnGaugeBar();
+        hpGauge.SetColor(Color.black, Color.red);
     }
 
     private void Update()

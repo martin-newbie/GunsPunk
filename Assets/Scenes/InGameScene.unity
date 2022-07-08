@@ -452,7 +452,6 @@ MonoBehaviour:
   TopPos: {fileID: 1059234977}
   FirePos: {fileID: 168932453}
   bullet: {fileID: 7145292585738048927, guid: 2d2bfc26052d9094dbf1a6e9be745574, type: 3}
-  gaugeObject: {fileID: 1825854772530856756, guid: 82798b06ffee3064687f6df78f8ed6f5, type: 3}
   maxHold: 3
   curHold: 0
   isHold: 0
@@ -837,6 +836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 575461072}
   CurPlayer: {fileID: 289607113}
+  GaugePrefab: {fileID: 2439843208432874508, guid: 9bbc25c1e5b7fcc45a17e6e9dc9b9478, type: 3}
 --- !u!4 &1082696162
 Transform:
   m_ObjectHideFlags: 0
