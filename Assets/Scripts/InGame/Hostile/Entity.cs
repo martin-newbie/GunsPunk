@@ -5,12 +5,15 @@ using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
+    [Header("Entity")]
     public float maxHP;
     public float HP;
     public float moveSpeed = 3f;
     public Vector2 HP_Gauge_Offset = new Vector2(0, -1.3f);
-    protected Action OnHitAction;
     protected GaugeContainer hpGauge;
+
+    protected Action OnHitAction;
+    protected Action OnDestroyAction;
 
     private void Awake()
     {
@@ -35,11 +38,14 @@ public abstract class Entity : MonoBehaviour
         if (collision.CompareTag("PlayerBullet"))
         {
             Bullet temp = collision.GetComponent<Bullet>();
+            OnHitAction?.Invoke();
 
             HP -= temp.damage;
+
+            if (!temp.notDestroy) Destroy(temp.gameObject);
+
             if(HP <= 0)
             {
-                OnHitAction?.Invoke();
             }
         }
     }
