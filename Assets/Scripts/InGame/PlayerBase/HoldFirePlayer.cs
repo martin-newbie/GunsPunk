@@ -27,14 +27,8 @@ public class HoldFirePlayer : PlayerBase
 
         if (isHold)
         {
-            if (curHold <= maxHold)
+            if (curHold < maxHold)
                 curHold += Time.deltaTime;
-            else
-            {
-                Bullet temp = FireBullet();
-                temp.notDestroy = true;
-                curHold = 0f;
-            }
         }
 
         gauge.SetGauge(curHold, maxHold);
@@ -43,7 +37,13 @@ public class HoldFirePlayer : PlayerBase
 
     public override void OnAttackEnd()
     {
-        if (curHold >= minHold)
+
+        if (curHold >= maxHold)
+        {
+            Bullet temp = FireBullet();
+            temp.notDestroy = true;
+        }
+        else if (curHold >= minHold)
             FireBullet();
 
         curHold = 0f;
