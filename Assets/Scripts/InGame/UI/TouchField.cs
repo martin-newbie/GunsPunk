@@ -35,10 +35,7 @@ public class TouchField : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             {
                 isDrag = false;
                 JumpFunction();
-                return;
             }
-
-
         }
     }
 
@@ -61,5 +58,8 @@ public class TouchField : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         {
             InGameManager.Instance.CurPlayer.GoDown();
         }
+
+        startPos = Vector2.zero;
+        dragPos = Vector2.zero;
     }
 }
