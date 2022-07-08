@@ -39,6 +39,7 @@ public abstract class Entity : MonoBehaviour
         if (collision.CompareTag("PlayerBullet"))
         {
             Bullet temp = collision.GetComponent<Bullet>();
+            temp.OnHostileHit();
             OnHitAction?.Invoke();
 
             HP -= temp.damage;

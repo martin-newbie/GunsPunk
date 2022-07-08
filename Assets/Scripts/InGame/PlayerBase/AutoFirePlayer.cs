@@ -23,7 +23,7 @@ public class AutoFirePlayer : PlayerBase
             if (curDelay >= fireDelay)
             {
                 Bullet _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
-                _bullet.Init(speed, damage);
+                _bullet.Init(speed, damage, this);
                 curDelay = 0f;
             }
 

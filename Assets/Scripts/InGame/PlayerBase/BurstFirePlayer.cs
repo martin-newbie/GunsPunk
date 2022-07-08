@@ -30,7 +30,7 @@ public class BurstFirePlayer : PlayerBase
         for (int i = 0; i < shootCount; i++)
         {
             Bullet _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
-            _bullet.Init(speed, damage);
+            _bullet.Init(speed, damage, this);
             yield return new WaitForSeconds(fireDelay);
         }
 

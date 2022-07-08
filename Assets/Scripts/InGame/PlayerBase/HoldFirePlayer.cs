@@ -55,7 +55,7 @@ public class HoldFirePlayer : PlayerBase
     Bullet FireBullet()
     {
         Bullet _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
-        _bullet.Init(speed / 2f + speed * (curHold / maxHold), damage / 2 + damage * (curHold / maxHold));
+        _bullet.Init(speed / 2f + speed * (curHold / maxHold), damage / 2 + damage * (curHold / maxHold), this);
 
         return _bullet;
     }

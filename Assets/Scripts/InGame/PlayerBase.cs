@@ -13,6 +13,8 @@ public abstract class PlayerBase : MonoBehaviour
     public float fireRate;
     public float maxHP = 100f;
     public float HP;
+    public float maxFever = 100f;
+    public float feverValue;
     protected float fireDelay => 1f / (fireRate / 60f);
     protected float curDelay;
 
@@ -46,6 +48,9 @@ public abstract class PlayerBase : MonoBehaviour
         RB = GetComponent<Rigidbody2D>();
 
         transform.position = new Vector2(-4.5f, -2.72f);
+
+        InGameUIManager.Instance.SetPlayerHp(0f, maxHP);
+        InGameUIManager.Instance.SetFeverGauge(0f, maxFever);
     }
 
     protected virtual void Update()
@@ -53,6 +58,8 @@ public abstract class PlayerBase : MonoBehaviour
         GoingUpAction();
         GoingDownAction();
         PCInput();
+
+        SetGaugeUI();
     }
 
     #region AllPlayerSame
@@ -144,6 +151,13 @@ public abstract class PlayerBase : MonoBehaviour
             curPosIdx--;
         }
     }
+
+    void SetGaugeUI()
+    {
+        InGameUIManager.Instance.SetPlayerHp(HP, maxHP);
+        InGameUIManager.Instance.SetFeverGauge(feverValue, maxFever);
+    }
+
     #endregion
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
@@ -162,6 +176,11 @@ public abstract class PlayerBase : MonoBehaviour
         {
             // game over
         }
+    }
+
+    public virtual void AttackAction()
+    {
+        feverValue += 1f;
     }
 
     public abstract void OnAttackStart();
