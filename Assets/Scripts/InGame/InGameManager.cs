@@ -16,7 +16,13 @@ public class InGameManager : Singleton<InGameManager>
     public Entity[] Monsters;
     public Transform[] SpawnPoses;
 
+    [Header("Values")]
     public float objectSpeed;
+    public float hurdleSpawnSpeed;
+    public float monsterSpawnSpeed;
+
+    Coroutine monsterSpawn_coroutine;
+    Coroutine hurdleSpawn_coroutine;
 
     public GaugeContainer SpawnGaugeBar()
     {
@@ -25,6 +31,40 @@ public class InGameManager : Singleton<InGameManager>
         return temp;
     }
 
+    private void Start()
+    {
+        GameStart();
+    }
+
+    public void GameOver()
+    {
+        StopCoroutine(hurdleSpawn_coroutine);
+        StopCoroutine(monsterSpawn_coroutine);
+    }
+
+    public void GameStart()
+    {
+        hurdleSpawn_coroutine = StartCoroutine(HurdleCoroutine());
+        monsterSpawn_coroutine = StartCoroutine(MonsterCoroutine());
+    }
+
+    IEnumerator HurdleCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(hurdleSpawnSpeed);
+            SpawnHurdle();
+        }
+    }
+
+    IEnumerator MonsterCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(monsterSpawnSpeed);
+            SpawnMonsters();
+        }
+    }
 
     public void SpawnHurdle()
     {
@@ -39,6 +79,7 @@ public class InGameManager : Singleton<InGameManager>
         int rand_h = Random.Range(0, Monsters.Length);
         int rand_t = Random.Range(0, SpawnPoses.Length);
 
-        Entity temp = Instantiate(Monsters[rand_h], SpawnPoses[rand_t].position, Quaternion.identity);
+        // Todo: monster
+        // Entity temp = Instantiate(Monsters[rand_h], SpawnPoses[rand_t].position, Quaternion.identity);
     }
 }
