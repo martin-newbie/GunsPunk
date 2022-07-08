@@ -79,57 +79,92 @@ public abstract class PlayerBase : MonoBehaviour
         }
     }
 
-    bool nowMoving;
     bool checkFeet => Physics2D.OverlapCircle(FeetPos.position, CheckRadius, LayerMask.GetMask("Floor"));
     bool checkTop => Physics2D.OverlapCircle(TopPos.position, CheckRadius, LayerMask.GetMask("Floor"));
+
+    enum PlayerMoveState
+    {
+        None,
+        GoUp,
+        GoDown,
+        End
+    }
+
+    PlayerMoveState moveState;
 
     void GoingUpAction()
     {
         if (goUpTrigger && isActing)
         {
-            if (!nowMoving && checkTop)
-            {
-                bodyCol.enabled = false;
-                nowMoving = true;
-            }
 
-            if (nowMoving && checkFeet)
+            switch (moveState)
             {
-                bodyCol.enabled = true;
-                nowMoving = false;
-            }
-
-            if (!nowMoving && bodyCol.enabled && RB.velocity == Vector2.zero)
-            {
-                goUpTrigger = false;
-                isActing = false;
+                case PlayerMoveState.None:
+                    if (RB.velocity.y > 0f)
+                    {
+                        moveState = PlayerMoveState.GoUp;
+                        bodyCol.enabled = false;
+                    }
+                    break;
+                case PlayerMoveState.GoUp:
+                    if (RB.velocity.y <= 0f)
+                    {
+                        moveState = PlayerMoveState.GoDown;
+                        bodyCol.enabled = true;
+                    }
+                    break;
+                case PlayerMoveState.GoDown:
+                    if (RB.velocity == Vector2.zero && checkFeet)
+                    {
+                        moveState = PlayerMoveState.End;
+                    }
+                    break;
+                case PlayerMoveState.End:
+                    moveState = PlayerMoveState.None;
+                    goUpTrigger = false;
+                    isActing = false;
+                    curPosIdx++;
+                    break;
             }
         }
     }
 
-    bool nowDown;
     void GoingDownAction()
     {
         if (goDownTrigger && isActing)
         {
-            if (!nowMoving && checkFeet && !nowDown)
-            {
-                bodyCol.enabled = false;
-                nowMoving = true;
-            }
 
-            if (nowMoving && checkTop)
+            switch (moveState)
             {
-                bodyCol.enabled = true;
-                nowMoving = false;
-                nowDown = true;
-            }
-
-            if(!nowMoving && bodyCol.enabled && RB.velocity == Vector2.zero && nowDown)
-            {
-                goDownTrigger = false;
-                isActing = false;
-                nowDown = false;
+                case PlayerMoveState.None:
+                    if (RB.velocity.y > 0f)
+                    {
+                        moveState = PlayerMoveState.GoUp;
+                        bodyCol.enabled = false;
+                    }
+                    break;
+                case PlayerMoveState.GoUp:
+                    if (RB.velocity.y < 0f)
+                    {
+                        moveState = PlayerMoveState.GoDown;
+                    }
+                    break;
+                case PlayerMoveState.GoDown:
+                    if (checkTop)
+                    {
+                        bodyCol.enabled = true;
+                        moveState = PlayerMoveState.End;
+                    }
+                    break;
+                case PlayerMoveState.End:
+                    if (checkFeet && RB.velocity == Vector2.zero)
+                    {
+                        moveState = PlayerMoveState.None;
+                        goDownTrigger = false;
+                        isActing = false;
+                        curPosIdx--;
+                    }
+                    break;
             }
         }
     }
@@ -142,7 +177,6 @@ public abstract class PlayerBase : MonoBehaviour
             goUpTrigger = true;
 
             RB.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
-            curPosIdx++;
         }
     }
 
@@ -153,8 +187,7 @@ public abstract class PlayerBase : MonoBehaviour
             isActing = true;
             goDownTrigger = true;
 
-            //RB.AddForce(new Vector2(0, JumpForce / 3), ForceMode2D.Impulse);
-            curPosIdx--;
+            RB.AddForce(new Vector2(0, JumpForce / 3), ForceMode2D.Impulse);
         }
     }
 
@@ -178,7 +211,7 @@ public abstract class PlayerBase : MonoBehaviour
     {
         HP -= hostile.damage;
 
-        if(HP <= 0)
+        if (HP <= 0)
         {
             // game over
         }
