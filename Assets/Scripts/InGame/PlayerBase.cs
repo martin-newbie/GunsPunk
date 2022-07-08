@@ -80,17 +80,20 @@ public abstract class PlayerBase : MonoBehaviour
     }
 
     bool nowMoving;
+    bool checkFeet => Physics2D.OverlapCircle(FeetPos.position, CheckRadius, LayerMask.GetMask("Floor"));
+    bool checkTop => Physics2D.OverlapCircle(TopPos.position, CheckRadius, LayerMask.GetMask("Floor"));
+
     void GoingUpAction()
     {
         if (goUpTrigger && isActing)
         {
-            if (!nowMoving && Physics2D.OverlapCircle(TopPos.position, CheckRadius, LayerMask.GetMask("Floor")))
+            if (!nowMoving && checkTop)
             {
                 bodyCol.enabled = false;
                 nowMoving = true;
             }
 
-            if (nowMoving && Physics2D.OverlapCircle(FeetPos.position, CheckRadius, LayerMask.GetMask("Floor")))
+            if (nowMoving && checkFeet)
             {
                 bodyCol.enabled = true;
                 nowMoving = false;
@@ -109,13 +112,13 @@ public abstract class PlayerBase : MonoBehaviour
     {
         if (goDownTrigger && isActing)
         {
-            if (!nowMoving && Physics2D.OverlapCircle(FeetPos.position, CheckRadius, LayerMask.GetMask("Floor")) && !nowDown)
+            if (!nowMoving && checkFeet && !nowDown)
             {
                 bodyCol.enabled = false;
                 nowMoving = true;
             }
 
-            if (nowMoving && Physics2D.OverlapCircle(TopPos.position, CheckRadius, LayerMask.GetMask("Floor")))
+            if (nowMoving && checkTop)
             {
                 bodyCol.enabled = true;
                 nowMoving = false;

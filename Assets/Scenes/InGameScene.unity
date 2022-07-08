@@ -448,8 +448,8 @@ MonoBehaviour:
   JumpForce: 13
   CheckRadius: 0.05
   curPosIdx: 0
-  damage: 15
-  speed: 30
+  damage: 5
+  speed: 25
   fireRate: 600
   maxHP: 100
   HP: 0
@@ -459,10 +459,6 @@ MonoBehaviour:
   TopPos: {fileID: 1059234977}
   FirePos: {fileID: 168932453}
   bullet: {fileID: 7145292585738048927, guid: 2d2bfc26052d9094dbf1a6e9be745574, type: 3}
-  maxHold: 1.5
-  minHold: 0.5
-  curHold: 0
-  isHold: 0
 --- !u!1 &575461069
 GameObject:
   m_ObjectHideFlags: 0
