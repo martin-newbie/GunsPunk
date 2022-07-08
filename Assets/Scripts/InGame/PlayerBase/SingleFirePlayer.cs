@@ -25,8 +25,7 @@ public class SingleFirePlayer : PlayerBase
     IEnumerator SingleFireCoroutine()
     {
         isFire = true;
-        Bullet _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
-        _bullet.Init(speed, damage, this);
+        FireBullet();
         yield return new WaitForSeconds(fireDelay);
         isFire = false;
     }

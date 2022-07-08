@@ -186,6 +186,14 @@ public abstract class PlayerBase : MonoBehaviour
         feverValue += 1f;
     }
 
+    protected virtual Bullet FireBullet()
+    {
+        Bullet _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
+        _bullet.Init(speed, damage, this);
+
+        return _bullet;
+    }
+
     public abstract void OnAttackStart();
     public abstract void OnAttackEnd();
 }
