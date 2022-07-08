@@ -448,7 +448,7 @@ MonoBehaviour:
   JumpForce: 13
   CheckRadius: 0.05
   curPosIdx: 0
-  damage: 5
+  damage: 15
   speed: 30
   fireRate: 600
   maxHP: 100
@@ -951,9 +951,9 @@ MonoBehaviour:
   - {fileID: 2073035553}
   - {fileID: 1377360225}
   - {fileID: 676576728}
-  objectSpeed: 3
-  hurdleSpawnSpeed: 3
-  monsterSpawnSpeed: 4
+  objectSpeed: 2
+  hurdleSpawnSpeed: 6
+  monsterSpawnSpeed: 8
 --- !u!4 &1082696162
 Transform:
   m_ObjectHideFlags: 0

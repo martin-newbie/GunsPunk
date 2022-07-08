@@ -36,6 +36,11 @@ public abstract class Entity : MonoBehaviour
     protected virtual void MoveLogic()
     {
         transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+
+        if(transform.position.x < -13f)
+        {
+            Destroy(gameObject);
+        }
     }
 
     virtual protected void OnTriggerEnter2D(Collider2D collision)
