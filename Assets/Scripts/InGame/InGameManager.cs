@@ -8,11 +8,12 @@ public class InGameManager : Singleton<InGameManager>
     public Canvas canvas;
     public PlayerBase CurPlayer;
 
-    public GaugeContainer HpBar;
+    public GaugeContainer GaugePrefab;
 
-    public GaugeContainer SpawnHpBar()
+    public GaugeContainer SpawnGaugeBar()
     {
-        return null;
+        GaugeContainer temp = Instantiate(GaugePrefab, canvas.transform);
+        return temp;
     }
 
 }

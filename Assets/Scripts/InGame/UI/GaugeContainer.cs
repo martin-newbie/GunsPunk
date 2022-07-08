@@ -16,7 +16,7 @@ public class GaugeContainer : MonoBehaviour
 
     public void FollowTarget(Vector3 offset, Transform target)
     {
-
+        transform.position = target.position + offset;
     }
 
     public void SetGauge(float cur, float max)
