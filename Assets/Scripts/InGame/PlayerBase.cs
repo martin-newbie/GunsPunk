@@ -11,6 +11,8 @@ public abstract class PlayerBase : MonoBehaviour
     public float damage;
     public float speed;
     public float fireRate;
+    public float maxHP = 100f;
+    public float HP;
     protected float fireDelay => 1f / (fireRate / 60f);
     protected float curDelay;
 
@@ -143,6 +145,24 @@ public abstract class PlayerBase : MonoBehaviour
         }
     }
     #endregion
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Hostile"))
+        {
+            HitAction(collision.GetComponent<Entity>());
+        }
+    }
+
+    public virtual void HitAction(Entity hostile)
+    {
+        HP -= hostile.damage;
+
+        if(HP <= 0)
+        {
+            // game over
+        }
+    }
 
     public abstract void OnAttackStart();
     public abstract void OnAttackEnd();

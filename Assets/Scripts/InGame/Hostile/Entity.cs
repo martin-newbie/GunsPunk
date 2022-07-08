@@ -9,6 +9,7 @@ public abstract class Entity : MonoBehaviour
     public float maxHP;
     public float HP;
     public float moveSpeed = 3f;
+    public float damage;
     public Vector2 HP_Gauge_Offset = new Vector2(0, -1.3f);
     protected GaugeContainer hpGauge;
 
@@ -46,6 +47,7 @@ public abstract class Entity : MonoBehaviour
 
             if(HP <= 0)
             {
+                OnDestroyAction?.Invoke();
             }
         }
     }
