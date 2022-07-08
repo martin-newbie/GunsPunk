@@ -5,13 +5,25 @@ using UnityEngine.UI;
 
 public class GaugeContainer : MonoBehaviour
 {
-
+    public Image Back;
     public Image Gauge;
     RectTransform rect;
 
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
+    }
+
+    public void SetSprite(Sprite back, Sprite gauge)
+    {
+        Back.sprite = back;
+        Gauge.sprite = gauge;
+    }
+
+    public void SetColor(Color back, Color gauge)
+    {
+        Back.color = back;
+        Gauge.color = gauge;
     }
 
     public void FollowTarget(Vector3 offset, Transform target)

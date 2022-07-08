@@ -6,19 +6,16 @@ using UnityEngine.UI;
 public class HoldFirePlayer : PlayerBase
 {
     [Header("Hold Fire Player")]
-    public GameObject gaugeObject;
     public float maxHold = 5f;
     public float curHold;
     public bool isHold;
 
-    Image gaugeUI;
-    GameObject gaugeObj;
+    GaugeContainer gauge;
 
     protected override void Start()
     {
         base.Start();
-        gaugeObj = Instantiate(gaugeObject, InGameManager.Instance.canvas.transform);
-        gaugeUI = gaugeObj.GetComponentsInChildren<Image>()[1];
+        gauge = InGameManager.Instance.SpawnGaugeBar();
     }
 
     protected override void Update()
@@ -38,8 +35,8 @@ public class HoldFirePlayer : PlayerBase
             }
         }
 
-        gaugeUI.fillAmount = curHold / maxHold;
-        gaugeObj.transform.position = transform.position + new Vector3(0, 1.3f, 0);
+        gauge.SetGauge(curHold, maxHold);
+        gauge.FollowTarget(new Vector2(0, 1.3f), transform);
     }
 
     public override void OnAttackEnd()
