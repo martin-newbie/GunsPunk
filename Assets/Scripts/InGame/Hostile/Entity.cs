@@ -7,6 +7,7 @@ public abstract class Entity : MonoBehaviour
 {
     public float maxHP;
     public float HP;
+    public float moveSpeed = 3f;
     public Vector2 HP_Gauge_Offset = new Vector2(0, -1.3f);
     protected Action OnHitAction;
     protected GaugeContainer hpGauge;
@@ -22,6 +23,11 @@ public abstract class Entity : MonoBehaviour
     {
         hpGauge.SetGauge(HP, maxHP);
         hpGauge.FollowTarget(HP_Gauge_Offset, transform);
+    }
+
+    protected virtual void MoveLogic()
+    {
+        transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
     }
 
     virtual protected void OnTriggerEnter2D(Collider2D collision)

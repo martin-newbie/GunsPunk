@@ -17,6 +17,8 @@ public class GaugeContainer : MonoBehaviour
     public void SetSize(float width, float height)
     {
         rect.sizeDelta = new Vector2(width, height);
+        Back.rectTransform.sizeDelta = new Vector2(width, height);
+        Gauge.rectTransform.sizeDelta = new Vector2(width, height);
     }
 
     public void SetSprite(Sprite back, Sprite gauge)
