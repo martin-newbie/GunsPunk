@@ -52,7 +52,7 @@ public class InGameManager : Singleton<InGameManager>
     {
         while (true)
         {
-            yield return new WaitForSeconds(hurdleSpawnSpeed);
+            yield return new WaitForSeconds(hurdleSpawnSpeed + Random.Range(-3f, 1f));
             SpawnHurdle();
         }
     }
