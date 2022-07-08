@@ -38,14 +38,14 @@ public abstract class PlayerBase : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(TopPos.position, CheckRadius);
-
-        transform.position = new Vector2(-4.5f, -3.7f);
     }
 
     protected virtual void Start()
     {
         bodyCol = GetComponent<Collider2D>();
         RB = GetComponent<Rigidbody2D>();
+
+        transform.position = new Vector2(-4.5f, -2.72f);
     }
 
     protected virtual void Update()
