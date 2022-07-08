@@ -8,24 +8,27 @@ public class InGameUIManager : Singleton<InGameUIManager>
     public Image PlayerHpGauge;
     public Image FeverGauge;
 
-    float hpCur, hpMax;
-    float feverCur, feverMax;
+    float hpCur, hpMax, hpTarget;
+    float feverCur, feverMax, feverTarget;
 
     private void Update()
     {
-        PlayerHpGauge.fillAmount = Mathf.Lerp(PlayerHpGauge.fillAmount, hpCur, Time.deltaTime * 15f) / hpMax;
-        FeverGauge.fillAmount = Mathf.Lerp(FeverGauge.fillAmount, feverCur, Time.deltaTime * 15f) / feverMax;
+        hpCur = Mathf.Lerp(hpCur, hpTarget, Time.deltaTime * 10f);
+        feverCur = Mathf.Lerp(feverCur, feverTarget, Time.deltaTime * 10f);
+
+        PlayerHpGauge.fillAmount = hpCur / hpMax;
+        FeverGauge.fillAmount = feverCur / feverMax;
     }
 
     public void SetPlayerHp(float cur, float max)
     {
-        hpCur = cur;
+        hpTarget = cur;
         hpMax = max;
     }
 
     public void SetFeverGauge(float cur, float max)
     {
-        feverCur = cur;
+        feverTarget = cur;
         feverMax = max;
     }
 

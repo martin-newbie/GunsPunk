@@ -4,8 +4,4 @@ using UnityEngine;
 
 public class TestCharacter : HoldFirePlayer
 {
-    protected override void Update()
-    {
-        base.Update();
-    }
 }

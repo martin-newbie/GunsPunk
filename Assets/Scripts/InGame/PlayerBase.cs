@@ -49,6 +49,9 @@ public abstract class PlayerBase : MonoBehaviour
 
         transform.position = new Vector2(-4.5f, -2.72f);
 
+        HP = maxHP;
+        feverValue = maxFever;
+
         InGameUIManager.Instance.SetPlayerHp(0f, maxHP);
         InGameUIManager.Instance.SetFeverGauge(0f, maxFever);
     }
