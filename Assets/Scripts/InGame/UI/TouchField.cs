@@ -31,10 +31,10 @@ public class TouchField : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         {
             dragPos = eventData.position;
 
-            if (dragPos.x < canvasRT.sizeDelta.x / 2)
+            if (dragPos.x < canvasRT.sizeDelta.x / 2 || dragPos.x > canvasRT.sizeDelta.x || dragPos.y > canvasRT.sizeDelta.y / 2 || dragPos.y < canvasRT.sizeDelta.y / -2)
             {
                 isDrag = false;
-                // jump function
+                JumpFunction();
                 return;
             }
 
@@ -47,12 +47,19 @@ public class TouchField : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         if (isDrag)
         {
             isDrag = false;
-            // jump function
+            JumpFunction();
         }
     }
 
     void JumpFunction()
     {
-
+        if (startPos.y < dragPos.y)
+        {
+            InGameManager.Instance.CurPlayer.GoUp();
+        }
+        else
+        {
+            InGameManager.Instance.CurPlayer.GoDown();
+        }
     }
 }
