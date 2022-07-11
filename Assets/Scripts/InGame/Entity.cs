@@ -9,10 +9,10 @@ public abstract class Entity : MonoBehaviour
     public float maxHP;
     public float HP;
     public float damage;
-    protected float moveSpeed;
+    public float moveSpeed;
 
-    protected Action<float> OnHitAction;
-    protected Action OnDestroyAction;
+    public Action<float> OnHitAction;
+    public Action OnDestroyAction;
 
     protected virtual void Awake()
     {

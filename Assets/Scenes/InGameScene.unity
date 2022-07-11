@@ -448,6 +448,7 @@ MonoBehaviour:
   maxHP: 100
   HP: 0
   damage: 5
+  moveSpeed: 0
   JumpForce: 13
   CheckRadius: 0.05
   curPosIdx: 0
@@ -795,6 +796,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &741527216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 741527217}
+  m_Layer: 0
+  m_Name: AttackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &741527217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741527216}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1992863653}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &928229935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,9 +1473,11 @@ GameObject:
   - component: {fileID: 1992863653}
   - component: {fileID: 1992863652}
   - component: {fileID: 1992863654}
+  - component: {fileID: 1992863655}
+  - component: {fileID: 1992863656}
   m_Layer: 0
   m_Name: Robot_Gun
-  m_TagString: Untagged
+  m_TagString: Hostile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1508,9 +1541,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992863651}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.4687557, y: 2.3013387, z: 0}
+  m_LocalPosition: {x: 11.48, y: 2.3013387, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 741527217}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1526,19 +1560,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8d483b37e60014081e5e58240c93c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 0
+  maxHP: 55
   HP: 0
   damage: 0
+  moveSpeed: 2
   JumpForce: 13
   CheckRadius: 0.05
   curPosIdx: 0
   FeetPos: {fileID: 0}
   TopPos: {fileID: 0}
   state: 0
-  nowActing: 1
-  standbyDelay: 0
-  moveTime: 0
-  startPosX: 0
+  nowActing: 0
+  player: {fileID: 0}
+  standbyDelay: 5
+  moveTime: 2
+  startPosX: 7.5
+  AttackPos: {fileID: 741527217}
+  bullet: {fileID: 1404587594166221980, guid: ea6d357f29ebd344597584f4526b16bd, type: 3}
+  fireDelay: 0.3
+  b_speed: 10
+  b_damage: 15
+--- !u!50 &1992863655
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992863651}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &1992863656
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992863651}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.89, y: 0.73}
+    newSize: {x: 0.89, y: 0.73}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.89, y: 0.73}
+  m_EdgeRadius: 0
 --- !u!1 &2016142376
 GameObject:
   m_ObjectHideFlags: 0

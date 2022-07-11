@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBullet : MonoBehaviour
+public class EnemyBullet : Bullet
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Init(float _speed, float _damage)
     {
-        
+        speed = _speed;
+        damage = _damage;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.CompareTag("Player"))
+        {
+            collision.GetComponent<Entity>().OnHitAction?.Invoke(damage);
+
+            Destroy(gameObject);
+        }
     }
 }

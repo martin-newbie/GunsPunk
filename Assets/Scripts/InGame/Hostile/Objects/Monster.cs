@@ -20,11 +20,24 @@ public abstract class Monster : JumpAble
     public MonsterState state;
     public bool nowActing = false;
     public Coroutine nowCoroutine;
+    public PlayerBase player;
 
     private void Start()
     {
         OnHitAction = OnHit;
         OnDestroyAction = OnDie;
+        player = InGameManager.Instance.CurPlayer;
+
+        nowActing = false;
+        state = MonsterState.Appear;
+
+        Init(0);
+    }
+
+    public void Init(int idx)
+    {
+        curPosIdx = idx;
+        transform.position = InGameManager.Instance.SpawnPoses[curPosIdx].position;
     }
 
     public override void OnHit(float damage)
