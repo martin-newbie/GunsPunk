@@ -29,4 +29,14 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Hostile"))
+        {
+            collision.GetComponent<Entity>().OnHit(damage);
+
+            if (!notDestroy) Destroy(gameObject);
+        }
+    }
 }

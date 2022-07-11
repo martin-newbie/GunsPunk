@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class Hurdle : Entity
 {
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         OnHitAction = OnHit;
         OnDestroyAction = OnDie;
     }
 
-    void OnHit()
+    private void Update()
     {
-
+        moveSpeed = InGameManager.Instance.objectSpeed;
+        transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
     }
 
     void OnDie()
     {
-        Destroy(hpGauge.gameObject);
         Destroy(gameObject);
     }
 }
