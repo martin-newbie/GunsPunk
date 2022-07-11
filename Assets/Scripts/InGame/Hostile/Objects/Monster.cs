@@ -47,6 +47,9 @@ public abstract class Monster : JumpAble
 
     public void OnDie()
     {
-        StopCoroutine(nowCoroutine);
+        if (nowCoroutine != null)
+            StopCoroutine(nowCoroutine);
+
+        Destroy(gameObject);
     }
 }

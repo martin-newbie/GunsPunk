@@ -4,11 +4,11 @@ using UnityEngine;
 
 public abstract class JumpAble : Entity
 {
-
+    [Header("JumpAble")]
     protected Collider2D bodyCol;
     protected Rigidbody2D RB;
 
-    protected bool isActing;
+    public bool isActing;
     protected bool goUpTrigger;
     protected bool goDownTrigger;
 
@@ -59,14 +59,14 @@ public abstract class JumpAble : Entity
                     if (RB.velocity.y > 0f)
                     {
                         moveState = JumpState.GoUp;
-                        bodyCol.enabled = false;
+                        bodyCol.isTrigger = true;
                     }
                     break;
                 case JumpState.GoUp:
                     if (RB.velocity.y <= 0f)
                     {
                         moveState = JumpState.GoDown;
-                        bodyCol.enabled = true;
+                        bodyCol.isTrigger = false;
                     }
                     break;
                 case JumpState.GoDown:
@@ -96,7 +96,7 @@ public abstract class JumpAble : Entity
                     if (RB.velocity.y > 0f)
                     {
                         moveState = JumpState.GoUp;
-                        bodyCol.enabled = false;
+                        bodyCol.isTrigger = true;
                     }
                     break;
                 case JumpState.GoUp:
@@ -108,7 +108,7 @@ public abstract class JumpAble : Entity
                 case JumpState.GoDown:
                     if (checkTop)
                     {
-                        bodyCol.enabled = true;
+                        bodyCol.isTrigger = false;
                         moveState = JumpState.End;
                     }
                     break;

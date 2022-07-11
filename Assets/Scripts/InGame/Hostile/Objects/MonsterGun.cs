@@ -28,15 +28,15 @@ public class MonsterGun : Monster
                     AppearFunction();
                     break;
                 case MonsterState.Standby:
-                    StartCoroutine(StandbyCoroutine());
+                    nowCoroutine = StartCoroutine(StandbyCoroutine());
                     nowActing = true;
                     break;
                 case MonsterState.Attack:
-                    StartCoroutine(AttackCoroutine());
+                    nowCoroutine = StartCoroutine(AttackCoroutine());
                     nowActing = true;
                     break;
                 case MonsterState.Moving:
-                    StartCoroutine(MovingCoroutine());
+                    nowCoroutine = StartCoroutine(MovingCoroutine());
                     nowActing = true;
                     break;
             }
@@ -66,9 +66,13 @@ public class MonsterGun : Monster
 
     IEnumerator MovingCoroutine()
     {
-        yield return null;
 
-        float timer = moveTime + Random.Range(-0.5f, 0.5f);
+        if (player.curPosIdx > curPosIdx) GoUp();
+        else if (player.curPosIdx < curPosIdx) GoDown();
+
+        yield return new WaitForSeconds(2f);
+
+        float timer = moveTime + Random.Range(-1.5f, 0.5f);
         int dir = transform.position.x >= 5.5f ? 1 : -1;
         // state: -1(move), 1(slow move)
 
