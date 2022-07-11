@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     public bool notDestroy;
     PlayerBase player;
 
-    void Update()
+    protected virtual void Update()
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Hostile"))
         {

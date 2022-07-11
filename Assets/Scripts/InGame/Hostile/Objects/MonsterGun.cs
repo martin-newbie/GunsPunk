@@ -8,12 +8,14 @@ public class MonsterGun : Monster
     public float standbyDelay;
     public float moveTime;
     public float startPosX;
+    public Transform AttackPos;
+    public Bullet EnemyBullet;
 
     protected override void Update()
     {
         base.Update();
 
-        if (nowActing)
+        if (!nowActing)
         {
             switch (state)
             {
@@ -22,15 +24,15 @@ public class MonsterGun : Monster
                     break;
                 case MonsterState.Standby:
                     StartCoroutine(StandbyCoroutine());
-                    nowActing = false;
+                    nowActing = true;
                     break;
                 case MonsterState.Attack:
 
-                    nowActing = false;
+                    nowActing = true;
                     break;
                 case MonsterState.Moving:
-
-                    nowActing = false;
+                    StartCoroutine(MovingCoroutine());
+                    nowActing = true;
                     break;
             }
         }
@@ -52,19 +54,73 @@ public class MonsterGun : Monster
         // state: standby
         yield return new WaitForSeconds(standbyDelay);
         state = MonsterState.Moving;
+
+        nowActing = false;
+        yield break;
     }
 
     IEnumerator MovingCoroutine()
     {
         yield return null;
 
-        float time = moveTime + Random.Range(0, 0.5f);
+        float timer = moveTime + Random.Range(-0.5f, 0.5f);
+        int dir = transform.position.x <= 5.5f ? 1 : -1;
+        // state: -1(move), 1(slow move)
 
         do
         {
+            transform.Translate(Vector3.left * dir * moveSpeed * Time.deltaTime);
 
-        } while (true);
+            if (transform.position.x > 9.5f) break;
+            if (transform.position.x < 1.5f) break;
 
+            timer -= Time.deltaTime;
+            yield return null;
+        } while (timer > 0);
+
+        // state: standby
+
+        yield return new WaitForSeconds(1f);
+        state = MonsterState.Attack;
+
+        nowActing = false;
+        yield break;
     }
 
+    IEnumerator AttackCoroutine()
+    {
+        switch (curPosIdx == InGameManager.Instance.CurPlayer.curPosIdx)
+        {
+            case true:
+                yield return StartCoroutine(StraightAttack());
+                break;
+
+
+            case false:
+                yield return StartCoroutine(DirectionAttack());
+                break;
+        }
+
+        nowActing = false;
+        yield break;
+    }
+
+    IEnumerator StraightAttack()
+    {
+        AttackPos.rotation = Quaternion.Euler(0, -180, 0);
+
+        for (int i = 0; i < 5; i++)
+        {
+            
+        }
+
+
+        yield break;
+    }
+
+    IEnumerator DirectionAttack()
+    {
+
+        yield break;
+    }
 }

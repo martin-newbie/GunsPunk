@@ -18,7 +18,7 @@ public abstract class Monster : JumpAble
 
     [Header("Monster AI")]
     public MonsterState state;
-    public bool nowActing = true;
+    public bool nowActing = false;
     public Coroutine nowCoroutine;
 
     private void Start()
