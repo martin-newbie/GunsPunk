@@ -66,8 +66,6 @@ public class InGameManager : Singleton<InGameManager>
         for (int i = 0; i < waveArr.Length; i++)
         {
 
-
-
         }
 
         yield break;
@@ -81,11 +79,15 @@ public class InGameManager : Singleton<InGameManager>
         Entity temp = Instantiate(Hurdles[rand_h], SpawnPoses[rand_t].position, Quaternion.identity);
     }
 
-    public void SpawnMonsters(Monster monster)
+    public Monster SpawnMonsters(int idx)
     {
+        Monster monster = idx == 0 ? MonsterMelee : MonsterGun;
+
         int rand_t = Random.Range(0, SpawnPoses.Length);
         Monster temp = Instantiate(monster, SpawnPoses[rand_t].position, Quaternion.identity);
 
         temp.Init(rand_t);
+
+        return temp;
     }
 }
