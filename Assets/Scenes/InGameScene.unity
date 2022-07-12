@@ -944,11 +944,12 @@ MonoBehaviour:
   GaugePrefab: {fileID: 2439843208432874508, guid: 9bbc25c1e5b7fcc45a17e6e9dc9b9478, type: 3}
   Hurdles:
   - {fileID: 320093013169518348, guid: de4f80bdb8703604ebad70b070d0ecf7, type: 3}
-  Monsters: []
   SpawnPoses:
   - {fileID: 2073035553}
   - {fileID: 1377360225}
   - {fileID: 676576728}
+  MonsterMelee: {fileID: 0}
+  MonsterGun: {fileID: 0}
   objectSpeed: 2
   hurdleSpawnSpeed: 5
   monsterSpawnSpeed: 7

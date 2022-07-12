@@ -13,8 +13,9 @@ public class InGameManager : Singleton<InGameManager>
 
     [Header("Object")]
     public Entity[] Hurdles;
-    public Entity[] Monsters;
     public Transform[] SpawnPoses;
+    public Monster MonsterMelee;
+    public Monster MonsterGun;
 
     [Header("Values")]
     public float objectSpeed;
@@ -59,11 +60,17 @@ public class InGameManager : Singleton<InGameManager>
 
     IEnumerator MonsterCoroutine()
     {
-        while (true)
+        TextAsset wave = Resources.Load("MonsterSpawnWave.txt") as TextAsset;
+        var waveArr = wave.text.Split('\n');
+
+        for (int i = 0; i < waveArr.Length; i++)
         {
-            yield return new WaitForSeconds(monsterSpawnSpeed);
-            SpawnMonsters();
+
+
+
         }
+
+        yield break;
     }
 
     public void SpawnHurdle()
@@ -74,12 +81,11 @@ public class InGameManager : Singleton<InGameManager>
         Entity temp = Instantiate(Hurdles[rand_h], SpawnPoses[rand_t].position, Quaternion.identity);
     }
 
-    public void SpawnMonsters()
+    public void SpawnMonsters(Monster monster)
     {
-        int rand_h = Random.Range(0, Monsters.Length);
         int rand_t = Random.Range(0, SpawnPoses.Length);
+        Monster temp = Instantiate(monster, SpawnPoses[rand_t].position, Quaternion.identity);
 
-        // Todo: monster
-        // Entity temp = Instantiate(Monsters[rand_h], SpawnPoses[rand_t].position, Quaternion.identity);
+        temp.Init(rand_t);
     }
 }

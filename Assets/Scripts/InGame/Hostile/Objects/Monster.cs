@@ -30,8 +30,6 @@ public abstract class Monster : JumpAble
 
         nowActing = false;
         state = MonsterState.Appear;
-
-        Init(0);
     }
 
     public void Init(int idx)
