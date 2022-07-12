@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Hurdle : Entity
 {
+    public HostileAttack atkCol;
+
     protected override void Awake()
     {
         base.Awake();
         OnHitAction = OnHit;
         OnDestroyAction = OnDie;
+        atkCol.Init(damage, OnDie);
     }
 
     private void Update()
@@ -21,4 +24,5 @@ public class Hurdle : Entity
     {
         Destroy(gameObject);
     }
+
 }

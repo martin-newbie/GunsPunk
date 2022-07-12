@@ -11,7 +11,7 @@ public class MonsterMelee : Monster
     public float posX_Attack;   // 공격할 때 이 x좌표까지 이동
     public float posX_Standby;  // 대기할 때 이 x좌표까지 이동
     public float posX_Start;
-    public GameObject AtkCol;
+    public HostileAttack AtkCol;
 
     [Header("Monster Melee Value")]
     public float atkDelay;
@@ -80,7 +80,7 @@ public class MonsterMelee : Monster
             else if (idx < curPosIdx)
                 GoDown();
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
 
         do
@@ -97,9 +97,10 @@ public class MonsterMelee : Monster
     IEnumerator AttackCoroutine()
     {
         //state: attack
-        AtkCol.SetActive(true);
+        AtkCol.gameObject.SetActive(true);
+        AtkCol.Init(damage);
         yield return new WaitForSeconds(atkDelay);
-        AtkCol.SetActive(false);
+        AtkCol.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 

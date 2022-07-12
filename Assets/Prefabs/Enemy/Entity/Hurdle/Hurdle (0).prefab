@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 320093013169518346}
   - component: {fileID: 320093013169518347}
   - component: {fileID: 320093013169518348}
+  - component: {fileID: 7169500374783142220}
   m_Layer: 0
   m_Name: Hurdle (0)
   m_TagString: Hostile
@@ -147,3 +148,17 @@ MonoBehaviour:
   maxHP: 25
   HP: 0
   damage: 5
+  moveSpeed: 0
+--- !u!114 &7169500374783142220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320093013169518349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1feb8b1b66805a64ba8a1288392b0f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
