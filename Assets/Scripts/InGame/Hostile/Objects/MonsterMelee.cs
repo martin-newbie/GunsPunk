@@ -18,6 +18,8 @@ public class MonsterMelee : Monster
 
     protected override void Update()
     {
+        if (!isAlive) return;
+
         base.Update();
 
         if (!nowActing)
@@ -27,19 +29,16 @@ public class MonsterMelee : Monster
                     AppearFunction();
                     break;
                 case MonsterState.Standby:
-                    Debug.Log("standby start");
-                    nowActing = true;
                     nowCoroutine = StartCoroutine(StandbyCoroutine());
+                    nowActing = true;
                     break;
                 case MonsterState.Attack:
-                    Debug.Log("attack start");
-                    nowActing = true;
                     nowCoroutine = StartCoroutine(AttackCoroutine());
+                    nowActing = true;
                     break;
                 case MonsterState.Moving:
-                    Debug.Log("move start");
-                    nowActing = true;
                     nowCoroutine = StartCoroutine(MoveLogicCoroutine());
+                    nowActing = true;
                     break;
             }
     }
@@ -62,16 +61,13 @@ public class MonsterMelee : Monster
         state = MonsterState.Moving;
 
         nowActing = false;
-        Debug.Log("standby end");
         yield break;
     }
 
     IEnumerator MoveLogicCoroutine()
     {
-        Debug.Log("move start");
         //state: move
         int idx = player.curPosIdx;
-        Debug.Log(idx);
 
         while (idx != curPosIdx)
         {

@@ -53,21 +53,40 @@ public class InGameManager : Singleton<InGameManager>
     {
         while (true)
         {
-            yield return new WaitForSeconds(hurdleSpawnSpeed + Random.Range(-4f, 0f));
+            yield return new WaitForSeconds(hurdleSpawnSpeed + Random.Range(-1.5f, 0f));
             SpawnHurdle();
         }
     }
 
     IEnumerator MonsterCoroutine()
     {
-        TextAsset wave = Resources.Load("MonsterSpawnWave.txt") as TextAsset;
-        var waveArr = wave.text.Split('\n');
+        List<Monster> CurMonsters = new List<Monster>();
+        float spawnDelay = 2f;
 
-        for (int i = 0; i < waveArr.Length; i++)
+        while (true)
         {
 
-        }
+            // test
+            CurMonsters.Add(SpawnMonsters(0));
+            yield return new WaitForSeconds(spawnDelay);
+            CurMonsters.Add(SpawnMonsters(0));
+            yield return new WaitForSeconds(spawnDelay);
+            CurMonsters.Add(SpawnMonsters(1));
+            // test
 
+            if (Input.GetKeyDown(KeyCode.Space)) break;
+            while (CurMonsters.Count > 0)
+            {
+                for (int i = 0; i < CurMonsters.Count; i++)
+                {
+                    if (!CurMonsters[i].isAlive) CurMonsters.Remove(CurMonsters[i]);
+                }
+
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(spawnDelay);
+        }
         yield break;
     }
 

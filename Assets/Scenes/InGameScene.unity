@@ -948,8 +948,8 @@ MonoBehaviour:
   - {fileID: 2073035553}
   - {fileID: 1377360225}
   - {fileID: 676576728}
-  MonsterMelee: {fileID: 0}
-  MonsterGun: {fileID: 0}
+  MonsterMelee: {fileID: 3826177833279044318, guid: 282f075561c14c64cb084cc42778a296, type: 3}
+  MonsterGun: {fileID: 941165883102946851, guid: 4dc2d772d64f03f428e9dbf35d827339, type: 3}
   objectSpeed: 2
   hurdleSpawnSpeed: 5
   monsterSpawnSpeed: 7

@@ -18,6 +18,8 @@ public class MonsterGun : Monster
 
     protected override void Update()
     {
+        if (!isAlive) return;
+
         base.Update();
 
         if (!nowActing)

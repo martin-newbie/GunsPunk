@@ -14,11 +14,12 @@ public abstract class Monster : JumpAble
 {
     // 움직이는 애니메이션은 항상 뒤로 움직이게끔
     // 앞으로 움직이는 로직에서는 뒤로 움직이는 애니메이션을 천천히 재생
-    // 앞으로 빠르게 움직이는 로직에스ㅓ는 앞으로 움직이는 애니메이션을 재생
+    // 앞으로 빠르게 움직이는 로직에서는 앞으로 움직이는 애니메이션을 재생
 
     [Header("Monster AI")]
     public MonsterState state;
     public bool nowActing = false;
+    public bool isAlive = true;
     public Coroutine nowCoroutine;
     public PlayerBase player;
 
@@ -40,7 +41,10 @@ public abstract class Monster : JumpAble
 
     public override void OnHit(float damage)
     {
-        base.OnHit(damage);
+        if (isAlive)
+        { 
+            base.OnHit(damage);
+        }
     }
 
     public void OnDie()
@@ -48,6 +52,9 @@ public abstract class Monster : JumpAble
         if (nowCoroutine != null)
             StopCoroutine(nowCoroutine);
 
-        Destroy(gameObject);
+        isAlive = false;
+        GetComponent<SpriteRenderer>().color = Color.red;
+        GetComponent<Collider2D>().enabled = false;
+        Destroy(gameObject, 3f);
     }
 }
