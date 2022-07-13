@@ -118,6 +118,8 @@ public abstract class PlayerBase : JumpAble
                     ItemHealth();
                     break;
             }
+
+            Destroy(collision.gameObject);
         }
     }
 

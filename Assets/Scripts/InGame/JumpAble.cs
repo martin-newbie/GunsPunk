@@ -13,7 +13,7 @@ public abstract class JumpAble : Entity
     protected bool goDownTrigger;
 
     [Header("Jump Value")]
-    public float JumpForce = 13f;
+    public float JumpForce = 13.5f;
     public float CheckRadius = 0.05f;
     public int curPosIdx;
 

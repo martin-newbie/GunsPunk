@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 271309296}
   - component: {fileID: 271309298}
   - component: {fileID: 271309297}
+  - component: {fileID: 271309299}
   m_Layer: 6
   m_Name: Floor (2)
   m_TagString: Untagged
@@ -266,7 +267,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0abccc1e0b2baec4a9d4b640d38bb1fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -298,6 +299,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &271309299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271309295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaea6694142a267448d4296eb5ff9072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &289607108
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +463,7 @@ MonoBehaviour:
   damage: 5
   moveSpeed: 0
   isActing: 0
-  JumpForce: 13
+  JumpForce: 13.5
   CheckRadius: 0.05
   curPosIdx: 0
   FeetPos: {fileID: 1744399143}
@@ -462,8 +475,8 @@ MonoBehaviour:
   feverValue: 0
   AmmoCount: 0
   MaxAmmo: 100
-  AmmoIncrease: 0
-  HealthIncrease: 0
+  AmmoIncrease: 25
+  HealthIncrease: 25
   FirePos: {fileID: 168932453}
   bullet: {fileID: 7145292585738048927, guid: 2d2bfc26052d9094dbf1a6e9be745574, type: 3}
 --- !u!1 &317320391
@@ -1676,6 +1689,7 @@ GameObject:
   - component: {fileID: 1375170934}
   - component: {fileID: 1375170936}
   - component: {fileID: 1375170935}
+  - component: {fileID: 1375170937}
   m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
@@ -1742,7 +1756,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0abccc1e0b2baec4a9d4b640d38bb1fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1774,6 +1788,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1375170937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375170933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaea6694142a267448d4296eb5ff9072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1377360224
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,6 +2301,7 @@ GameObject:
   - component: {fileID: 2019853466}
   - component: {fileID: 2019853468}
   - component: {fileID: 2019853467}
+  - component: {fileID: 2019853469}
   m_Layer: 6
   m_Name: Floor (1)
   m_TagString: Untagged
@@ -2341,7 +2368,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0abccc1e0b2baec4a9d4b640d38bb1fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2373,6 +2400,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2019853469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019853465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaea6694142a267448d4296eb5ff9072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2038001686
 GameObject:
   m_ObjectHideFlags: 0
