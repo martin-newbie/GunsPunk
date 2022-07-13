@@ -16,7 +16,7 @@ public abstract class PlayerBase : JumpAble
     public float feverIncrease;
     public float feverValue;
     protected bool isSkillActive;
-    
+
     public int AmmoCount;
     public int MaxAmmo;
 
@@ -39,26 +39,32 @@ public abstract class PlayerBase : JumpAble
 
     protected virtual void Start()
     {
-        InGameUIManager.Instance.SetPlayerHp(0f, maxHP);
-        InGameUIManager.Instance.SetFeverGauge(0f, maxFever);
-        InGameUIManager.Instance.SetAmmoGauge(0f, MaxAmmo);
-
         OnHitAction = OnHit;
         OnDestroyAction = OnDie;
 
         AmmoCount = MaxAmmo;
     }
 
-    protected override void Update()
+    public void UIInit()
     {
-        base.Update();
-        SetGaugeUI();
+        InGameUIManager.Instance.SetPlayerHp(0f, maxHP);
+        InGameUIManager.Instance.SetFeverGauge(0f, maxFever);
+        InGameUIManager.Instance.SetAmmoGauge(0f, MaxAmmo);
     }
 
-    public void MoveForward()
+    protected override void Update()
+    {
+        if (InGameManager.Instance.isGameActive)
+        {
+            base.Update();
+            SetGaugeUI();
+        }
+    }
+
+    public void MoveForward(int dir = 1)
     {
         // state: move
-        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime * dir);
     }
 
     public void GetFever()
@@ -66,7 +72,7 @@ public abstract class PlayerBase : JumpAble
         if (isSkillActive) return;
 
         feverValue += feverIncrease;
-        if(feverValue >= maxFever)
+        if (feverValue >= maxFever)
         {
             isSkillActive = true;
             feverValue = 0f;

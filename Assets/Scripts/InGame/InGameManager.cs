@@ -44,10 +44,12 @@ public class InGameManager : Singleton<InGameManager>
         int playerIdx = GameManager.Instance.PlayerIdx;
         PlayerBase temp = Instantiate(PlayerPrefabs[playerIdx], PlayerPoses[0].position, Quaternion.identity);
         CurPlayer = temp;
+        CurPlayer.UIInit();
 
         int subPlayerIdx = GameManager.Instance.SubPlayerIdx;
         temp = Instantiate(PlayerPrefabs[subPlayerIdx], PlayerPoses[0].position, Quaternion.identity);
         SubPlayer = temp;
+        SubPlayer.gameObject.SetActive(false);
 
         GameStart();
     }
@@ -70,7 +72,7 @@ public class InGameManager : Singleton<InGameManager>
 
         if (!isRevived)
         {
-
+            StartCoroutine(ReviveCoroutine());
         }
         else
         {
@@ -83,17 +85,29 @@ public class InGameManager : Singleton<InGameManager>
         int curIdx = CurPlayer.curPosIdx;
         Vector3 spawnPos = PlayerPoses[curIdx].position;
 
+        SubPlayer.gameObject.SetActive(true);
         SubPlayer.transform.position = spawnPos;
+        SubPlayer.curPosIdx = curIdx;
 
         while (SubPlayer.transform.position.x <= PlayerStartPos_X)
         {
             SubPlayer.MoveForward();
+            yield return null;
         }
+        SubPlayer.UIInit();
 
+        PlayerBase temp = CurPlayer;
         CurPlayer = SubPlayer;
 
-
         isGameActive = true;
+
+        while (temp.transform.position.x >= -12f)
+        {
+            temp.MoveForward(-1);
+            yield return null;
+        }
+
+
         yield break;
     }
 
