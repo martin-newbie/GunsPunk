@@ -16,6 +16,7 @@ public class InGameManager : Singleton<InGameManager>
     public Transform[] SpawnPoses;
     public Monster MonsterMelee;
     public Monster MonsterGun;
+    public Item[] Items;
 
     [Header("Values")]
     public float objectSpeed;
@@ -35,6 +36,18 @@ public class InGameManager : Singleton<InGameManager>
     private void Start()
     {
         GameStart();
+    }
+
+    Item SpawnRandomItem()
+    {
+        int rand = Random.Range(0, Items.Length);
+        Item item = Items[rand];
+
+        rand = Random.Range(0, SpawnPoses.Length);
+        Transform trans = SpawnPoses[rand];
+
+        Item spawn = Instantiate(item, trans.position, Quaternion.identity);
+        return spawn;
     }
 
     public void GameOver()
@@ -92,12 +105,13 @@ public class InGameManager : Singleton<InGameManager>
         yield break;
     }
 
-    public void SpawnHurdle()
+    public Entity SpawnHurdle()
     {
         int rand_h = Random.Range(0, Hurdles.Length);
         int rand_t = Random.Range(0, SpawnPoses.Length);
 
         Entity temp = Instantiate(Hurdles[rand_h], SpawnPoses[rand_t].position, Quaternion.identity);
+        return temp;
     }
 
     public Monster SpawnMonsters(int idx)
