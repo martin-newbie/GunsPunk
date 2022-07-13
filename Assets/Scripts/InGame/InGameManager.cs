@@ -25,7 +25,6 @@ public class InGameManager : Singleton<InGameManager>
 
     Coroutine monsterSpawn_coroutine;
     Coroutine hurdleSpawn_coroutine;
-    Coroutine itemSpawn_coroutine;
 
     public GaugeContainer SpawnGaugeBar()
     {
@@ -43,15 +42,12 @@ public class InGameManager : Singleton<InGameManager>
         GameStart();
     }
 
-    Item SpawnRandomItem()
+    public Item SpawnRandomItem(Vector3 pos)
     {
         int rand = Random.Range(0, Items.Length);
         Item item = Items[rand];
 
-        rand = Random.Range(0, SpawnPoses.Length);
-        Transform trans = SpawnPoses[rand];
-
-        Item spawn = Instantiate(item, trans.position, Quaternion.identity);
+        Item spawn = Instantiate(item, pos, Quaternion.identity);
         return spawn;
     }
 
@@ -61,23 +57,12 @@ public class InGameManager : Singleton<InGameManager>
 
         StopCoroutine(hurdleSpawn_coroutine);
         StopCoroutine(monsterSpawn_coroutine);
-        StopCoroutine(itemSpawn_coroutine);
     }
 
     public void GameStart()
     {
         hurdleSpawn_coroutine = StartCoroutine(HurdleCoroutine());
         monsterSpawn_coroutine = StartCoroutine(MonsterCoroutine());
-        itemSpawn_coroutine = StartCoroutine(ItemCoroutine());
-    }
-
-    IEnumerator ItemCoroutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(Random.Range(10f, 25f));
-            SpawnRandomItem();
-        }
     }
 
     IEnumerator HurdleCoroutine()

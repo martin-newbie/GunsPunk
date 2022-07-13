@@ -24,6 +24,10 @@ public class Hurdle : Entity
 
     void OnDie()
     {
+
+        if (Random.Range(0, 100) < 25)
+            InGameManager.Instance.SpawnRandomItem(transform.position);
+
         Destroy(GetComponent<EnemyHp>().gauge.gameObject);
         Destroy(gameObject);
     }
