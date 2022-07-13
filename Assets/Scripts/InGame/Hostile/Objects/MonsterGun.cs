@@ -138,7 +138,10 @@ public class MonsterGun : Monster
     IEnumerator DirectionAttack()
     {
 
-        Vector3 dir = player.transform.position - AttackPos.position;
+        Vector3 playerPos = player.transform.position;
+        if (playerPos.y > AttackPos.position.y) playerPos += new Vector3(1f, 1f);
+
+        Vector3 dir = playerPos - AttackPos.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
