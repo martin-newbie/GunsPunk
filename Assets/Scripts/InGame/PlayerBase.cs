@@ -46,7 +46,6 @@ public abstract class PlayerBase : JumpAble
         OnHitAction = OnHit;
         OnDestroyAction = OnDie;
 
-        transform.position = new Vector2(-4.5f, -3.37f);
         AmmoCount = MaxAmmo;
     }
 
@@ -54,6 +53,12 @@ public abstract class PlayerBase : JumpAble
     {
         base.Update();
         SetGaugeUI();
+    }
+
+    public void MoveForward()
+    {
+        // state: move
+        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
     }
 
     public void GetFever()

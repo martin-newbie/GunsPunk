@@ -20,7 +20,7 @@ public class FireButton : MonoBehaviour
 
     public void OnPointerDown()
     {
-        if (InGameManager.Instance.CurPlayer.isAlive)
+        if (InGameManager.Instance.isGameActive)
         {
             ButtonImage.sprite = PressedSprite;
             InGameUIManager.Instance.OnPointerDown();

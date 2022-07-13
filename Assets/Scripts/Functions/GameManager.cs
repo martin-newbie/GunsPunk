@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Character")]
     public int PlayerIdx = 0;
-    public List<PlayerBase> PlayerPrefabs = new List<PlayerBase>();
+    public int SubPlayerIdx = 1;
 
     [Header("Status")]
     public int curCoin;     // 무료 재화

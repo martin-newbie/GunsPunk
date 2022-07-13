@@ -6,6 +6,10 @@ public class InGameManager : Singleton<InGameManager>
 {
     [Header("Player")]
     public PlayerBase CurPlayer;
+    public PlayerBase SubPlayer;
+    public PlayerBase[] PlayerPrefabs;
+    public Transform[] PlayerPoses;
+    public float PlayerStartPos_X;
 
     [Header("UI")]
     public Canvas canvas;
@@ -22,6 +26,8 @@ public class InGameManager : Singleton<InGameManager>
     public float objectSpeed;
     public float hurdleSpawnSpeed;
     public float monsterSpawnSpeed;
+    public bool isRevived;
+    public bool isGameActive;
 
     Coroutine monsterSpawn_coroutine;
     Coroutine hurdleSpawn_coroutine;
@@ -34,10 +40,14 @@ public class InGameManager : Singleton<InGameManager>
     }
 
     private void Start()
-    {/*
+    {
         int playerIdx = GameManager.Instance.PlayerIdx;
-        PlayerBase temp = Instantiate(GameManager.Instance.PlayerPrefabs[playerIdx]);
-        CurPlayer = temp;*/
+        PlayerBase temp = Instantiate(PlayerPrefabs[playerIdx], PlayerPoses[0].position, Quaternion.identity);
+        CurPlayer = temp;
+
+        int subPlayerIdx = GameManager.Instance.SubPlayerIdx;
+        temp = Instantiate(PlayerPrefabs[subPlayerIdx], PlayerPoses[0].position, Quaternion.identity);
+        SubPlayer = temp;
 
         GameStart();
     }
@@ -53,14 +63,55 @@ public class InGameManager : Singleton<InGameManager>
 
     public void GameOver()
     {
-        objectSpeed = 0f;
-
         StopCoroutine(hurdleSpawn_coroutine);
         StopCoroutine(monsterSpawn_coroutine);
+
+        isGameActive = false;
+
+        if (!isRevived)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+
+    IEnumerator ReviveCoroutine()
+    {
+        int curIdx = CurPlayer.curPosIdx;
+        Vector3 spawnPos = PlayerPoses[curIdx].position;
+
+        SubPlayer.transform.position = spawnPos;
+
+        while (SubPlayer.transform.position.x <= PlayerStartPos_X)
+        {
+            SubPlayer.MoveForward();
+        }
+
+        CurPlayer = SubPlayer;
+
+
+        isGameActive = true;
+        yield break;
     }
 
     public void GameStart()
     {
+        StartCoroutine(GameStartCoroutine());
+    }
+
+    IEnumerator GameStartCoroutine()
+    {
+        while (CurPlayer.transform.position.x <= PlayerStartPos_X)
+        {
+            CurPlayer.MoveForward();
+            yield return null;
+        }
+
+        isGameActive = true;
+
         hurdleSpawn_coroutine = StartCoroutine(HurdleCoroutine());
         monsterSpawn_coroutine = StartCoroutine(MonsterCoroutine());
     }
