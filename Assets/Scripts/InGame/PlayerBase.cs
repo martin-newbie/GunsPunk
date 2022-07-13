@@ -4,16 +4,24 @@ using UnityEngine;
 
 public abstract class PlayerBase : JumpAble
 {
-    [Header("Value")]
+    [Header("Status Value")]
     public float speed;
     public float fireRate;
+    protected float fireDelay => 1f / (fireRate / 60f);
+    protected float curDelay;
+
+    [Header("Gauge Value")]
     public float maxFever = 100f;
     public float feverIncrease;
     public float feverValue;
-    protected float fireDelay => 1f / (fireRate / 60f);
-    protected float curDelay;
+    protected bool isSkillActive;
+    
     public int AmmoCount;
     public int MaxAmmo;
+
+    [Header("Item Value")]
+    public int AmmoIncrease;
+    public float HealthIncrease;
 
     [Header("Objects")]
     public Transform FirePos;
@@ -37,7 +45,7 @@ public abstract class PlayerBase : JumpAble
         OnHitAction = OnHit;
         OnDestroyAction = OnDie;
 
-        transform.position = new Vector2(-4.5f, -2.72f);
+        transform.position = new Vector2(-4.5f, -3.37f);
         AmmoCount = MaxAmmo;
     }
 
@@ -49,7 +57,15 @@ public abstract class PlayerBase : JumpAble
 
     public void GetFever()
     {
+        if (isSkillActive) return;
+
         feverValue += feverIncrease;
+        if(feverValue >= maxFever)
+        {
+            isSkillActive = true;
+            feverValue = 0f;
+            Skill();
+        }
     }
 
     void SetGaugeUI()
@@ -88,6 +104,34 @@ public abstract class PlayerBase : JumpAble
 
         return _bullet;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Item"))
+        {
+            switch (collision.GetComponent<Item>().Case)
+            {
+                case ItemCase.Ammunition:
+
+                    break;
+                case ItemCase.Health:
+
+                    break;
+            }
+        }
+    }
+
+    protected virtual void ItemHealth()
+    {
+
+    }
+
+    protected virtual void ItemAmmunition()
+    {
+
+    }
+
+    protected abstract void Skill();
 
     public abstract void OnAttackStart();
     public abstract void OnAttackEnd();
