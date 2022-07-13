@@ -21,8 +21,11 @@ public class TouchField : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        startPos = eventData.position;
-        isDrag = true;
+        if (InGameManager.Instance.CurPlayer.isAlive)
+        {
+            startPos = eventData.position;
+            isDrag = true;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
