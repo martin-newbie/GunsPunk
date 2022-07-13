@@ -7,17 +7,21 @@ public class InGameUIManager : Singleton<InGameUIManager>
 {
     public Image PlayerHpGauge;
     public Image FeverGauge;
+    public Image AmmoGauge;
 
     float hpCur, hpMax, hpTarget;
     float feverCur, feverMax, feverTarget;
+    float ammoCur, ammoMax, ammoTarget;
 
     private void Update()
     {
         hpCur = Mathf.Lerp(hpCur, hpTarget, Time.deltaTime * 10f);
         feverCur = Mathf.Lerp(feverCur, feverTarget, Time.deltaTime * 10f);
+        ammoCur = Mathf.Lerp(ammoCur, ammoTarget, Time.deltaTime * 10f);
 
         PlayerHpGauge.fillAmount = hpCur / hpMax;
         FeverGauge.fillAmount = feverCur / feverMax;
+        AmmoGauge.fillAmount = ammoCur / ammoMax;
     }
 
     public void SetPlayerHp(float cur, float max)
@@ -30,6 +34,12 @@ public class InGameUIManager : Singleton<InGameUIManager>
     {
         feverTarget = cur;
         feverMax = max;
+    }
+
+    public void SetAmmoGauge(float cur, float max)
+    {
+        ammoTarget = cur;
+        ammoMax = max;
     }
 
     public void OnPointerDown()

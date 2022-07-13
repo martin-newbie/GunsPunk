@@ -57,8 +57,14 @@ public class HoldFirePlayer : PlayerBase
 
     protected override Bullet FireBullet()
     {
-        Bullet _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
-        _bullet.Init(speed / 2f + speed * (curHold / maxHold), damage / 2 + damage * (curHold / maxHold), this);
+        Bullet _bullet = null;
+
+        if (AmmoCount > 0)
+        {
+            _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
+            _bullet.Init(speed / 2f + speed * (curHold / maxHold), damage / 2 + damage * (curHold / maxHold), this);
+            AmmoCount--;
+        }
 
         return _bullet;
     }

@@ -12,6 +12,7 @@ public class HostileAttack : MonoBehaviour
     public void Init(float _damage, Action hit = null)
     {
         damage = _damage;
+        hitAction = hit;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

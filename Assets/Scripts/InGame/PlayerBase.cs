@@ -8,9 +8,12 @@ public abstract class PlayerBase : JumpAble
     public float speed;
     public float fireRate;
     public float maxFever = 100f;
+    public float feverIncrease;
     public float feverValue;
     protected float fireDelay => 1f / (fireRate / 60f);
     protected float curDelay;
+    public int AmmoCount;
+    public int MaxAmmo;
 
     [Header("Objects")]
     public Transform FirePos;
@@ -29,13 +32,13 @@ public abstract class PlayerBase : JumpAble
     {
         InGameUIManager.Instance.SetPlayerHp(0f, maxHP);
         InGameUIManager.Instance.SetFeverGauge(0f, maxFever);
+        InGameUIManager.Instance.SetAmmoGauge(0f, MaxAmmo);
 
         OnHitAction = OnHit;
         OnDestroyAction = OnDie;
 
         transform.position = new Vector2(-4.5f, -2.72f);
-
-        feverValue = maxFever;
+        AmmoCount = MaxAmmo;
     }
 
     protected override void Update()
@@ -44,10 +47,16 @@ public abstract class PlayerBase : JumpAble
         SetGaugeUI();
     }
 
+    public void GetFever()
+    {
+        feverValue += feverIncrease;
+    }
+
     void SetGaugeUI()
     {
         InGameUIManager.Instance.SetPlayerHp(HP, maxHP);
         InGameUIManager.Instance.SetFeverGauge(feverValue, maxFever);
+        InGameUIManager.Instance.SetAmmoGauge(AmmoCount, MaxAmmo);
     }
 
     public override void OnHit(float damage)
@@ -68,8 +77,14 @@ public abstract class PlayerBase : JumpAble
 
     protected virtual Bullet FireBullet()
     {
-        Bullet _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
-        _bullet.Init(speed, damage, this);
+        Bullet _bullet = null;
+
+        if (AmmoCount > 0)
+        {
+            _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
+            _bullet.Init(speed, damage, this);
+            AmmoCount--;
+        }
 
         return _bullet;
     }

@@ -61,7 +61,7 @@ public class InGameManager : Singleton<InGameManager>
     IEnumerator MonsterCoroutine()
     {
         List<Monster> CurMonsters = new List<Monster>();
-        float spawnDelay = 2f;
+        float spawnDelay = 5f;
 
         while (true)
         {
