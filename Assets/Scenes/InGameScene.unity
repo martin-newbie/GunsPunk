@@ -456,7 +456,7 @@ MonoBehaviour:
   FeetPos: {fileID: 1744399143}
   TopPos: {fileID: 1059234977}
   speed: 25
-  fireRate: 1200
+  fireRate: 600
   maxFever: 100
   feverIncrease: 2
   feverValue: 0

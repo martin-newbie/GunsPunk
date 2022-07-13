@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 941165883102946851}
   - component: {fileID: 941165883102946850}
   - component: {fileID: 941165883102946861}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Robot_Gun
   m_TagString: Hostile
   m_Icon: {fileID: 0}
@@ -202,8 +202,9 @@ MonoBehaviour:
   TopPos: {fileID: 941165882605387406}
   state: 0
   nowActing: 0
+  isAlive: 1
   player: {fileID: 0}
-  standbyDelay: 5
+  standbyDelay: 2
   moveTime: 2
   startPosX: 7.5
   AttackPos: {fileID: 941165881674368820}

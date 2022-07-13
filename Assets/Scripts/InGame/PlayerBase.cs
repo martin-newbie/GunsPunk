@@ -123,12 +123,14 @@ public abstract class PlayerBase : JumpAble
 
     protected virtual void ItemHealth()
     {
-
+        HP += HealthIncrease;
+        if (HP > maxHP) HP = maxHP;
     }
 
     protected virtual void ItemAmmunition()
     {
-
+        AmmoCount += AmmoIncrease;
+        if (AmmoCount > MaxAmmo) AmmoCount = MaxAmmo;
     }
 
     protected abstract void Skill();
