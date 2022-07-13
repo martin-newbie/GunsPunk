@@ -14,6 +14,8 @@ public class GaugeGlitter : MonoBehaviour
     }
 
     public float startFill = 0.98f;
+    public float endFill = 0.05f;
+    public float offset;
     public Direction Dir;
     public Image Gauge;
     public Image thisImg;
@@ -28,7 +30,7 @@ public class GaugeGlitter : MonoBehaviour
 
     private void Update()
     {
-        if (Gauge.fillAmount < startFill)
+        if (Gauge.fillAmount < startFill && Gauge.fillAmount > endFill)
         {
             // animation start
             thisImg.enabled = true; // temp
@@ -38,10 +40,10 @@ public class GaugeGlitter : MonoBehaviour
             switch (Dir)
             {
                 case Direction.Horizontal:
-                    pos = new Vector2(pos_x, 0);
+                    pos = new Vector2(pos_x - offset, 0);
                     break;
                 case Direction.Vertical:
-                    pos = new Vector2(0, pos_x);
+                    pos = new Vector2(0, pos_x - offset);
                     break;
             }
 

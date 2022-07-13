@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class EnemyHp : MonoBehaviour
 {
     Entity thisEntity;
-    GaugeContainer gauge;
+    public GaugeContainer gauge;
 
     public Vector2 gaugeOffset;
 
@@ -21,7 +21,7 @@ public class EnemyHp : MonoBehaviour
 
     void Update()
     {
-        gauge.FollowTarget(gaugeOffset, gauge.transform);
+        gauge.FollowTarget(gaugeOffset, thisEntity.transform);
         gauge.SetGauge(thisEntity.HP, thisEntity.maxHP);
     }
 }

@@ -24,6 +24,7 @@ public class Hurdle : Entity
 
     void OnDie()
     {
+        Destroy(GetComponent<EnemyHp>().gauge.gameObject);
         Destroy(gameObject);
     }
 

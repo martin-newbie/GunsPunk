@@ -112,10 +112,10 @@ public abstract class PlayerBase : JumpAble
             switch (collision.GetComponent<Item>().Case)
             {
                 case ItemCase.Ammunition:
-
+                    ItemAmmunition();
                     break;
                 case ItemCase.Health:
-
+                    ItemHealth();
                     break;
             }
         }
