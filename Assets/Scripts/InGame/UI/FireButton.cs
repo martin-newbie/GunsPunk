@@ -10,6 +10,8 @@ public class FireButton : MonoBehaviour
     public Sprite PressedSprite;
     public Sprite DefaultSprite;
 
+    bool pointerDown;
+
     void Start()
     {
         ButtonImage = GetComponent<Image>();
@@ -18,13 +20,21 @@ public class FireButton : MonoBehaviour
 
     public void OnPointerDown()
     {
-        ButtonImage.sprite = PressedSprite;
-        InGameUIManager.Instance.OnPointerDown();
+        if (InGameManager.Instance.CurPlayer.isAlive)
+        {
+            ButtonImage.sprite = PressedSprite;
+            InGameUIManager.Instance.OnPointerDown();
+
+            pointerDown = true;
+        }
     }
 
     public void OnPointerUp()
     {
-        ButtonImage.sprite = DefaultSprite;
-        InGameUIManager.Instance.OnPointerUp();
+        if (pointerDown)
+        {
+            ButtonImage.sprite = DefaultSprite;
+            InGameUIManager.Instance.OnPointerUp();
+        }
     }
 }
