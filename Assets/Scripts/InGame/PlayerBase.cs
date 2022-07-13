@@ -89,13 +89,16 @@ public abstract class PlayerBase : JumpAble
 
     public override void OnHit(float damage)
     {
-        base.OnHit(damage);
+        if (InGameManager.Instance.isGameActive)
+        {
+            base.OnHit(damage);
+        }
     }
 
     void OnDie()
     {
         // gameover
-        if (isAlive)
+        if (InGameManager.Instance.isGameActive)
         {
             isAlive = false;
             InGameManager.Instance.GameOver();
