@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class SpriteScroll : MonoBehaviour
 {
-    SpriteRenderer SR;
+    MeshRenderer SR;
     float offset;
 
     void Start()
     {
-        SR = GetComponent<SpriteRenderer>();
+        SR = GetComponent<MeshRenderer>();
     }
 
     void Update()
     {
         float speed = InGameManager.Instance.objectSpeed;
-        offset += speed * Time.deltaTime;
+        offset += (speed / 15)* Time.deltaTime;
         SR.material.mainTextureOffset = new Vector2(offset, 0);
     }
 }
