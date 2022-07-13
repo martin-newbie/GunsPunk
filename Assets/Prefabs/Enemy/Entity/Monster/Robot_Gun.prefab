@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 941165883102946851}
   - component: {fileID: 941165883102946850}
   - component: {fileID: 941165883102946861}
+  - component: {fileID: 7267379823916237569}
   m_Layer: 7
   m_Name: Robot_Gun
   m_TagString: Hostile
@@ -259,3 +260,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.89, y: 0.73}
   m_EdgeRadius: 0
+--- !u!114 &7267379823916237569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941165883102946854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66a9920b3400e148a3061931be6b2f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gaugeOffset: {x: 0, y: -1}

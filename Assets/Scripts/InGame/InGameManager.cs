@@ -35,7 +35,11 @@ public class InGameManager : Singleton<InGameManager>
     }
 
     private void Start()
-    {
+    {/*
+        int playerIdx = GameManager.Instance.PlayerIdx;
+        PlayerBase temp = Instantiate(GameManager.Instance.PlayerPrefabs[playerIdx]);
+        CurPlayer = temp;*/
+
         GameStart();
     }
 

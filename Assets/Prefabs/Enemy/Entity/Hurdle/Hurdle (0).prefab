@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 320093013169518347}
   - component: {fileID: 320093013169518348}
   - component: {fileID: 7169500374783142220}
+  - component: {fileID: -3917141719997232272}
   m_Layer: 0
   m_Name: Hurdle (0)
   m_TagString: Hostile
@@ -163,3 +164,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+--- !u!114 &-3917141719997232272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320093013169518349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66a9920b3400e148a3061931be6b2f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gaugeOffset: {x: 0, y: -1}

@@ -7,6 +7,10 @@ public class GameManager : Singleton<GameManager>
     [Header("Player")]
     public string playerName;
 
+    [Header("Character")]
+    public int PlayerIdx = 0;
+    public List<PlayerBase> PlayerPrefabs = new List<PlayerBase>();
+
     [Header("Status")]
     public int curCoin;     // 무료 재화
     public int energy;      // 유료 재화
