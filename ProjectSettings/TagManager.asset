@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerBullet
   - Hostile
+  - Item
   layers:
   - Default
   - TransparentFX

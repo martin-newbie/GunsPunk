@@ -39,6 +39,8 @@ public class InGameManager : Singleton<InGameManager>
 
     public void GameOver()
     {
+        objectSpeed = 0f;
+
         StopCoroutine(hurdleSpawn_coroutine);
         StopCoroutine(monsterSpawn_coroutine);
     }

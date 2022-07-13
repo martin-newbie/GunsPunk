@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HoldFirePlayer : PlayerBase
+public abstract class HoldFirePlayer : PlayerBase
 {
     [Header("Hold Fire Player")]
     public float maxHold = 1.5f;

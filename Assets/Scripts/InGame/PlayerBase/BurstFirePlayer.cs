@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BurstFirePlayer : PlayerBase
+public abstract class BurstFirePlayer : PlayerBase
 {
     [Header("Burst Fire Player")]
     public int shootCount;

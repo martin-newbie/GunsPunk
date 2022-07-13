@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingleFirePlayer : PlayerBase
+public abstract class SingleFirePlayer : PlayerBase
 {
     [Header("Single Fire Player")]
     bool isFire;

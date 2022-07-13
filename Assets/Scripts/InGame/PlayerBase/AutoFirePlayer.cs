@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AutoFirePlayer : PlayerBase
+public abstract class AutoFirePlayer : PlayerBase
 {
     [Header("Auto Fire Player")]
     protected bool isFire;
