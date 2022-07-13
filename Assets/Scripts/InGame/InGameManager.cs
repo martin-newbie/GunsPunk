@@ -68,7 +68,6 @@ public class InGameManager : Singleton<InGameManager>
         StopCoroutine(hurdleSpawn_coroutine);
         StopCoroutine(monsterSpawn_coroutine);
 
-        isGameActive = false;
 
         if (!isRevived)
         {
@@ -82,6 +81,9 @@ public class InGameManager : Singleton<InGameManager>
 
     IEnumerator ReviveCoroutine()
     {
+        yield return null;
+        isGameActive = false;
+
         int curIdx = CurPlayer.curPosIdx;
         Vector3 spawnPos = PlayerPoses[curIdx].position;
 
@@ -98,6 +100,7 @@ public class InGameManager : Singleton<InGameManager>
 
         PlayerBase temp = CurPlayer;
         CurPlayer = SubPlayer;
+        SubPlayer = null;
 
         isGameActive = true;
 

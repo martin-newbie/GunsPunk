@@ -95,8 +95,11 @@ public abstract class PlayerBase : JumpAble
     void OnDie()
     {
         // gameover
-        isAlive = false;
-        InGameManager.Instance.GameOver();
+        if (isAlive)
+        {
+            isAlive = false;
+            InGameManager.Instance.GameOver();
+        }
     }
 
     public virtual void AttackAction()
