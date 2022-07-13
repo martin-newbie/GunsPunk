@@ -110,7 +110,8 @@ public class InGameManager : Singleton<InGameManager>
             yield return null;
         }
 
-
+        hurdleSpawn_coroutine = StartCoroutine(HurdleCoroutine());
+        monsterSpawn_coroutine = StartCoroutine(MonsterCoroutine());
         yield break;
     }
 
@@ -151,6 +152,7 @@ public class InGameManager : Singleton<InGameManager>
         {
 
             // test
+            yield return new WaitForSeconds(spawnDelay);
             CurMonsters.Add(SpawnMonsters(0));
             yield return new WaitForSeconds(spawnDelay);
             CurMonsters.Add(SpawnMonsters(0));

@@ -72,7 +72,7 @@ public class MonsterGun : Monster
         if (player.curPosIdx > curPosIdx) GoUp();
         else if (player.curPosIdx < curPosIdx) GoDown();
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
 
         float timer = moveTime + Random.Range(-1.5f, 0.5f);
         int dir = transform.position.x >= 5.5f ? 1 : -1;
@@ -154,7 +154,6 @@ public class MonsterGun : Monster
             yield return new WaitForSeconds(fireDelay);
         }
 
-        yield return new WaitForSeconds(fireDelay);
         // state: standby
         yield break;
     }
