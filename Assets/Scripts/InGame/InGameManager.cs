@@ -21,6 +21,7 @@ public class InGameManager : Singleton<InGameManager>
     public Monster MonsterMelee;
     public Monster MonsterGun;
     public Item[] Items;
+    public Explosion explosion;
 
     [Header("Values")]
     public float objectSpeed;
@@ -31,6 +32,12 @@ public class InGameManager : Singleton<InGameManager>
 
     Coroutine monsterSpawn_coroutine;
     Coroutine hurdleSpawn_coroutine;
+
+    public Explosion SpawnExplosion(Vector3 pos)
+    {
+        Explosion temp = Instantiate(explosion, pos, Quaternion.identity);
+        return temp;
+    }
 
     public GaugeContainer SpawnGaugeBar()
     {

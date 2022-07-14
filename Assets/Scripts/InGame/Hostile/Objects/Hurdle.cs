@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hurdle : Entity
 {
     public HostileAttack atkCol;
+    public float explosionChance;
 
     protected override void Awake()
     {
@@ -29,9 +30,17 @@ public class Hurdle : Entity
 
         if (Random.Range(0, 100) < 25)
             InGameManager.Instance.SpawnRandomItem(transform.position);
+        if(Random.Range(0f, 100f) < explosionChance)
+        {
+            Explosion();
+        }
 
         Destroy(GetComponent<EnemyHp>().gauge.gameObject);
         Destroy(gameObject);
     }
 
+    void Explosion()
+    {
+
+    }
 }
