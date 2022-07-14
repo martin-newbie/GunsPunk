@@ -52,6 +52,8 @@ public abstract class Monster : JumpAble
         if (nowCoroutine != null)
             StopCoroutine(nowCoroutine);
 
+        player.ItemAmmunition(player.MaxAmmo / 20);
+
         isAlive = false;
         GetComponent<SpriteRenderer>().color = Color.red;
         GetComponent<Collider2D>().enabled = false;

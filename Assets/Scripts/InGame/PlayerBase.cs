@@ -14,7 +14,7 @@ public abstract class PlayerBase : JumpAble
     [Header("Gun Value")]
     public float spread_pos;
     public float spread_rot;
-    
+
 
     [Header("Gauge Value")]
     public float maxFever = 100f;
@@ -59,7 +59,7 @@ public abstract class PlayerBase : JumpAble
 
     protected override void Update()
     {
-        if(!isAlive)
+        if (!isAlive)
         {
             bodyCol.enabled = true;
             return;
@@ -153,15 +153,22 @@ public abstract class PlayerBase : JumpAble
         }
     }
 
-    protected virtual void ItemHealth()
+    public virtual void ItemHealth(float count = -1)
     {
-        HP += HealthIncrease;
+        if (count == -1)
+            HP += HealthIncrease;
+        else HP += count;
+
+
         if (HP > maxHP) HP = maxHP;
     }
 
-    protected virtual void ItemAmmunition()
+    public virtual void ItemAmmunition(int count = -1)
     {
-        AmmoCount += AmmoIncrease;
+        if (count == -1)
+            AmmoCount += AmmoIncrease;
+        else AmmoCount += count;
+
         if (AmmoCount > MaxAmmo) AmmoCount = MaxAmmo;
     }
 
