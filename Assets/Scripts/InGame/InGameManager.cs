@@ -90,6 +90,7 @@ public class InGameManager : Singleton<InGameManager>
     {
         yield return null;
         isGameActive = false;
+        InGameUIManager.Instance.SetPlayerHp(0, CurPlayer.maxHP);
 
         int curIdx = CurPlayer.curPosIdx;
         Vector3 spawnPos = PlayerPoses[curIdx].position;
