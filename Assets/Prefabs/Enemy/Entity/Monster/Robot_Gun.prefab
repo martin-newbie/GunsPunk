@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8d483b37e60014081e5e58240c93c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 55
+  maxHP: 35
   HP: 0
   damage: 0
   moveSpeed: 3
@@ -212,7 +212,7 @@ MonoBehaviour:
   bullet: {fileID: 1404587594166221980, guid: ea6d357f29ebd344597584f4526b16bd, type: 3}
   fireDelay: 0.3
   b_speed: 10
-  b_damage: 15
+  b_damage: 6
 --- !u!50 &941165883102946850
 Rigidbody2D:
   serializedVersion: 4
