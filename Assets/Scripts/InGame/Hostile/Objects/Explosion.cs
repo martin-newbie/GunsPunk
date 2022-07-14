@@ -15,6 +15,12 @@ public class Explosion : MonoBehaviour
         atkCol.enabled = false;
     }
 
+    private void Update()
+    {
+        float move = InGameManager.Instance.objectSpeed;
+        transform.Translate(Vector3.left * move * Time.deltaTime);
+    }
+
     void AttackOn()
     {
         atkCol.enabled = true;
