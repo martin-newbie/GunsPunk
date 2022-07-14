@@ -112,6 +112,8 @@ public class InGameManager : Singleton<InGameManager>
 
         hurdleSpawn_coroutine = StartCoroutine(HurdleCoroutine());
         monsterSpawn_coroutine = StartCoroutine(MonsterCoroutine());
+
+        isRevived = true;
         yield break;
     }
 
