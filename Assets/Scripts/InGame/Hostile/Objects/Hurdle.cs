@@ -41,6 +41,6 @@ public class Hurdle : Entity
 
     void Explosion()
     {
-
+        Explosion temp = InGameManager.Instance.SpawnExplosion(transform.position);
     }
 }

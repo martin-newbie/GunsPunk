@@ -151,6 +151,7 @@ MonoBehaviour:
   damage: 5
   moveSpeed: 0
   atkCol: {fileID: 1310374190534036294}
+  explosionChance: 25
 --- !u!114 &1310374190534036294
 MonoBehaviour:
   m_ObjectHideFlags: 0
