@@ -61,10 +61,11 @@ public class InGameManager : Singleton<InGameManager>
         GameStart();
     }
 
-    public Item SpawnRandomItem(Vector3 pos)
+    public Item SpawnRandomItem(Vector3 pos, int idx = -1)
     {
         int rand = Random.Range(0, Items.Length);
-        Item item = Items[rand];
+
+        Item item = idx == -1 ? Items[rand] : Items[idx];
 
         Item spawn = Instantiate(item, pos, Quaternion.identity);
         return spawn;

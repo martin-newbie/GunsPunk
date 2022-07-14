@@ -5,6 +5,8 @@ using UnityEngine;
 public class Hurdle : Entity
 {
     public HostileAttack atkCol;
+    public float healthPackChance;
+    public float ammunitionChance;
     public float explosionChance;
 
     protected override void Awake()
@@ -28,9 +30,11 @@ public class Hurdle : Entity
     void OnDie()
     {
 
-        if (Random.Range(0, 100) < 25)
-            InGameManager.Instance.SpawnRandomItem(transform.position);
-        if(Random.Range(0f, 100f) < explosionChance)
+        if (Random.Range(0, 100) < healthPackChance)
+            InGameManager.Instance.SpawnRandomItem(transform.position, 1);
+        else if (Random.Range(0, 100) < ammunitionChance)
+            InGameManager.Instance.SpawnRandomItem(transform.position, 0);
+        else if (Random.Range(0f, 100f) < explosionChance)
         {
             Explosion();
         }

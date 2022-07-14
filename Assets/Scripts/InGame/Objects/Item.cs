@@ -18,6 +18,8 @@ public class Item : MonoBehaviour
         moveSpeed = InGameManager.Instance.objectSpeed;
 
         transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+
+        if (transform.position.x < -13f) Destroy(gameObject);
     }
 
 }

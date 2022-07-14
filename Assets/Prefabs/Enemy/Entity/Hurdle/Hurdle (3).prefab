@@ -151,6 +151,8 @@ MonoBehaviour:
   damage: 5
   moveSpeed: 0
   atkCol: {fileID: 3014080799898180932}
+  healthPackChance: 40
+  ammunitionChance: 40
   explosionChance: 75
 --- !u!114 &3014080799898180932
 MonoBehaviour:

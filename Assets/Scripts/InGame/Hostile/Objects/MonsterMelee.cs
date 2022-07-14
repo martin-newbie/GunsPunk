@@ -16,6 +16,12 @@ public class MonsterMelee : Monster
     [Header("Monster Melee Value")]
     public float atkDelay;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        AtkCol.Init(damage);
+    }
+
     protected override void Update()
     {
         if (!isAlive) return;
