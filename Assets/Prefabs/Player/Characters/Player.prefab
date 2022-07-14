@@ -250,6 +250,8 @@ MonoBehaviour:
   speed: 25
   fireRate: 600
   isAlive: 1
+  spread_pos: 0.2
+  spread_rot: 5
   maxFever: 100
   feverIncrease: 2
   feverValue: 0

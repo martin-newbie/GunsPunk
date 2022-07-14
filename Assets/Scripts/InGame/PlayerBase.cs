@@ -11,6 +11,11 @@ public abstract class PlayerBase : JumpAble
     protected float curDelay;
     public bool isAlive = true;
 
+    [Header("Gun Value")]
+    public float spread_pos;
+    public float spread_rot;
+    
+
     [Header("Gauge Value")]
     public float maxFever = 100f;
     public float feverIncrease;
@@ -54,6 +59,12 @@ public abstract class PlayerBase : JumpAble
 
     protected override void Update()
     {
+        if(!isAlive)
+        {
+            bodyCol.enabled = true;
+            return;
+        }
+
         if (InGameManager.Instance.isGameActive)
         {
             base.Update();
@@ -116,7 +127,7 @@ public abstract class PlayerBase : JumpAble
 
         if (AmmoCount > 0)
         {
-            _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
+            _bullet = Instantiate(bullet, FirePos.position + new Vector3(0, Random.Range(-spread_pos, spread_pos)), Quaternion.Euler(0, 0, Random.Range(-spread_rot, spread_rot)));
             _bullet.Init(speed, damage, this);
             AmmoCount--;
         }
