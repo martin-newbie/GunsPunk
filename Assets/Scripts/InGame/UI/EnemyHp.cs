@@ -28,5 +28,6 @@ public class EnemyHp : MonoBehaviour
     public void DestroyGauge(float delay = 0f)
     {
         Destroy(gauge.gameObject, delay);
+        Destroy(this);
     }
 }

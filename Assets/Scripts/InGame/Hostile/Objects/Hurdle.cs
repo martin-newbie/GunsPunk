@@ -86,7 +86,8 @@ public class Hurdle : Entity
         }
 
         GetComponent<EnemyHp>().DestroyGauge();
-        Destroy(hurdleObj.gameObject);
+        Destroy(GetComponent<Collider2D>());
+        hurdleObj.gameObject.SetActive(false);
         Destroy(atkCol);
     }
 
