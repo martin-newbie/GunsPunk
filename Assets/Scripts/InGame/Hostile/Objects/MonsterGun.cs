@@ -48,6 +48,7 @@ public class MonsterGun : Monster
     void AppearFunction()
     {
         // state: moving
+
         if (transform.position.x > startPosX)
             transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
         else

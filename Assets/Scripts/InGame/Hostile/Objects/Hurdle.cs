@@ -5,9 +5,15 @@ using UnityEngine;
 public class Hurdle : Entity
 {
     public HostileAttack atkCol;
+    public SpriteRenderer hurdleObj;
     public float healthPackChance;
     public float ammunitionChance;
     public float explosionChance;
+
+    [Header("Value")]
+    public float duration;
+    public float amount;
+    public Vector3 localPos;
 
     protected override void Awake()
     {
@@ -15,6 +21,8 @@ public class Hurdle : Entity
         OnHitAction = OnHit;
         OnDestroyAction = OnDie;
         atkCol.Init(damage, OnDie);
+
+        localPos = hurdleObj.transform.localPosition;
     }
 
     private void Update()
@@ -25,6 +33,34 @@ public class Hurdle : Entity
             transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
         }
         if (transform.position.x < -12f) OnDie();
+    }
+    Coroutine shakeCoroutine;
+    public override void OnHit(float damage)
+    {
+        base.OnHit(damage);
+
+        if (shakeCoroutine != null) StopCoroutine(shakeCoroutine);
+        shakeCoroutine = StartCoroutine(HitCoroutine(duration, amount));
+    }
+
+    IEnumerator HitCoroutine(float duration, float amount)
+    {
+        float timer = duration;
+
+        while (timer > 0f)
+        {
+            float amt = amount * (timer / duration);
+            Vector3 randPos = localPos + (Vector3)(Random.insideUnitCircle * amt);
+
+            hurdleObj.transform.localPosition = randPos;
+
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        hurdleObj.transform.localPosition = localPos;
+
+        yield break;
     }
 
     void OnDie()
