@@ -33,7 +33,10 @@ public class Hurdle : Entity
             moveSpeed = InGameManager.Instance.objectSpeed;
             transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
         }
-        if (transform.position.x < -12f) OnDie();
+        if (transform.position.x < -12f)
+        {
+            Destroy(gameObject);
+        }
     }
     Coroutine shakeCoroutine;
     public override void OnHit(float damage, Transform hit)
@@ -83,7 +86,8 @@ public class Hurdle : Entity
         }
 
         GetComponent<EnemyHp>().DestroyGauge();
-        Destroy(gameObject);
+        Destroy(hurdleObj.gameObject);
+        Destroy(atkCol);
     }
 
     void Explosion()
