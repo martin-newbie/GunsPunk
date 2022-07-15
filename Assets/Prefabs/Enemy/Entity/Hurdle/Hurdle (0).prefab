@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 320093013169518344}
-  - component: {fileID: 320093013169518346}
   - component: {fileID: 320093013169518347}
   - component: {fileID: 320093013169518348}
   - component: {fileID: 7169500374783142220}
   - component: {fileID: -3917141719997232272}
+  - component: {fileID: 1117686500233814686}
   m_Layer: 0
   m_Name: Hurdle (0)
   m_TagString: Hostile
@@ -36,32 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &320093013169518346
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 320093013169518349}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.73}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 2.75, y: 1.57}
-    newSize: {x: 3.01, y: 1.77}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.01, y: 1.47}
-  m_EdgeRadius: 0
 --- !u!50 &320093013169518347
 Rigidbody2D:
   serializedVersion: 4
@@ -101,6 +75,7 @@ MonoBehaviour:
   moveSpeed: 0
   atkCol: {fileID: 7169500374783142220}
   hurdleObj: {fileID: 6494459089486536394}
+  HitParticle: {fileID: 0}
   healthPackChance: 25
   ammunitionChance: 25
   explosionChance: 15
@@ -134,6 +109,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gauge: {fileID: 0}
   gaugeOffset: {x: 0, y: -0.2}
+--- !u!60 &1117686500233814686
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320093013169518349}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 2.75, y: 1.55}
+    newSize: {x: 3.01, y: 1.77}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.365, y: 0.69}
+      - {x: 1.375, y: 0.76}
+      - {x: 1.375, y: 0.9}
+      - {x: 1.3149999, y: 0.93}
+      - {x: 1.185, y: 0.94}
+      - {x: 1.285, y: 1.0799999}
+      - {x: 1.155, y: 1.23}
+      - {x: 0.92499995, y: 1.01}
+      - {x: 0.85499996, y: 1.02}
+      - {x: 0.78499997, y: 1.1899999}
+      - {x: 0.745, y: 1.23}
+      - {x: 0.39499998, y: 1.3399999}
+      - {x: 0.39499998, y: 1.39}
+      - {x: 0.355, y: 1.4399999}
+      - {x: 0.195, y: 1.55}
+      - {x: 0.175, y: 1.55}
+      - {x: -0.005, y: 1.5}
+      - {x: -0.21499999, y: 1.48}
+      - {x: -0.515, y: 1.41}
+      - {x: -1.015, y: 1.27}
+      - {x: -1.115, y: 1.27}
+      - {x: -1.165, y: 1.0799999}
+      - {x: -1.115, y: 0.59999996}
+      - {x: -1.3149999, y: 0.39}
+      - {x: -1.3249999, y: 0.22}
+      - {x: -1.375, y: 0.049999997}
+      - {x: -1.375, y: 0.01}
+      - {x: -1.365, y: 0}
+      - {x: 1.245, y: 0}
+      - {x: 1.245, y: 0.57}
+      - {x: 1.125, y: 0.69}
 --- !u!1 &4490796758631578125
 GameObject:
   m_ObjectHideFlags: 0

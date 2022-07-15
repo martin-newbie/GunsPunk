@@ -34,7 +34,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.CompareTag("Hostile"))
         {
-            collision.GetComponent<Entity>().OnHit(damage);
+            collision.GetComponent<Entity>().OnHit(damage, transform);
             player.GetFever();
             if (!notDestroy) Destroy(gameObject);
         }

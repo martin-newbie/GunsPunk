@@ -98,11 +98,11 @@ public abstract class PlayerBase : JumpAble
         InGameUIManager.Instance.SetAmmoGauge(AmmoCount, MaxAmmo);
     }
 
-    public override void OnHit(float damage)
+    public override void OnHit(float damage, Transform hit)
     {
         if (InGameManager.Instance.isGameActive)
         {
-            base.OnHit(damage);
+            base.OnHit(damage, hit);
         }
     }
 

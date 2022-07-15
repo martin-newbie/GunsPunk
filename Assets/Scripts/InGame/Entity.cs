@@ -11,7 +11,7 @@ public abstract class Entity : MonoBehaviour
     public float damage;
     public float moveSpeed;
 
-    public Action<float> OnHitAction;
+    public Action<float, Transform> OnHitAction;
     public Action OnDestroyAction;
 
     protected virtual void Awake()
@@ -19,7 +19,7 @@ public abstract class Entity : MonoBehaviour
         HP = maxHP;
     }
 
-    public virtual void OnHit(float damage)
+    public virtual void OnHit(float damage, Transform hit)
     {
         HP -= damage;
 

@@ -39,11 +39,11 @@ public abstract class Monster : JumpAble
         transform.position = InGameManager.Instance.SpawnPoses[curPosIdx].position;
     }
 
-    public override void OnHit(float damage)
+    public override void OnHit(float damage, Transform hit)
     {
         if (isAlive)
         { 
-            base.OnHit(damage);
+            base.OnHit(damage, hit);
         }
     }
 

@@ -6,6 +6,7 @@ public class Hurdle : Entity
 {
     public HostileAttack atkCol;
     public SpriteRenderer hurdleObj;
+    public ParticleSystem HitParticle;
     public float healthPackChance;
     public float ammunitionChance;
     public float explosionChance;
@@ -35,9 +36,15 @@ public class Hurdle : Entity
         if (transform.position.x < -12f) OnDie();
     }
     Coroutine shakeCoroutine;
-    public override void OnHit(float damage)
+    public override void OnHit(float damage, Transform hit)
     {
-        base.OnHit(damage);
+        base.OnHit(damage, hit);
+
+        if (HitParticle != null)
+        {
+            HitParticle.transform.position = hit.position;
+            HitParticle.Play();
+        }
 
         if (shakeCoroutine != null) StopCoroutine(shakeCoroutine);
         shakeCoroutine = StartCoroutine(HitCoroutine(duration, amount));

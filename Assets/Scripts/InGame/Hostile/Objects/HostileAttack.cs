@@ -21,7 +21,7 @@ public class HostileAttack : MonoBehaviour
         {
             PlayerBase player = collision.GetComponent<PlayerBase>();
 
-            player.OnHit(damage);
+            player.OnHit(damage, transform);
             hitAction?.Invoke();
         }
     }

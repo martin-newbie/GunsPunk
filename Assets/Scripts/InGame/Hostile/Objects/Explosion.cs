@@ -42,7 +42,7 @@ public class Explosion : MonoBehaviour
         Entity entity;
         if (collision.TryGetComponent(out entity))
         {
-            entity.OnHit(atk.damage);
+            entity.OnHit(atk.damage, transform);
         }
     }
 }
