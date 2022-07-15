@@ -240,7 +240,7 @@ MonoBehaviour:
   maxHP: 100
   HP: 0
   damage: 5
-  moveSpeed: 2
+  moveSpeed: 4
   isActing: 0
   JumpForce: 13.5
   CheckRadius: 0.05
