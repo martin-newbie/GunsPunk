@@ -29,9 +29,16 @@ public class InGameManager : Singleton<InGameManager>
     public float monsterSpawnSpeed;
     public bool isRevived;
     public bool isGameActive;
+    public int roundCoin;
 
     Coroutine monsterSpawn_coroutine;
     Coroutine hurdleSpawn_coroutine;
+
+    public void SetRoundCoin(int value)
+    {
+        roundCoin += value;
+        InGameUIManager.Instance.RoundCoin = roundCoin;
+    }
 
     public Explosion SpawnExplosion(Vector3 pos)
     {

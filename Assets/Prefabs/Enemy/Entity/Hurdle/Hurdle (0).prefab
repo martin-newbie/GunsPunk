@@ -33,6 +33,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5762706323884082909}
+  - {fileID: 1786221884782959549}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75,7 +76,7 @@ MonoBehaviour:
   moveSpeed: 0
   atkCol: {fileID: 7169500374783142220}
   hurdleObj: {fileID: 6494459089486536394}
-  HitParticle: {fileID: 0}
+  HitParticle: {fileID: 1786221884782959546}
   healthPackChance: 25
   ammunitionChance: 25
   explosionChance: 15
@@ -247,3 +248,70 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &709572678828458956
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 320093013169518344}
+    m_Modifications:
+    - target: {fileID: 1229772697205004401, guid: 66c0c8af915668d4888a378c5f188821, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229772697205004401, guid: 66c0c8af915668d4888a378c5f188821, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229772697205004401, guid: 66c0c8af915668d4888a378c5f188821, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229772697205004401, guid: 66c0c8af915668d4888a378c5f188821, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229772697205004401, guid: 66c0c8af915668d4888a378c5f188821, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6496864
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229772697205004401, guid: 66c0c8af915668d4888a378c5f188821, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6496864
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229772697205004401, guid: 66c0c8af915668d4888a378c5f188821, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.2791193
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229772697205004401, guid: 66c0c8af915668d4888a378c5f188821, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.2791193
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229772697205004401, guid: 66c0c8af915668d4888a378c5f188821, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -43.501
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229772697205004401, guid: 66c0c8af915668d4888a378c5f188821, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229772697205004401, guid: 66c0c8af915668d4888a378c5f188821, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229772697205004404, guid: 66c0c8af915668d4888a378c5f188821, type: 3}
+      propertyPath: m_Name
+      value: WoodDebris
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 66c0c8af915668d4888a378c5f188821, type: 3}
+--- !u!4 &1786221884782959549 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1229772697205004401, guid: 66c0c8af915668d4888a378c5f188821, type: 3}
+  m_PrefabInstance: {fileID: 709572678828458956}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1786221884782959546 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1229772697205004406, guid: 66c0c8af915668d4888a378c5f188821, type: 3}
+  m_PrefabInstance: {fileID: 709572678828458956}
+  m_PrefabAsset: {fileID: 0}

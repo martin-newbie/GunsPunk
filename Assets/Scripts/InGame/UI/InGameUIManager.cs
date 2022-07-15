@@ -9,6 +9,22 @@ public class InGameUIManager : Singleton<InGameUIManager>
     public Image FeverGauge;
     public Image AmmoGauge;
 
+    public Text RoundCoinText;
+
+    int roundCoin;
+    public int RoundCoin
+    {
+        get
+        {
+            return roundCoin;
+        }
+        set
+        {
+            roundCoin = value;
+            RoundCoinText.text = string.Format("{0:0,##}", roundCoin);
+        }
+    }
+
     float hpCur, hpMax, hpTarget;
     float feverCur, feverMax, feverTarget;
     float ammoCur, ammoMax, ammoTarget;
