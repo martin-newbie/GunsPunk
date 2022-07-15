@@ -65,6 +65,7 @@ public class InGameManager : Singleton<InGameManager>
         SubPlayer = temp;
         SubPlayer.gameObject.SetActive(false);
 
+        SetRoundCoin(0);
         GameStart();
     }
 

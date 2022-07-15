@@ -21,7 +21,7 @@ public class InGameUIManager : Singleton<InGameUIManager>
         set
         {
             roundCoin = value;
-            RoundCoinText.text = string.Format("{0:0,##}", roundCoin);
+            RoundCoinText.text = string.Format("{0:#,##}", roundCoin);
         }
     }
 
