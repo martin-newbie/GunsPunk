@@ -17,7 +17,7 @@ public class SpriteScroll : MonoBehaviour
         if (InGameManager.Instance.isGameActive)
         {
             float speed = InGameManager.Instance.objectSpeed;
-            offset += (speed / 15) * Time.deltaTime;
+            offset += (speed / transform.localScale.x) * Time.deltaTime;
             SR.material.mainTextureOffset = new Vector2(offset, 0);
         }
     }

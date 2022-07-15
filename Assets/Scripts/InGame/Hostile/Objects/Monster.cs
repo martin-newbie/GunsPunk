@@ -57,6 +57,8 @@ public abstract class Monster : JumpAble
         isAlive = false;
         GetComponent<SpriteRenderer>().color = Color.red;
         GetComponent<Collider2D>().enabled = false;
+
+        GetComponent<EnemyHp>().DestroyGauge(3f);
         Destroy(gameObject, 3f);
     }
 }

@@ -82,7 +82,7 @@ public class Hurdle : Entity
             Explosion();
         }
 
-        Destroy(GetComponent<EnemyHp>().gauge.gameObject);
+        GetComponent<EnemyHp>().DestroyGauge();
         Destroy(gameObject);
     }
 

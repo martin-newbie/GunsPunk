@@ -24,4 +24,9 @@ public class EnemyHp : MonoBehaviour
         gauge.FollowTarget(gaugeOffset, thisEntity.transform);
         gauge.SetGauge(thisEntity.HP, thisEntity.maxHP);
     }
+
+    public void DestroyGauge(float delay = 0f)
+    {
+        Destroy(gauge.gameObject, delay);
+    }
 }
