@@ -99,10 +99,9 @@ public class MonsterMelee : Monster
     IEnumerator AttackCoroutine()
     {
         //state: attack
-        AtkCol.gameObject.SetActive(true);
         AtkCol.Init(damage);
+        AtkCol.isHitAble = true;
         yield return new WaitForSeconds(atkDelay);
-        AtkCol.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
