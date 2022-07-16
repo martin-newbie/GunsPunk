@@ -23,6 +23,10 @@ public abstract class Monster : JumpAble
     public Coroutine nowCoroutine;
     public PlayerBase player;
 
+    [Header("Monseter Parts")]
+    public SpriteRenderer Body;
+    public Rigidbody2D[] Parts;
+
     private void Start()
     {
         OnHitAction = OnHit;
@@ -55,10 +59,35 @@ public abstract class Monster : JumpAble
         player.ItemAmmunition(player.MaxAmmo / 20);
 
         isAlive = false;
-        GetComponent<SpriteRenderer>().color = Color.red;
-        GetComponent<Collider2D>().enabled = false;
-
         GetComponent<EnemyHp>().DestroyGauge();
-        Destroy(gameObject, 3f);
+        Body.enabled = false;
+        RB.bodyType = RigidbodyType2D.Static;
+
+        foreach (var item in Parts)
+        {
+            item.gameObject.SetActive(true);
+            item.AddForce(new Vector2(Random.Range(-6, 6), Random.Range(4, 10)), ForceMode2D.Impulse);
+            item.AddTorque(Random.Range(-5f, 5f));
+            Destroy(item.gameObject, Random.Range(5, 15));
+        }
+
+        StartCoroutine(DestroyMove(-1));
+    }
+
+    IEnumerator DestroyMove(int dir = 1)
+    {
+
+        do
+        {
+            if (dir == 1 && transform.position.x > 13f) break;
+            if (dir == -1 && transform.position.x < -13f) break;
+
+            transform.Translate(Vector3.right * dir * InGameManager.Instance.objectSpeed * Time.deltaTime);
+
+            yield return null;
+        } while (true);
+
+        Destroy(gameObject);
+        yield break;
     }
 }
