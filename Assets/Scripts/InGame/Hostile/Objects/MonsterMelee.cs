@@ -108,6 +108,7 @@ public class MonsterMelee : Monster
         AtkCol.Init(damage);
         AtkCol.isHitAble = true;
         yield return new WaitForSeconds(atkDelay);
+        AtkCol.isHitAble = false;
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
