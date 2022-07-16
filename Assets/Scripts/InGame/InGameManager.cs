@@ -22,6 +22,7 @@ public class InGameManager : Singleton<InGameManager>
     public Monster MonsterGun;
     public Item[] Items;
     public Explosion explosion;
+    public CameraController Cam;
 
     [Header("Values")]
     public float objectSpeed;

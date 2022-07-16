@@ -24,11 +24,15 @@ public abstract class Monster : JumpAble
     public PlayerBase player;
 
     [Header("Monseter Parts")]
-    public SpriteRenderer Body;
+    public GameObject Body;
     public Rigidbody2D[] Parts;
+
+    protected Animator anim;
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
+
         OnHitAction = OnHit;
         OnDestroyAction = OnDie;
         player = InGameManager.Instance.CurPlayer;
@@ -60,7 +64,7 @@ public abstract class Monster : JumpAble
 
         isAlive = false;
         GetComponent<EnemyHp>().DestroyGauge();
-        Body.enabled = false;
+        Body.SetActive(false);
         RB.bodyType = RigidbodyType2D.Static;
 
         foreach (var item in Parts)

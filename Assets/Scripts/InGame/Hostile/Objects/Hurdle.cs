@@ -43,11 +43,7 @@ public class Hurdle : Entity
     {
         base.OnHit(damage, hit);
 
-        if (HitParticle != null)
-        {
-            HitParticle.transform.position = hit.position;
-            HitParticle.Play();
-        }
+        HitParticle.Play();
 
         if (shakeCoroutine != null) StopCoroutine(shakeCoroutine);
         shakeCoroutine = StartCoroutine(HitCoroutine(duration, amount));

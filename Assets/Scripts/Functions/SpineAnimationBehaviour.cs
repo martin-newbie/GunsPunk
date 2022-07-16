@@ -17,12 +17,10 @@ public class SpineAnimationBehaviour : StateMachineBehaviour
     public Spine.AnimationState spineAnimationState;
     public Spine.TrackEntry trackEntry;
 
-    void Start()
+    void Awake()
     {
         if(motion != null)
         animationClip = motion.name;
-
-        Debug.Log(animationClip);
     }
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

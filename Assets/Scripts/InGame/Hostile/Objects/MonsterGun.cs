@@ -48,18 +48,20 @@ public class MonsterGun : Monster
     void AppearFunction()
     {
         // state: moving
-
+        anim.SetBool("IsWalk", true);
         if (transform.position.x > startPosX)
             transform.Translate(Vector3.left * moveSpeed * 2f * Time.deltaTime);
         else
         {
             state = MonsterState.Standby;
+            anim.SetBool("IsWalk", false);
         }
     }
 
     IEnumerator StandbyCoroutine()
     {
         // state: standby
+        anim.SetBool("IsWalk", false);
         yield return new WaitForSeconds(standbyDelay);
         state = MonsterState.Moving;
 
@@ -79,6 +81,7 @@ public class MonsterGun : Monster
         int dir = transform.position.x >= 5.5f ? 1 : -1;
         // state: -1(move), 1(slow move)
 
+        anim.SetBool("IsWalk", true);
         do
         {
             transform.Translate(Vector3.left * dir * moveSpeed * Time.deltaTime);
@@ -89,6 +92,7 @@ public class MonsterGun : Monster
             timer -= Time.deltaTime;
             yield return null;
         } while (timer > 0);
+        anim.SetBool("IsWalk", false);
 
         // state: standby
 
@@ -162,6 +166,7 @@ public class MonsterGun : Monster
 
     EnemyBullet FireBullet(Vector3 pos, Quaternion rot)
     {
+        anim.SetTrigger("ShootTrigger");
         EnemyBullet temp = Instantiate(bullet, pos, rot);
         temp.Init(b_speed, b_damage);
         return temp;

@@ -104,6 +104,7 @@ public abstract class PlayerBase : JumpAble
         if (InGameManager.Instance.isGameActive)
         {
             base.OnHit(damage, hit);
+            InGameManager.Instance.Cam.ShakeForTime();
         }
     }
 

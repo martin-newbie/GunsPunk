@@ -1181,6 +1181,7 @@ GameObject:
   - component: {fileID: 928229938}
   - component: {fileID: 928229937}
   - component: {fileID: 928229936}
+  - component: {fileID: 928229939}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1253,6 +1254,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &928229939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928229935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c476d5bfb218f645961646be3b80042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1034303140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,6 +1511,7 @@ MonoBehaviour:
   - {fileID: 3209538107645268138, guid: 64397241ce3a87848915f95a9dd18dbc, type: 3}
   - {fileID: 6873163861312222675, guid: 1ef884da325f90843a300237eb0d731a, type: 3}
   explosion: {fileID: 756863224195812104, guid: fa84c998d9706a84b803c385ef61db6c, type: 3}
+  Cam: {fileID: 928229939}
   objectSpeed: 4
   hurdleSpawnSpeed: 5
   monsterSpawnSpeed: 7
