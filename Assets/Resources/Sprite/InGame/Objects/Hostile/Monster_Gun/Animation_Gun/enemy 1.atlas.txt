@@ -1,0 +1,62 @@
+
+enemy 1.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+머리
+  rotate: false
+  xy: 430, 5
+  size: 96, 118
+  orig: 98, 118
+  offset: 2, 0
+  index: -1
+몸 복사
+  rotate: false
+  xy: 2, 42
+  size: 150, 208
+  orig: 152, 208
+  offset: 2, 0
+  index: -1
+오른쪽 다리
+  rotate: false
+  xy: 430, 125
+  size: 93, 125
+  orig: 93, 126
+  offset: 0, 0
+  index: -1
+오른쪽 어깨
+  rotate: false
+  xy: 154, 2
+  size: 105, 74
+  orig: 105, 74
+  offset: 0, 0
+  index: -1
+오른쪽 팔
+  rotate: false
+  xy: 154, 78
+  size: 171, 172
+  orig: 172, 172
+  offset: 1, 0
+  index: -1
+왼 다리
+  rotate: false
+  xy: 525, 125
+  size: 84, 125
+  orig: 86, 126
+  offset: 1, 1
+  index: -1
+왼팔
+  rotate: false
+  xy: 327, 47
+  size: 101, 203
+  orig: 101, 203
+  offset: 0, 0
+  index: -1
+총열
+  rotate: false
+  xy: 2, 24
+  size: 44, 16
+  orig: 44, 16
+  offset: 0, 0
+  index: -1
