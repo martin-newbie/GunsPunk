@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteScroll : MonoBehaviour
+public class GroundScroll : MonoBehaviour
 {
     MeshRenderer SR;
     float offset;

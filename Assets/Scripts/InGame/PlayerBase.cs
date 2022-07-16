@@ -30,6 +30,7 @@ public abstract class PlayerBase : JumpAble
     public float HealthIncrease;
 
     [Header("Objects")]
+    public ParticleSystem BulletShellEffect;
     public Transform FirePos;
     public Bullet bullet;
 
@@ -130,7 +131,7 @@ public abstract class PlayerBase : JumpAble
             _bullet = Instantiate(bullet, FirePos.position + new Vector3(0, Random.Range(-spread_pos, spread_pos)), Quaternion.Euler(0, 0, Random.Range(-spread_rot, spread_rot)));
             _bullet.Init(speed, damage, this);
             AmmoCount--;
-
+            BulletShellEffect.Play();
             InGameManager.Instance.SetRoundCoin(1);
         }
 
