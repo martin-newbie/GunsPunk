@@ -97,7 +97,7 @@ public class InGameManager : Singleton<InGameManager>
 
     IEnumerator ReviveCoroutine()
     {
-        yield return null;
+        isRevived = true;
         isGameActive = false;
         InGameUIManager.Instance.SetPlayerHp(0, CurPlayer.maxHP);
 
@@ -130,7 +130,6 @@ public class InGameManager : Singleton<InGameManager>
         hurdleSpawn_coroutine = StartCoroutine(HurdleCoroutine());
         monsterSpawn_coroutine = StartCoroutine(MonsterCoroutine());
 
-        isRevived = true;
         yield break;
     }
 

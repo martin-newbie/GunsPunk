@@ -50,7 +50,7 @@ public class MonsterGun : Monster
         // state: moving
 
         if (transform.position.x > startPosX)
-            transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+            transform.Translate(Vector3.left * moveSpeed * 2f * Time.deltaTime);
         else
         {
             state = MonsterState.Standby;
@@ -147,10 +147,11 @@ public class MonsterGun : Monster
 
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        AttackPos.rotation = rot;
-
-        for (int i = 0; i < 3; i++)
+        for (int i = -30; i <= 30; i += 15)
         {
+            Vector3 euler = rot.eulerAngles + new Vector3(0, 0, i);
+            AttackPos.eulerAngles = euler;
+
             FireBullet(AttackPos.position, AttackPos.rotation);
             yield return new WaitForSeconds(fireDelay);
         }

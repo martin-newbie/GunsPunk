@@ -260,7 +260,7 @@ MonoBehaviour:
   MaxAmmo: 100
   AmmoIncrease: 25
   HealthIncrease: 25
-  BulletShellEffect: {fileID: 0}
+  BulletShellEffect: {fileID: 790873088324466281}
   FirePos: {fileID: 2519354059831823406}
   bullet: {fileID: 7145292585738048927, guid: 2d2bfc26052d9094dbf1a6e9be745574, type: 3}
 --- !u!1001 &4854971067168303777
@@ -335,5 +335,10 @@ PrefabInstance:
 --- !u!4 &790873088324466280 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5303530157924113609, guid: ebab4e8b62aa4374b855896b2072b30a, type: 3}
+  m_PrefabInstance: {fileID: 4854971067168303777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &790873088324466281 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5303530157924113608, guid: ebab4e8b62aa4374b855896b2072b30a, type: 3}
   m_PrefabInstance: {fileID: 4854971067168303777}
   m_PrefabAsset: {fileID: 0}
