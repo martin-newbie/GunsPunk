@@ -56,7 +56,7 @@ public abstract class Monster : JumpAble
         }
     }
 
-    public void OnDie()
+    public virtual void OnDie()
     {
         if (nowCoroutine != null)
             StopCoroutine(nowCoroutine);

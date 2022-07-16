@@ -49,6 +49,12 @@ public class MonsterMelee : Monster
             }
     }
 
+    public override void OnDie()
+    {
+        base.OnDie();
+        Destroy(AtkCol.gameObject);
+    }
+
     void AppearFunction()
     {
         // state: moving
