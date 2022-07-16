@@ -102,6 +102,12 @@ public class InGameManager : Singleton<InGameManager>
         isGameActive = false;
         InGameUIManager.Instance.SetPlayerHp(0, CurPlayer.maxHP);
 
+        var monsters = FindObjectsOfType<Monster>();
+        foreach (var m in monsters)
+        {
+            StartCoroutine(m.DestroyMove());
+        }
+
         int curIdx = CurPlayer.curPosIdx;
         Vector3 spawnPos = PlayerPoses[curIdx].position;
 

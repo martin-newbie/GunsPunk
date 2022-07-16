@@ -7,7 +7,8 @@ public enum MonsterState
     Appear,
     Standby,
     Attack,
-    Moving
+    Moving,
+    Nothing
 }
 
 public abstract class Monster : JumpAble
@@ -78,8 +79,10 @@ public abstract class Monster : JumpAble
         StartCoroutine(DestroyMove(-1));
     }
 
-    IEnumerator DestroyMove(int dir = 1)
+    public IEnumerator DestroyMove(int dir = 1)
     {
+        state = MonsterState.Nothing;
+        if (nowCoroutine != null) StopCoroutine(nowCoroutine);
 
         do
         {
