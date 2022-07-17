@@ -10,6 +10,7 @@ public abstract class HoldFirePlayer : PlayerBase
     public float minHold = 0.3f;
     public float curHold;
     public bool isHold;
+    public int coinValue = 50;
 
     GaugeContainer gauge;
 
@@ -67,5 +68,10 @@ public abstract class HoldFirePlayer : PlayerBase
         }
 
         return _bullet;
+    }
+
+    public override void ItemAmmunition(int count = -1)
+    {
+        InGameManager.Instance.roundCoin += coinValue;
     }
 }
