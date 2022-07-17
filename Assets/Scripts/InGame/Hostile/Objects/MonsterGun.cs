@@ -112,12 +112,12 @@ public class MonsterGun : Monster
         switch (curPosIdx == player.curPosIdx)
         {
             case true:
-                yield return StartCoroutine(StraightAttack());
+                yield return nowCoroutine = StartCoroutine(StraightAttack());
                 break;
 
 
             case false:
-                yield return StartCoroutine(DirectionAttack());
+                yield return nowCoroutine = StartCoroutine(DirectionAttack());
                 break;
         }
 
