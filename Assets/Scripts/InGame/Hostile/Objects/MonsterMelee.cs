@@ -25,6 +25,7 @@ public class MonsterMelee : Monster
     protected override void Update()
     {
         if (!isAlive) return;
+        anim.SetBool("IsGround", checkFeet && !isActing);
 
         base.Update();
 
@@ -58,17 +59,22 @@ public class MonsterMelee : Monster
     void AppearFunction()
     {
         // state: moving
+        anim.SetBool("IsMove", false);
         if (transform.position.x > posX_Start)
             transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
         else
         {
             state = MonsterState.Standby;
+            anim.SetBool("IsMove", true);
+            anim.SetInteger("Dir", -1);
         }
     }
 
     IEnumerator StandbyCoroutine()
     {
         // state: standby
+        anim.SetBool("IsMove", true);
+        anim.SetInteger("Dir", -1);
         yield return new WaitForSeconds(standbyDelay);
         state = MonsterState.Moving;
 
@@ -88,15 +94,18 @@ public class MonsterMelee : Monster
             else if (idx < curPosIdx)
                 GoDown();
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.5f);
         }
 
+        anim.SetBool("IsMove", true);
+        anim.SetInteger("Dir", 1);
         do
         {
             transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
             yield return null;
         } while (transform.position.x >= posX_Attack);
 
+        anim.SetInteger("Dir", -1);
         nowActing = false;
         state = MonsterState.Attack;
         yield break;
@@ -105,6 +114,9 @@ public class MonsterMelee : Monster
     IEnumerator AttackCoroutine()
     {
         //state: attack
+        anim.SetTrigger("AttackTrigger");
+        yield return new WaitForSeconds(0.2f);
+
         AtkCol.Init(damage);
         AtkCol.isHitAble = true;
         yield return new WaitForSeconds(atkDelay);
@@ -114,6 +126,8 @@ public class MonsterMelee : Monster
 
         //state: move back
         float x = posX_Standby + Random.Range(-2f, 1.5f);
+        anim.SetBool("IsMove", true);
+        anim.SetInteger("Dir", -1);
         do
         {
             transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);

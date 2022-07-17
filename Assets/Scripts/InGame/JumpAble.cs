@@ -35,8 +35,8 @@ public abstract class JumpAble : Entity
     }
 
 
-    bool checkFeet => Physics2D.OverlapCircle(FeetPos.position, CheckRadius, LayerMask.GetMask("Floor"));
-    bool checkTop => Physics2D.OverlapCircle(TopPos.position, CheckRadius, LayerMask.GetMask("Floor"));
+    protected bool checkFeet => Physics2D.OverlapCircle(FeetPos.position, CheckRadius, LayerMask.GetMask("Floor"));
+    protected bool checkTop => Physics2D.OverlapCircle(TopPos.position, CheckRadius, LayerMask.GetMask("Floor"));
 
     enum JumpState
     {
@@ -129,22 +129,32 @@ public abstract class JumpAble : Entity
     {
         if (curPosIdx < 2 && !isActing)
         {
-            isActing = true;
-            goUpTrigger = true;
-
-            RB.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
+            GoUpJump();
         }
+    }
+
+    protected virtual void GoUpJump()
+    {
+        isActing = true;
+        goUpTrigger = true;
+
+        RB.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
     }
 
     public void GoDown()
     {
         if (curPosIdx > 0 && !isActing)
         {
-            isActing = true;
-            goDownTrigger = true;
-
-            RB.AddForce(new Vector2(0, JumpForce / 3), ForceMode2D.Impulse);
+            GoDownJump();
         }
+    }
+
+    protected virtual void GoDownJump()
+    {
+        isActing = true;
+        goDownTrigger = true;
+
+        RB.AddForce(new Vector2(0, JumpForce / 3), ForceMode2D.Impulse);
     }
 
 }

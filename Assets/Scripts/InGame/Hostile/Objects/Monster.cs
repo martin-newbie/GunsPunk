@@ -97,4 +97,30 @@ public abstract class Monster : JumpAble
         Destroy(gameObject);
         yield break;
     }
+
+    protected override void GoUpJump()
+    {
+        StartCoroutine(UpCoroutine());
+    }
+
+    IEnumerator UpCoroutine()
+    {
+        anim.SetTrigger("JumpTrigger");
+        yield return new WaitForSeconds(0.5f);
+        base.GoUpJump();
+        yield break;
+    }
+
+    IEnumerator DownCoroutine()
+    {
+        anim.SetTrigger("JumpTrigger");
+        yield return new WaitForSeconds(0.5f);
+        base.GoDownJump();
+        yield break;
+    }
+
+    protected override void GoDownJump()
+    {
+        StartCoroutine(DownCoroutine());
+    }
 }
