@@ -47,9 +47,9 @@ public class InGameManager : Singleton<InGameManager>
         return temp;
     }
 
-    public GaugeContainer SpawnGaugeBar()
+    public GaugeContainer SpawnGaugeBar(Vector3 pos)
     {
-        GaugeContainer temp = Instantiate(GaugePrefab, canvas.transform);
+        GaugeContainer temp = Instantiate(GaugePrefab, pos, Quaternion.identity, canvas.transform);
         temp.transform.SetAsFirstSibling();
         return temp;
     }

@@ -14,7 +14,7 @@ public class EnemyHp : MonoBehaviour
     void Start()
     {
         thisEntity = GetComponent<Entity>();
-        gauge = InGameManager.Instance.SpawnGaugeBar();
+        gauge = InGameManager.Instance.SpawnGaugeBar(transform.position + (Vector3)gaugeOffset);
 
         gauge.SetColor(Color.black, Color.red);
     }

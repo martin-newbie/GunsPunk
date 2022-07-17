@@ -17,7 +17,7 @@ public abstract class HoldFirePlayer : PlayerBase
     protected override void Start()
     {
         base.Start();
-        gauge = InGameManager.Instance.SpawnGaugeBar();
+        gauge = InGameManager.Instance.SpawnGaugeBar(transform.position);
         gauge.SetColor(Color.gray, Color.white);
     }
 

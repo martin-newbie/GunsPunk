@@ -12,14 +12,14 @@ public class CameraController : MonoBehaviour
         originPos = transform.position;
     }
 
-    public void ShakeForTime(float duration = 0.5f)
+    public void ShakeForTime(float duration = 0.25f)
     {
         if (onCoroutine != null) StopCoroutine(onCoroutine);
         StartCoroutine(ShakeCoroutine(duration));
 
     }
 
-    IEnumerator ShakeCoroutine(float duration, float amt = 0.5f)
+    IEnumerator ShakeCoroutine(float duration, float amt = 0.1f)
     {
         float timer = duration;
 
