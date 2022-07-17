@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(HostileAttack))]
 public class Explosion : MonoBehaviour
 {
     Collider2D atkCol;

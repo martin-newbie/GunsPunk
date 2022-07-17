@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Granade : MonoBehaviour
+public class Grenade : MonoBehaviour
 {
-    [Header("Granade")]
+    [Header("Grenade")]
     public float duration = 5f;
     public float explosionRad = 3f;
     public GameObject explosion;
@@ -13,6 +13,12 @@ public class Granade : MonoBehaviour
     Rigidbody2D RB;
     bool isAttackAble = true;
     Coroutine explosionCoroutine;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRad);
+    }
 
     public void Init(Vector2 force, float torque, float damage)
     {
@@ -33,9 +39,9 @@ public class Granade : MonoBehaviour
         yield break;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Hostile"))
+        if (collision.gameObject.CompareTag("Hostile"))
         {
             if (explosionCoroutine != null) StopCoroutine(explosionCoroutine);
             ExplosionFunc();
@@ -47,13 +53,16 @@ public class Granade : MonoBehaviour
         if (isAttackAble)
         {
             var hostile = Physics2D.OverlapCircleAll(transform.position, explosionRad, LayerMask.GetMask("Hostile"));
-            foreach (var item in hostile)
-            {
-                item.GetComponent<Entity>().OnHit(damage, transform);
-            }
+            if (hostile.Length > 0)
+                foreach (var item in hostile)
+                {
+                    item.GetComponent<Entity>().OnHit(damage, transform);
+                }
 
             Instantiate(explosion, transform.position, Quaternion.identity);
             isAttackAble = false;
+
+            Destroy(gameObject);
         }
 
     }

@@ -1486,7 +1486,7 @@ MonoBehaviour:
   CurPlayer: {fileID: 0}
   SubPlayer: {fileID: 0}
   PlayerPrefabs:
-  - {fileID: 5045737562855337078, guid: 690a6fd934a47d440aa13d4ec3a5ec36, type: 3}
+  - {fileID: 4642842760935218914, guid: f3e6c230ba3f4424aa6a5113051ecc3f, type: 3}
   - {fileID: 2519354060238282736, guid: cd5300bd81af07448a1863ac02b86dd2, type: 3}
   PlayerPoses:
   - {fileID: 752904776}
