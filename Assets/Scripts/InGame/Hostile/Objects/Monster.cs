@@ -22,6 +22,7 @@ public abstract class Monster : JumpAble
     public bool nowActing = false;
     public bool isAlive = true;
     public Coroutine nowCoroutine;
+    protected Coroutine attackCoroutine;
     public PlayerBase player;
 
     [Header("Monseter Parts")]
@@ -60,6 +61,8 @@ public abstract class Monster : JumpAble
     {
         if (nowCoroutine != null)
             StopCoroutine(nowCoroutine);
+        if (attackCoroutine != null)
+            StopCoroutine(attackCoroutine);
 
         player.ItemAmmunition(player.MaxAmmo / 20);
 
