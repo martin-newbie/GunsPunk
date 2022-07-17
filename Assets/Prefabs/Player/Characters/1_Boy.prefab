@@ -5081,7 +5081,7 @@ MonoBehaviour:
   FeetPos: {fileID: 4642842759688091653}
   TopPos: {fileID: 4642842760370993027}
   speed: 15
-  fireRate: 500
+  fireRate: 600
   isAlive: 1
   spread_pos: 0.4
   spread_rot: 2
@@ -5089,8 +5089,8 @@ MonoBehaviour:
   feverIncrease: 5
   feverValue: 0
   AmmoCount: 0
-  MaxAmmo: 500
-  AmmoIncrease: 50
+  MaxAmmo: 75
+  AmmoIncrease: 25
   HealthIncrease: 25
   BulletShellEffect: {fileID: 3772128344294094648}
   FirePos: {fileID: 4642842761091557191}
