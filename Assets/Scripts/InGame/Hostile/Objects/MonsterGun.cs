@@ -130,6 +130,8 @@ public class MonsterGun : Monster
     IEnumerator StraightAttack()
     {
         // state: straight attack
+        anim.SetBool("IsMove", true);
+        anim.SetInteger("Dir", -1);
 
         AttackPos.rotation = Quaternion.Euler(0, -180, 0);
 
@@ -146,6 +148,8 @@ public class MonsterGun : Monster
 
     IEnumerator DirectionAttack()
     {
+        anim.SetBool("IsMove", true);
+        anim.SetInteger("Dir", -1);
 
         Vector3 playerPos = player.transform.position;
         if (playerPos.y > AttackPos.position.y) playerPos += new Vector3(1f, 1f);

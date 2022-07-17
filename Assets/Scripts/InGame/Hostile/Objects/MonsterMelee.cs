@@ -114,6 +114,9 @@ public class MonsterMelee : Monster
     IEnumerator AttackCoroutine()
     {
         //state: attack
+        anim.SetBool("IsMove", true);
+        anim.SetInteger("Dir", -1);
+
         anim.SetTrigger("AttackTrigger");
         yield return new WaitForSeconds(0.2f);
 
@@ -126,8 +129,6 @@ public class MonsterMelee : Monster
 
         //state: move back
         float x = posX_Standby + Random.Range(-2f, 1.5f);
-        anim.SetBool("IsMove", true);
-        anim.SetInteger("Dir", -1);
         do
         {
             transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);

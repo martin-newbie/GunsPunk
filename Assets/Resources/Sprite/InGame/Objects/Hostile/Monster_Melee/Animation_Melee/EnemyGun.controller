@@ -1492,7 +1492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   motion: {fileID: -8056834457730085188}
-  layer: 0
+  layer: 1
   timeScale: 1
   skeletonAnimation: {fileID: 0}
 --- !u!1101 &6105343850856386831
