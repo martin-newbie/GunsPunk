@@ -20,7 +20,7 @@ public abstract class HoldFirePlayer : PlayerBase
     protected override void Update()
     {
         base.Update();
-
+        InGameUIManager.Instance.SetHoldGauge(curHold / maxHold);
 
         if (isHold)
         {

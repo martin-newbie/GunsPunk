@@ -66,6 +66,9 @@ public class InGameManager : Singleton<InGameManager>
         SubPlayer = temp;
         SubPlayer.gameObject.SetActive(false);
 
+        HoldFirePlayer hold;
+        InGameUIManager.Instance.HoldGauge.gameObject.SetActive(CurPlayer.TryGetComponent(out hold));
+
         SetRoundCoin(0);
         GameStart();
     }
