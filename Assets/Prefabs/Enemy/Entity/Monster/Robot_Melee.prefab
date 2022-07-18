@@ -844,7 +844,7 @@ Transform:
   - {fileID: 411000827}
   - {fileID: 2086797583}
   - {fileID: 872609956}
-  - {fileID: 1803232167196914345}
+  - {fileID: 12392642292419988}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -895,7 +895,7 @@ MonoBehaviour:
   nowActing: 0
   isAlive: 1
   player: {fileID: 0}
-  Body: {fileID: 5229873580052553456}
+  Body: {fileID: 3918176681420894562}
   Parts:
   - {fileID: 1774874576}
   - {fileID: 890301205}
@@ -959,7 +959,7 @@ Animator:
   m_GameObject: {fileID: 3826177833279044258}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3272ff144f8a3064186251b8aff6ef50, type: 2}
+  m_Controller: {fileID: 9100000, guid: db76ea1dd9ecd27428ece55b15815f9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -998,7 +998,7 @@ Transform:
   m_Father: {fileID: 3826177833279044316}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5229873580052553456
+--- !u!1 &3918176681420894562
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1006,10 +1006,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1803232167196914345}
-  - component: {fileID: 5538114771206053247}
-  - component: {fileID: 7226584196470147859}
-  - component: {fileID: 8391185077549661898}
+  - component: {fileID: 12392642292419988}
+  - component: {fileID: 6249709953048449283}
+  - component: {fileID: 7230901710114727033}
+  - component: {fileID: 5827994489652253706}
   m_Layer: 0
   m_Name: Spine GameObject (enemy 1)
   m_TagString: Untagged
@@ -1017,13 +1017,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1803232167196914345
+--- !u!4 &12392642292419988
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5229873580052553456}
+  m_GameObject: {fileID: 3918176681420894562}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -1031,21 +1031,21 @@ Transform:
   m_Father: {fileID: 3826177833279044316}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5538114771206053247
+--- !u!33 &6249709953048449283
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5229873580052553456}
+  m_GameObject: {fileID: 3918176681420894562}
   m_Mesh: {fileID: 0}
---- !u!23 &7226584196470147859
+--- !u!23 &7230901710114727033
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5229873580052553456}
+  m_GameObject: {fileID: 3918176681420894562}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -1058,7 +1058,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2a8a90dc92911f54db99b6592d92deb0, type: 2}
+  - {fileID: 2100000, guid: e8336b553c90f6949bd420376e9dac9f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1080,19 +1080,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8391185077549661898
+--- !u!114 &5827994489652253706
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5229873580052553456}
+  m_GameObject: {fileID: 3918176681420894562}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 34d248a4c3be29344b47a81d1e344e0c, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: df19603d92352974a8ea05caf8b1e158, type: 2}
   initialSkinName: 1
   initialFlipX: 0
   initialFlipY: 0
