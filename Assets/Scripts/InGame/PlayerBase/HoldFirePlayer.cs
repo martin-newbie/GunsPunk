@@ -12,13 +12,9 @@ public abstract class HoldFirePlayer : PlayerBase
     public bool isHold;
     public int coinValue = 50;
 
-    GaugeContainer gauge;
-
     protected override void Start()
     {
         base.Start();
-        gauge = InGameManager.Instance.SpawnGaugeBar(transform.position);
-        gauge.SetColor(Color.gray, Color.white);
     }
 
     protected override void Update()
@@ -32,8 +28,6 @@ public abstract class HoldFirePlayer : PlayerBase
                 curHold += Time.deltaTime;
         }
 
-        gauge.SetGauge(curHold, maxHold);
-        gauge.FollowTarget(new Vector2(0, 1.3f), transform);
     }
 
     public override void OnAttackEnd()
