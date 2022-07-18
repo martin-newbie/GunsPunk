@@ -109,7 +109,7 @@ public abstract class Monster : JumpAble
     IEnumerator UpCoroutine()
     {
         anim.SetTrigger("JumpTrigger");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.75f);
         base.GoUpJump();
         yield break;
     }
@@ -117,7 +117,7 @@ public abstract class Monster : JumpAble
     IEnumerator DownCoroutine()
     {
         anim.SetTrigger("JumpTrigger");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.75f);
         base.GoDownJump();
         yield break;
     }

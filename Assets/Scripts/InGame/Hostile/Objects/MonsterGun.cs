@@ -19,9 +19,10 @@ public class MonsterGun : Monster
     protected override void Update()
     {
         if (!isAlive) return;
-        anim.SetBool("IsGround", checkFeet && !isActing);
 
         base.Update();
+        anim.SetBool("IsGround", checkFeet && !bodyCol.isTrigger);
+
 
         if (!nowActing)
         {
