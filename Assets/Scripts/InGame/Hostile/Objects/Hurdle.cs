@@ -16,6 +16,9 @@ public class Hurdle : Entity
     public float amount;
     public Vector3 localPos;
 
+    [Header("Debris")]
+    public Rigidbody2D[] Debris;
+
     protected override void Awake()
     {
         base.Awake();
@@ -79,6 +82,14 @@ public class Hurdle : Entity
         else if (Random.Range(0f, 100f) < explosionChance)
         {
             Explosion();
+        }
+
+        foreach (var item in Debris)
+        {
+            item.gameObject.SetActive(true);
+            item.AddForce(new Vector2(Random.Range(-6, 6), Random.Range(4, 10)), ForceMode2D.Impulse);
+            item.AddTorque(Random.Range(-5f, 5f));
+            Destroy(item.gameObject, Random.Range(5, 15));
         }
 
         GetComponent<EnemyHp>().DestroyGauge();
