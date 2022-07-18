@@ -8,6 +8,7 @@ public class InGameUIManager : Singleton<InGameUIManager>
     public Image PlayerHpGauge;
     public Image FeverGauge;
     public Image AmmoGauge;
+    public Image HoldGauge;
 
     public Text RoundCoinText;
 
@@ -38,6 +39,11 @@ public class InGameUIManager : Singleton<InGameUIManager>
         PlayerHpGauge.fillAmount = hpCur / hpMax;
         FeverGauge.fillAmount = feverCur / feverMax;
         AmmoGauge.fillAmount = ammoCur / ammoMax;
+    }
+
+    public void SetHoldGauge(float amt)
+    {
+        HoldGauge.fillAmount = amt;
     }
 
     public void SetPlayerHp(float cur, float max)
