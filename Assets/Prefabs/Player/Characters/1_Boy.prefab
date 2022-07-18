@@ -5096,7 +5096,7 @@ MonoBehaviour:
   FirePos: {fileID: 4642842761091557191}
   bullet: {fileID: 7145292585738048927, guid: 2d2bfc26052d9094dbf1a6e9be745574, type: 3}
   grenade: {fileID: 1362588764346051958, guid: 9fcddb367d1db414ca47bafbba05beed, type: 3}
-  g_force: {x: 15, y: 2}
+  g_force: {x: 15, y: 5}
   g_torque: 5
   g_damage: 25
 --- !u!1 &4642842761091557190
