@@ -141,7 +141,8 @@ public abstract class PlayerBase : JumpAble
         {
             _bullet = Instantiate(bullet, FirePos.position + new Vector3(0, Random.Range(-spread_pos, spread_pos)), Quaternion.Euler(0, 0, Random.Range(-spread_rot, spread_rot)));
             _bullet.Init(speed, damage, this);
-            AmmoCount--;
+            if (!isSkillActive)
+                AmmoCount--;
             BulletShellEffect.Play();
             InGameManager.Instance.GetRoundCoin(1);
         }

@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
         player.AttackAction();
     }
 
-    private void OnBecameInvisible()
+    protected virtual void OnBecameInvisible()
     {
         Destroy(gameObject);
     }

@@ -181,6 +181,7 @@ MonoBehaviour:
   HP: 0
   damage: 30
   moveSpeed: 4
+  isAlive: 1
   isActing: 0
   JumpForce: 13.5
   CheckRadius: 0.05
@@ -189,7 +190,6 @@ MonoBehaviour:
   TopPos: {fileID: 4684072575855653643}
   speed: 25
   fireRate: 0
-  isAlive: 1
   spread_pos: 0
   spread_rot: 0
   maxFever: 100
@@ -208,7 +208,7 @@ MonoBehaviour:
   isHold: 0
   coinValue: 50
   CommonArrow: {fileID: 7145292585738048927, guid: eaf91518b43706b4dbe22af5e0308219, type: 3}
-  ChargedArrow: {fileID: 7145292585738048927, guid: 44f1783f93734fd4b90eb20160a8096f, type: 3}
+  ChargedArrow: {fileID: 6386698014690400220, guid: 44f1783f93734fd4b90eb20160a8096f, type: 3}
   coinCount: 5
 --- !u!1 &4684072575855653636
 GameObject:
