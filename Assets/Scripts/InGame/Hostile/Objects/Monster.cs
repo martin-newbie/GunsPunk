@@ -20,7 +20,6 @@ public abstract class Monster : JumpAble
     [Header("Monster AI")]
     public MonsterState state;
     public bool nowActing = false;
-    public bool isAlive = true;
     public Coroutine nowCoroutine;
     protected Coroutine attackCoroutine;
     public PlayerBase player;

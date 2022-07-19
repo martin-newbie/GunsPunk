@@ -63,9 +63,4 @@ public abstract class HoldFirePlayer : PlayerBase
 
         return _bullet;
     }
-
-    public override void ItemAmmunition(int count = -1)
-    {
-        InGameManager.Instance.roundCoin += coinValue;
-    }
 }

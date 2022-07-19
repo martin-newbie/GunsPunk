@@ -23,12 +23,15 @@ public class Player3_KoreanArcher : HoldFirePlayer
 
     protected override Bullet FireBullet()
     {
-        Bullet _bullet;
+        Bullet _bullet = null;
+        if (AmmoCount > 0)
+        {
+            bullet = curHold >= maxHold ? ChargedArrow : CommonArrow;
 
-        bullet = curHold >= maxHold ? ChargedArrow : CommonArrow;
-
-        _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
-        _bullet.Init(speed / 2f + speed * (curHold / maxHold), damage / 2 + damage * (curHold / maxHold), this, ()=> { InGameManager.Instance.GetRoundCoin(coinCount); });
+            _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
+            _bullet.Init(speed / 2f + speed * (curHold / maxHold), damage / 2 + damage * (curHold / maxHold), this, () => { InGameManager.Instance.GetRoundCoin(coinCount); });
+            AmmoCount--;
+        }
 
         return _bullet;
     }

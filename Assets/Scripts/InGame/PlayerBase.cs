@@ -9,7 +9,6 @@ public abstract class PlayerBase : JumpAble
     public float fireRate;
     protected float fireDelay => 1f / (fireRate / 60f);
     protected float curDelay;
-    public bool isAlive = true;
 
     [Header("Gun Value")]
     public float spread_pos;

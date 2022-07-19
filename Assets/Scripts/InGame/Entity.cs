@@ -10,6 +10,7 @@ public abstract class Entity : MonoBehaviour
     public float HP;
     public float damage;
     public float moveSpeed;
+    public bool isAlive = true;
 
     public Action<float, Transform> OnHitAction;
     public Action OnDestroyAction;

@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour
         if (collision.CompareTag("Hostile"))
         {
             Entity entity = collision.GetComponent<Entity>();
-            if (entity != null)
+            if (entity != null && entity.isAlive)
             {
                 entity.OnHit(damage, transform);
                 player.GetFever();
