@@ -601,6 +601,7 @@ MonoBehaviour:
   PlayerHpGauge: {fileID: 2016142378}
   FeverGauge: {fileID: 1135798168}
   AmmoGauge: {fileID: 317320393}
+  HoldGauge: {fileID: 1607550552}
   RoundCoinText: {fileID: 1067280036}
 --- !u!1 &576620652
 GameObject:
