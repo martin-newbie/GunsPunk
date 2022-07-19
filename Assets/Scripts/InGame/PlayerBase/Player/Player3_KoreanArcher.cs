@@ -30,7 +30,8 @@ public class Player3_KoreanArcher : HoldFirePlayer
 
             _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
             _bullet.Init(speed / 2f + speed * (curHold / maxHold), damage / 2 + damage * (curHold / maxHold), this, () => { InGameManager.Instance.GetRoundCoin(coinCount); });
-            AmmoCount--;
+            if (!isSkillActive)
+                AmmoCount--;
         }
 
         return _bullet;

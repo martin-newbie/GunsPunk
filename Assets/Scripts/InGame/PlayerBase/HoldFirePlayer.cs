@@ -58,9 +58,12 @@ public abstract class HoldFirePlayer : PlayerBase
         {
             _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
             _bullet.Init(speed / 2f + speed * (curHold / maxHold), damage / 2 + damage * (curHold / maxHold), this);
-            AmmoCount--;
+
+            if (!isSkillActive)
+                AmmoCount--;
         }
 
         return _bullet;
     }
+
 }

@@ -32,7 +32,7 @@ public class SpineAnimationBehaviour : StateMachineBehaviour
                 spineAnimationState = skeletonAnimation.state;
         }
 
-        if (animationClip != null)
+        if (animationClip != null && spineAnimationState != null)
         {
             loop = stateInfo.loop;
             trackEntry = spineAnimationState.SetAnimation(layer, animationClip, loop);
