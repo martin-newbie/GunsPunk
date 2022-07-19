@@ -9,8 +9,9 @@ public class FullChargeBullet : Bullet
 
     protected override void OnBecameInvisible()
     {
-        FullChargeEffect.transform.SetParent(transform.parent);
+        FullChargeEffect.transform?.SetParent(null);
         Destroy(FullChargeEffect.gameObject, 2f);
-        base.OnBecameInvisible();
+
+        Destroy(gameObject);
     }
 }

@@ -12,6 +12,8 @@ public class InGameUIManager : Singleton<InGameUIManager>
 
     public Text RoundCoinText;
 
+    public PauseUI PauseObject;
+
     int roundCoin;
     public int RoundCoin
     {
@@ -39,6 +41,17 @@ public class InGameUIManager : Singleton<InGameUIManager>
         PlayerHpGauge.fillAmount = hpCur / hpMax;
         FeverGauge.fillAmount = feverCur / feverMax;
         AmmoGauge.fillAmount = ammoCur / ammoMax;
+    }
+
+    public void PauseOn()
+    {
+        InGameManager.Instance.PauseGame();
+        PauseObject.gameObject.SetActive(true);
+    }
+
+    public void PauseOff()
+    {
+        PauseObject.gameObject.SetActive(false);
     }
 
     public void SetHoldGauge(float amt)

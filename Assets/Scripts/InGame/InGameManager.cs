@@ -31,6 +31,7 @@ public class InGameManager : Singleton<InGameManager>
     public bool isRevived;
     public bool isGameActive;
     public int roundCoin;
+    public bool isPaused;
 
     Coroutine monsterSpawn_coroutine;
     Coroutine hurdleSpawn_coroutine;
@@ -223,5 +224,26 @@ public class InGameManager : Singleton<InGameManager>
         temp.Init(rand_t);
 
         return temp;
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void QuitGame()
+    {
+
+    }
+
+    public void RetryGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1); // 0: title, 1: ingame, 2: shop
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        InGameUIManager.Instance.PauseOff();
     }
 }
