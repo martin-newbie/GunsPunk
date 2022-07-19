@@ -78,6 +78,7 @@ MonoBehaviour:
   HP: 0
   damage: 5
   moveSpeed: 0
+  isAlive: 1
   atkCol: {fileID: 4273571922483911408}
   hurdleObj: {fileID: 7291308294453264465}
   HitParticle: {fileID: 5534637135945104259}
