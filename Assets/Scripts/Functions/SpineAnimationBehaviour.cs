@@ -19,19 +19,20 @@ public class SpineAnimationBehaviour : StateMachineBehaviour
 
     void Awake()
     {
-        if(motion != null)
-        animationClip = motion.name;
+        if (motion != null)
+            animationClip = motion.name;
     }
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(skeletonAnimation == null)
+        if (skeletonAnimation == null)
         {
             skeletonAnimation = animator.GetComponentInChildren<SkeletonAnimation>();
-            spineAnimationState = skeletonAnimation.state;
+            if (skeletonAnimation != null)
+                spineAnimationState = skeletonAnimation.state;
         }
 
-        if(animationClip != null)
+        if (animationClip != null)
         {
             loop = stateInfo.loop;
             trackEntry = spineAnimationState.SetAnimation(layer, animationClip, loop);

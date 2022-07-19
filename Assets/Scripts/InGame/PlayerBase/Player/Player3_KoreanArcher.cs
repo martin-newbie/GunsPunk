@@ -13,10 +13,11 @@ public class Player3_KoreanArcher : HoldFirePlayer
     {
         for (int i = -45; i <= 45; i += 15)
         {
+            curHold = maxHold;
             Bullet temp = FireBullet();
             temp.transform.rotation = Quaternion.Euler(0, 0, i);
         }
-
+        curHold = 0f;
         isSkillActive = false;
     }
 

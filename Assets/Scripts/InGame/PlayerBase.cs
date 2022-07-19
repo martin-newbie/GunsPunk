@@ -70,7 +70,18 @@ public abstract class PlayerBase : JumpAble
         {
             base.Update();
             SetGaugeUI();
+
+            ComputerDebug();
         }
+    }
+
+    void ComputerDebug()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow)) GoUp();
+        if (Input.GetKeyDown(KeyCode.DownArrow)) GoDown();
+
+        if (Input.GetKeyDown(KeyCode.Space)) OnAttackStart();
+        if (Input.GetKeyUp(KeyCode.Space)) OnAttackEnd();
     }
 
     public void MoveForward(int dir = 1)
