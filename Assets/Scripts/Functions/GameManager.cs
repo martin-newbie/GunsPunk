@@ -8,7 +8,7 @@ public class GameManager : Singleton<GameManager>
     public string playerName;
 
     [Header("Character")]
-    public int PlayerIdx = 0;
+    public int PlayerIdx = 2;
     public int SubPlayerIdx = 1;
 
     [Header("Status")]

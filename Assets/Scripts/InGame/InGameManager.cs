@@ -35,7 +35,7 @@ public class InGameManager : Singleton<InGameManager>
     Coroutine monsterSpawn_coroutine;
     Coroutine hurdleSpawn_coroutine;
 
-    public void SetRoundCoin(int value)
+    public void GetRoundCoin(int value)
     {
         roundCoin += value;
         InGameUIManager.Instance.RoundCoin = roundCoin;
@@ -69,7 +69,7 @@ public class InGameManager : Singleton<InGameManager>
         HoldFirePlayer hold;
         InGameUIManager.Instance.HoldGauge.gameObject.SetActive(CurPlayer.TryGetComponent(out hold));
 
-        SetRoundCoin(0);
+        GetRoundCoin(0);
         GameStart();
     }
 

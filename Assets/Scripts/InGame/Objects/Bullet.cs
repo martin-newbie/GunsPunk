@@ -1,23 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Bullet : MonoBehaviour
 {
     public float speed, damage;
     public bool notDestroy;
     PlayerBase player;
+    Action hitAction;
 
     protected virtual void Update()
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 
-    public void Init(float _speed, float _damage, PlayerBase _player)
+    public void Init(float _speed, float _damage, PlayerBase _player, Action hit = null)
     {
         speed = _speed;
         damage = _damage;
         player = _player;
+        hitAction = hit;
     }
 
     public void OnHostileHit()
@@ -36,6 +39,7 @@ public class Bullet : MonoBehaviour
         {
             collision.GetComponent<Entity>().OnHit(damage, transform);
             player.GetFever();
+            hitAction?.Invoke();
             if (!notDestroy) Destroy(gameObject);
         }
     }

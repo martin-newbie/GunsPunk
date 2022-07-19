@@ -133,7 +133,7 @@ public abstract class PlayerBase : JumpAble
             _bullet.Init(speed, damage, this);
             AmmoCount--;
             BulletShellEffect.Play();
-            InGameManager.Instance.SetRoundCoin(1);
+            InGameManager.Instance.GetRoundCoin(1);
         }
 
         return _bullet;

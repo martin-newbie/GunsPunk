@@ -1489,7 +1489,8 @@ MonoBehaviour:
   SubPlayer: {fileID: 0}
   PlayerPrefabs:
   - {fileID: 4642842760935218914, guid: f3e6c230ba3f4424aa6a5113051ecc3f, type: 3}
-  - {fileID: 2519354060238282736, guid: cd5300bd81af07448a1863ac02b86dd2, type: 3}
+  - {fileID: 6010009858012048963, guid: 805c3a9d16faf2241a808314afb9d8ad, type: 3}
+  - {fileID: 4684072575745005833, guid: 86c7bb1d5d91a2249b05784bb820a73e, type: 3}
   PlayerPoses:
   - {fileID: 752904776}
   - {fileID: 534244126}
