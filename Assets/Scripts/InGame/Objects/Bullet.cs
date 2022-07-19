@@ -37,10 +37,14 @@ public class Bullet : MonoBehaviour
     {
         if (collision.CompareTag("Hostile"))
         {
-            collision.GetComponent<Entity>().OnHit(damage, transform);
-            player.GetFever();
-            hitAction?.Invoke();
-            if (!notDestroy) Destroy(gameObject);
+            Entity entity = collision.GetComponent<Entity>();
+            if (entity != null)
+            {
+                entity.OnHit(damage, transform);
+                player.GetFever();
+                hitAction?.Invoke();
+                if (!notDestroy) Destroy(gameObject);
+            }
         }
     }
 }

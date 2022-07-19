@@ -193,7 +193,7 @@ MonoBehaviour:
   spread_pos: 0
   spread_rot: 0
   maxFever: 100
-  feverIncrease: 2
+  feverIncrease: 10
   feverValue: 0
   AmmoCount: 0
   MaxAmmo: 1
