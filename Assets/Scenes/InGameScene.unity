@@ -604,7 +604,7 @@ MonoBehaviour:
   AmmoGauge: {fileID: 317320393}
   HoldGauge: {fileID: 1607550552}
   RoundCoinText: {fileID: 1067280036}
-  PauseObject: {fileID: 0}
+  PauseObject: {fileID: 1293156469}
 --- !u!1 &576620652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,7 +1335,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 873075834}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1293156469}
+        m_TargetAssemblyTypeName: PauseUI, Assembly-CSharp
+        m_MethodName: ButtonQuit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &873075834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2139,7 +2151,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1205591292}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 575461074}
+        m_TargetAssemblyTypeName: InGameUIManager, Assembly-CSharp
+        m_MethodName: PauseOn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1205591292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3243,7 +3267,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1796802053}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1293156469}
+        m_TargetAssemblyTypeName: PauseUI, Assembly-CSharp
+        m_MethodName: ButtonResume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1796802053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3915,7 +3951,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2107712673}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1293156469}
+        m_TargetAssemblyTypeName: PauseUI, Assembly-CSharp
+        m_MethodName: ButtonRetry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2107712673
 MonoBehaviour:
   m_ObjectHideFlags: 0

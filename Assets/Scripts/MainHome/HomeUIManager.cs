@@ -29,7 +29,7 @@ public class HomeUIManager : MonoBehaviour
 
     public void GameStart()
     {
-
+        LoadingSceneManager.LoadScene("InGameScene");
     }
 
     public void Shop()
