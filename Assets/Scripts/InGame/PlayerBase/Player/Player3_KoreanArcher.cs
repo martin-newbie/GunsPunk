@@ -26,10 +26,13 @@ public class Player3_KoreanArcher : HoldFirePlayer
         Bullet _bullet = null;
         if (AmmoCount > 0)
         {
-            bullet = curHold >= maxHold ? ChargedArrow : CommonArrow;
+            Bullet bulletPrefab = curHold >= maxHold ? ChargedArrow : CommonArrow;
 
-            _bullet = Instantiate(bullet, FirePos.position, Quaternion.identity);
+            _bullet = Instantiate(bulletPrefab, FirePos.position, Quaternion.identity);
             _bullet.Init(speed / 2f + speed * (curHold / maxHold), damage / 2 + damage * (curHold / maxHold), this, () => { InGameManager.Instance.GetRoundCoin(coinCount); });
+
+            if (curHold >= maxHold) _bullet.notDestroy = true;
+
             if (!isSkillActive)
                 AmmoCount--;
         }
