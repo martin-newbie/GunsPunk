@@ -12,11 +12,10 @@ public class ShopUIManager : MonoBehaviour
 
     private void Start()
     {
-        int idx = 0;
-        foreach (var item in Buttons)
+        for (int i = 0; i < Buttons.Length; i++)
         {
-            item.onClick.AddListener(() => OpenWindow(idx));
-            idx++;
+            int idx = i;
+            Buttons[i].onClick.AddListener(() => OpenWindow(idx));
         }
 
         OpenWindow(0);
