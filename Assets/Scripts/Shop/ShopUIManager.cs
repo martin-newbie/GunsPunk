@@ -49,4 +49,8 @@ public class ShopUIManager : Singleton<ShopUIManager>
         Buttons[idx].image.sprite = SelectButtonImg[idx];
     }
 
+    public void BackToTitle()
+    {
+        LoadingSceneManager.LoadScene("MainScene");
+    }
 }

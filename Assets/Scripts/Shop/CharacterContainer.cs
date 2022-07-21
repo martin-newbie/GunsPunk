@@ -52,7 +52,6 @@ public class CharacterContainer : MonoBehaviour
 
     public void ButtonInfo()
     {
-        Debug.Log("button info");
     }
 
     public void ButtonRecruit()
@@ -61,11 +60,9 @@ public class CharacterContainer : MonoBehaviour
         {
             GameManager.Instance.curCoin -= charInfo.cost;
             charInfo.isUnlocked = true;
-            Debug.Log("button recruit success");
         }
         else
         {
-            Debug.Log("button recruit failed");
             //print message
             //not enought money
         }
