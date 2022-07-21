@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9455d23bc4d5c5e45a7cd11efc988586, type: 3}
+  m_Name: 1_Boy
+  m_EditorClassIdentifier: 
+  idx: 0
+  level: 0
+  HP: 100
+  HPIncrease: 15
+  Ammo: 75
+  AmmoIncrease: 10
+  Damage: 5
+  DamageIncrease: 1.25
+  Fever: 5
+  FeverIncrease: 2
+  bulletSpeed: 15
+  rpm: 600
+  SpreadPos: 0.4
+  SpreadRot: 2
+  AmmoItemValue: 25
+  HPItemValue: 25
+  cost: 0
+  isUnlocked: 0
+  upgradeCost: 0

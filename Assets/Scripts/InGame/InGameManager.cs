@@ -57,13 +57,20 @@ public class InGameManager : Singleton<InGameManager>
 
     private void Start()
     {
+        PlayerPrefabs = GameManager.Instance.charactersPrefab;
+
         int playerIdx = GameManager.Instance.PlayerIdx;
+
         PlayerBase temp = Instantiate(PlayerPrefabs[playerIdx], PlayerPoses[0].position, Quaternion.identity);
+        temp.Init(GameManager.Instance.GetCharacterInfo(playerIdx));
+
         CurPlayer = temp;
         CurPlayer.UIInit();
 
         int subPlayerIdx = GameManager.Instance.SubPlayerIdx;
         temp = Instantiate(PlayerPrefabs[subPlayerIdx], PlayerPoses[0].position, Quaternion.identity);
+        temp.Init(GameManager.Instance.GetCharacterInfo(subPlayerIdx));
+
         SubPlayer = temp;
         SubPlayer.gameObject.SetActive(false);
 
@@ -224,26 +231,5 @@ public class InGameManager : Singleton<InGameManager>
         temp.Init(rand_t);
 
         return temp;
-    }
-
-    public void PauseGame()
-    {
-        Time.timeScale = 0f;
-    }
-
-    public void QuitGame()
-    {
-
-    }
-
-    public void RetryGame()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1); // 0: title, 1: ingame, 2: shop
-    }
-
-    public void ResumeGame()
-    {
-        Time.timeScale = 1f;
-        InGameUIManager.Instance.PauseOff();
     }
 }

@@ -33,6 +33,20 @@ public abstract class PlayerBase : JumpAble
     public Transform FirePos;
     public Bullet bullet;
 
+    public void Init(characterInfo info)
+    {
+        HP = info.hp;
+        damage = info.damage;
+        fireRate = info.rpm;
+        feverIncrease = info.fever;
+        spread_pos = info.spreadPos;
+        spread_rot = info.spreadRot;
+        MaxAmmo = info.ammo;
+        AmmoIncrease = info.ammoItem;
+        HealthIncrease = info.hpItem;
+        speed = info.bulletSpeed;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

@@ -2,6 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct characterInfo
+{
+    public int level;
+    public float hp;
+    public int ammo;
+    public float damage;
+    public float fever;
+
+    public float bulletSpeed;
+    public float rpm;
+    public float spreadPos;
+    public float spreadRot;
+    public int ammoItem;
+    public float hpItem;
+
+    public characterInfo(CharacterInfo info)
+    {
+        level = info.level;
+        hp = info.HP + (level * info.HPIncrease);
+        ammo = info.Ammo + (level * info.AmmoIncrease);
+        damage = info.Damage + (level * info.Damage);
+        fever = info.Fever + (level * info.FeverIncrease);
+
+        bulletSpeed = info.bulletSpeed;
+        rpm = info.rpm;
+        spreadPos = info.SpreadPos;
+        spreadRot = info.SpreadRot;
+        ammoItem = info.AmmoItemValue;
+        hpItem = info.HPItemValue;
+    }
+}
+
 public class GameManager : Singleton<GameManager>
 {
     [Header("Player")]
@@ -10,6 +42,8 @@ public class GameManager : Singleton<GameManager>
     [Header("Character")]
     public int PlayerIdx = 2;
     public int SubPlayerIdx = 1;
+    public PlayerBase[]       charactersPrefab;
+    public CharacterInfo[]  charactersInfo;
 
     [Header("Status")]
     public int curCoin;     // 무료 재화
@@ -34,6 +68,11 @@ public class GameManager : Singleton<GameManager>
             curExp -= maxExp;
             level++;
         }
+    }
+
+    public characterInfo GetCharacterInfo(int idx)
+    {
+        return new characterInfo(charactersInfo[idx]);
     }
 
     float ReturnMaxExp()

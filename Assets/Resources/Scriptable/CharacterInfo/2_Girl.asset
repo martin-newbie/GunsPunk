@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9455d23bc4d5c5e45a7cd11efc988586, type: 3}
+  m_Name: 2_Girl
+  m_EditorClassIdentifier: 
+  idx: 1
+  level: 0
+  HP: 100
+  HPIncrease: 15
+  Ammo: 80
+  AmmoIncrease: 10
+  Damage: 7
+  DamageIncrease: 1.2
+  Fever: 3
+  FeverIncrease: 1.2
+  bulletSpeed: 15
+  rpm: 650
+  SpreadPos: 0.2
+  SpreadRot: 4
+  AmmoItemValue: 25
+  HPItemValue: 25
+  cost: 0
+  isUnlocked: 0
+  upgradeCost: 0
