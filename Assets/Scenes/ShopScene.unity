@@ -259,6 +259,8 @@ MonoBehaviour:
   - {fileID: 417202466}
   - {fileID: 706086436}
   CharacterPrefab: {fileID: 3946661864319753076, guid: ce7df52b7d0e09049a4e370ed74e33bd, type: 3}
+  CoinTxt: {fileID: 1107937984}
+  EnergyTxt: {fileID: 1112164864}
   CharacterContents: {fileID: 530492831}
   CharactersIllustSprite:
   - {fileID: 0}

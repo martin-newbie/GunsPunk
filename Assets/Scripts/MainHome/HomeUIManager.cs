@@ -19,6 +19,14 @@ public class HomeUIManager : MonoBehaviour
         Quest.Init(this);
         BestScore.Init(this);
         Profile.Init(this);
+
+        SetValueText();
+    }
+
+    void SetValueText()
+    {
+        EnergyTxt.text = string.Format("{0:#,0}", GameManager.Instance.energy);
+        CoinTxt.text = string.Format("{0:#,0}", GameManager.Instance.curCoin);
     }
 
     void Update()
@@ -34,7 +42,7 @@ public class HomeUIManager : MonoBehaviour
 
     public void Shop()
     {
-
+        LoadingSceneManager.LoadScene("ShopScene");
     }
 
     public void Setting()

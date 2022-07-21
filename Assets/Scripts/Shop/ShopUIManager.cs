@@ -11,6 +11,8 @@ public class ShopUIManager : Singleton<ShopUIManager>
     public Sprite[] UnselectButtonImg;
     public GameObject[] Windows;
     public CharacterContainer CharacterPrefab;
+    public Text CoinTxt;
+    public Text EnergyTxt;
 
     [Header("Windows")]
     public RectTransform CharacterContents;
@@ -35,6 +37,13 @@ public class ShopUIManager : Singleton<ShopUIManager>
         }
 
         OpenWindow(0);
+        SetValueText();
+    }
+
+    void SetValueText()
+    {
+        EnergyTxt.text = string.Format("{0:#,0}", GameManager.Instance.energy);
+        CoinTxt.text = string.Format("{0:#,0}", GameManager.Instance.curCoin);
     }
 
     void OpenWindow(int idx)
