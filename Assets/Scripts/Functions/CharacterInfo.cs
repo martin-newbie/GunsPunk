@@ -30,7 +30,6 @@ public class CharacterInfo : ScriptableObject
     [Header("About Buy")]
     public int cost;
     public bool isUnlocked;
-    public int upgradeCost;
     public ValueType valueType;
 
 }
