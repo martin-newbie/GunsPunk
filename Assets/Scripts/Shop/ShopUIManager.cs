@@ -10,6 +10,10 @@ public class ShopUIManager : Singleton<ShopUIManager>
     public Sprite[] SelectButtonImg;
     public Sprite[] UnselectButtonImg;
     public GameObject[] Windows;
+    public CharacterContainer CharacterPrefab;
+
+    [Header("Windows")]
+    public RectTransform CharacterContents;
 
     [Header("Character Sprite")]
     public Sprite[] CharactersIllustSprite;
@@ -22,6 +26,12 @@ public class ShopUIManager : Singleton<ShopUIManager>
         {
             int idx = i;
             Buttons[i].onClick.AddListener(() => OpenWindow(idx));
+        }
+
+        for (int i = 0; i < GameManager.Instance.charactersInfo.Length; i++)
+        {
+            CharacterContainer temp = Instantiate(CharacterPrefab, CharacterContents);
+            temp.Init(i);
         }
 
         OpenWindow(0);

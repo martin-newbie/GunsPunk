@@ -28,6 +28,7 @@ MonoBehaviour:
   SpreadRot: 0
   AmmoItemValue: 10
   HPItemValue: 50
-  cost: 0
+  cost: 50000
   isUnlocked: 0
   upgradeCost: 0
+  valueType: 1

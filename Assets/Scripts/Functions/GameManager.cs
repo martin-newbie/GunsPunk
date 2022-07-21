@@ -37,8 +37,8 @@ public struct characterInfo
 public class GameManager : Singleton<GameManager>
 {
     [Header("Path")]
-    public string prefabPath = "Scriptable/CharacterInfo";
-    public string scriptablePath = "Prefab/Characters";
+    public string scriptablePath = "Scriptable/CharacterInfo/";
+    public string prefabPath = "Prefab/Characters/";
 
     [Header("Player")]
     public string playerName;
