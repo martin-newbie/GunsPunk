@@ -1609,7 +1609,7 @@ MonoBehaviour:
   ExpBar: {fileID: 1045237211}
   Icon: {fileID: 1495386929}
   Name: {fileID: 118957722}
-  Level: {fileID: 118957722}
+  Level: {fileID: 1710201540}
 --- !u!1 &1030110483
 GameObject:
   m_ObjectHideFlags: 0
