@@ -38,7 +38,7 @@ public class GameManager : Singleton<GameManager>
 {
     [Header("Path")]
     public string scriptablePath = "Scriptable/CharacterInfo/";
-    public string prefabPath = "Prefab/Characters/";
+    public string prefabPath = "Prefabs/Player/Characters/";
 
     [Header("Player")]
     public string playerName;
