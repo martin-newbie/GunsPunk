@@ -258,6 +258,9 @@ MonoBehaviour:
   - {fileID: 320836223}
   - {fileID: 417202466}
   - {fileID: 706086436}
+  CharactersIllustSprite: []
+  CharactersProfileSprite: []
+  CharactersNameSprite: []
 --- !u!1 &102923240
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &102923241
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1702,7 +1705,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &856665309
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3467,6 +3470,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3704cb8eef8160a45a1502a48011ad9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charInfo: {fileID: 0}
+  CharacterIllustImage: {fileID: 1059287205}
+  CharacterProfileImage: {fileID: 989571463}
+  CharacterNameImage: {fileID: 1435650208}
+  LockedObject: {fileID: 1814060814}
+  ValueIcons:
+  - {fileID: 102923240}
+  - {fileID: 856665308}
+  Cost: {fileID: 2131623075}
+  UnlockedObject: {fileID: 266709180}
 --- !u!1 &2131623073
 GameObject:
   m_ObjectHideFlags: 0

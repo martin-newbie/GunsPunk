@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopUIManager : MonoBehaviour
+public class ShopUIManager : Singleton<ShopUIManager>
 {
+    [Header("UI")]
     public Button[] Buttons;
     public Sprite[] SelectButtonImg;
     public Sprite[] UnselectButtonImg;
     public GameObject[] Windows;
+
+    [Header("Character Sprite")]
+    public Sprite[] CharactersIllustSprite;
+    public Sprite[] CharactersProfileSprite;
+    public Sprite[] CharactersNameSprite;
 
     private void Start()
     {

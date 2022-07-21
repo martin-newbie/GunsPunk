@@ -36,14 +36,18 @@ public struct characterInfo
 
 public class GameManager : Singleton<GameManager>
 {
+    [Header("Path")]
+    public string prefabPath = "Scriptable/CharacterInfo";
+    public string scriptablePath = "Prefab/Characters";
+
     [Header("Player")]
     public string playerName;
 
     [Header("Character")]
     public int PlayerIdx = 2;
     public int SubPlayerIdx = 1;
-    public PlayerBase[]       charactersPrefab;
-    public CharacterInfo[]  charactersInfo;
+    public PlayerBase[] charactersPrefab;
+    public CharacterInfo[] charactersInfo;
 
     [Header("Status")]
     public int curCoin;     // 무료 재화
@@ -61,9 +65,15 @@ public class GameManager : Singleton<GameManager>
     public int hitBulletCnt;            // 게임 플레이중 적 또는 장애물에 맞춘 총알의 수
     public int gamePlayCnt;             // 게임 플레이 횟수
 
+    private void Awake()
+    {
+        charactersPrefab = Resources.LoadAll<PlayerBase>(prefabPath);
+        charactersInfo = Resources.LoadAll<CharacterInfo>(scriptablePath);
+    }
+
     void LateUpdate()
     {
-        if(curExp >= maxExp)
+        if (curExp >= maxExp)
         {
             curExp -= maxExp;
             level++;
