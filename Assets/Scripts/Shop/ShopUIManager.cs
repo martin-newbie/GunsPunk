@@ -8,9 +8,14 @@ public interface IPopUp
     void Close();
 }
 
+public interface IRefresh
+{
+    void Refresh();
+}
+
 public class ShopUIManager : Singleton<ShopUIManager>
 {
-
+    public List<IRefresh> RefreshAble = new List<IRefresh>();
     public Stack<IPopUp> PopupStack = new Stack<IPopUp>();
     public int curPopupIdx;
 
@@ -55,6 +60,19 @@ public class ShopUIManager : Singleton<ShopUIManager>
     private void Update()
     {
         PopUpInput();
+    }
+
+    public void AddRefreshAble(IRefresh refresh)
+    {
+        RefreshAble.Add(refresh);
+    }
+
+    public void Refresh()
+    {
+        foreach (var item in RefreshAble)
+        {
+            item.Refresh();
+        }
     }
 
     public void OpenCharacterInfo(CharacterInfo info)

@@ -9,7 +9,7 @@ public enum ValueType
     Energy
 }
 
-public class CharacterContainer : MonoBehaviour
+public class CharacterContainer : MonoBehaviour, IRefresh
 {
     public CharacterInfo charInfo;
 
@@ -25,6 +25,8 @@ public class CharacterContainer : MonoBehaviour
 
     public void Init(int idx)
     {
+        ShopUIManager.Instance.AddRefreshAble(this);
+
         CharacterIllustImage.sprite = ShopUIManager.Instance.CharactersIllustSprite[idx];
         CharacterProfileImage.sprite = ShopUIManager.Instance.CharactersProfileSprite[idx];
         CharacterNameImage.sprite = ShopUIManager.Instance.CharactersNameSprite[idx];
