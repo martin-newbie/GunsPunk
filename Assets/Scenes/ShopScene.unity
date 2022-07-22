@@ -477,7 +477,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149125202}
   m_CullTransparentMesh: 1
---- !u!43 &159975702
+--- !u!43 &169751976
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4607,7 +4607,7 @@ PrefabInstance:
     - target: {fileID: 6154842305507703958, guid: 9a44341ec2a43ca4c86315dff996466e, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 159975702}
+      objectReference: {fileID: 169751976}
     - target: {fileID: 6154842305507704041, guid: 9a44341ec2a43ca4c86315dff996466e, type: 3}
       propertyPath: m_RootOrder
       value: 3
