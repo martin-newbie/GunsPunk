@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class MessgeBoxContainer : MonoBehaviour
+public class MessageBoxContainer : Singleton<MessageBoxContainer>
 {
     public ChooseMessage Choose;
     public ConfirmMessage Confirm;

@@ -505,6 +505,7 @@ GameObject:
   - component: {fileID: 3628061324397818222}
   - component: {fileID: 3628061324397818216}
   - component: {fileID: 3628061324397818223}
+  - component: {fileID: 3254287246423054566}
   m_Layer: 5
   m_Name: MessageBoxContainer
   m_TagString: Untagged
@@ -571,6 +572,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3254287246423054566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3628061324397818221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52c25c1d71261e64c844af0d41e55c3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Choose: {fileID: 3628061324534227409}
+  Confirm: {fileID: 3628061324190269762}
 --- !u!1 &3628061324534227413
 GameObject:
   m_ObjectHideFlags: 0
