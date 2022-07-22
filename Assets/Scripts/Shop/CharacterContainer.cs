@@ -50,6 +50,17 @@ public class CharacterContainer : MonoBehaviour
         }
     }
 
+    public void Refresh()
+    {
+        if (!charInfo.isUnlocked)
+        {
+            if (GameManager.Instance.curCoin < charInfo.cost)
+                Cost.color = Color.red;
+            else
+                Cost.color = Color.white;
+        }
+    }
+
     public void ButtonInfo()
     {
     }

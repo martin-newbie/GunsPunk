@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6154842305507703958}
   - component: {fileID: 6154842305507703959}
   - component: {fileID: 6154842305507703956}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RadialGraph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ea54a3121ae61c5479a0d09b873206ee, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e621357e23338478eb50137831ff4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 3
+  size: 10
   top: 1
   rightTop: 1
   rightBot: 1

@@ -41,7 +41,7 @@ public class GameManager : Singleton<GameManager>
     public string prefabPath = "Prefabs/Player/Characters/";
 
     [Header("Player")]
-    public string playerName;
+    public string playerName = "LeeEunChan";
 
     [Header("Character")]
     public int PlayerIdx = 2;
