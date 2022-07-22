@@ -5,6 +5,15 @@ using UnityEngine.UI;
 
 public class ShopUIManager : Singleton<ShopUIManager>
 {
+
+    public enum ShopWindowState
+    {
+        Main,
+        Info,
+        Message
+    }
+    public ShopWindowState ShopState;
+
     [Header("UI")]
     public Button[] Buttons;
     public Sprite[] SelectButtonImg;
@@ -38,6 +47,34 @@ public class ShopUIManager : Singleton<ShopUIManager>
 
         OpenWindow(0);
         SetValueText();
+    }
+
+    private void Update()
+    {
+        ShopInput();
+    }
+
+    void ShopInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            switch (ShopState)
+            {
+                case ShopWindowState.Main:
+                    LoadingSceneManager.LoadScene("MainScene");
+                    break;
+
+                case ShopWindowState.Info:
+                    //close info
+                    ShopState = ShopWindowState.Main;
+                    break;
+
+                case ShopWindowState.Message:
+                    //close message box
+                    ShopState = ShopWindowState.Info;
+                    break;
+            }
+        }
     }
 
     void SetValueText()
