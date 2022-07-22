@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public interface IPopUp
+{
+    void Close();
+}
+
 public class ShopUIManager : Singleton<ShopUIManager>
 {
 
-    public enum ShopWindowState
-    {
-        Main,
-        Info,
-        Message
-    }
-    public ShopWindowState ShopState;
+    public Stack<IPopUp> PopupStack = new Stack<IPopUp>();
+    public int curPopupIdx;
 
     [Header("UI")]
     public Button[] Buttons;
@@ -51,28 +51,33 @@ public class ShopUIManager : Singleton<ShopUIManager>
 
     private void Update()
     {
-        ShopInput();
+        PopUpInput();
     }
 
-    void ShopInput()
+    public void AddPopup(IPopUp popup)
+    {
+        PopupStack.Push(popup);
+        curPopupIdx++;
+    }
+
+    public void PopupClose()
+    {
+        IPopUp popup = PopupStack.Pop();
+        popup.Close();
+        curPopupIdx--;
+    }
+
+    void PopUpInput()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            switch (ShopState)
+            if(curPopupIdx > 0)
             {
-                case ShopWindowState.Main:
-                    LoadingSceneManager.LoadScene("MainScene");
-                    break;
-
-                case ShopWindowState.Info:
-                    //close info
-                    ShopState = ShopWindowState.Main;
-                    break;
-
-                case ShopWindowState.Message:
-                    //close message box
-                    ShopState = ShopWindowState.Info;
-                    break;
+                PopupClose();
+            }
+            else
+            {
+                LoadingSceneManager.LoadScene("MainScene");
             }
         }
     }
