@@ -21,7 +21,7 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp
         int idx = 0;
         foreach (var item in Stars)
         {
-            if (idx <= info.level)
+            if (idx < info.level)
             {
                 item.gameObject.SetActive(true);
             }
@@ -38,12 +38,12 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp
 
     public void WindowClose()
     {
+        ShopUIManager.Instance.PopupClose();
         Close();
     }
 
     public void Close()
     {
         gameObject.SetActive(false);
-        ShopUIManager.Instance.PopupClose();
     }
 }

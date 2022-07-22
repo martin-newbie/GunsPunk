@@ -14,6 +14,9 @@ public class ShopUIManager : Singleton<ShopUIManager>
     public Stack<IPopUp> PopupStack = new Stack<IPopUp>();
     public int curPopupIdx;
 
+    [Header("PopUp")]
+    public CharacterInfoWindow infoWindow;
+
     [Header("UI")]
     public Button[] Buttons;
     public Sprite[] SelectButtonImg;
@@ -52,6 +55,12 @@ public class ShopUIManager : Singleton<ShopUIManager>
     private void Update()
     {
         PopUpInput();
+    }
+
+    public void OpenCharacterInfo(CharacterInfo info)
+    {
+        infoWindow.gameObject.SetActive(true);
+        infoWindow.WindowOpen(info);
     }
 
     public void AddPopup(IPopUp popup)

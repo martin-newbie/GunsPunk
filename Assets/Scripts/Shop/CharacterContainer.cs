@@ -63,6 +63,7 @@ public class CharacterContainer : MonoBehaviour
 
     public void ButtonInfo()
     {
+        ShopUIManager.Instance.OpenCharacterInfo(charInfo);
     }
 
     public void ButtonRecruit()
