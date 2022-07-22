@@ -152,6 +152,7 @@ MonoBehaviour:
   HP: 0
   damage: 10
   moveSpeed: 4
+  isAlive: 1
   isActing: 0
   JumpForce: 13.5
   CheckRadius: 0.05
@@ -160,7 +161,6 @@ MonoBehaviour:
   TopPos: {fileID: 6010009858131066966}
   speed: 15
   fireRate: 800
-  isAlive: 1
   spread_pos: 0.3
   spread_rot: 5
   maxFever: 100

@@ -33,7 +33,7 @@ public abstract class HoldFirePlayer : PlayerBase
     public override void OnAttackEnd()
     {
 
-        if (curHold >= maxHold)
+        if (isHold && curHold >= maxHold)
         {
             Bullet temp = FireBullet();
             temp.notDestroy = true;
@@ -47,7 +47,8 @@ public abstract class HoldFirePlayer : PlayerBase
 
     public override void OnAttackStart()
     {
-        isHold = true;
+        if (AmmoCount > 0)
+            isHold = true;
     }
 
     protected override Bullet FireBullet()

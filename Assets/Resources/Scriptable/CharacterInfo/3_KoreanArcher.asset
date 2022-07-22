@@ -16,7 +16,7 @@ MonoBehaviour:
   level: 0
   HP: 250
   HPIncrease: 25
-  Ammo: 100
+  Ammo: 50
   AmmoIncrease: 10
   Damage: 35
   DamageIncrease: 10
