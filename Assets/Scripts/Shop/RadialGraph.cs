@@ -5,7 +5,7 @@ using UnityEngine;
 [ExecuteAlways]
 public class RadialGraph : MonoBehaviour
 {
-    Vector3[] vertices = new Vector3[5];
+    Vector3[] vertices = new Vector3[6];
     MeshFilter filter;
     Mesh mesh;
 
@@ -21,6 +21,7 @@ public class RadialGraph : MonoBehaviour
     {
         mesh = new Mesh();
         filter = GetComponent<MeshFilter>();
+        vertices = new Vector3[6];
     }
 
     private void Update()
@@ -30,10 +31,11 @@ public class RadialGraph : MonoBehaviour
         vertices[2] = new Vector3(0.6f, -0.8f) * rightBot * size;
         vertices[3] = new Vector3(-0.6f, -0.8f) * leftBot * size;
         vertices[4] = new Vector3(-0.95f, 0.3f) * leftTop * size;
+        vertices[5] = Vector3.zero;
 
         mesh.vertices = vertices;
 
-        mesh.triangles = new int[] { 0, 1, 2, 0, 2, 3, 0, 3, 4 };
+        mesh.triangles = new int[] { 0, 1, 5, 1, 2, 5, 2, 3, 5, 3, 4, 5, 4, 0, 5 };
         filter.mesh = mesh;
     }
 
