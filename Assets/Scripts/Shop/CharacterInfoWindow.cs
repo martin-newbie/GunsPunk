@@ -34,6 +34,17 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp
         CharacterLevel.text = "Lv. " + info.level.ToString();
         CharacterName.text = ""; //get name by character's name text asset
         CharacterDesc.text = ""; //get description by character's description text asset
+
+        SetRadialGraph(GameManager.Instance.GetCharacterInfo(info.idx));
+    }
+
+    void SetRadialGraph(characterInfo info)
+    {
+        CharacterStatusGraph.top = info.hp / 500f;
+        CharacterStatusGraph.rightTop = info.ammo / 500f;
+        CharacterStatusGraph.rightBot = info.damage / 50f;
+        CharacterStatusGraph.leftBot = info.fever / 25f;
+        CharacterStatusGraph.leftTop = info.rpm / 2500f;
     }
 
     public void WindowClose()
