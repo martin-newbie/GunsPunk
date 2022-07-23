@@ -36,6 +36,7 @@ public class CharacterInfo : ScriptableObject
     public int cost;
     public bool isUnlocked;
     public ValueType valueType;
+    public bool isSelected;
     public string description => GetString();
 
     public bool TrainigAble()

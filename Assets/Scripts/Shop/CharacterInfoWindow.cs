@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterInfoWindow : MonoBehaviour, IPopUp
+public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
 {
     CharacterInfo info;
 
     [Header("Sprites")]
     public Sprite[] CharacterIllustSprites;
     public Sprite[] CharacterNameSprites;
+    public Sprite selectSprite;
+    public Sprite selectedSprite;
 
     [Header("UI Objects")]
     public RadialGraph CharacterStatusGraph;
@@ -20,6 +22,7 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp
     public Text CharacterLevel;
     public Text CharacterDesc;
     public Button TrainingButton;
+    public Button ChooseButton;
 
     public void WindowOpen(CharacterInfo _info)
     {
@@ -41,10 +44,16 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp
         CharacterLevel.text = _info.trainingLevel.ToString();
         CharacterLevelGauge.fillAmount = 0f; //get exp by character's exp / maxExp
         CharacterDesc.text = ""; //get description by character's description text asset
-        SetRadialGraph(GameManager.Instance.GetCharacterInfo(_info.idx));
-
         info = _info;
+
+        SetRadialGraph(GameManager.Instance.GetCharacterInfo(_info.idx));
         CheckTrainingAble();
+        CheckSelected();
+    }
+
+    void CheckSelected()
+    {
+        ChooseButton.image.sprite = info.isSelected ? selectedSprite : selectSprite;
     }
 
     void CheckTrainingAble()
@@ -58,7 +67,7 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp
         {
             // open popup
 
-            if(info.trainingLevel < 4)
+            if (info.trainingLevel < 4)
             {
                 // use coin
             }
@@ -90,5 +99,15 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp
     public void Close()
     {
         gameObject.SetActive(false);
+    }
+
+    public void Refresh()
+    {
+        if (info != null)
+        {
+            CheckTrainingAble();
+            SetRadialGraph(GameManager.Instance.GetCharacterInfo(info.idx));
+            CheckSelected();
+        }
     }
 }
