@@ -9,6 +9,9 @@ public class RadialGraph : MonoBehaviour
     MeshFilter filter;
     Mesh mesh;
 
+    [Header("Position")]
+    public Vector3[] VerticesPos = new Vector3[5];
+
     [Header("Value")]
     public float size = 1f;
     [Range(0f, 1f)] public float top = 1f;
@@ -26,11 +29,11 @@ public class RadialGraph : MonoBehaviour
 
     private void Update()
     {
-        vertices[0] = new Vector3(0f, 1f) * top * size;
-        vertices[1] = new Vector3(0.95f, 0.3f) * rightTop * size;
-        vertices[2] = new Vector3(0.6f, -0.8f) * rightBot * size;
-        vertices[3] = new Vector3(-0.6f, -0.8f) * leftBot * size;
-        vertices[4] = new Vector3(-0.95f, 0.3f) * leftTop * size;
+        vertices[0] = VerticesPos[0] * top * size;
+        vertices[1] = VerticesPos[1] * rightTop * size;
+        vertices[2] = VerticesPos[2] * rightBot * size;
+        vertices[3] = VerticesPos[3] * leftBot * size;
+        vertices[4] = VerticesPos[4] * leftTop * size;
         vertices[5] = Vector3.zero;
 
         mesh.vertices = vertices;

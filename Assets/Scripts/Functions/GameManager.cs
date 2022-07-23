@@ -19,7 +19,7 @@ public struct characterInfo
 
     public characterInfo(CharacterInfo info)
     {
-        level = info.level;
+        level = info.trainingLevel;
         hp = info.HP + (level * info.HPIncrease);
         ammo = info.Ammo + (level * info.AmmoIncrease);
         damage = info.Damage + (level * info.Damage);
