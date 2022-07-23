@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="CharacterInfo", menuName ="Character Menu", order =int.MinValue), System.Serializable]
+[CreateAssetMenu(fileName = "CharacterInfo", menuName = "Character Menu", order = int.MinValue), System.Serializable]
 public class CharacterInfo : ScriptableObject
 {
+    [Header("Status")]
     public int idx;
     public int level;
     public int trainingLevel;
+    public float exp;
+    public float maxExp => GetMaxExp();
     public readonly int maxTrainingLevel = 5;
+
 
     [Header("Dynamic Value")]
     public float HP;
@@ -33,6 +37,12 @@ public class CharacterInfo : ScriptableObject
     public bool isUnlocked;
     public ValueType valueType;
     public string description => GetString();
+
+    public float GetMaxExp()
+    {
+        float max = level * 25 + 100;
+        return max;
+    }
 
     public string GetString()
     {

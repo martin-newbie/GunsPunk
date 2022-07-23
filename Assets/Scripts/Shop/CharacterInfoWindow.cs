@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CharacterInfoWindow : MonoBehaviour, IPopUp
 {
+    CharacterInfo info;
 
     [Header("Sprites")]
     public Sprite[] CharacterIllustSprites;
@@ -19,14 +20,14 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp
     public Text CharacterLevel;
     public Text CharacterDesc;
 
-    public void WindowOpen(CharacterInfo info)
+    public void WindowOpen(CharacterInfo _info)
     {
         ShopUIManager.Instance.AddPopup(this);
 
         int idx = 0;
         foreach (var item in Stars)
         {
-            if (idx < info.trainingLevel)
+            if (idx < _info.trainingLevel)
             {
                 item.gameObject.SetActive(true);
             }
@@ -34,13 +35,14 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp
             idx++;
         }
         // todo
-        CharacterIllustImage.sprite = CharacterIllustSprites[info.idx];
-        CharacterName.sprite = CharacterNameSprites[info.idx];
-        CharacterLevel.text = info.trainingLevel.ToString();
+        CharacterIllustImage.sprite = CharacterIllustSprites[_info.idx];
+        CharacterName.sprite = CharacterNameSprites[_info.idx];
+        CharacterLevel.text = _info.trainingLevel.ToString();
         CharacterLevelGauge.fillAmount = 0f; //get exp by character's exp / maxExp
         CharacterDesc.text = ""; //get description by character's description text asset
+        SetRadialGraph(GameManager.Instance.GetCharacterInfo(_info.idx));
 
-        SetRadialGraph(GameManager.Instance.GetCharacterInfo(info.idx));
+        info = _info;
     }
 
     void SetRadialGraph(characterInfo info)
