@@ -59,7 +59,7 @@ public class InGameManager : Singleton<InGameManager>
     {
         PlayerPrefabs = GameManager.Instance.charactersPrefab;
 
-        int playerIdx = GameManager.Instance.PlayerIdx;
+        int playerIdx = GameManager.Instance.mainPlayerIdx;
 
         PlayerBase temp = Instantiate(PlayerPrefabs[playerIdx], PlayerPoses[0].position, Quaternion.identity);
         temp.Init(GameManager.Instance.GetCharacterInfo(playerIdx));
@@ -67,7 +67,7 @@ public class InGameManager : Singleton<InGameManager>
         CurPlayer = temp;
         CurPlayer.UIInit();
 
-        int subPlayerIdx = GameManager.Instance.SubPlayerIdx;
+        int subPlayerIdx = GameManager.Instance.subPlayerIdx;
         temp = Instantiate(PlayerPrefabs[subPlayerIdx], PlayerPoses[0].position, Quaternion.identity);
         temp.Init(GameManager.Instance.GetCharacterInfo(subPlayerIdx));
 

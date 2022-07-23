@@ -27,6 +27,7 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
     public void WindowOpen(CharacterInfo _info)
     {
         ShopUIManager.Instance.AddPopup(this);
+        ShopUIManager.Instance.AddRefreshAble(this);
 
         int idx = 0;
         foreach (var item in Stars)
@@ -41,7 +42,7 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
         // todo
         CharacterIllustImage.sprite = CharacterIllustSprites[_info.idx];
         CharacterName.sprite = CharacterNameSprites[_info.idx];
-        CharacterLevel.text = _info.trainingLevel.ToString();
+        CharacterLevel.text = _info.level.ToString();
         CharacterLevelGauge.fillAmount = 0f; //get exp by character's exp / maxExp
         CharacterDesc.text = ""; //get description by character's description text asset
         info = _info;
@@ -59,6 +60,17 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
     void CheckTrainingAble()
     {
         TrainingButton.gameObject.SetActive(info.TrainigAble());
+    }
+
+    public void CharacterChoose()
+    {
+        if (!info.isSelected)
+        {
+            // select main or sub
+            GameManager.Instance.SetMainCharacter(info.idx);
+        }
+
+        ShopUIManager.Instance.Refresh();
     }
 
     public void CharacterTraining()
@@ -79,6 +91,8 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
             info.trainingLevel++;
         }
         CheckTrainingAble();
+
+        ShopUIManager.Instance.Refresh();
     }
 
     void SetRadialGraph(characterInfo info)

@@ -44,8 +44,8 @@ public class GameManager : Singleton<GameManager>
     public string playerName = "LeeEunChan";
 
     [Header("Character")]
-    public int PlayerIdx = 2;
-    public int SubPlayerIdx = 1;
+    public int mainPlayerIdx = 2;
+    public int subPlayerIdx = 1;
     public PlayerBase[] charactersPrefab;
     public CharacterInfo[] charactersInfo;
 
@@ -69,6 +69,10 @@ public class GameManager : Singleton<GameManager>
     {
         charactersPrefab = Resources.LoadAll<PlayerBase>(prefabPath);
         charactersInfo = Resources.LoadAll<CharacterInfo>(scriptablePath);
+
+        // call when the game starts and first
+        SetMainCharacter(0);
+        SetSubCharacter(1);
     }
 
     void LateUpdate()
@@ -91,5 +95,21 @@ public class GameManager : Singleton<GameManager>
         ret = (level + 2) * level * 50;
 
         return ret;
+    }
+
+    public void SetMainCharacter(int idx)
+    {
+        charactersInfo[mainPlayerIdx].isSelected = false;
+
+        charactersInfo[idx].isSelected = true;
+        mainPlayerIdx = idx;
+    }
+
+    public void SetSubCharacter(int idx)
+    {
+        charactersInfo[subPlayerIdx].isSelected = false;
+
+        charactersInfo[idx].isSelected = true;
+        subPlayerIdx = idx;
     }
 }

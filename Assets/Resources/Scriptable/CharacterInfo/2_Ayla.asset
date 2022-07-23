@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idx: 1
   level: 0
+  trainingLevel: 0
+  exp: 0
   HP: 100
   HPIncrease: 15
   Ammo: 80
@@ -31,3 +33,4 @@ MonoBehaviour:
   cost: 1000
   isUnlocked: 1
   valueType: 0
+  isSelected: 0
