@@ -503,7 +503,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3628061324397818222}
-  - component: {fileID: 3628061324397818216}
   - component: {fileID: 3254287246423054566}
   m_Layer: 5
   m_Name: MessageBoxContainer
@@ -534,14 +533,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &3628061324397818216
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3628061324397818221}
-  m_CullTransparentMesh: 1
 --- !u!114 &3254287246423054566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,6 +547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Choose: {fileID: 3628061324534227409}
   Confirm: {fileID: 3628061324190269762}
+  Background: {fileID: 8749887084877449839}
 --- !u!1 &3628061324534227413
 GameObject:
   m_ObjectHideFlags: 0

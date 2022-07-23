@@ -1558,17 +1558,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 45736730}
     m_Modifications:
-    - target: {fileID: 3628061324190269766, guid: a208a11d0c09df24ca043fa9a0ec145d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3628061324397818221, guid: a208a11d0c09df24ca043fa9a0ec145d, type: 3}
       propertyPath: m_Name
       value: MessageBoxContainer
-      objectReference: {fileID: 0}
-    - target: {fileID: 3628061324397818221, guid: a208a11d0c09df24ca043fa9a0ec145d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3628061324397818222, guid: a208a11d0c09df24ca043fa9a0ec145d, type: 3}
       propertyPath: m_Pivot.x
@@ -1653,10 +1645,6 @@ PrefabInstance:
     - target: {fileID: 3628061324397818222, guid: a208a11d0c09df24ca043fa9a0ec145d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3628061324534227413, guid: a208a11d0c09df24ca043fa9a0ec145d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a208a11d0c09df24ca043fa9a0ec145d, type: 3}
