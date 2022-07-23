@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idx: 0
   level: 0
-  trainingLevel: 0
+  trainingLevel: 3
+  exp: 0
   HP: 100
   HPIncrease: 15
   Ammo: 75

@@ -19,6 +19,7 @@ public class CharacterContainer : MonoBehaviour, IRefresh
 
     public GameObject LockedObject;
     public GameObject[] ValueIcons;
+    public GameObject[] Stars;
     public Text Cost;
 
     public GameObject UnlockedObject;
@@ -50,6 +51,11 @@ public class CharacterContainer : MonoBehaviour, IRefresh
             if (GameManager.Instance.curCoin < charInfo.cost) Cost.color = Color.red;
 
         }
+
+        for (int i = 0; i < charInfo.trainingLevel; i++)
+        {
+            Stars[i].SetActive(true);
+        }
     }
 
     public void Refresh()
@@ -60,6 +66,11 @@ public class CharacterContainer : MonoBehaviour, IRefresh
                 Cost.color = Color.red;
             else
                 Cost.color = Color.white;
+        }
+
+        for (int i = 0; i < charInfo.trainingLevel; i++)
+        {
+            Stars[i].SetActive(true);
         }
     }
 
