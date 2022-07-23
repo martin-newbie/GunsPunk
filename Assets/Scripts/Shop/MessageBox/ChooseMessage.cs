@@ -10,8 +10,12 @@ public class ChooseMessage : MonoBehaviour, IPopUp
     public Button RefuseButton;
     public Text MessageTxt;
 
-    public void Init(Action accept, Action refuse, string message)
+    MessageBoxContainer manager;
+
+    public void Init(Action accept, Action refuse, string message, MessageBoxContainer _manager)
     {
+        manager = _manager;
+
         ShopUIManager.Instance.AddPopup(this);
         MessageTxt.text = message;
 
@@ -19,6 +23,8 @@ public class ChooseMessage : MonoBehaviour, IPopUp
         RefuseButton.onClick.RemoveAllListeners();
 
         refuse += Close;
+        refuse += manager.ClosePopup;
+        accept += manager.ClosePopup;
 
         AcceptButton.onClick.AddListener(()=> accept?.Invoke());
         RefuseButton.onClick.AddListener(() => refuse?.Invoke());

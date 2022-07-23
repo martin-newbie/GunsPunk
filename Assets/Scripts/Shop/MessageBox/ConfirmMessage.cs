@@ -9,14 +9,18 @@ public class ConfirmMessage : MonoBehaviour, IPopUp
     public Button ConfirmButton;
     public Text MessageTxt;
 
-    public void Init(Action confirm, string message)
+    MessageBoxContainer manager;
+
+    public void Init(Action confirm, string message, MessageBoxContainer _manager)
     {
+        manager = _manager;
         ShopUIManager.Instance.AddPopup(this);
         MessageTxt.text = message;
 
         ConfirmButton.onClick.RemoveAllListeners();
 
         confirm += Confirm;
+        confirm += manager.ClosePopup;
 
         ConfirmButton.onClick.AddListener(() => confirm?.Invoke());
     }

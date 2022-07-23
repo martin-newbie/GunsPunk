@@ -19,6 +19,7 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp
     public Image CharacterName;
     public Text CharacterLevel;
     public Text CharacterDesc;
+    public Button TrainingButton;
 
     public void WindowOpen(CharacterInfo _info)
     {
@@ -43,6 +44,32 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp
         SetRadialGraph(GameManager.Instance.GetCharacterInfo(_info.idx));
 
         info = _info;
+        CheckTrainingAble();
+    }
+
+    void CheckTrainingAble()
+    {
+        TrainingButton.gameObject.SetActive(info.TrainigAble());
+    }
+
+    public void CharacterTraining()
+    {
+        if (info.TrainigAble())
+        {
+            // open popup
+
+            if(info.trainingLevel < 4)
+            {
+                // use coin
+            }
+            else
+            {
+                // use energy
+            }
+
+            info.trainingLevel++;
+        }
+        CheckTrainingAble();
     }
 
     void SetRadialGraph(characterInfo info)

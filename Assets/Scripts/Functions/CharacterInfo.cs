@@ -38,6 +38,14 @@ public class CharacterInfo : ScriptableObject
     public ValueType valueType;
     public string description => GetString();
 
+    public bool TrainigAble()
+    {
+        bool levelAble = (level / 10) > trainingLevel;
+        bool maxAble = trainingLevel < maxTrainingLevel;
+
+        return levelAble && maxAble;
+    }
+
     public float GetMaxExp()
     {
         float max = level * 25 + 100;
