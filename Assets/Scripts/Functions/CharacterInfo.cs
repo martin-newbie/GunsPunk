@@ -49,7 +49,7 @@ public class CharacterInfo : ScriptableObject
 
     public float GetMaxExp()
     {
-        float max = level * 25 + 100;
+        float max = level * 60 + 100;
         return max;
     }
 

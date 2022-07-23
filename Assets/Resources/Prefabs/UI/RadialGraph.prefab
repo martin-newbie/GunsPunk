@@ -170,12 +170,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VerticesPos:
-  - {x: 0, y: 1, z: 0}
-  - {x: 0.95, y: 0.35, z: 0}
-  - {x: 0.55, y: -0.8, z: 0}
-  - {x: -0.55, y: -0.8, z: 0}
-  - {x: -0.95, y: 0.35, z: 0}
-  size: 10
+  - {x: -0.006, y: 1, z: 0}
+  - {x: 0.95, y: 0.306, z: 0}
+  - {x: 0.585, y: -0.83, z: 0}
+  - {x: -0.6, y: -0.83, z: 0}
+  - {x: -0.97, y: 0.31, z: 0}
+  size: 9
   top: 1
   rightTop: 1
   rightBot: 1
