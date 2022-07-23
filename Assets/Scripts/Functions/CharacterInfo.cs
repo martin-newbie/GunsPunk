@@ -39,6 +39,23 @@ public class CharacterInfo : ScriptableObject
     public bool isSelected;
     public string description => GetString();
 
+    public void GetExp(float _exp)
+    {
+        exp += _exp;
+        while (true)
+        {
+            if (exp >= maxExp)
+            {
+                exp -= maxExp;
+                level++;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
     public bool TrainigAble()
     {
         bool levelAble = (level / 10) > trainingLevel;
