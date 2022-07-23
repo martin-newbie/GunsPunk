@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9455d23bc4d5c5e45a7cd11efc988586, type: 3}
-  m_Name: 2_Girl
+  m_Name: 2_Ayla
   m_EditorClassIdentifier: 
   idx: 1
   level: 0
