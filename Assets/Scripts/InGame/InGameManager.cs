@@ -99,7 +99,7 @@ public class InGameManager : Singleton<InGameManager>
 
         if (!isRevived)
         {
-            StartCoroutine(ReviveCoroutine());
+            StartCoroutine(ReviveCoroutine(15f));
         }
         else
         {
@@ -107,8 +107,36 @@ public class InGameManager : Singleton<InGameManager>
         }
     }
 
-    IEnumerator ReviveCoroutine()
+    [HideInInspector]
+    public bool isSkip;
+
+    IEnumerator ReviveCoroutine(float duration)
     {
+        float timer = duration;
+
+        while (timer > 0f)
+        {
+
+
+
+            timer -= Time.deltaTime;
+            yield return null;
+
+            if(timer <= 0f)
+            {
+
+            }
+        }
+
+
+        yield return StartCoroutine(PlayerSwapCoroutine());
+
+        yield break;
+    }
+
+    IEnumerator PlayerSwapCoroutine()
+    {
+
         isRevived = true;
         isGameActive = false;
         InGameUIManager.Instance.SetPlayerHp(0, CurPlayer.maxHP);
