@@ -46,7 +46,7 @@ public class GameEnd : MonoBehaviour
 
     void OpenResult()
     {
-
+        var result = InGameManager.Instance.GetResult();
     }
 
     IEnumerator ReviveCoroutine(float duration)
