@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class InGameUIManager : Singleton<InGameUIManager>
 {
+
+    [Header("UI Objects")]
     public Image PlayerHpGauge;
     public Image FeverGauge;
     public Image AmmoGauge;
@@ -12,7 +14,9 @@ public class InGameUIManager : Singleton<InGameUIManager>
 
     public Text RoundCoinText;
 
+    [Header("Script Objects")]
     public PauseUI PauseObject;
+    public GameEnd GameEndObject;
 
     int roundCoin;
     public int RoundCoin
@@ -32,6 +36,11 @@ public class InGameUIManager : Singleton<InGameUIManager>
     float feverCur, feverMax, feverTarget;
     float ammoCur, ammoMax, ammoTarget;
 
+    private void Start()
+    {
+        GameEndObject.gameObject.SetActive(false);
+    }
+
     private void Update()
     {
         hpCur = Mathf.Lerp(hpCur, hpTarget, Time.deltaTime * 10f);
@@ -41,6 +50,12 @@ public class InGameUIManager : Singleton<InGameUIManager>
         PlayerHpGauge.fillAmount = hpCur / hpMax;
         FeverGauge.fillAmount = feverCur / feverMax;
         AmmoGauge.fillAmount = ammoCur / ammoMax;
+    }
+
+    public void StartGameEnd()
+    {
+        GameEndObject.gameObject.SetActive(true);
+        GameEndObject.OpenGameEnd();
     }
 
     public void PauseOn()

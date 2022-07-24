@@ -17,6 +17,7 @@ public class GameEnd : MonoBehaviour
     public RectTransform secondNeedle;
 
     Coroutine revive;
+    Coroutine result;
 
     public void OpenGameEnd()
     {
@@ -50,20 +51,30 @@ public class GameEnd : MonoBehaviour
 
     IEnumerator ReviveCoroutine(float duration)
     {
+        ReviveWindow.SetActive(true);
         yield return ReviveMain.DOAnchorPosY(40, 0.5f).SetEase(Ease.OutBack);
 
         float timer = duration;
         while (timer > 0f)
         {
-
-
-
+            secondNeedle.rotation = Quaternion.Euler(0, 0, 90 + (360 * (timer / duration)));
             timer -= Time.deltaTime;
             yield return null;
         }
 
-
+        OpenResult();
         yield break;
+    }
+
+    public void ButtonRevive()
+    {
+        StopCoroutine(revive);
+        ReviveMain.DOAnchorPosY(-1200f, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
+        {
+            already = true;
+            ReviveWindow.SetActive(false);
+            InGameManager.Instance.Revive();
+        });
     }
 
     public void ButtonSkip()

@@ -30,8 +30,11 @@ public class InGameManager : Singleton<InGameManager>
     public float monsterSpawnSpeed;
     public bool isRevived;
     public bool isGameActive;
-    public int roundCoin;
     public bool isPaused;
+
+    [Header("Results")]
+    public int roundCoin;
+    public float roundDistance;
 
     Coroutine monsterSpawn_coroutine;
     Coroutine hurdleSpawn_coroutine;
@@ -99,37 +102,22 @@ public class InGameManager : Singleton<InGameManager>
         StopCoroutine(hurdleSpawn_coroutine);
         StopCoroutine(monsterSpawn_coroutine);
 
-        
+        InGameUIManager.Instance.StartGameEnd();
     }
 
-    IEnumerator GameOverCoroutine()
+    public (float _distance, int _coin) GetResult()
     {
-
-        yield break;
+        var result = (_distance: roundDistance, _coin: roundCoin);
+        return result;
     }
 
-    [HideInInspector]
-    public bool isSkip;
-
-    IEnumerator ReviveCoroutine(float duration)
+    public void Revive()
     {
-        float timer = duration;
+        StartCoroutine(ReviveCoroutine());
+    }
 
-        while (timer > 0f)
-        {
-
-
-
-            timer -= Time.deltaTime;
-            yield return null;
-
-            if(timer <= 0f)
-            {
-
-            }
-        }
-
-
+    IEnumerator ReviveCoroutine()
+    {
         yield return StartCoroutine(PlayerSwapCoroutine());
 
         yield break;
