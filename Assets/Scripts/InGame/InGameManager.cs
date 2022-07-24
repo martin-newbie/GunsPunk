@@ -74,11 +74,14 @@ public class InGameManager : Singleton<InGameManager>
         SubPlayer = temp;
         SubPlayer.gameObject.SetActive(false);
 
-        HoldFirePlayer hold;
-        InGameUIManager.Instance.HoldGauge.gameObject.SetActive(CurPlayer.TryGetComponent(out hold));
-
+        SetHoldGaugeActive();
         GetRoundCoin(0);
         GameStart();
+    }
+    
+    void SetHoldGaugeActive()
+    {
+        InGameUIManager.Instance.HoldGauge.transform.parent.gameObject.SetActive(CurPlayer.GetComponent<HoldFirePlayer>() != null);
     }
 
     public Item SpawnRandomItem(Vector3 pos, int idx = -1)
@@ -96,15 +99,13 @@ public class InGameManager : Singleton<InGameManager>
         StopCoroutine(hurdleSpawn_coroutine);
         StopCoroutine(monsterSpawn_coroutine);
 
+        
+    }
 
-        if (!isRevived)
-        {
-            StartCoroutine(ReviveCoroutine(15f));
-        }
-        else
-        {
+    IEnumerator GameOverCoroutine()
+    {
 
-        }
+        yield break;
     }
 
     [HideInInspector]
@@ -166,7 +167,7 @@ public class InGameManager : Singleton<InGameManager>
         SubPlayer = null;
 
         isGameActive = true;
-
+        SetHoldGaugeActive();
         while (temp.transform.position.x >= -12f)
         {
             temp.MoveForward(-1);

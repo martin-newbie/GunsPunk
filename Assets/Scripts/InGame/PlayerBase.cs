@@ -85,6 +85,24 @@ public abstract class PlayerBase : JumpAble
             SetGaugeUI();
 
             ComputerDebug();
+
+            SetJumpIndex();
+        }
+    }
+
+    void SetJumpIndex()
+    {
+        if (transform.position.y > -4.5f && transform.position.y < -3f)
+        {
+            curPosIdx = 0;
+        }
+        else if (transform.position.y > -1.75f && transform.position.y < 0f)
+        {
+            curPosIdx = 1;
+        }
+        else if (transform.position.y > 1f && transform.position.y < 2f)
+        {
+            curPosIdx = 2;
         }
     }
 
