@@ -106,7 +106,6 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
     public void WindowClose()
     {
         ShopUIManager.Instance.PopupClose();
-        Close();
     }
 
     public void Close()

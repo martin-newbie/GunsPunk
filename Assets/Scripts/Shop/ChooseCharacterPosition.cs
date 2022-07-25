@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class ChooseCharacterPosition : MonoBehaviour
+public class ChooseCharacterPosition : MonoBehaviour, IPopUp
 {
 
     public CharacterInfo info;
@@ -12,6 +12,7 @@ public class ChooseCharacterPosition : MonoBehaviour
 
     public void Init(CharacterInfo _info)
     {
+        ShopUIManager.Instance.AddPopup(this);
         if (rect == null) rect = GetComponent<RectTransform>();
 
         MainObj.anchoredPosition = new Vector2(0, -1200f);
@@ -39,5 +40,10 @@ public class ChooseCharacterPosition : MonoBehaviour
         {
             gameObject.SetActive(false);
         });
+    }
+
+    public void Close()
+    {
+        UIClose();
     }
 }
