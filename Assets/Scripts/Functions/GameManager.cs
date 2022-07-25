@@ -67,12 +67,11 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
+
+        DontDestroyOnLoad(gameObject);
+
         charactersPrefab = Resources.LoadAll<PlayerBase>(prefabPath);
         charactersInfo = Resources.LoadAll<CharacterInfo>(scriptablePath);
-
-        // call when the game starts and first
-        SetMainCharacter(0);
-        SetSubCharacter(1);
     }
 
     void LateUpdate()

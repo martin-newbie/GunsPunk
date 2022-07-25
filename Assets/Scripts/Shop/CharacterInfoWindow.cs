@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
 {
-    CharacterInfo info;
+    public CharacterInfo info;
 
     [Header("Sprites")]
     public Sprite[] CharacterIllustSprites;
