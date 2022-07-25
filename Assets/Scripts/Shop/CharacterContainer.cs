@@ -67,9 +67,11 @@ public class CharacterContainer : MonoBehaviour, IRefresh
                 Cost.color = Color.white;
         }
 
-        for (int i = 0; i < info.trainingLevel; i++)
+        for (int i = 0; i < Stars.Length; i++)
         {
-            Stars[i].SetActive(true);
+            if (i < info.trainingLevel)
+                Stars[i].SetActive(true);
+            else Stars[i].SetActive(false);
         }
 
         selectButton.image.sprite = info.isSelected ? selectedSprite : defaultSprite;
