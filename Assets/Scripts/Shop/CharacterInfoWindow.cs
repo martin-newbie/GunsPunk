@@ -67,10 +67,9 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
         if (!info.isSelected)
         {
             // select main or sub
-            GameManager.Instance.SetMainCharacter(info.idx);
+            ShopUIManager.Instance.ChooseCharacterPos(info);
         }
 
-        ShopUIManager.Instance.Refresh();
     }
 
     public void CharacterTraining()

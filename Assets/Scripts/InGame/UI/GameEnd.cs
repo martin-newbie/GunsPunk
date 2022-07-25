@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class GameEnd : MonoBehaviour
@@ -13,8 +14,11 @@ public class GameEnd : MonoBehaviour
     public RectTransform ReviveMain;
     public RectTransform ResultMain;
 
-    [Header("UI Objects")]
+    [Header("Revive Object")]
     public RectTransform secondNeedle;
+
+    [Header("Result Object")]
+
 
     Coroutine revive;
     Coroutine result;
@@ -46,7 +50,13 @@ public class GameEnd : MonoBehaviour
 
     void OpenResult()
     {
-        var result = InGameManager.Instance.GetResult();
+        var reward = InGameManager.Instance.GetResult();
+        result = StartCoroutine(ResultCoroutine(reward._distance, reward._coin));
+    }
+
+    IEnumerator ResultCoroutine(float _distance, int _coin)
+    {
+        yield break;
     }
 
     IEnumerator ReviveCoroutine(float duration)

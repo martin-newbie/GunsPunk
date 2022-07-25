@@ -33,6 +33,7 @@ public class ShopUIManager : Singleton<ShopUIManager>
 
     [Header("Windows")]
     public RectTransform CharacterContents;
+    public ChooseCharacterPosition ChoosePos;
 
     [Header("Character Sprite")]
     public Sprite[] CharactersIllustSprite;
@@ -60,6 +61,12 @@ public class ShopUIManager : Singleton<ShopUIManager>
     private void Update()
     {
         PopUpInput();
+    }
+
+    public void ChooseCharacterPos(CharacterInfo info)
+    {
+        ChoosePos.gameObject.SetActive(true);
+        ChoosePos.Init(info);
     }
 
     public void AddRefreshAble(IRefresh refresh)
