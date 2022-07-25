@@ -81,6 +81,9 @@ public class CharacterContainer : MonoBehaviour, IRefresh
     {
         if (!info.isSelected)
             ShopUIManager.Instance.ChooseCharacterPos(info);
+        else
+            MessageBoxContainer.Instance.OpenConfirmMessage(null, "Already Selected");
+
     }
 
     public void ButtonInfo()
@@ -99,6 +102,7 @@ public class CharacterContainer : MonoBehaviour, IRefresh
         {
             //print message
             //not enought money
+            MessageBoxContainer.Instance.OpenConfirmMessage(null, "Not enough coin or energy");
         }
     }
 }

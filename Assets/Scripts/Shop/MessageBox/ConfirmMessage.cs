@@ -12,6 +12,7 @@ public class ConfirmMessage : MonoBehaviour, IPopUp
 
     MessageBoxContainer manager;
     RectTransform rect;
+    Action closeAction;
 
     public void Init(Action confirm, string message, MessageBoxContainer _manager)
     {
@@ -28,19 +29,21 @@ public class ConfirmMessage : MonoBehaviour, IPopUp
         confirm += Confirm;
         confirm += manager.ClosePopup;
 
+        closeAction = confirm - Confirm;
+
         ConfirmButton.onClick.AddListener(() => confirm?.Invoke());
     }
 
     public void Confirm()
     {
         ShopUIManager.Instance.PopupClose();
-        Close();
     }
 
     public void Close()
     {
-        rect.DOAnchorPosY(0f, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
+        rect.DOAnchorPosY(-1200f, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
         {
+            closeAction?.Invoke();
             gameObject.SetActive(false);
         });
     }

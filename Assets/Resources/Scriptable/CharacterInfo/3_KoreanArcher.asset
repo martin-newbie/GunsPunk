@@ -31,6 +31,6 @@ MonoBehaviour:
   AmmoItemValue: 10
   HPItemValue: 50
   cost: 50000
-  isUnlocked: 1
+  isUnlocked: 0
   valueType: 1
   isSelected: 0
