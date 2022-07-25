@@ -11,7 +11,7 @@ public enum ValueType
 
 public class CharacterContainer : MonoBehaviour, IRefresh
 {
-    public CharacterInfo charInfo;
+    public CharacterInfo info;
 
     public Image CharacterIllustImage;
     public Image CharacterProfileImage;
@@ -21,6 +21,11 @@ public class CharacterContainer : MonoBehaviour, IRefresh
     public GameObject[] ValueIcons;
     public GameObject[] Stars;
     public Text Cost;
+
+    [Header("Button")]
+    public Button selectButton;
+    public Sprite defaultSprite;
+    public Sprite selectedSprite;
 
     public GameObject UnlockedObject;
 
@@ -32,10 +37,10 @@ public class CharacterContainer : MonoBehaviour, IRefresh
         CharacterProfileImage.sprite = ShopUIManager.Instance.CharactersProfileSprite[idx];
         CharacterNameImage.sprite = ShopUIManager.Instance.CharactersNameSprite[idx];
 
-        charInfo = GameManager.Instance.charactersInfo[idx];
+        info = GameManager.Instance.charactersInfo[idx];
 
 
-        if (charInfo.isUnlocked)
+        if (info.isUnlocked)
         {
             LockedObject.SetActive(false);
             UnlockedObject.SetActive(true);
@@ -44,47 +49,49 @@ public class CharacterContainer : MonoBehaviour, IRefresh
         {
             LockedObject.SetActive(true);
             UnlockedObject.SetActive(false);
-            Cost.text = string.Format("{0:#,##}", charInfo.cost);
+            Cost.text = string.Format("{0:#,##}", info.cost);
 
-            ValueIcons[(int)charInfo.valueType].SetActive(true);
-
-            if (GameManager.Instance.curCoin < charInfo.cost) Cost.color = Color.red;
+            ValueIcons[(int)info.valueType].SetActive(true);
 
         }
-
-        for (int i = 0; i < charInfo.trainingLevel; i++)
-        {
-            Stars[i].SetActive(true);
-        }
+        Refresh();
     }
 
     public void Refresh()
     {
-        if (!charInfo.isUnlocked)
+        if (!info.isUnlocked)
         {
-            if (GameManager.Instance.curCoin < charInfo.cost)
+            if (GameManager.Instance.curCoin < info.cost)
                 Cost.color = Color.red;
             else
                 Cost.color = Color.white;
         }
 
-        for (int i = 0; i < charInfo.trainingLevel; i++)
+        for (int i = 0; i < info.trainingLevel; i++)
         {
             Stars[i].SetActive(true);
         }
+
+        selectButton.image.sprite = info.isSelected ? selectedSprite : defaultSprite;
+    }
+
+    public void Select()
+    {
+        if (!info.isSelected)
+            ShopUIManager.Instance.ChooseCharacterPos(info);
     }
 
     public void ButtonInfo()
     {
-        ShopUIManager.Instance.OpenCharacterInfo(charInfo);
+        ShopUIManager.Instance.OpenCharacterInfo(info);
     }
 
     public void ButtonRecruit()
     {
-        if (GameManager.Instance.curCoin >= charInfo.cost)
+        if (GameManager.Instance.curCoin >= info.cost)
         {
-            GameManager.Instance.curCoin -= charInfo.cost;
-            charInfo.isUnlocked = true;
+            GameManager.Instance.curCoin -= info.cost;
+            info.isUnlocked = true;
         }
         else
         {

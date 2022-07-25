@@ -44,8 +44,8 @@ public class GameManager : Singleton<GameManager>
     public string playerName = "LeeEunChan";
 
     [Header("Character")]
-    public int mainPlayerIdx = 2;
-    public int subPlayerIdx = 1;
+    public int mainPlayerIdx;
+    public int subPlayerIdx;
     public PlayerBase[] charactersPrefab;
     public CharacterInfo[] charactersInfo;
 
@@ -72,6 +72,23 @@ public class GameManager : Singleton<GameManager>
 
         charactersPrefab = Resources.LoadAll<PlayerBase>(prefabPath);
         charactersInfo = Resources.LoadAll<CharacterInfo>(scriptablePath);
+
+        FindSelectedCharacter();
+    }
+
+    void FindSelectedCharacter()
+    {
+
+        foreach (var item in charactersInfo)
+        {
+            item.isSelected = false;
+        }
+
+        mainPlayerIdx = PlayerPrefs.GetInt("MainIdx", 0);
+        subPlayerIdx = PlayerPrefs.GetInt("SubIdx", 1);
+
+        SetMainCharacter(mainPlayerIdx);
+        SetSubCharacter(subPlayerIdx);
     }
 
     void LateUpdate()
@@ -102,6 +119,7 @@ public class GameManager : Singleton<GameManager>
 
         charactersInfo[idx].isSelected = true;
         mainPlayerIdx = idx;
+        PlayerPrefs.SetInt("MainIdx", mainPlayerIdx);
     }
 
     public void SetSubCharacter(int idx)
@@ -110,5 +128,6 @@ public class GameManager : Singleton<GameManager>
 
         charactersInfo[idx].isSelected = true;
         subPlayerIdx = idx;
+        PlayerPrefs.SetInt("SubIdx", subPlayerIdx);
     }
 }
