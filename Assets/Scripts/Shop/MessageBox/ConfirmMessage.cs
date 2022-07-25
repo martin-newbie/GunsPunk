@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using DG.Tweening;
 
 public class ConfirmMessage : MonoBehaviour, IPopUp
 {
@@ -10,9 +11,14 @@ public class ConfirmMessage : MonoBehaviour, IPopUp
     public Text MessageTxt;
 
     MessageBoxContainer manager;
+    RectTransform rect;
 
     public void Init(Action confirm, string message, MessageBoxContainer _manager)
     {
+        if (rect == null) rect = GetComponent<RectTransform>();
+        rect.anchoredPosition = new Vector2(0f, -1200f);
+        rect.DOAnchorPosY(0f, 0.5f).SetEase(Ease.OutBack);
+
         manager = _manager;
         ShopUIManager.Instance.AddPopup(this);
         MessageTxt.text = message;
@@ -33,6 +39,9 @@ public class ConfirmMessage : MonoBehaviour, IPopUp
 
     public void Close()
     {
-        gameObject.SetActive(false);
+        rect.DOAnchorPosY(0f, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
+        {
+            gameObject.SetActive(false);
+        });
     }
 }
