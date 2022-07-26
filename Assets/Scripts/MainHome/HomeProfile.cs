@@ -20,6 +20,6 @@ public class HomeProfile : HomeUI
 
     public void SetPlayerExpBar()
     {
-        ExpBar.fillAmount = GameManager.Instance.curExp / GameManager.Instance.maxExp;
+        ExpBar.fillAmount = GameManager.Instance.userExp / GameManager.Instance.userMaxExp;
     }
 }
