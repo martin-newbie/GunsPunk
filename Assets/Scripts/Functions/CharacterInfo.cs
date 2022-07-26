@@ -39,20 +39,13 @@ public class CharacterInfo : ScriptableObject
     public bool isSelected;
     public string description => GetString();
 
-    public void GetExp(float _exp)
+    public void SetExp(float _exp)
     {
         exp += _exp;
-        while (true)
+        while (exp >= maxExp)
         {
-            if (exp >= maxExp)
-            {
-                exp -= maxExp;
-                level++;
-            }
-            else
-            {
-                break;
-            }
+            exp -= maxExp;
+            level++;
         }
     }
 
@@ -64,9 +57,15 @@ public class CharacterInfo : ScriptableObject
         return levelAble && maxAble;
     }
 
-    public float GetMaxExp()
+    public float GetMaxExp(int? _level = null)
     {
-        float max = level * 60 + 100;
+        float max;
+
+        if (_level != null)
+            max = (int)_level * 60 + 100;
+        else
+            max = level * 60 + 100;
+
         return max;
     }
 

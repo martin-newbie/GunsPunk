@@ -18,7 +18,13 @@ public class GameEnd : MonoBehaviour
     public RectTransform secondNeedle;
 
     [Header("Result Object")]
-
+    public Image UserLevelGauge;
+    public Image CharacterLevelGauge;
+    public Text PlayerLevel;
+    public Text CharacterLevel;
+    public Text CharacterName;
+    public Text RoundCoin;
+    public Text RoundDistance;
 
     Coroutine revive;
     Coroutine result;
@@ -51,11 +57,68 @@ public class GameEnd : MonoBehaviour
     void OpenResult()
     {
         var reward = InGameManager.Instance.GetResult();
-        result = StartCoroutine(ResultCoroutine(reward._distance, reward._coin));
+        result = StartCoroutine(ResultCoroutine(reward._distance, reward._coin, reward._exp, reward._curExp));
     }
 
-    IEnumerator ResultCoroutine(float _distance, int _coin)
+    IEnumerator ResultCoroutine(float _distance, int _coin, float _exp, float _curExp)
     {
+
+        // user levelUp
+        {
+            GameManager.Instance.SetUserExp(_exp);
+        }
+
+
+        // character levelUp
+        {
+            CharacterInfo curChar = GameManager.Instance.GetMainPlayer();
+            int curLevel = curChar.level;
+            float curExp = _curExp;
+
+            float timer = 3f;
+            float offset = (_exp - curExp) / timer;
+
+            while (timer > 0f)
+            {
+                curExp += offset * Time.deltaTime;
+                CharacterLevel.text = "Lv." + curLevel.ToString();
+                CharacterLevelGauge.fillAmount = curExp / curChar.GetMaxExp(curLevel);
+
+                if (curExp > curChar.GetMaxExp(curLevel))
+                {
+                    curExp = 0f;
+                    curLevel++;
+                }
+
+                timer -= Time.deltaTime;
+                yield return null;
+            }
+        }
+        
+
+        yield return StartCoroutine(TextCounting(RoundCoin, _coin, 1f));
+        yield return StartCoroutine(TextCounting(RoundDistance, _distance, 1f));
+
+        yield break;
+    }
+
+    IEnumerator TextCounting(Text text, float target, float duration)
+    {
+        float timer = duration;
+        float offset = target / duration;
+        float current = 0f;
+
+        while (timer > 0f)
+        {
+            current += offset * Time.deltaTime;
+            text.text = string.Format("{0:#,0}", current);
+
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        current = target;
+        text.text = string.Format("{0:#,0}", current);
         yield break;
     }
 

@@ -35,6 +35,7 @@ public class InGameManager : Singleton<InGameManager>
     [Header("Results")]
     public int roundCoin;
     public float roundDistance;
+    public float roundExp;
 
     Coroutine monsterSpawn_coroutine;
     Coroutine hurdleSpawn_coroutine;
@@ -105,9 +106,11 @@ public class InGameManager : Singleton<InGameManager>
         InGameUIManager.Instance.StartGameEnd();
     }
 
-    public (float _distance, int _coin) GetResult()
+    public (float _distance, int _coin, float _exp, float _curExp) GetResult()
     {
-        var result = (_distance: roundDistance, _coin: roundCoin);
+        var result = (_distance: roundDistance, _coin: roundCoin, _exp: roundExp, _curExp: GameManager.Instance.GetMainPlayer().exp);
+        GameManager.Instance.GetMainPlayer().SetExp(roundExp);
+        GameManager.Instance.SetUserExp(roundExp);
         return result;
     }
 
