@@ -2,6 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct GameResult
+{
+    public int charLevel;
+    public float charExp;
+
+    public int userLevel;
+    public float userExp;
+
+    public float roundDistance;
+    public int roundCoin;
+    public float roundExp;
+
+    public GameResult(int c_level, float c_exp, int u_level, float u_exp, float r_distance, int r_coin, float r_exp)
+    {
+        charLevel = c_level;
+        charExp = c_exp;
+        userLevel = u_level;
+        userExp = u_exp;
+        roundDistance = r_distance;
+        roundCoin = r_coin;
+        roundExp = r_exp;
+    }
+}
+
 public class InGameManager : Singleton<InGameManager>
 {
     [Header("Player")]
@@ -35,7 +59,8 @@ public class InGameManager : Singleton<InGameManager>
     [Header("Results")]
     public int roundCoin;
     public float roundDistance;
-    public float roundExp;
+    public float roundExp => roundDistance / 10f;
+    GameResult result;
 
     Coroutine monsterSpawn_coroutine;
     Coroutine hurdleSpawn_coroutine;
@@ -112,13 +137,13 @@ public class InGameManager : Singleton<InGameManager>
         StopCoroutine(monsterSpawn_coroutine);
 
         InGameUIManager.Instance.StartGameEnd();
+
+        CharacterInfo info = GameManager.Instance.GetMainPlayer();
+        result = new GameResult(info.level, info.exp, GameManager.Instance.userLevel, GameManager.Instance.userExp, roundDistance, roundCoin, roundExp);
     }
 
-    public (float _distance, int _coin, float _exp, float _curExp) GetResult()
+    public GameResult GetResult()
     {
-        roundExp = roundDistance / 10f;
-
-        var result = (_distance: roundDistance, _coin: roundCoin, _exp: roundExp, _curExp: GameManager.Instance.GetMainPlayer().exp);
         GameManager.Instance.GetMainPlayer().SetExp(roundExp);
         GameManager.Instance.SetUserExp(roundExp);
         return result;

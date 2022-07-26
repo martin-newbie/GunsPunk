@@ -58,13 +58,13 @@ public class GameEnd : MonoBehaviour
     void OpenResult()
     {
         var reward = InGameManager.Instance.GetResult();
-        result = StartCoroutine(ResultCoroutine(reward._distance, reward._coin, reward._exp, reward._curExp));
+        result = StartCoroutine(ResultCoroutine(reward.charLevel, reward.charExp, reward.userLevel, reward.userExp, reward.roundDistance, reward.roundCoin, reward.roundExp));
     }
 
-    IEnumerator ResultCoroutine(float _distance, int _coin, float _exp, float _curExp)
+    IEnumerator ResultCoroutine(int charLevel, float charExp, int userLevel, float userExp, float _distance, int _coin, float _exp)
     {
-        ResultWindow.SetActive(true);
-        ResultMain.DOAnchorPosY(0f, 0.5f).SetEase(Ease.OutBack);
+
+        CharacterInfo curChar = GameManager.Instance.GetMainPlayer();
 
         // init part
         {
@@ -84,12 +84,13 @@ public class GameEnd : MonoBehaviour
             CharacterName.text = info.characterName;
         }
 
-        CharacterInfo curChar = GameManager.Instance.GetMainPlayer();
+        ResultWindow.SetActive(true);
+        yield return ResultMain.DOAnchorPosY(-50f, 0.5f).SetEase(Ease.OutBack);
 
         // user levelUp
         {
-            float curExp = GameManager.Instance.userExp;
-            int curLevel = GameManager.Instance.userLevel;
+            float curExp = userExp;
+            int curLevel = userLevel;
 
             float timer = 2f;
             float offset = _exp / timer;
@@ -114,8 +115,8 @@ public class GameEnd : MonoBehaviour
 
         // character levelUp
         {
-            int curLevel = curChar.level;
-            float curExp = _curExp;
+            int curLevel = charLevel;
+            float curExp = charExp;
 
             float timer = 2f;
             float offset = _exp / timer;
@@ -205,5 +206,15 @@ public class GameEnd : MonoBehaviour
     {
         StopCoroutine(revive);
         Skip();
+    }
+
+    public void ButtonHome()
+    {
+        LoadingSceneManager.LoadScene("MainScene");
+    }
+
+    public void ButtonReplay()
+    {
+        LoadingSceneManager.LoadScene("InGameScene");
     }
 }

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: 2_Ayla
   m_EditorClassIdentifier: 
   idx: 1
-  level: 0
+  level: 3
   trainingLevel: 0
-  exp: 0
+  exp: 10
   characterName: AYLA
   HP: 100
   HPIncrease: 15
