@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public struct GameResult
 {
     public int charLevel;
@@ -140,6 +141,7 @@ public class InGameManager : Singleton<InGameManager>
 
         CharacterInfo info = GameManager.Instance.GetMainPlayer();
         result = new GameResult(info.level, info.exp, GameManager.Instance.userLevel, GameManager.Instance.userExp, roundDistance, roundCoin, roundExp);
+        Debug.Log(JsonUtility.ToJson(result, true));
     }
 
     public GameResult GetResult()

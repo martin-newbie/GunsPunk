@@ -70,11 +70,11 @@ public class GameEnd : MonoBehaviour
         {
             CharacterInfo info = GameManager.Instance.GetMainPlayer();
 
-            UserLevelGauge.fillAmount = GameManager.Instance.userExp / GameManager.Instance.userMaxExp;
-            UserLevel.text = "Lv." + GameManager.Instance.userLevel.ToString();
+            UserLevelGauge.fillAmount = userExp / GameManager.Instance.GetUserMaxExp(userLevel);
+            UserLevel.text = "Lv." + userLevel.ToString();
 
-            CharacterLevelGauge.fillAmount = info.exp / info.maxExp;
-            CharacterLevel.text = "Lv." + info.level.ToString();
+            CharacterLevelGauge.fillAmount = charExp / info.GetMaxExp(charLevel);
+            CharacterLevel.text = "Lv." + charLevel;
 
             RoundCoin.text = "0";
             RoundDistance.text = "0";
