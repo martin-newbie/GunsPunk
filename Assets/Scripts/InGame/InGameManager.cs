@@ -82,7 +82,15 @@ public class InGameManager : Singleton<InGameManager>
         GetRoundCoin(0);
         GameStart();
     }
-    
+
+    private void Update()
+    {
+        if(isGameActive)
+        {
+            roundDistance += objectSpeed * Time.deltaTime;
+        }
+    }
+
     void SetHoldGaugeActive()
     {
         InGameUIManager.Instance.HoldGauge.transform.parent.gameObject.SetActive(CurPlayer.GetComponent<HoldFirePlayer>() != null);
@@ -108,6 +116,8 @@ public class InGameManager : Singleton<InGameManager>
 
     public (float _distance, int _coin, float _exp, float _curExp) GetResult()
     {
+        roundExp = roundDistance / 10f;
+
         var result = (_distance: roundDistance, _coin: roundCoin, _exp: roundExp, _curExp: GameManager.Instance.GetMainPlayer().exp);
         GameManager.Instance.GetMainPlayer().SetExp(roundExp);
         GameManager.Instance.SetUserExp(roundExp);

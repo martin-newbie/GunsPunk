@@ -16,6 +16,7 @@ MonoBehaviour:
   level: 0
   trainingLevel: 0
   exp: 0
+  characterName: SMITH
   HP: 100
   HPIncrease: 15
   Ammo: 75
@@ -33,4 +34,4 @@ MonoBehaviour:
   cost: 0
   isUnlocked: 1
   valueType: 0
-  isSelected: 0
+  isSelected: 1

@@ -12,6 +12,7 @@ public class CharacterInfo : ScriptableObject
     public float exp;
     public float maxExp => GetMaxExp();
     public readonly int maxTrainingLevel = 5;
+    public string characterName;
 
 
     [Header("Dynamic Value")]

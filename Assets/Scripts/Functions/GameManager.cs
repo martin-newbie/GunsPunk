@@ -94,12 +94,12 @@ public class GameManager : Singleton<GameManager>
 
         if(level == null)
         {
-            exp = (userLevel * 2) * userLevel * 50f;
+            exp = (userLevel + 2) * userLevel * 50f;
         }
         else
         {
             int _level = (int)level;
-            exp = (_level * 2) * _level * 50f;
+            exp = (_level + 2) * _level * 50f;
         }
 
         return exp;

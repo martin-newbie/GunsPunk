@@ -20,11 +20,12 @@ public class GameEnd : MonoBehaviour
     [Header("Result Object")]
     public Image UserLevelGauge;
     public Image CharacterLevelGauge;
-    public Text PlayerLevel;
+    public Text UserLevel;
     public Text CharacterLevel;
     public Text CharacterName;
     public Text RoundCoin;
     public Text RoundDistance;
+    public Text ExpAmount;
 
     Coroutine revive;
     Coroutine result;
@@ -62,21 +63,62 @@ public class GameEnd : MonoBehaviour
 
     IEnumerator ResultCoroutine(float _distance, int _coin, float _exp, float _curExp)
     {
+        ResultWindow.SetActive(true);
+        ResultMain.DOAnchorPosY(0f, 0.5f).SetEase(Ease.OutBack);
+
+        // init part
+        {
+            CharacterInfo info = GameManager.Instance.GetMainPlayer();
+
+            UserLevelGauge.fillAmount = GameManager.Instance.userExp / GameManager.Instance.userMaxExp;
+            UserLevel.text = "Lv." + GameManager.Instance.userLevel.ToString();
+
+            CharacterLevelGauge.fillAmount = info.exp / info.maxExp;
+            CharacterLevel.text = "Lv." + info.level.ToString();
+
+            RoundCoin.text = "0";
+            RoundDistance.text = "0";
+
+            ExpAmount.text = "";
+
+            CharacterName.text = info.characterName;
+        }
+
+        CharacterInfo curChar = GameManager.Instance.GetMainPlayer();
 
         // user levelUp
         {
-            GameManager.Instance.SetUserExp(_exp);
+            float curExp = GameManager.Instance.userExp;
+            int curLevel = GameManager.Instance.userLevel;
+
+            float timer = 2f;
+            float offset = _exp / timer;
+
+            while (timer > 0f)
+            {
+                curExp += offset * Time.deltaTime;
+                UserLevelGauge.fillAmount = curExp / GameManager.Instance.GetUserMaxExp(curLevel);
+                UserLevel.text = "Lv." + curLevel.ToString();
+
+                if(curExp >= GameManager.Instance.GetUserMaxExp(curLevel))
+                {
+                    curExp -= GameManager.Instance.GetUserMaxExp(curLevel);
+                    curLevel++;
+                }
+
+                timer -= Time.deltaTime;
+                yield return null;
+            }
         }
 
 
         // character levelUp
         {
-            CharacterInfo curChar = GameManager.Instance.GetMainPlayer();
             int curLevel = curChar.level;
             float curExp = _curExp;
 
-            float timer = 3f;
-            float offset = (_exp - curExp) / timer;
+            float timer = 2f;
+            float offset = _exp / timer;
 
             while (timer > 0f)
             {
@@ -84,9 +126,9 @@ public class GameEnd : MonoBehaviour
                 CharacterLevel.text = "Lv." + curLevel.ToString();
                 CharacterLevelGauge.fillAmount = curExp / curChar.GetMaxExp(curLevel);
 
-                if (curExp > curChar.GetMaxExp(curLevel))
+                if (curExp >= curChar.GetMaxExp(curLevel))
                 {
-                    curExp = 0f;
+                    curExp -= curChar.GetMaxExp(curLevel);
                     curLevel++;
                 }
 
@@ -135,7 +177,7 @@ public class GameEnd : MonoBehaviour
             yield return null;
         }
 
-        OpenResult();
+        yield return new WaitForSeconds(0.5f);
         yield break;
     }
 
@@ -150,9 +192,18 @@ public class GameEnd : MonoBehaviour
         });
     }
 
+    void Skip()
+    {
+        ReviveMain.DOAnchorPosY(-1200f, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
+        {
+            ReviveWindow.SetActive(false);
+        });
+        OpenResult();
+    }
+
     public void ButtonSkip()
     {
         StopCoroutine(revive);
-        OpenResult();
+        Skip();
     }
 }

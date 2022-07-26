@@ -16,6 +16,7 @@ MonoBehaviour:
   level: 0
   trainingLevel: 0
   exp: 0
+  characterName: KANG
   HP: 250
   HPIncrease: 25
   Ammo: 50
