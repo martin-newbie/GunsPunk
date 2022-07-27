@@ -50,6 +50,7 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
         SetRadialGraph(GameManager.Instance.GetCharacterInfo(_info.idx));
         CheckTrainingAble();
         CheckSelected();
+        ActiveStars();
     }
 
     void CheckSelected()
@@ -60,6 +61,21 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
     void CheckTrainingAble()
     {
         TrainingButton.gameObject.SetActive(info.TrainigAble());
+    }
+
+    void ActiveStars()
+    {
+        for (int i = 0; i < Stars.Length; i++)
+        {
+            if(i < info.trainingLevel)
+            {
+                Stars[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                Stars[i].gameObject.SetActive(false);
+            }
+        }
     }
 
     public void CharacterChoose()
@@ -82,7 +98,7 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
         {
             // open popup
 
-            if (info.trainingLevel < 4)
+            if (info.trainingLevel < info.maxTrainingLevel)
             {
                 // use coin
             }
@@ -102,8 +118,8 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
     {
         CharacterStatusGraph.top = info.hp / 250f;
         CharacterStatusGraph.rightTop = info.ammo / 500f;
-        CharacterStatusGraph.rightBot = info.damage / 30f;
-        CharacterStatusGraph.leftBot = info.fever / 10f;
+        CharacterStatusGraph.rightBot = info.damage / 100f;
+        CharacterStatusGraph.leftBot = info.fever / 50f;
         CharacterStatusGraph.leftTop = info.rpm / 2500f;
     }
 
@@ -124,6 +140,7 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
             CheckTrainingAble();
             SetRadialGraph(GameManager.Instance.GetCharacterInfo(info.idx));
             CheckSelected();
+            ActiveStars();
         }
     }
 }
