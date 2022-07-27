@@ -41,7 +41,7 @@ public class GameManager : Singleton<GameManager>
     public string prefabPath = "Prefabs/Player/Characters/";
 
     [Header("Player")]
-    public string playerName = "LeeEunChan";
+    public string userName = "LeeEunChan";
 
     [Header("User")]
     public int userLevel;
@@ -148,4 +148,65 @@ public class GameManager : Singleton<GameManager>
         subPlayerIdx = idx;
         PlayerPrefs.SetInt("SubIdx", subPlayerIdx);
     }
+
+    private void OnApplicationPause(bool pause)
+    {
+        string save = SaveJson();
+        // at server
+
+        // at local
+        PlayerPrefs.SetString("StatusSaveData", save);
+    }
+
+    void LoadJson()
+    {
+        string content = PlayerPrefs.GetString("StatusSaveData", "Default");
+        if (content != "Default") SetJson(content);
+    }
+
+    public string SaveJson()
+    {
+        DataSave save = new DataSave();
+        save.CharactersInfo.Clear();
+        foreach (var item in charactersInfo)
+        {
+            save.CharactersInfo.Add(item);
+        }
+
+        save.userName = userName;
+        save.userLevel = userLevel;
+        save.userExp = userExp;
+
+        string jsonSave = JsonUtility.ToJson(save, true);
+        return jsonSave;
+    }
+
+    public void SetJson(string contents)
+    {
+        DataSave save = JsonUtility.FromJson<DataSave>(contents);
+
+        if (save == null) return;
+
+        for (int i = 0; i < save.CharactersInfo.Count; i++)
+        {
+            charactersInfo[i].level = save.CharactersInfo[i].level;
+            charactersInfo[i].trainingLevel = save.CharactersInfo[i].trainingLevel;
+            charactersInfo[i].exp = save.CharactersInfo[i].exp;
+            charactersInfo[i].isUnlocked = save.CharactersInfo[i].isUnlocked;
+            charactersInfo[i].isSelected = save.CharactersInfo[i].isSelected;
+        }
+
+        userName = save.userName;
+        userLevel = save.userLevel;
+        userExp = save.userExp;
+    }
+}
+
+[System.Serializable]
+public class DataSave
+{
+    public List<CharacterInfo> CharactersInfo = new List<CharacterInfo>();
+    public string userName;
+    public int userLevel;
+    public float userExp;
 }

@@ -32,7 +32,7 @@ public class HomeUIManager : MonoBehaviour
     void Update()
     {
         BestScore.SetUI(GameManager.Instance.bestScore.ToString());
-        Profile.SetUI(GameManager.Instance.playerName, GameManager.Instance.userLevel, null);
+        Profile.SetUI(GameManager.Instance.userName, GameManager.Instance.userLevel, null);
     }
 
     public void GameStart()
