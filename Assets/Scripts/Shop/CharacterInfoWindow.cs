@@ -43,8 +43,8 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
         CharacterIllustImage.sprite = CharacterIllustSprites[_info.idx];
         CharacterName.sprite = CharacterNameSprites[_info.idx];
         CharacterLevel.text = _info.level.ToString();
-        CharacterLevelGauge.fillAmount = 0f; //get exp by character's exp / maxExp
-        CharacterDesc.text = ""; //get description by character's description text asset
+        CharacterLevelGauge.fillAmount = _info.exp / _info.maxExp;
+        CharacterDesc.text = _info.description; 
         info = _info;
 
         SetRadialGraph(GameManager.Instance.GetCharacterInfo(_info.idx));
