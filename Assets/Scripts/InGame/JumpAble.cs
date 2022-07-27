@@ -28,10 +28,15 @@ public abstract class JumpAble : Entity
         RB = GetComponent<Rigidbody2D>();
     }
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         GoingUpAction();
         GoingDownAction();
+    }
+
+    protected virtual void Update()
+    {
+
     }
 
 
