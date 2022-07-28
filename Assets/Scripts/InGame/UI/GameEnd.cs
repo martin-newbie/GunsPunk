@@ -173,12 +173,14 @@ public class GameEnd : MonoBehaviour
         float timer = duration;
         while (timer > 0f)
         {
-            secondNeedle.rotation = Quaternion.Euler(0, 0, 90 + (360 * (timer / duration)));
+            secondNeedle.rotation = Quaternion.Euler(0, 0, 360 * (timer / duration));
             timer -= Time.deltaTime;
             yield return null;
         }
 
         yield return new WaitForSeconds(0.5f);
+
+        ButtonSkip();
         yield break;
     }
 
