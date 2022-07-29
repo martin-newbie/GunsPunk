@@ -34,14 +34,4 @@ public class Explosion : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Entity entity;
-        if (collision.TryGetComponent(out entity))
-        {
-            entity.OnHit(atk.damage, transform);
-        }
-    }
 }

@@ -138,7 +138,7 @@ public class InGameManager : Singleton<InGameManager>
         StopCoroutine(monsterSpawn_coroutine);
 
         InGameUIManager.Instance.StartGameEnd();
-
+        InGameUIManager.Instance.SetPlayerHp(0f, CurPlayer.maxHP);
         CharacterInfo info = GameManager.Instance.GetMainPlayer();
         result = new GameResult(info.level, info.exp, GameManager.Instance.userLevel, GameManager.Instance.userExp, roundDistance, roundCoin, roundExp);
         Debug.Log(JsonUtility.ToJson(result, true));

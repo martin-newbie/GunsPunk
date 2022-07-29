@@ -146,6 +146,7 @@ public abstract class PlayerBase : JumpAble
     {
         if (InGameManager.Instance.isGameActive)
         {
+            Debug.Log(damage);
             base.OnHit(damage, hit);
             InGameManager.Instance.Cam.ShakeForTime();
         }

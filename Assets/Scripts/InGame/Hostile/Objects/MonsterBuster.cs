@@ -32,7 +32,7 @@ public class MonsterBuster : Monster
         }
 
         // attack
-        Explosion temp = Instantiate(attackExplosion, transform.position, Quaternion.identity);
+        Explosion temp = Instantiate(attackExplosion, transform.position + new Vector3(0, 1f), Quaternion.identity);
         temp.GetComponent<HostileAttack>().Init(damage);
         OnHit(maxHP, transform);
         yield break;

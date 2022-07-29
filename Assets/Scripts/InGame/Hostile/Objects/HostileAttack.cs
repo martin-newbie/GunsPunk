@@ -33,7 +33,6 @@ public class HostileAttack : MonoBehaviour
                 PlayerBase player = obj.GetComponent<PlayerBase>();
                 player.OnHit(damage, transform);
                 hitAction?.Invoke();
-                Debug.Log(damage);
                 isHitAble = false;
             }
         }
@@ -47,7 +46,6 @@ public class HostileAttack : MonoBehaviour
             {
                 PlayerBase player = collision.GetComponent<PlayerBase>();
                 player.OnHit(damage, transform);
-                Debug.Log(damage);
                 isHitAble = false;
                 hitAction?.Invoke();
             }
