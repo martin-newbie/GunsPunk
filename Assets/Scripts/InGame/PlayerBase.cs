@@ -29,6 +29,7 @@ public abstract class PlayerBase : JumpAble
     public float HealthIncrease;
 
     [Header("Objects")]
+    public ParticleSystem GunFireEffect;
     public ParticleSystem BulletShellEffect;
     public Transform FirePos;
     public Bullet bullet;
@@ -177,6 +178,7 @@ public abstract class PlayerBase : JumpAble
                 AmmoCount--;
             BulletShellEffect.Play();
             InGameManager.Instance.GetRoundCoin(1);
+            GunFireEffect?.Play();
         }
 
         return _bullet;
