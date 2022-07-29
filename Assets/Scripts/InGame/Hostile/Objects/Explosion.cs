@@ -7,7 +7,7 @@ public class Explosion : MonoBehaviour
     Collider2D atkCol;
     HostileAttack atk;
 
-    void Start()
+    void Awake()
     {
         atkCol = GetComponent<Collider2D>();
         atk = GetComponent<HostileAttack>();

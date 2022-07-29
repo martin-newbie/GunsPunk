@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterBomb : Monster
+public class MonsterBuster : Monster
 {
 
     [Header("Suicide Monster")]
@@ -10,7 +10,7 @@ public class MonsterBomb : Monster
     public float minX;
     public bool isArrived;
 
-    private void Start()
+    private void Awake()
     {
         StartCoroutine(MoveLogicCoroutine());
     }
@@ -30,15 +30,10 @@ public class MonsterBomb : Monster
             yield return null;
         }
 
-        // 
-
+        // attack
+        Explosion temp = Instantiate(attackExplosion, transform.position, Quaternion.identity);
+        temp.GetComponent<HostileAttack>().Init(damage);
+        OnHit(maxHP, transform);
         yield break;
-    }
-
-
-    public override void OnDie()
-    {
-        base.OnDie();
-        // spawn explosion
     }
 }

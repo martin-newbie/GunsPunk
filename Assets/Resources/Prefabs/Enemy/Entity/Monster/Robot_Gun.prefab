@@ -1010,6 +1010,7 @@ MonoBehaviour:
   state: 0
   nowActing: 0
   player: {fileID: 0}
+  isAmmoAble: 1
   Body: {fileID: 7502884252411546280}
   Parts:
   - {fileID: 198646550}

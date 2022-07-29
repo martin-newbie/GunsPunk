@@ -23,6 +23,7 @@ public abstract class Monster : JumpAble
     public Coroutine nowCoroutine;
     protected Coroutine attackCoroutine;
     public PlayerBase player;
+    public bool isAmmoAble = true;
 
     [Header("Monseter Parts")]
     public GameObject Body;
@@ -67,7 +68,8 @@ public abstract class Monster : JumpAble
         if (attackCoroutine != null)
             StopCoroutine(attackCoroutine);
 
-        player.ItemAmmunition(player.MaxAmmo / 20);
+        if (isAmmoAble)
+            player.ItemAmmunition(player.MaxAmmo / 20);
 
         isAlive = false;
         GetComponent<EnemyHp>().DestroyGauge();

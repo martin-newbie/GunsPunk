@@ -479,6 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff110cb614ca6b74188a04600cc0dda1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buster: {fileID: 8325273416778857629, guid: f578bdae37241984db91be155da65eda, type: 3}
   warning: {fileID: 132900439}
   moveSpeed: 0
 --- !u!1 &194273596

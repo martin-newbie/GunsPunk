@@ -24,7 +24,7 @@ public abstract class Entity : MonoBehaviour
     {
         HP -= damage;
 
-        if(HP <= 0 && isAlive)
+        if (HP <= 0 && isAlive)
         {
             isAlive = false;
             OnDestroyAction?.Invoke();

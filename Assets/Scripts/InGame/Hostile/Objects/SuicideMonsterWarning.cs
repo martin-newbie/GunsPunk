@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SuicideMonsterWarning : MonoBehaviour
 {
+    public MonsterBuster buster;
     public SpriteRenderer warning;
     public float moveSpeed;
 
@@ -44,7 +45,7 @@ public class SuicideMonsterWarning : MonoBehaviour
         {
             warning.gameObject.SetActive(false);
 
-
+            Instantiate(buster, transform.position + new Vector3(0, -1.5f), Quaternion.identity);
         }
 
         yield break;
