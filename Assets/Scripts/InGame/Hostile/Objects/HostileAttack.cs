@@ -33,6 +33,7 @@ public class HostileAttack : MonoBehaviour
                 PlayerBase player = obj.GetComponent<PlayerBase>();
                 player.OnHit(damage, transform);
                 hitAction?.Invoke();
+                Debug.Log(damage);
                 isHitAble = false;
             }
         }
@@ -40,12 +41,14 @@ public class HostileAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isTrigger)
+        if (isTrigger && isHitAble)
         {
             if(collision.CompareTag("Player"))
             {
                 PlayerBase player = collision.GetComponent<PlayerBase>();
                 player.OnHit(damage, transform);
+                Debug.Log(damage);
+                isHitAble = false;
                 hitAction?.Invoke();
             }
         }

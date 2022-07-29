@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 500
-  HP: 50
-  damage: 0
+  HP: 0
+  damage: 50
   moveSpeed: 10
   isAlive: 1
   isActing: 0

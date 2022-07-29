@@ -10,8 +10,9 @@ public class MonsterBuster : Monster
     public float minX;
     public bool isArrived;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         StartCoroutine(MoveLogicCoroutine());
     }
 
