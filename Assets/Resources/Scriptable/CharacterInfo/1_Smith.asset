@@ -22,7 +22,7 @@ MonoBehaviour:
   Ammo: 75
   AmmoIncrease: 10
   Damage: 5
-  DamageIncrease: 1.25
+  DamageIncrease: 0.25
   Fever: 5
   FeverIncrease: 2
   bulletSpeed: 15

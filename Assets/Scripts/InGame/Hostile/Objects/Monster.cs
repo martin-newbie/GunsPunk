@@ -28,6 +28,9 @@ public abstract class Monster : JumpAble
     public GameObject Body;
     public Rigidbody2D[] Parts;
 
+    [Header("Effect")]
+    public ParticleSystem HitEffect;
+
     protected Animator anim;
 
     private void Start()
@@ -51,7 +54,8 @@ public abstract class Monster : JumpAble
     public override void OnHit(float damage, Transform hit)
     {
         if (isAlive)
-        { 
+        {
+            HitEffect?.Play();
             base.OnHit(damage, hit);
         }
     }
