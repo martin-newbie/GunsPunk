@@ -40,10 +40,23 @@ public class CharacterContainer : MonoBehaviour, IRefresh
         info = GameManager.Instance.charactersInfo[idx];
 
 
+        
+        Refresh();
+    }
+
+    public void Refresh()
+    {
         if (info.isUnlocked)
         {
             LockedObject.SetActive(false);
             UnlockedObject.SetActive(true);
+
+            for (int i = 0; i < Stars.Length; i++)
+            {
+                if (i < info.trainingLevel)
+                    Stars[i].SetActive(true);
+                else Stars[i].SetActive(false);
+            }
         }
         else
         {
@@ -53,26 +66,13 @@ public class CharacterContainer : MonoBehaviour, IRefresh
 
             ValueIcons[(int)info.valueType].SetActive(true);
 
-        }
-        Refresh();
-    }
-
-    public void Refresh()
-    {
-        if (!info.isUnlocked)
-        {
             if (GameManager.Instance.curCoin < info.cost)
                 Cost.color = Color.red;
             else
                 Cost.color = Color.white;
+
         }
 
-        for (int i = 0; i < Stars.Length; i++)
-        {
-            if (i < info.trainingLevel)
-                Stars[i].SetActive(true);
-            else Stars[i].SetActive(false);
-        }
 
         selectButton.image.sprite = info.isSelected ? selectedSprite : defaultSprite;
     }
@@ -93,9 +93,31 @@ public class CharacterContainer : MonoBehaviour, IRefresh
 
     public void ButtonRecruit()
     {
-        if (GameManager.Instance.curCoin >= info.cost)
+        bool recruitAble;
+        switch (info.valueType)
         {
-            GameManager.Instance.curCoin -= info.cost;
+            case ValueType.Coin:
+                recruitAble = GameManager.Instance.curCoin >= info.cost;
+                break;
+            case ValueType.Energy:
+                recruitAble = GameManager.Instance.energy >= info.cost;
+                break;
+            default:
+                recruitAble = false;
+                break;
+        }
+
+        if (recruitAble)
+        {
+            switch (info.valueType)
+            {
+                case ValueType.Coin:
+                    GameManager.Instance.curCoin -= info.cost;
+                    break;
+                case ValueType.Energy:
+                    GameManager.Instance.energy -= info.cost;
+                    break;
+            }
             info.isUnlocked = true;
         }
         else
@@ -104,5 +126,7 @@ public class CharacterContainer : MonoBehaviour, IRefresh
             //not enought money
             MessageBoxContainer.Instance.OpenConfirmMessage(null, "Not enough coin or energy");
         }
+
+        ShopUIManager.Instance.Refresh();
     }
 }
