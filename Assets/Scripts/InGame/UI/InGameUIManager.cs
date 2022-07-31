@@ -62,6 +62,7 @@ public class InGameUIManager : Singleton<InGameUIManager>
     {
         Time.timeScale = 0f;
         PauseObject.gameObject.SetActive(true);
+        PauseObject.Init();
     }
 
     public void PauseOff()
