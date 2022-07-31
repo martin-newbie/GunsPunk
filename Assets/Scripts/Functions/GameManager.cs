@@ -161,6 +161,7 @@ public class GameManager : Singleton<GameManager>
     public void ClearPopupStack()
     {
         PopupStack.Clear();
+        curPopupIdx = 0;
     }
 
     void PopUpInput()
