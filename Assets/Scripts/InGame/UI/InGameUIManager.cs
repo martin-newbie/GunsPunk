@@ -52,6 +52,12 @@ public class InGameUIManager : Singleton<InGameUIManager>
         AmmoGauge.fillAmount = ammoCur / ammoMax;
     }
 
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+            PauseOn();
+    }
+
     public void StartGameEnd()
     {
         GameEndObject.gameObject.SetActive(true);
