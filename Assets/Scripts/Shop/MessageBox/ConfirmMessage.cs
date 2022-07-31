@@ -21,7 +21,7 @@ public class ConfirmMessage : MonoBehaviour, IPopUp
         rect.DOAnchorPosY(0f, 0.5f).SetEase(Ease.OutBack);
 
         manager = _manager;
-        ShopUIManager.Instance.AddPopup(this);
+        GameManager.Instance.AddPopup(this);
         MessageTxt.text = message;
 
         ConfirmButton.onClick.RemoveAllListeners();
@@ -36,7 +36,7 @@ public class ConfirmMessage : MonoBehaviour, IPopUp
 
     public void Confirm()
     {
-        ShopUIManager.Instance.PopupClose();
+        GameManager.Instance.PopupClose();
     }
 
     public void Close()

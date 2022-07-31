@@ -82,9 +82,9 @@ MonoBehaviour:
   atkCol: {fileID: 3014080799898180932}
   hurdleObj: {fileID: 7125836520157991621}
   HitParticle: {fileID: 8966466889337806545}
-  healthPackChance: 40
-  ammunitionChance: 40
-  explosionChance: 75
+  healthPackChance: 10
+  ammunitionChance: 20
+  explosionChance: 90
   duration: 0.25
   amount: 0.1
   localPos: {x: 0, y: 0, z: 0}

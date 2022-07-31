@@ -26,7 +26,7 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
 
     public void WindowOpen(CharacterInfo _info)
     {
-        ShopUIManager.Instance.AddPopup(this);
+        GameManager.Instance.AddPopup(this);
         ShopUIManager.Instance.AddRefreshAble(this);
 
         int idx = 0;
@@ -125,7 +125,7 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
 
     public void WindowClose()
     {
-        ShopUIManager.Instance.PopupClose();
+        GameManager.Instance.PopupClose();
     }
 
     public void Close()

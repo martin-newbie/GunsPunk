@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public struct characterInfo
 {
@@ -36,6 +37,9 @@ public struct characterInfo
 
 public class GameManager : Singleton<GameManager>
 {
+    public Stack<IPopUp> PopupStack = new Stack<IPopUp>();
+    public int curPopupIdx;
+
     [Header("Path")]
     public string scriptablePath = "Scriptable/CharacterInfo/";
     public string prefabPath = "Prefabs/Player/Characters/";
@@ -92,7 +96,7 @@ public class GameManager : Singleton<GameManager>
     {
         float exp;
 
-        if(level == null)
+        if (level == null)
         {
             exp = (userLevel + 2) * userLevel * 50f;
         }
@@ -148,6 +152,56 @@ public class GameManager : Singleton<GameManager>
         subPlayerIdx = idx;
         PlayerPrefs.SetInt("SubIdx", subPlayerIdx);
     }
+
+    private void Update()
+    {
+        PopUpInput();
+    }
+
+    public void ClearPopupStack()
+    {
+        PopupStack.Clear();
+    }
+
+    void PopUpInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (curPopupIdx > 0)
+            {
+                PopupClose();
+            }
+            else
+            {
+                if(SceneManager.GetActiveScene().name == "MainScene")
+                {
+
+                }
+                else if(SceneManager.GetActiveScene().name == "ShopScene")
+                {
+                    LoadingSceneManager.LoadScene("MainScene");
+                }
+                else if(SceneManager.GetActiveScene().name == "InGameScene")
+                {
+
+                }
+            }
+        }
+    }
+
+    public void AddPopup(IPopUp popup)
+    {
+        PopupStack.Push(popup);
+        curPopupIdx++;
+    }
+
+    public void PopupClose()
+    {
+        IPopUp popup = PopupStack.Pop();
+        popup.Close();
+        curPopupIdx--;
+    }
+
 
     private void OnApplicationPause(bool pause)
     {

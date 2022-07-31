@@ -13,6 +13,7 @@ public class ChooseMessage : MonoBehaviour, IPopUp
 
     MessageBoxContainer manager;
     RectTransform rect;
+    Action closeAction;
 
     public void Init(Action accept, Action refuse, string message, MessageBoxContainer _manager)
     {
@@ -22,7 +23,7 @@ public class ChooseMessage : MonoBehaviour, IPopUp
 
         manager = _manager;
 
-        ShopUIManager.Instance.AddPopup(this);
+        GameManager.Instance.AddPopup(this);
         MessageTxt.text = message;
 
         AcceptButton.onClick.RemoveAllListeners();
@@ -32,20 +33,22 @@ public class ChooseMessage : MonoBehaviour, IPopUp
         refuse += manager.ClosePopup;
         accept += manager.ClosePopup;
 
+        closeAction = refuse;
+
         AcceptButton.onClick.AddListener(() => accept?.Invoke());
         RefuseButton.onClick.AddListener(() => refuse?.Invoke());
     }
 
     public void Refuse()
     {
-        ShopUIManager.Instance.PopupClose();
-        Close();
+        GameManager.Instance.PopupClose();
     }
 
     public void Close()
     {
         rect.DOAnchorPosY(-1200f, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
         {
+            closeAction?.Invoke();
             gameObject.SetActive(false);
         });
     }

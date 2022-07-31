@@ -17,6 +17,7 @@ public class LoadingSceneManager : MonoBehaviour
 
     public static void LoadScene(string sceneName)
     {
+        GameManager.Instance.ClearPopupStack();
         nextScene = sceneName;
         SceneManager.LoadScene(nextScene);
     }

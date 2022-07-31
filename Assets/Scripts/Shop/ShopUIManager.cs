@@ -16,8 +16,6 @@ public interface IRefresh
 public class ShopUIManager : Singleton<ShopUIManager>
 {
     public List<IRefresh> RefreshAble = new List<IRefresh>();
-    public Stack<IPopUp> PopupStack = new Stack<IPopUp>();
-    public int curPopupIdx;
 
     [Header("PopUp")]
     public CharacterInfoWindow infoWindow;
@@ -60,7 +58,6 @@ public class ShopUIManager : Singleton<ShopUIManager>
 
     private void Update()
     {
-        PopUpInput();
     }
 
     public void ChooseCharacterPos(CharacterInfo info)
@@ -86,34 +83,6 @@ public class ShopUIManager : Singleton<ShopUIManager>
     {
         infoWindow.gameObject.SetActive(true);
         infoWindow.WindowOpen(info);
-    }
-
-    public void AddPopup(IPopUp popup)
-    {
-        PopupStack.Push(popup);
-        curPopupIdx++;
-    }
-
-    public void PopupClose()
-    {
-        IPopUp popup = PopupStack.Pop();
-        popup.Close();
-        curPopupIdx--;
-    }
-
-    void PopUpInput()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if(curPopupIdx > 0)
-            {
-                PopupClose();
-            }
-            else
-            {
-                LoadingSceneManager.LoadScene("MainScene");
-            }
-        }
     }
 
     void SetValueText()

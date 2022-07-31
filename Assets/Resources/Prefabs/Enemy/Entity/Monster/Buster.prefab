@@ -68,7 +68,7 @@ MonoBehaviour:
   Body: {fileID: 8325273417776926555}
   Parts: []
   HitEffect: {fileID: 2070725323487855874}
-  attackExplosion: {fileID: 8230457054913050816, guid: 7af2be2f56f02bd47baa8f0216de89cd, type: 3}
+  attackExplosion: {fileID: 8758348878193151863, guid: d6f39825f4f182046af659f54241b305, type: 3}
   minX: -4.5
   isArrived: 0
 --- !u!61 &8325273416778857630

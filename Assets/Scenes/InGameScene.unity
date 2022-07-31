@@ -2975,7 +2975,7 @@ MonoBehaviour:
   Items:
   - {fileID: 1818293721037842231, guid: 078ae58693c88ff4d97edfff85044025, type: 3}
   - {fileID: 4174843038255339621, guid: b23773a87c2bb4043ac4f7e0fd5fa02b, type: 3}
-  explosion: {fileID: 756863224195812104, guid: fa84c998d9706a84b803c385ef61db6c, type: 3}
+  explosion: {fileID: 6849928543606335831, guid: 5b386694ed9e9484ebff645e483a45b8, type: 3}
   Cam: {fileID: 928229939}
   objectSpeed: 4
   hurdleSpawnSpeed: 5

@@ -17,12 +17,6 @@ public class HostileAttack : MonoBehaviour
         hitAction = hit;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(transform.position, size);
-    }
-
     private void Update()
     {
         if (!isTrigger && isHitAble)

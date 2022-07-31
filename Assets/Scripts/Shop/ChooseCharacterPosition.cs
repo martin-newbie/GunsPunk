@@ -12,7 +12,7 @@ public class ChooseCharacterPosition : MonoBehaviour, IPopUp
 
     public void Init(CharacterInfo _info)
     {
-        ShopUIManager.Instance.AddPopup(this);
+        GameManager.Instance.AddPopup(this);
         if (rect == null) rect = GetComponent<RectTransform>();
 
         MainObj.anchoredPosition = new Vector2(0, -1200f);
@@ -31,19 +31,19 @@ public class ChooseCharacterPosition : MonoBehaviour, IPopUp
     {
         GameManager.Instance.SetSubCharacter(info.idx);
         UIClose();
-    } 
+    }
 
     void UIClose()
     {
         ShopUIManager.Instance.Refresh();
-        MainObj.DOAnchorPosY(-1200f, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
-        {
-            gameObject.SetActive(false);
-        });
+        GameManager.Instance.PopupClose();
     }
 
     public void Close()
     {
-        UIClose();
+        MainObj.DOAnchorPosY(-1200f, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
+        {
+            gameObject.SetActive(false);
+        });
     }
 }
