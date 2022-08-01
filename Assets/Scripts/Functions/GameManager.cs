@@ -176,15 +176,15 @@ public class GameManager : Singleton<GameManager>
             }
             else
             {
-                if(SceneManager.GetActiveScene().name == "MainScene")
+                if (SceneManager.GetActiveScene().name == "MainScene")
                 {
 
                 }
-                else if(SceneManager.GetActiveScene().name == "ShopScene")
+                else if (SceneManager.GetActiveScene().name == "ShopScene")
                 {
                     LoadingSceneManager.LoadScene("MainScene");
                 }
-                else if(SceneManager.GetActiveScene().name == "InGameScene")
+                else if (SceneManager.GetActiveScene().name == "InGameScene")
                 {
                     InGameUIManager.Instance.PauseOn();
                 }
@@ -212,6 +212,19 @@ public class GameManager : Singleton<GameManager>
 
 
     private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            Save();
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        Save();
+    }
+
+    void Save()
     {
         string save = SaveJson();
         // at server
