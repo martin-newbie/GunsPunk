@@ -9,6 +9,6 @@ public class HomeBestScore : HomeUI
 
     public void SetUI(string score)
     {
-        bestScore.text = score;
+        bestScore.text = score + "M";
     }
 }
