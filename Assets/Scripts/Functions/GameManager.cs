@@ -71,10 +71,10 @@ public class GameManager : Singleton<GameManager>
     public int hitBulletCnt;            // 게임 플레이중 적 또는 장애물에 맞춘 총알의 수
     public int gamePlayCnt;             // 게임 플레이 횟수
 
-    private void Awake()
+    protected void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        if (clear) PlayerPrefs.DeleteAll();
+        //if (clear) PlayerPrefs.DeleteAll();
 
         charactersPrefab = Resources.LoadAll<PlayerBase>(prefabPath);
         charactersInfo = Resources.LoadAll<CharacterInfo>(scriptablePath);

@@ -27,11 +27,7 @@ public class HomeUIManager : MonoBehaviour
     {
         EnergyTxt.text = string.Format("{0:#,0}", GameManager.Instance.energy);
         CoinTxt.text = string.Format("{0:#,0}", GameManager.Instance.curCoin);
-    }
-
-    void Update()
-    {
-        BestScore.SetUI(GameManager.Instance.bestScore.ToString());
+        BestScore.SetUI(string.Format("{0:#,0}", GameManager.Instance.bestScore));
         Profile.SetUI(GameManager.Instance.userName, GameManager.Instance.userLevel, null);
     }
 

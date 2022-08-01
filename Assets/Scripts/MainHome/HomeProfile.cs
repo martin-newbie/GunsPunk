@@ -16,6 +16,7 @@ public class HomeProfile : HomeUI
         Level.text = "Lv. " + _level.ToString();
 
         Icon.sprite = icon;
+        SetPlayerExpBar();
     }
 
     public void SetPlayerExpBar()
