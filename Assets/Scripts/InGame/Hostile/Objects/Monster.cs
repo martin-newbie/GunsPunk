@@ -63,6 +63,8 @@ public abstract class Monster : JumpAble
 
     public virtual void OnDie()
     {
+        GameManager.Instance.killMonsterCnt++;
+        
         if (nowCoroutine != null)
             StopCoroutine(nowCoroutine);
         if (attackCoroutine != null)

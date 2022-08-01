@@ -74,6 +74,7 @@ public class Hurdle : Entity
 
     void OnDie()
     {
+        GameManager.Instance.destroyedObjectCnt++;
 
         if (Random.Range(0, 100) < healthPackChance)
             InGameManager.Instance.SpawnRandomItem(transform.position, 1);

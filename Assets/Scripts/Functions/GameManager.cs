@@ -39,6 +39,7 @@ public class GameManager : Singleton<GameManager>
 {
     public Stack<IPopUp> PopupStack = new Stack<IPopUp>();
     public int curPopupIdx;
+    public bool clear;
 
     [Header("Path")]
     public string scriptablePath = "Scriptable/CharacterInfo/";
@@ -63,7 +64,7 @@ public class GameManager : Singleton<GameManager>
     public int energy;      // 유료 재화
 
     [Header("Only for quest")]
-    public int bestScore;               // 최고기록
+    public float bestScore;               // 최고기록
     public int acquiredCoin;            // 게임 플레이 중 얻은 코인
     public int killMonsterCnt;          // 게임 플레이중 죽인 몬스터 수
     public int destroyedObjectCnt;      // 게임 플레이중 부순 장애물 수
@@ -72,13 +73,14 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
-
         DontDestroyOnLoad(gameObject);
+        if (clear) PlayerPrefs.DeleteAll();
 
         charactersPrefab = Resources.LoadAll<PlayerBase>(prefabPath);
         charactersInfo = Resources.LoadAll<CharacterInfo>(scriptablePath);
 
         FindSelectedCharacter();
+        LoadJson();
     }
 
     public void SetUserExp(float _exp)
@@ -203,6 +205,11 @@ public class GameManager : Singleton<GameManager>
         curPopupIdx--;
     }
 
+    public void SetBestScore(float score)
+    {
+        if (score > bestScore) bestScore = score;
+    }
+
 
     private void OnApplicationPause(bool pause)
     {
@@ -232,6 +239,16 @@ public class GameManager : Singleton<GameManager>
         save.userLevel = userLevel;
         save.userExp = userExp;
 
+        save.curCoin = curCoin;
+        save.energy = energy;
+
+        save.bestScore = bestScore;
+        save.acquiredCoin = acquiredCoin;
+        save.killMonsterCnt = killMonsterCnt;
+        save.destroyedObjectCnt = destroyedObjectCnt;
+        save.hitBulletCnt = hitBulletCnt;
+        save.gamePlayCnt = gamePlayCnt;
+
         string jsonSave = JsonUtility.ToJson(save, true);
         return jsonSave;
     }
@@ -254,6 +271,16 @@ public class GameManager : Singleton<GameManager>
         userName = save.userName;
         userLevel = save.userLevel;
         userExp = save.userExp;
+
+        curCoin = save.curCoin;
+        energy = save.energy;
+
+        bestScore = save.bestScore;
+        acquiredCoin = save.acquiredCoin;
+        killMonsterCnt = save.killMonsterCnt;
+        destroyedObjectCnt = save.destroyedObjectCnt;
+        hitBulletCnt = save.hitBulletCnt;
+        gamePlayCnt = save.gamePlayCnt;
     }
 }
 
@@ -264,4 +291,14 @@ public class DataSave
     public string userName;
     public int userLevel;
     public float userExp;
+
+    public int curCoin;
+    public int energy;
+
+    public float bestScore;
+    public int acquiredCoin;
+    public int killMonsterCnt;
+    public int destroyedObjectCnt;
+    public int hitBulletCnt;
+    public int gamePlayCnt;
 }

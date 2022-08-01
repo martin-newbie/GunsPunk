@@ -37,6 +37,7 @@ public class HomeUIManager : MonoBehaviour
 
     public void GameStart()
     {
+        GameManager.Instance.gamePlayCnt++;
         LoadingSceneManager.LoadScene("InGameScene");
     }
 

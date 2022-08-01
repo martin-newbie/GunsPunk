@@ -40,6 +40,8 @@ public class Bullet : MonoBehaviour
             Entity entity = collision.GetComponent<Entity>();
             if (entity != null && entity.isAlive)
             {
+                GameManager.Instance.hitBulletCnt++;
+
                 entity.OnHit(damage, transform);
                 player.GetFever();
                 hitAction?.Invoke();

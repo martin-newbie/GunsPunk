@@ -69,6 +69,7 @@ public class InGameManager : Singleton<InGameManager>
     public void GetRoundCoin(int value)
     {
         roundCoin += value;
+        GameManager.Instance.acquiredCoin += value;
         InGameUIManager.Instance.RoundCoin = roundCoin;
     }
 
@@ -137,11 +138,12 @@ public class InGameManager : Singleton<InGameManager>
         StopCoroutine(hurdleSpawn_coroutine);
         StopCoroutine(monsterSpawn_coroutine);
 
+        GameManager.Instance.SetBestScore(roundDistance);
+
         InGameUIManager.Instance.StartGameEnd();
         InGameUIManager.Instance.SetPlayerHp(0f, CurPlayer.maxHP);
         CharacterInfo info = GameManager.Instance.GetMainPlayer();
         result = new GameResult(info.level, info.exp, GameManager.Instance.userLevel, GameManager.Instance.userExp, roundDistance, roundCoin, roundExp);
-        Debug.Log(JsonUtility.ToJson(result, true));
     }
 
     public GameResult GetResult()
