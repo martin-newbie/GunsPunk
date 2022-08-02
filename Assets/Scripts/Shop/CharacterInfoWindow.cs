@@ -117,9 +117,9 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
     void SetRadialGraph(characterInfo info)
     {
         CharacterStatusGraph.top = info.hp / 250f;
-        CharacterStatusGraph.rightTop = info.ammo / 500f;
-        CharacterStatusGraph.rightBot = info.damage / 100f;
-        CharacterStatusGraph.leftBot = info.fever / 50f;
+        CharacterStatusGraph.rightTop = info.ammo / 250f;
+        CharacterStatusGraph.rightBot = info.damage / 30f;
+        CharacterStatusGraph.leftBot = info.fever / 25f;
         CharacterStatusGraph.leftTop = info.rpm / 2500f;
     }
 
