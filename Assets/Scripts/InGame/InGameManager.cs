@@ -112,7 +112,7 @@ public class InGameManager : Singleton<InGameManager>
 
     private void Update()
     {
-        if(isGameActive)
+        if (isGameActive)
         {
             roundDistance += objectSpeed * Time.deltaTime;
         }
@@ -241,34 +241,39 @@ public class InGameManager : Singleton<InGameManager>
     IEnumerator MonsterCoroutine()
     {
         List<Monster> CurMonsters = new List<Monster>();
-        float spawnDelay = 5f;
+        float tik = 1f;
+        float curTik = 0f;
+        int maxCount = 3;
+        int secondCount = 0;
 
         while (true)
         {
-
-            // test
-            yield return new WaitForSeconds(spawnDelay);
-            CurMonsters.Add(SpawnMonsters(0));
-            yield return new WaitForSeconds(spawnDelay);
-            CurMonsters.Add(SpawnMonsters(0));
-            yield return new WaitForSeconds(spawnDelay);
-            CurMonsters.Add(SpawnMonsters(1));
-            // test
-
-            if (Input.GetKeyDown(KeyCode.Space)) break;
-            while (CurMonsters.Count > 0)
+            if (tik <= curTik)
             {
-                for (int i = 0; i < CurMonsters.Count; i++)
+
+                if (CurMonsters.Count < maxCount)
                 {
-                    if (!CurMonsters[i].isAlive) CurMonsters.Remove(CurMonsters[i]);
+                    int spawnChance = 60 + (int)((float)CurMonsters.Count / (float)maxCount) * 580;
+                    if(Random.Range(0, spawnChance) < 1)
+                    {
+                        SpawnMonsters(Random.Range(0, 2));
+                    }
                 }
+                curTik = 0f;
+                secondCount++;
 
-                yield return null;
+                if (secondCount % 30 == 0 && secondCount != 0 && maxCount < 20) maxCount++;
+
             }
+            curTik += Time.deltaTime;
 
-            yield return new WaitForSeconds(spawnDelay);
+
+
+            for (int i = 0; i < CurMonsters.Count; i++)
+            {
+                if (!CurMonsters[i].isAlive) CurMonsters.Remove(CurMonsters[i]);
+            }
         }
-        yield break;
     }
 
     public Entity SpawnHurdle()
