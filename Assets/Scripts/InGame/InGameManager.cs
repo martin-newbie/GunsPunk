@@ -231,10 +231,36 @@ public class InGameManager : Singleton<InGameManager>
 
     IEnumerator HurdleCoroutine()
     {
+        float tik = 1f;
+        float curTik = 0f;
+        int secondCount = 0;
+        int spawn = 0;
+
         while (true)
         {
+
+            curTik += Time.deltaTime;
+            if(tik <= curTik)
+            {
+
+                int spawnChance = (30 - spawn);
+                if(Random.Range(0, spawnChance) == 0)
+                {
+                    SpawnHurdle();
+                }
+
+                secondCount++;
+
+                if (secondCount % 10 == 0 && secondCount != 0 && spawn < 10) spawn++;
+
+                curTik = 0f;
+            }
+
+
             yield return new WaitForSeconds(hurdleSpawnSpeed + Random.Range(-1.5f, 0f));
             SpawnHurdle();
+
+            yield return null;
         }
     }
 
@@ -253,7 +279,7 @@ public class InGameManager : Singleton<InGameManager>
 
                 if (CurMonsters.Count < maxCount)
                 {
-                    int spawnChance = 10 + (int)((float)CurMonsters.Count / (float)maxCount) * 50;
+                    int spawnChance = 10 + (int)((float)CurMonsters.Count / (float)maxCount) * 10;
                     if(Random.Range(0, spawnChance) == 0)
                     {
                         SpawnMonsters(Random.Range(0, 2));
@@ -262,7 +288,7 @@ public class InGameManager : Singleton<InGameManager>
                 curTik = 0f;
                 secondCount++;
 
-                if (secondCount % 10 == 0 && secondCount != 0 && maxCount < 20) maxCount++;
+                if (secondCount % 10 == 0 && secondCount != 0 && maxCount < 10) maxCount++;
 
             }
             curTik += Time.deltaTime;
