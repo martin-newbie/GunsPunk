@@ -243,8 +243,8 @@ public class InGameManager : Singleton<InGameManager>
             if(tik <= curTik)
             {
 
-                int spawnChance = (30 - spawn);
-                if(Random.Range(0, spawnChance) == 0)
+                int spawnChance = (20 - spawn);
+                if(Random.Range(0, spawnChance) == 2)
                 {
                     SpawnHurdle();
                 }

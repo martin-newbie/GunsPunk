@@ -100,7 +100,7 @@ public class GameEnd : MonoBehaviour
             while (timer > 0f)
             {
                 curExp += offset * Time.deltaTime;
-                UserLevelGauge.fillAmount = curExp / GameManager.Instance.GetUserMaxExp(curLevel);
+                UserLevelGauge.fillAmount = 0.1f + (curExp / GameManager.Instance.GetUserMaxExp(curLevel)) * 0.8f;
                 UserLevel.text = "Lv." + curLevel.ToString();
 
                 if(curExp >= GameManager.Instance.GetUserMaxExp(curLevel))
