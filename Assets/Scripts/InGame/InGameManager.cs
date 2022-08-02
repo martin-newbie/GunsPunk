@@ -244,14 +244,14 @@ public class InGameManager : Singleton<InGameManager>
             {
 
                 int spawnChance = (20 - spawn);
-                if(Random.Range(0, spawnChance) == 2)
+                if(Random.Range(0, spawnChance) <= 2)
                 {
                     SpawnHurdle();
                 }
 
                 secondCount++;
 
-                if (secondCount % 10 == 0 && secondCount != 0 && spawn < 10) spawn++;
+                if (secondCount % 20 == 0 && secondCount != 0 && spawn < 10) spawn++;
 
                 curTik = 0f;
             }
@@ -280,7 +280,7 @@ public class InGameManager : Singleton<InGameManager>
                 if (CurMonsters.Count < maxCount)
                 {
                     int spawnChance = 10 + (int)((float)CurMonsters.Count / (float)maxCount) * 10;
-                    if(Random.Range(0, spawnChance) == 0)
+                    if(Random.Range(0, spawnChance) <= 5)
                     {
                         SpawnMonsters(Random.Range(0, 2));
                     }
@@ -288,7 +288,7 @@ public class InGameManager : Singleton<InGameManager>
                 curTik = 0f;
                 secondCount++;
 
-                if (secondCount % 10 == 0 && secondCount != 0 && maxCount < 10) maxCount++;
+                if (secondCount % 30 == 0 && secondCount != 0 && maxCount < 10) maxCount++;
 
             }
             curTik += Time.deltaTime;
