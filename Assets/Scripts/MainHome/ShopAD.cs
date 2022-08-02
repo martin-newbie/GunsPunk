@@ -45,8 +45,6 @@ public class ShopAD : MonoBehaviour
                 if (idx < Packages.Length - 1) sub = idx + 1;
                 else sub = 0;
             });
-
-            yield return null;
         }
     }
 }
