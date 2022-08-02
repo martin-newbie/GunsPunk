@@ -55,7 +55,6 @@ public class QuestManager : Singleton<QuestManager>
         saveDataList.dataList = Quests.ToArray();
 
         string saveData = JsonConvert.SerializeObject(saveDataList);
-        Debug.Log(saveData);
         return saveData;
     }
 
