@@ -36,7 +36,8 @@ public abstract class PlayerBase : JumpAble
 
     public void Init(characterInfo info)
     {
-        HP = info.hp;
+        maxHP = info.hp;
+        HP = maxHP;
         damage = info.damage;
         fireRate = info.rpm;
         feverIncrease = info.fever;
@@ -209,7 +210,7 @@ public abstract class PlayerBase : JumpAble
         else HP += count;
 
 
-        if (HP > maxHP) HP = maxHP;
+        if (HP >= maxHP) HP = maxHP;
     }
 
     public virtual void ItemAmmunition(int count = -1)
@@ -218,7 +219,7 @@ public abstract class PlayerBase : JumpAble
             AmmoCount += AmmoIncrease;
         else AmmoCount += count;
 
-        if (AmmoCount > MaxAmmo) AmmoCount = MaxAmmo;
+        if (AmmoCount >= MaxAmmo) AmmoCount = MaxAmmo;
     }
 
     protected abstract void Skill();

@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: {x: 0, y: 0}
-  damage: 0
+  damage: 50
   isHitAble: 1
   isTrigger: 1
 --- !u!61 &6849928543606335833
