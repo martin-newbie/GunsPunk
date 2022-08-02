@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using Newtonsoft.Json;
 
 
 public class QuestManager : Singleton<QuestManager>
@@ -20,15 +20,17 @@ public class QuestManager : Singleton<QuestManager>
         if(saveData == "None")
         {
             // init quest
-            Quests.Add(new QuestSample("BestScore!", "Get Over BestScore", ValueType.Coin, 100, 50));
-            Quests.Add(new QuestSample("BestScore!!", "Get Over BestScore", ValueType.Coin, 200, 100));
-            Quests.Add(new QuestSample("BestScore!!!", "Get Over BestScore", ValueType.Coin, 400, 200));
-            Quests.Add(new QuestSample("BestScore!!!!", "Get Over BestScore", ValueType.Coin, 800, 600));
-            Quests.Add(new QuestSample("BestScore!!!!!", "Get Over BestScore", ValueType.Coin, 1600, 1000));
-            Quests.Add(new QuestSample("BestScore!!!!!!", "Get Over BestScore", ValueType.Coin, 3200, 2500));
-            Quests.Add(new QuestSample("BestScore!!!!!!!", "Get Over BestScore", ValueType.Coin, 6400, 5000));
-            Quests.Add(new QuestSample("BestScore!!!!!!!!", "Get Over BestScore", ValueType.Coin, 12800, 8000));
-            Quests.Add(new QuestSample("BestScore!!!!!!!!!", "Get Over BestScore", ValueType.Coin, 25600, 12000));
+            Quests.Add(new QuestData("BestScore!", "Get Over BestScore", ValueType.Coin, 100, 50, QuestType.BestScore));
+            Quests.Add(new QuestData("BestScore!!", "Get Over BestScore", ValueType.Coin, 200, 100, QuestType.BestScore));
+            Quests.Add(new QuestData("BestScore!!!", "Get Over BestScore", ValueType.Coin, 400, 200, QuestType.BestScore));
+            Quests.Add(new QuestData("BestScore!!!!", "Get Over BestScore", ValueType.Coin, 800, 600, QuestType.BestScore));
+            Quests.Add(new QuestData("BestScore!!!!!", "Get Over BestScore", ValueType.Coin, 1600, 1000, QuestType.BestScore));
+            Quests.Add(new QuestData("BestScore!!!!!!", "Get Over BestScore", ValueType.Coin, 3200, 2500, QuestType.BestScore));
+            Quests.Add(new QuestData("BestScore!!!!!!!", "Get Over BestScore", ValueType.Coin, 6400, 5000, QuestType.BestScore));
+            Quests.Add(new QuestData("BestScore!!!!!!!!", "Get Over BestScore", ValueType.Coin, 12800, 8000, QuestType.BestScore));
+            Quests.Add(new QuestData("BestScore!!!!!!!!!", "Get Over BestScore", ValueType.Coin, 25600, 12000, QuestType.BestScore));
+
+            saveDataList.dataList = Quests.ToArray();
         }
         else
         {
@@ -52,16 +54,28 @@ public class QuestManager : Singleton<QuestManager>
     {
         saveDataList.dataList = Quests.ToArray();
 
-        string saveData = JsonUtility.ToJson(saveDataList, true);
+        string saveData = JsonConvert.SerializeObject(saveDataList);
         Debug.Log(saveData);
         return saveData;
     }
 
     void SetSaveData(string saveData)
     {
-        saveDataList = JsonUtility.FromJson<QuestDataSaveList>(saveData);
+        saveDataList = JsonConvert.DeserializeObject<QuestDataSaveList>(saveData);
         Quests = saveDataList.dataList.ToList();
     }
+}
+
+[System.Serializable]
+public enum QuestType
+{
+    UserLevel,
+    BestScore,
+    InGameCoin,
+    MonsterKill,
+    HurdelDestroy,
+    BulletHit,
+    GamePlayCount
 }
 
 [System.Serializable]
@@ -71,35 +85,35 @@ public class QuestDataSaveList
 }
 
 [System.Serializable]
-public abstract class QuestData
+public class QuestData
 {
     public string questName;
     public string questDesc;
     public ValueType rewardType;
+    public QuestType questType;
     public int rewardValue;
     public float maxProgress;
+    public float curProgress => questType switch
+    {
+        QuestType.UserLevel => GameManager.Instance.userLevel,
+        QuestType.BestScore => GameManager.Instance.bestScore,
+        QuestType.InGameCoin => GameManager.Instance.acquiredCoin,
+        QuestType.MonsterKill => GameManager.Instance.killMonsterCnt,
+        QuestType.HurdelDestroy => GameManager.Instance.destroyedObjectCnt,
+        QuestType.BulletHit => GameManager.Instance.hitBulletCnt,
+        QuestType.GamePlayCount => GameManager.Instance.gamePlayCnt,
+        _ => throw new System.NotImplementedException(),
+    };
 
-    public abstract float curProgress { get; }
     public bool isQuestClear => curProgress >= maxProgress;
 
-    public QuestData(string name, string desc, ValueType type, int reward, float maxValue)
+    public QuestData(string name, string desc, ValueType value, int reward, float maxValue, QuestType quest)
     {
         questName = name;
         questDesc = desc;
-        rewardType = type;
+        rewardType = value;
         rewardValue = reward;
         maxProgress = maxValue;
+        questType = quest;
     }
-}
-
-
-// sample
-[System.Serializable]
-public class QuestSample : QuestData
-{
-    public QuestSample (string name, string desc, ValueType type, int reward, float maxValue) : base(name, desc, type, reward, maxValue)
-    {
-    }
-
-    public override float curProgress => GameManager.Instance.bestScore;
 }

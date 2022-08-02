@@ -22,7 +22,7 @@ public class QuestContainer : MonoBehaviour
     public Image rewardEnergyIcon;
     public Image rewardCoinIcon;
 
-    QuestData data;
+    public QuestData data;
 
     public void Init(QuestData _data)
     {
