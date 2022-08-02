@@ -50,7 +50,9 @@ public class ShopUIManager : Singleton<ShopUIManager>
             temp.Init(i);
         }
 
-        OpenWindow(0);
+        int shopIdx = PlayerPrefs.GetInt("ShopState", 0);
+        OpenWindow(shopIdx);
+        PlayerPrefs.DeleteKey("ShopState");
     }
 
     private void Update()
