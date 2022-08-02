@@ -273,6 +273,8 @@ public class InGameManager : Singleton<InGameManager>
             {
                 if (!CurMonsters[i].isAlive) CurMonsters.Remove(CurMonsters[i]);
             }
+
+            yield return null;
         }
     }
 
