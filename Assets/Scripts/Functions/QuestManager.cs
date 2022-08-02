@@ -105,6 +105,7 @@ public class QuestData
     };
 
     public bool isQuestClear => curProgress >= maxProgress;
+    public bool isRewardAble = true;
 
     public QuestData(string name, string desc, ValueType value, int reward, float maxValue, QuestType quest)
     {
