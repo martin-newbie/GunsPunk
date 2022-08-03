@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuestContainer : MonoBehaviour
+public class QuestContainer : MonoBehaviour, IRefresh
 {
     public ValueType valueType;
+    public QuestData data;
 
     [Header("Quest UI")]
     public Text questName;
@@ -22,7 +23,8 @@ public class QuestContainer : MonoBehaviour
     public Image rewardEnergyIcon;
     public Image rewardCoinIcon;
 
-    public QuestData data;
+    [Header("ETC")]
+    public GameObject d;
 
     public void Init(QuestData _data)
     {
@@ -41,9 +43,28 @@ public class QuestContainer : MonoBehaviour
         rewardEnergyIcon.gameObject.SetActive(valueType == ValueType.Energy);
         rewardCoinIcon.gameObject.SetActive(valueType == ValueType.Coin);
 
-        rewardButton.gameObject.SetActive(data.isQuestClear);
+        rewardButton.gameObject.SetActive(data.isQuestClear && data.isRewardAble);
         rewardCost.text = format(data.rewardValue);
 
+    }
+
+    public void GetReward()
+    {
+        switch (data.rewardType)
+        {
+            case ValueType.Coin:
+                break;
+            case ValueType.Energy:
+                break;
+        }
+
+        data.isRewardAble = false;
+        Refresh();
+    }
+
+    public void Refresh()
+    {
+        rewardButton.gameObject.SetActive(data.isQuestClear && data.isRewardAble);
     }
 
     string format(object args, string format = "{0:0,#}")
