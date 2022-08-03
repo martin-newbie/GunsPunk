@@ -24,7 +24,7 @@ public class QuestContainer : MonoBehaviour, IRefresh
     public Image rewardCoinIcon;
 
     [Header("ETC")]
-    public GameObject d;
+    public GameObject acquiredObject;
 
     public void Init(QuestData _data)
     {
@@ -44,6 +44,7 @@ public class QuestContainer : MonoBehaviour, IRefresh
         rewardCoinIcon.gameObject.SetActive(valueType == ValueType.Coin);
 
         rewardButton.gameObject.SetActive(data.isQuestClear && data.isRewardAble);
+        acquiredObject.SetActive(!data.isRewardAble);
         rewardCost.text = format(data.rewardValue);
 
     }
@@ -65,6 +66,7 @@ public class QuestContainer : MonoBehaviour, IRefresh
     public void Refresh()
     {
         rewardButton.gameObject.SetActive(data.isQuestClear && data.isRewardAble);
+        acquiredObject.SetActive(!data.isRewardAble);
     }
 
     string format(object args, string format = "{0:0,#}")
