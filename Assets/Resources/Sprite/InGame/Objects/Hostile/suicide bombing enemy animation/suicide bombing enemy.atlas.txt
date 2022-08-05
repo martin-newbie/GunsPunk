@@ -1,0 +1,76 @@
+
+suicide bombing enemy.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+머리, 몸
+  rotate: true
+  xy: 2, 79
+  size: 162, 151
+  orig: 162, 151
+  offset: 0, 0
+  index: -1
+발 뒤
+  rotate: false
+  xy: 291, 27
+  size: 47, 50
+  orig: 47, 51
+  offset: 0, 1
+  index: -1
+발 앞
+  rotate: false
+  xy: 212, 85
+  size: 45, 51
+  orig: 45, 51
+  offset: 0, 0
+  index: -1
+장식
+  rotate: true
+  xy: 2, 2
+  size: 75, 115
+  orig: 75, 115
+  offset: 0, 0
+  index: -1
+종아리 1 뒤
+  rotate: false
+  xy: 262, 19
+  size: 27, 58
+  orig: 27, 58
+  offset: 0, 0
+  index: -1
+종아리 1 앞
+  rotate: false
+  xy: 259, 79
+  size: 31, 58
+  orig: 31, 58
+  offset: 0, 0
+  index: -1
+종아리 2 뒤
+  rotate: false
+  xy: 257, 139
+  size: 45, 102
+  orig: 45, 103
+  offset: 0, 0
+  index: -1
+종아리 2 앞
+  rotate: false
+  xy: 212, 138
+  size: 43, 103
+  orig: 44, 103
+  offset: 0, 0
+  index: -1
+허벅지 뒤
+  rotate: true
+  xy: 119, 12
+  size: 65, 141
+  orig: 66, 142
+  offset: 0, 0
+  index: -1
+허벅지 앞
+  rotate: false
+  xy: 155, 100
+  size: 55, 141
+  orig: 56, 142
+  offset: 0, 0
+  index: -1
