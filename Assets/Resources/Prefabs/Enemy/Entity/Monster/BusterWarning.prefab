@@ -95,6 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff110cb614ca6b74188a04600cc0dda1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buster: {fileID: 8325273416778857629, guid: f578bdae37241984db91be155da65eda, type: 3}
+  buster: {fileID: 9047405461968340424, guid: 9a298afdc9c3e3e45afdb854a0273c11, type: 3}
   warning: {fileID: 7097528692945870545}
   moveSpeed: 0
