@@ -4851,7 +4851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25844654f17ef44fa9a9ad7254f2032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   frameSpeed: 0.05
   animationsFrame:
   - {fileID: 21300000, guid: 06c52cbd3e95f47489cccc49a8b8d271, type: 3}
