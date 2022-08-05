@@ -280,7 +280,6 @@ public class InGameManager : Singleton<InGameManager>
 
                 if (Random.Range(0, (50 - maxCount * 2)) <= 1)
                 {
-                    Debug.Log("spawn buster");
                     SpawnBuster();
                 }
 
