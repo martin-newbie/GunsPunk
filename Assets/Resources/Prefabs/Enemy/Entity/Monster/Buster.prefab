@@ -4997,8 +4997,8 @@ GameObject:
   - component: {fileID: 9047405461968340436}
   - component: {fileID: 9047405461968340430}
   m_Layer: 7
-  m_Name: Buster 1
-  m_TagString: Untagged
+  m_Name: Buster
+  m_TagString: Hostile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

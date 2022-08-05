@@ -10,10 +10,12 @@ public class MonsterBuster : Monster
     public float minX;
     public bool isArrived;
 
+    Coroutine moveRoutine;
+
     protected override void Awake()
     {
         base.Awake();
-        StartCoroutine(MoveLogicCoroutine());
+        moveRoutine = StartCoroutine(MoveLogicCoroutine());
     }
 
     protected override void Update()
@@ -32,9 +34,15 @@ public class MonsterBuster : Monster
         }
 
         // attack
+        Attack();
+        yield break;
+    }
+
+    void Attack()
+    {
         Explosion temp = Instantiate(attackExplosion, transform.position + new Vector3(0, 1f), Quaternion.identity);
         temp.GetComponent<HostileAttack>().Init(damage);
         OnHit(maxHP, transform);
-        yield break;
     }
+
 }

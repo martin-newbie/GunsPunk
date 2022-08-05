@@ -45,6 +45,7 @@ public class InGameManager : Singleton<InGameManager>
     public Transform[] SpawnPoses;
     public Monster MonsterMelee;
     public Monster MonsterGun;
+    public BusterWarning MonsterBuster;
     public Item[] Items;
     public Explosion explosion;
     public CameraController Cam;
@@ -243,11 +244,11 @@ public class InGameManager : Singleton<InGameManager>
             if (tik <= curTik)
             {
 
-                int spawnChance = (20 - spawn);
-                if (Random.Range(0, spawnChance) <= 2)
+                if (Random.Range(0, (20 - spawn)) <= 2)
                 {
                     SpawnHurdle();
                 }
+
 
                 secondCount++;
 
@@ -277,10 +278,16 @@ public class InGameManager : Singleton<InGameManager>
             if (tik <= curTik)
             {
 
+                if (Random.Range(0, (50 - maxCount * 2)) <= 1)
+                {
+                    Debug.Log("spawn buster");
+                    SpawnBuster();
+                }
+
                 if (CurMonsters.Count < maxCount)
                 {
                     int spawnChance = 10 + (int)((float)CurMonsters.Count / (float)maxCount) * 10;
-                    if (Random.Range(0, spawnChance) <= 5)
+                    if (Random.Range(0, spawnChance) <= 3)
                     {
                         CurMonsters.Add(SpawnMonsters(Random.Range(0, 2)));
                     }
@@ -302,6 +309,15 @@ public class InGameManager : Singleton<InGameManager>
 
             yield return null;
         }
+    }
+
+    BusterWarning SpawnBuster()
+    {
+        float[] randY = new float[3] { -3.1f, -0.4f, 2.2f };
+        float X = 10f;
+
+        BusterWarning temp = Instantiate(MonsterBuster, new Vector3(X, randY[Random.Range(0, randY.Length)]), Quaternion.identity);
+        return temp;
     }
 
     public Entity SpawnHurdle()
