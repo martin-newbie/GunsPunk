@@ -1,0 +1,118 @@
+
+ayla ingame.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ayla/겉옷 뒤
+  rotate: false
+  xy: 412, 65
+  size: 55, 61
+  orig: 55, 61
+  offset: 0, 0
+  index: -1
+ayla/겉옷 앞
+  rotate: false
+  xy: 348, 62
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: -1
+ayla/골반
+  rotate: false
+  xy: 279, 2
+  size: 54, 53
+  orig: 57, 54
+  offset: 0, 1
+  index: -1
+ayla/머리
+  rotate: false
+  xy: 78, 47
+  size: 68, 79
+  orig: 68, 79
+  offset: 0, 0
+  index: -1
+ayla/머리카락
+  rotate: false
+  xy: 2, 32
+  size: 74, 94
+  orig: 74, 94
+  offset: 0, 0
+  index: -1
+ayla/머리카락 뒤
+  rotate: true
+  xy: 417, 27
+  size: 36, 33
+  orig: 36, 33
+  offset: 0, 0
+  index: -1
+ayla/몸
+  rotate: false
+  xy: 148, 51
+  size: 72, 75
+  orig: 72, 75
+  offset: 0, 0
+  index: -1
+ayla/발 뒤
+  rotate: true
+  xy: 2, 5
+  size: 25, 22
+  orig: 25, 22
+  offset: 0, 0
+  index: -1
+ayla/발 앞
+  rotate: true
+  xy: 2, 5
+  size: 25, 22
+  orig: 25, 22
+  offset: 0, 0
+  index: -1
+ayla/손, 총
+  rotate: false
+  xy: 211, 8
+  size: 66, 41
+  orig: 67, 41
+  offset: 1, 0
+  index: -1
+ayla/전완근
+  rotate: true
+  xy: 335, 6
+  size: 50, 29
+  orig: 51, 29
+  offset: 1, 0
+  index: -1
+ayla/종아리 뒤
+  rotate: true
+  xy: 78, 3
+  size: 42, 65
+  orig: 42, 65
+  offset: 0, 0
+  index: -1
+ayla/종아리 앞
+  rotate: true
+  xy: 145, 3
+  size: 42, 64
+  orig: 42, 65
+  offset: 0, 0
+  index: -1
+ayla/팔
+  rotate: true
+  xy: 366, 3
+  size: 57, 49
+  orig: 57, 50
+  offset: 0, 0
+  index: -1
+ayla/허벅지 뒤
+  rotate: true
+  xy: 222, 57
+  size: 69, 61
+  orig: 69, 62
+  offset: 0, 1
+  index: -1
+ayla/허벅지 앞
+  rotate: true
+  xy: 285, 58
+  size: 68, 61
+  orig: 69, 61
+  offset: 0, 0
+  index: -1

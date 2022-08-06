@@ -18,7 +18,7 @@ public class ExplosiveShake : MonoBehaviour
         if(player != null)
         {
             PlayerBase pb = player.GetComponent<PlayerBase>();
-            Camera.main.GetComponent<CameraController>().ShakeForTime(0.5f, 0.1f * (Vector3.Distance(transform.position, pb.transform.position) / radius));
+            Camera.main.GetComponent<CameraController>().ShakeForTime(0.5f, 0.5f * (Vector3.Distance(transform.position, pb.transform.position) / radius));
         }
     }
 }
