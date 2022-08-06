@@ -286,8 +286,8 @@ public class InGameManager : Singleton<InGameManager>
 
                 if (CurMonsters.Count < maxCount)
                 {
-                    int spawnChance = 10 + (int)((float)CurMonsters.Count / (float)maxCount) * 10;
-                    if (Random.Range(0, spawnChance) <= 3)
+                    int spawnChance = 15 + (int)((float)CurMonsters.Count / (float)maxCount) * 10;
+                    if (Random.Range(0, spawnChance) <= 2)
                     {
                         CurMonsters.Add(SpawnMonsters(Random.Range(0, 2)));
                     }
