@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8758348878193151863}
   - component: {fileID: 8758348878193151862}
   - component: {fileID: 8758348878193151861}
+  - component: {fileID: 8239513082978082541}
   m_Layer: 0
   m_Name: CommonExplosion
   m_TagString: Untagged
@@ -149,3 +150,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.3
+--- !u!114 &8239513082978082541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8758348878193151865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b9ce7de9f722343ade6333befb8c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 10

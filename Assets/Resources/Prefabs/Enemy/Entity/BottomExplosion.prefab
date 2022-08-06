@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6849928543606335831}
   - component: {fileID: 6849928543606335830}
   - component: {fileID: 6849928543606335833}
+  - component: {fileID: -7903440285272697593}
   m_Layer: 0
   m_Name: BottomExplosion
   m_TagString: Untagged
@@ -159,3 +160,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 2.63}
   m_EdgeRadius: 0
+--- !u!114 &-7903440285272697593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6849928543606335837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b9ce7de9f722343ade6333befb8c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 10
