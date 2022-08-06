@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class PlayerBase : JumpAble
 {
+
+    Animator anim;
+
     [Header("Status Value")]
     public float speed;
     public float fireRate;
@@ -64,6 +67,8 @@ public abstract class PlayerBase : JumpAble
         OnDestroyAction = OnDie;
 
         AmmoCount = MaxAmmo;
+
+        anim = GetComponent<Animator>();
     }
 
     public void UIInit()
@@ -173,6 +178,7 @@ public abstract class PlayerBase : JumpAble
 
         if (AmmoCount > 0)
         {
+            anim.SetTrigger("AttackTrigger");
             _bullet = Instantiate(bullet, FirePos.position + new Vector3(0, Random.Range(-spread_pos, spread_pos)), Quaternion.Euler(0, 0, Random.Range(-spread_rot, spread_rot)));
             _bullet.Init(speed, damage, this);
             if (!isSkillActive)

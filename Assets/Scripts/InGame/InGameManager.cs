@@ -136,6 +136,8 @@ public class InGameManager : Singleton<InGameManager>
 
     public void GameOver()
     {
+        isGameActive = false;
+
         StopCoroutine(hurdleSpawn_coroutine);
         StopCoroutine(monsterSpawn_coroutine);
 
@@ -170,7 +172,6 @@ public class InGameManager : Singleton<InGameManager>
     {
 
         isRevived = true;
-        isGameActive = false;
         InGameUIManager.Instance.SetPlayerHp(0, CurPlayer.maxHP);
 
         var monsters = FindObjectsOfType<Monster>();

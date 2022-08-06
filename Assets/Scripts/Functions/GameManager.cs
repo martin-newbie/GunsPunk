@@ -186,7 +186,8 @@ public class GameManager : Singleton<GameManager>
                 }
                 else if (SceneManager.GetActiveScene().name == "InGameScene")
                 {
-                    InGameUIManager.Instance.PauseOn();
+                    if (InGameManager.Instance.isGameActive)
+                        InGameUIManager.Instance.PauseOn();
                 }
             }
         }

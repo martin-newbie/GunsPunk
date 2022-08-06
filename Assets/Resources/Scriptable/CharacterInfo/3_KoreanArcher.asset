@@ -15,7 +15,7 @@ MonoBehaviour:
   idx: 2
   level: 0
   trainingLevel: 0
-  exp: 32.350075
+  exp: 0
   characterName: KANG
   HP: 250
   HPIncrease: 25
@@ -32,6 +32,6 @@ MonoBehaviour:
   AmmoItemValue: 10
   HPItemValue: 50
   cost: 50000
-  isUnlocked: 0
+  isUnlocked: 1
   valueType: 1
-  isSelected: 1
+  isSelected: 0

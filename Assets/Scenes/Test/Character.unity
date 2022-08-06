@@ -270,6 +270,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 450796681, guid: 805c3a9d16faf2241a808314afb9d8ad, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6010009858012048960, guid: 805c3a9d16faf2241a808314afb9d8ad, type: 3}
       propertyPath: m_Name
       value: 2_Girl

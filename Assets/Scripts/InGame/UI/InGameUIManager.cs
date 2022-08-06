@@ -54,7 +54,7 @@ public class InGameUIManager : Singleton<InGameUIManager>
 
     private void OnApplicationPause(bool pause)
     {
-        if (pause)
+        if (pause && InGameManager.Instance.isGameActive)
             PauseOn();
     }
 
