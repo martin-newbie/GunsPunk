@@ -10,6 +10,7 @@ public class MonsterGun : Monster
     public float startPosX;
     public Transform AttackPos;
     public EnemyBullet bullet;
+    public ParticleSystem gunFire;
 
     [Header("Gun Monster Value")]
     public float fireDelay;
@@ -174,6 +175,7 @@ public class MonsterGun : Monster
     EnemyBullet FireBullet(Vector3 pos, Quaternion rot)
     {
         anim.SetTrigger("AttackTrigger");
+        gunFire.Play();
         EnemyBullet temp = Instantiate(bullet, pos, rot);
         temp.Init(b_speed, b_damage);
         return temp;
