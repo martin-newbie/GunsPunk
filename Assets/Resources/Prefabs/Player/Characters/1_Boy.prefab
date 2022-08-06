@@ -4935,6 +4935,7 @@ GameObject:
   - component: {fileID: 4642842760935218922}
   - component: {fileID: 4642842760935218917}
   - component: {fileID: 4642842760935218914}
+  - component: {fileID: 7639429311123041966}
   m_Layer: 3
   m_Name: 1_Boy
   m_TagString: Player
@@ -5101,6 +5102,25 @@ MonoBehaviour:
   g_force: {x: 15, y: 5}
   g_torque: 5
   g_damage: 25
+--- !u!95 &7639429311123041966
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4642842760935218918}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4642842761091557190
 GameObject:
   m_ObjectHideFlags: 0

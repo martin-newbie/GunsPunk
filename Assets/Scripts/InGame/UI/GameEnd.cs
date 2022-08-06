@@ -169,6 +169,8 @@ public class GameEnd : MonoBehaviour
 
     IEnumerator ReviveCoroutine(float duration)
     {
+        yield return new WaitForSeconds(2f);
+
         ReviveWindow.SetActive(true);
         yield return ReviveMain.DOAnchorPosY(40, 0.5f).SetEase(Ease.OutBack);
 

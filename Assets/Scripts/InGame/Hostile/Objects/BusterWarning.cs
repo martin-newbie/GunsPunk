@@ -29,6 +29,8 @@ public class BusterWarning : MonoBehaviour
 
             timer -= delay;
             delay *= 0.85f;
+
+            if (!InGameManager.Instance.isGameActive) Destroy(gameObject);
         }
         
 

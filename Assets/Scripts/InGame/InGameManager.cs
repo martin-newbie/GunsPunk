@@ -137,6 +137,7 @@ public class InGameManager : Singleton<InGameManager>
     public void GameOver()
     {
         isGameActive = false;
+        FindMonstersDestroy();
 
         StopCoroutine(hurdleSpawn_coroutine);
         StopCoroutine(monsterSpawn_coroutine);
@@ -168,17 +169,20 @@ public class InGameManager : Singleton<InGameManager>
         yield break;
     }
 
-    IEnumerator PlayerSwapCoroutine()
+    void FindMonstersDestroy()
     {
-
-        isRevived = true;
-        InGameUIManager.Instance.SetPlayerHp(0, CurPlayer.maxHP);
-
         var monsters = FindObjectsOfType<Monster>();
         foreach (var m in monsters)
         {
             StartCoroutine(m.DestroyMove());
         }
+    }
+
+    IEnumerator PlayerSwapCoroutine()
+    {
+
+        isRevived = true;
+        InGameUIManager.Instance.SetPlayerHp(0, CurPlayer.maxHP);
 
         int curIdx = CurPlayer.curPosIdx;
         Vector3 spawnPos = PlayerPoses[curIdx].position;

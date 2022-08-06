@@ -86,6 +86,9 @@ public abstract class PlayerBase : JumpAble
             return;
         }
 
+
+        anim.SetBool("IsGround", checkFeet && !isActing);
+
         if (InGameManager.Instance.isGameActive)
         {
             base.Update();
@@ -163,6 +166,7 @@ public abstract class PlayerBase : JumpAble
         if (InGameManager.Instance.isGameActive)
         {
             isAlive = false;
+            anim.SetTrigger("DieTrigger");
             InGameManager.Instance.GameOver();
         }
     }
@@ -229,6 +233,18 @@ public abstract class PlayerBase : JumpAble
     }
 
     protected abstract void Skill();
+
+    protected override void GoDownJump()
+    {
+        base.GoDownJump();
+        anim.SetTrigger("JumpTrigger");
+    }
+
+    protected override void GoUpJump()
+    {
+        base.GoUpJump();
+        anim.SetTrigger("JumpTrigger");
+    }
 
     public abstract void OnAttackStart();
     public abstract void OnAttackEnd();
