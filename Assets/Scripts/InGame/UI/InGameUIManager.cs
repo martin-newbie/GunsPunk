@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+using Image = UnityEngine.UI.Image;
 
 public class InGameUIManager : Singleton<InGameUIManager>
 {
@@ -14,10 +16,14 @@ public class InGameUIManager : Singleton<InGameUIManager>
 
     public Text RoundCoinText;
 
+    public Image DamagedHud;
+
     [Header("Script Objects")]
     public PauseUI PauseObject;
     public GameEnd GameEndObject;
 
+
+    Coroutine damagedCoroutine;
     int roundCoin;
     public int RoundCoin
     {
@@ -62,6 +68,22 @@ public class InGameUIManager : Singleton<InGameUIManager>
     {
         GameEndObject.gameObject.SetActive(true);
         GameEndObject.OpenGameEnd();
+    }
+
+    public void DamagedEffect()
+    {
+        if (damagedCoroutine != null) StopCoroutine(damagedCoroutine);
+        damagedCoroutine = StartCoroutine(DamagedEffectCoroutine());
+    }
+
+    IEnumerator DamagedEffectCoroutine()
+    {
+        DamagedHud.DOColor(new Color(1, 1, 1, 1f), 0.2f).OnComplete(() =>
+        {
+            DamagedHud.DOColor(new Color(1, 1, 1, 0f), 0.2f);
+        });
+        yield return new WaitForSeconds(0.4f);
+        yield break;
     }
 
     public void PauseOn()

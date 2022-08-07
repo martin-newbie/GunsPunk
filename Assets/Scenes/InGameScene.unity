@@ -1415,6 +1415,7 @@ MonoBehaviour:
   AmmoGauge: {fileID: 317320393}
   HoldGauge: {fileID: 1607550552}
   RoundCoinText: {fileID: 1067280036}
+  DamagedHud: {fileID: 348050629}
   PauseObject: {fileID: 1293156469}
   GameEndObject: {fileID: 2045509275}
 --- !u!1 &576620652

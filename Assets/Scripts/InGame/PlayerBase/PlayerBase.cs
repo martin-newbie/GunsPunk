@@ -157,6 +157,7 @@ public abstract class PlayerBase : JumpAble
         {
             base.OnHit(damage, hit);
             InGameManager.Instance.Cam.ShakeForTime();
+            InGameUIManager.Instance.DamagedEffect();
         }
     }
 
