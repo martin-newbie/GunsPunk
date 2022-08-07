@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
-  m_Name: ayla ingame_SkeletonData
+  m_Name: smith ingame_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 75fc0da6462d93741bb881fd2bd3fe89, type: 2}
+  - {fileID: 11400000, guid: 986f646b2c4a8004582371a70ba43de9, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 1e5e8384a7366814daf6cb4e58bb4ac9, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: d79c42daa9291da458d9a4072994fd87, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0
@@ -28,4 +28,4 @@ MonoBehaviour:
   toAnimation: []
   duration: []
   defaultMix: 0.2
-  controller: {fileID: 9100000, guid: 75f43402fa54df640b51598959a9dc1e, type: 2}
+  controller: {fileID: 9100000, guid: 2b222d42b42e61b4ba633996730b7064, type: 2}

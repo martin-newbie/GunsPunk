@@ -1,0 +1,202 @@
+
+smith ingame.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+smith 1/겉옷 뒤 1
+  rotate: false
+  xy: 2, 3
+  size: 83, 122
+  orig: 84, 123
+  offset: 0, 0
+  index: -1
+smith 2/겉옷 뒤 2
+  rotate: false
+  xy: 2, 3
+  size: 83, 122
+  orig: 84, 123
+  offset: 0, 0
+  index: -1
+smith 1/겉옷 앞 1
+  rotate: false
+  xy: 87, 17
+  size: 126, 108
+  orig: 128, 110
+  offset: 1, 1
+  index: -1
+smith 2/겉옷 앞 2
+  rotate: false
+  xy: 87, 17
+  size: 126, 108
+  orig: 128, 110
+  offset: 1, 1
+  index: -1
+smith 1/골반 1
+  rotate: false
+  xy: 635, 70
+  size: 55, 55
+  orig: 59, 56
+  offset: 1, 1
+  index: -1
+smith 2/골반 2
+  rotate: false
+  xy: 635, 70
+  size: 55, 55
+  orig: 59, 56
+  offset: 1, 1
+  index: -1
+smith 1/머리 1
+  rotate: true
+  xy: 215, 33
+  size: 92, 80
+  orig: 94, 81
+  offset: 1, 0
+  index: -1
+smith 1/몸 1
+  rotate: false
+  xy: 297, 38
+  size: 81, 87
+  orig: 82, 89
+  offset: 1, 1
+  index: -1
+smith 2/몸 2
+  rotate: false
+  xy: 297, 38
+  size: 81, 87
+  orig: 82, 89
+  offset: 1, 1
+  index: -1
+smith 1/발 뒤 1
+  rotate: true
+  xy: 215, 3
+  size: 28, 23
+  orig: 30, 24
+  offset: 1, 0
+  index: -1
+smith 2/발 뒤 2
+  rotate: true
+  xy: 215, 3
+  size: 28, 23
+  orig: 30, 24
+  offset: 1, 0
+  index: -1
+smith 1/발 앞 1
+  rotate: true
+  xy: 240, 3
+  size: 28, 23
+  orig: 30, 24
+  offset: 1, 0
+  index: -1
+smith 2/발 앞 2
+  rotate: true
+  xy: 240, 3
+  size: 28, 23
+  orig: 30, 24
+  offset: 1, 0
+  index: -1
+smith 1/손, 총 1
+  rotate: true
+  xy: 459, 48
+  size: 77, 43
+  orig: 77, 44
+  offset: 0, 1
+  index: -1
+smith 2/손, 총 2
+  rotate: true
+  xy: 459, 48
+  size: 77, 43
+  orig: 77, 44
+  offset: 0, 1
+  index: -1
+smith 1/전완근 1
+  rotate: false
+  xy: 297, 2
+  size: 52, 34
+  orig: 52, 35
+  offset: 0, 0
+  index: -1
+smith 2/전완근 2
+  rotate: false
+  xy: 297, 2
+  size: 52, 34
+  orig: 52, 35
+  offset: 0, 0
+  index: -1
+smith 1/종아리 뒤 1
+  rotate: true
+  xy: 459, 4
+  size: 42, 69
+  orig: 44, 70
+  offset: 1, 1
+  index: -1
+smith 2/종아리 뒤 2
+  rotate: true
+  xy: 459, 4
+  size: 42, 69
+  orig: 44, 70
+  offset: 1, 1
+  index: -1
+smith 1/종아리 앞 1
+  rotate: true
+  xy: 591, 10
+  size: 42, 68
+  orig: 44, 70
+  offset: 1, 1
+  index: -1
+smith 2/종아리 앞 2
+  rotate: true
+  xy: 591, 10
+  size: 42, 68
+  orig: 44, 70
+  offset: 1, 1
+  index: -1
+smith 1/팔 1
+  rotate: false
+  xy: 530, 2
+  size: 59, 50
+  orig: 59, 52
+  offset: 0, 1
+  index: -1
+smith 2/팔 2
+  rotate: false
+  xy: 530, 2
+  size: 59, 50
+  orig: 59, 52
+  offset: 0, 1
+  index: -1
+smith 1/허벅지 뒤 1
+  rotate: true
+  xy: 504, 54
+  size: 71, 64
+  orig: 71, 64
+  offset: 0, 0
+  index: -1
+smith 2/허벅지 뒤 2
+  rotate: true
+  xy: 504, 54
+  size: 71, 64
+  orig: 71, 64
+  offset: 0, 0
+  index: -1
+smith 1/허벅지 앞 1
+  rotate: true
+  xy: 570, 54
+  size: 71, 63
+  orig: 71, 63
+  offset: 0, 0
+  index: -1
+smith 2/허벅지 앞 2
+  rotate: true
+  xy: 570, 54
+  size: 71, 63
+  orig: 71, 63
+  offset: 0, 0
+  index: -1
+smith 2/머리 2
+  rotate: true
+  xy: 380, 41
+  size: 84, 77
+  orig: 84, 77
+  offset: 0, 0
+  index: -1

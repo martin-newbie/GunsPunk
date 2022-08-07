@@ -64,7 +64,8 @@ public abstract class Monster : JumpAble
     public virtual void OnDie()
     {
         GameManager.Instance.killMonsterCnt++;
-        
+        gameObject.layer = LayerMask.NameToLayer("Debris");
+
         if (nowCoroutine != null)
             StopCoroutine(nowCoroutine);
         if (attackCoroutine != null)
