@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
+    public string explosionSound = "ExplosionBottom";
     Collider2D atkCol;
     HostileAttack atk;
 
@@ -12,6 +13,8 @@ public class Explosion : MonoBehaviour
         atkCol = GetComponent<Collider2D>();
         atk = GetComponent<HostileAttack>();
         atkCol.enabled = false;
+
+        AudioManager.Instance.PlayEffectSound(explosionSound, transform.position);
     }
 
     private void Update()

@@ -49,6 +49,7 @@ public class InGameManager : Singleton<InGameManager>
     public Item[] Items;
     public Explosion explosion;
     public CameraController Cam;
+    public AudioListener listener;
 
     [Header("Values")]
     public float objectSpeed;
@@ -129,6 +130,9 @@ public class InGameManager : Singleton<InGameManager>
 
     private void Update()
     {
+        listener.transform.position = CurPlayer.transform.position;
+
+
         if (isGameActive)
         {
             roundDistance += objectSpeed * Time.deltaTime;

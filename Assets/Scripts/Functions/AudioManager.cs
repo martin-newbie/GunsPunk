@@ -23,7 +23,7 @@ public class AudioManager : Singleton<AudioManager>
     void Start()
     {
 
-        audioPrefab = Resources.Load("AudioObject") as AudioObject;
+        audioPrefab = Resources.Load<AudioObject>("Prefabs/AudioObject");
 
         foreach (var item in Resources.LoadAll<AudioClip>("Audio/Effects"))
         {
@@ -38,6 +38,11 @@ public class AudioManager : Singleton<AudioManager>
             UIAudioClips.Add(item.name, item);
         }
 
+        SpawnAudioPrefab();
+    }
+
+    void SpawnAudioPrefab()
+    {
         for (int i = 0; i < stackCount; i++)
         {
             AudioObject temp = Instantiate(audioPrefab, transform);
@@ -76,14 +81,17 @@ public class AudioManager : Singleton<AudioManager>
 
     AudioObject Pop()
     {
+        if (AudioStack.Count <= 0) SpawnAudioPrefab();
+
+
         AudioObject audio = AudioStack.Pop();
+        audio.gameObject.SetActive(true);
         CurrentPlayAudio.Add(audio);
         return audio;
     }
 
     public void Push(AudioObject audio)
     {
-
         if (CurrentPlayAudio.Contains(audio)) CurrentPlayAudio.Remove(audio);
 
         audio.gameObject.SetActive(false);

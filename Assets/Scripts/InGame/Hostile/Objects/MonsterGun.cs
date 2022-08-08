@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MonsterGun : Monster
 {
+
+
     [Header("Gun Monster")]
     public float standbyDelay;
     public float moveTime;

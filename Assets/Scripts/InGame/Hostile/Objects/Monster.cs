@@ -16,6 +16,7 @@ public abstract class Monster : JumpAble
     // 움직이는 애니메이션은 항상 뒤로 움직이게끔
     // 앞으로 움직이는 로직에서는 뒤로 움직이는 애니메이션을 천천히 재생
     // 앞으로 빠르게 움직이는 로직에서는 앞으로 움직이는 애니메이션을 재생
+    public string monsterHit => "RobotHit_" + Random.Range(1, 4).ToString();
 
     [Header("Monster AI")]
     public MonsterState state;
@@ -56,6 +57,7 @@ public abstract class Monster : JumpAble
     {
         if (isAlive)
         {
+            AudioManager.Instance.PlayEffectSound(monsterHit, transform.position);
             HitEffect?.Play();
             base.OnHit(damage, hit);
         }

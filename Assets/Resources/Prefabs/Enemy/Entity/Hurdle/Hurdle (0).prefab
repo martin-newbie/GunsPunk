@@ -82,6 +82,7 @@ MonoBehaviour:
   damage: 5
   moveSpeed: 0
   isAlive: 1
+  hitSound: WoodHit_
   atkCol: {fileID: 7169500374783142220}
   hurdleObj: {fileID: 6494459089486536394}
   HitParticle: {fileID: 1786221884782959546}

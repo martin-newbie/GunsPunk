@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Hurdle : Entity
 {
+    public string hitSound = "MetalHit_";
     public HostileAttack atkCol;
     public SpriteRenderer hurdleObj;
     public ParticleSystem HitParticle;
@@ -46,6 +47,7 @@ public class Hurdle : Entity
     {
         base.OnHit(damage, hit);
 
+        AudioManager.Instance.PlayEffectSound(hitSound + Random.Range(1, 4).ToString(), transform.position);
         HitParticle.Play();
 
         if (shakeCoroutine != null) StopCoroutine(shakeCoroutine);

@@ -9,6 +9,8 @@ public class Player3_KoreanArcher : HoldFirePlayer
     public Bullet ChargedArrow;
     public int coinCount;
 
+    protected override string fireSound => "ArrowShoot";
+
     protected override void Skill()
     {
         for (int i = -45; i <= 45; i += 15)
