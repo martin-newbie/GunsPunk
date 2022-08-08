@@ -157,7 +157,7 @@ public abstract class PlayerBase : JumpAble
         {
             base.OnHit(damage, hit);
             InGameManager.Instance.Cam.ShakeForTime();
-            InGameUIManager.Instance.DamagedEffect();
+            InGameUIManager.Instance.HudEffect(Color.red);
         }
     }
 
@@ -220,6 +220,7 @@ public abstract class PlayerBase : JumpAble
             HP += HealthIncrease;
         else HP += count;
 
+        InGameUIManager.Instance.HudEffect(Color.green);
 
         if (HP >= maxHP) HP = maxHP;
     }
@@ -233,6 +234,7 @@ public abstract class PlayerBase : JumpAble
         }
 
         AmmoCount += count;
+        InGameUIManager.Instance.HudEffect(new Color(1, 0.7f, 0));
 
         InGameManager.Instance.AmmoEffect(transform.position + Vector3.up, count);
 

@@ -336,7 +336,7 @@ public class InGameManager : Singleton<InGameManager>
         float[] randY = new float[3] { -3.1f, -0.4f, 2.2f };
         float X = 10f;
 
-        BusterWarning temp = Instantiate(MonsterBuster, new Vector3(X, randY[Random.Range(0, randY.Length)]), Quaternion.identity);
+        BusterWarning temp = Instantiate(MonsterBuster, new Vector3(X, randY[CurPlayer.curPosIdx]), Quaternion.identity);
         return temp;
     }
 

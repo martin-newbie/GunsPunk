@@ -70,17 +70,22 @@ public class InGameUIManager : Singleton<InGameUIManager>
         GameEndObject.OpenGameEnd();
     }
 
-    public void DamagedEffect()
+    public void HudEffect(Color color)
     {
         if (damagedCoroutine != null) StopCoroutine(damagedCoroutine);
-        damagedCoroutine = StartCoroutine(DamagedEffectCoroutine());
+        damagedCoroutine = StartCoroutine(DamagedEffectCoroutine(color));
     }
 
-    IEnumerator DamagedEffectCoroutine()
+    IEnumerator DamagedEffectCoroutine(Color color)
     {
-        DamagedHud.DOColor(new Color(1, 1, 1, 1f), 0.2f).OnComplete(() =>
+
+        DamagedHud.color = color;
+        color.a = 0.5f;
+
+        DamagedHud.DOColor(color, 0.2f).OnComplete(() =>
         {
-            DamagedHud.DOColor(new Color(1, 1, 1, 0f), 0.2f);
+            color.a = 0f;
+            DamagedHud.DOColor(color, 0.2f);
         });
         yield return new WaitForSeconds(0.4f);
         yield break;
