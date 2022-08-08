@@ -178,6 +178,8 @@ public class MonsterGun : Monster
     {
         anim.SetTrigger("AttackTrigger");
         gunFire.Play();
+        AudioManager.Instance.PlayEffectSound("Assault_3", AttackPos.position);
+
         EnemyBullet temp = Instantiate(bullet, pos, rot);
         temp.Init(b_speed, b_damage);
         return temp;

@@ -911,7 +911,7 @@ MonoBehaviour:
   posX_Standby: 1.25
   posX_Start: 3.4
   AtkCol: {fileID: 3826177833254041304}
-  atkDelay: 0.2
+  atkDelay: 0.5
 --- !u!61 &3826177833279044319
 BoxCollider2D:
   m_ObjectHideFlags: 0

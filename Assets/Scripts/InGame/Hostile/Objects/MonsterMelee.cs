@@ -119,7 +119,9 @@ public class MonsterMelee : Monster
 
         anim.SetTrigger("AttackTrigger");
         yield return new WaitForSeconds(0.2f);
+        AudioManager.Instance.PlayEffectSound("ChainSaw", AtkCol.transform.position);
 
+        yield return new WaitForSeconds(0.2f);
         AtkCol.Init(damage);
         AtkCol.isHitAble = true;
         yield return new WaitForSeconds(atkDelay);
