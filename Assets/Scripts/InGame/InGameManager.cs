@@ -64,8 +64,17 @@ public class InGameManager : Singleton<InGameManager>
     public float roundExp => roundDistance / 10f;
     GameResult result;
 
+    [Header("Effects")]
+    public ParticleSystem ammoEffect;
+
     Coroutine monsterSpawn_coroutine;
     Coroutine hurdleSpawn_coroutine;
+
+    public void AmmoEffect(Vector3 pos)
+    {
+        ammoEffect.transform.position = pos;
+        ammoEffect.Play();
+    }
 
     public void GetRoundCoin(int value)
     {

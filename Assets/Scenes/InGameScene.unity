@@ -1036,28 +1036,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6843678374414779718, guid: 23a845a075ed2794d8884142eace08e0, type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6843678374414779718, guid: 23a845a075ed2794d8884142eace08e0, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6843678374414779718, guid: 23a845a075ed2794d8884142eace08e0, type: 3}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6843678374414779718, guid: 23a845a075ed2794d8884142eace08e0, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6843678374414779718, guid: 23a845a075ed2794d8884142eace08e0, type: 3}
-      propertyPath: InitialModule.startSpeed.minScalar
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23a845a075ed2794d8884142eace08e0, type: 3}
+--- !u!198 &402571123 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6843678374414779718, guid: 23a845a075ed2794d8884142eace08e0, type: 3}
+  m_PrefabInstance: {fileID: 402571122}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &483154147
 GameObject:
   m_ObjectHideFlags: 0
@@ -3140,6 +3125,7 @@ MonoBehaviour:
   isPaused: 0
   roundCoin: 0
   roundDistance: 0
+  ammoEffect: {fileID: 402571123}
 --- !u!4 &1082696162
 Transform:
   m_ObjectHideFlags: 0

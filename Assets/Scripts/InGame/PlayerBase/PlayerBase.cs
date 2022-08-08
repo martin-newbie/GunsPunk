@@ -226,6 +226,8 @@ public abstract class PlayerBase : JumpAble
 
     public virtual void ItemAmmunition(int count = -1)
     {
+        InGameManager.Instance.AmmoEffect(transform.position + Vector3.up);
+
         if (count == -1)
             AmmoCount += AmmoIncrease;
         else AmmoCount += count;
