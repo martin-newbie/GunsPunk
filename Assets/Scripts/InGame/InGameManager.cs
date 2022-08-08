@@ -70,9 +70,16 @@ public class InGameManager : Singleton<InGameManager>
     Coroutine monsterSpawn_coroutine;
     Coroutine hurdleSpawn_coroutine;
 
-    public void AmmoEffect(Vector3 pos)
+    public void AmmoEffect(Vector3 pos, int count)
     {
         ammoEffect.transform.position = pos;
+
+        var emission = ammoEffect.emission;
+
+        ParticleSystem.Burst burst = emission.GetBurst(0);
+        burst.count = count;
+        emission.SetBurst(0, burst);
+
         ammoEffect.Play();
     }
 
