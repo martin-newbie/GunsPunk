@@ -34,4 +34,4 @@ MonoBehaviour:
   cost: 1000
   isUnlocked: 1
   valueType: 0
-  isSelected: 0
+  isSelected: 1

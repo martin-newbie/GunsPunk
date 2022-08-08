@@ -36,12 +36,15 @@ public class HostileAttack : MonoBehaviour
     {
         if (isTrigger && isHitAble)
         {
-            if(collision.CompareTag("Player"))
+            if (collision.CompareTag("Player"))
             {
                 PlayerBase player = collision.GetComponent<PlayerBase>();
-                player.OnHit(damage, transform);
-                isHitAble = false;
-                hitAction?.Invoke();
+                if (player.isAlive)
+                {
+                    player.OnHit(damage, transform);
+                    isHitAble = false;
+                    hitAction?.Invoke();
+                }
             }
         }
     }

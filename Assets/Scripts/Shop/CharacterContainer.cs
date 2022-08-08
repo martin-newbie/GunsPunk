@@ -22,13 +22,17 @@ public class CharacterContainer : MonoBehaviour, IRefresh
     public GameObject[] ValueIcons;
     public GameObject[] Stars;
     public Text Cost;
+    public GameObject UnlockedObject;
 
     [Header("Button")]
     public Button selectButton;
     public Sprite defaultSprite;
     public Sprite selectedSprite;
 
-    public GameObject UnlockedObject;
+    [Header("Marks")]
+    public Image MainMark;
+    public Image SubMark;
+
 
     public void Init(int idx)
     {
@@ -74,7 +78,8 @@ public class CharacterContainer : MonoBehaviour, IRefresh
 
         }
 
-
+        MainMark.gameObject.SetActive(GameManager.Instance.mainPlayerIdx == info.idx);
+        SubMark.gameObject.SetActive(GameManager.Instance.subPlayerIdx == info.idx);
         selectButton.image.sprite = info.isSelected ? selectedSprite : defaultSprite;
     }
 
