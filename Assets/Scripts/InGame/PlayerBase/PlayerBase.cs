@@ -250,16 +250,24 @@ public abstract class PlayerBase : JumpAble
 
     protected abstract void Skill();
 
+    protected override void AtGround()
+    {
+        base.AtGround();
+        AudioManager.Instance.PlayEffectSound("Ground", transform.position);
+    }
+
     protected override void GoDownJump()
     {
         base.GoDownJump();
         anim.SetTrigger("JumpTrigger");
+        AudioManager.Instance.PlayEffectSound("Jump", transform.position);
     }
 
     protected override void GoUpJump()
     {
         base.GoUpJump();
         anim.SetTrigger("JumpTrigger");
+        AudioManager.Instance.PlayEffectSound("Jump", transform.position);
     }
 
     public abstract void OnAttackStart();

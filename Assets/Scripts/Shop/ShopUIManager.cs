@@ -86,6 +86,8 @@ public class ShopUIManager : Singleton<ShopUIManager>
 
     void OpenWindow(int idx)
     {
+        AudioManager.Instance.PlayUISound("SwitchClick");
+
         for (int i = 0; i < Buttons.Length; i++)
         {
             Buttons[i].image.sprite = UnselectButtonImg[i];
@@ -98,6 +100,7 @@ public class ShopUIManager : Singleton<ShopUIManager>
 
     public void BackToTitle()
     {
+        AudioManager.Instance.PlayUISound("BasicClick");
         LoadingSceneManager.LoadScene("MainScene");
     }
 }

@@ -77,6 +77,7 @@ public abstract class JumpAble : Entity
                 case JumpState.GoDown:
                     if (RB.velocity == Vector2.zero && checkFeet)
                     {
+                        AtGround();
                         moveState = JumpState.End;
                     }
                     break;
@@ -120,6 +121,7 @@ public abstract class JumpAble : Entity
                 case JumpState.End:
                     if (checkFeet && RB.velocity == Vector2.zero)
                     {
+                        AtGround();
                         moveState = JumpState.None;
                         goDownTrigger = false;
                         isActing = false;
@@ -128,6 +130,11 @@ public abstract class JumpAble : Entity
                     break;
             }
         }
+    }
+
+    protected virtual void AtGround()
+    {
+
     }
 
     public void GoUp()

@@ -26,6 +26,8 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
 
     public void WindowOpen(CharacterInfo _info)
     {
+        AudioManager.Instance.PlayUISound("InfoOpen");
+
         GameManager.Instance.AddPopup(this);
         ShopUIManager.Instance.AddRefreshAble(this);
 
@@ -130,6 +132,7 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
 
     public void Close()
     {
+        AudioManager.Instance.PlayUISound("InfoClose");
         gameObject.SetActive(false);
     }
 
