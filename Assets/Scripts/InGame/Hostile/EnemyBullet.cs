@@ -14,7 +14,9 @@ public class EnemyBullet : Bullet
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<Entity>().OnHitAction?.Invoke(damage, transform);
+            PlayerBase player = collision.GetComponent<PlayerBase>();
+            if (player.isAlive)
+                player.OnHitAction?.Invoke(damage, transform);
 
             Destroy(gameObject);
         }

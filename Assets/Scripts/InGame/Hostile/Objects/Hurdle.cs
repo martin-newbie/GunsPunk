@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hurdle : Entity
 {
     public string hitSound = "MetalHit_";
+    public string crashSound = "MetalCrash";
     public HostileAttack atkCol;
     public SpriteRenderer hurdleObj;
     public ParticleSystem HitParticle;
@@ -76,6 +77,8 @@ public class Hurdle : Entity
 
     void OnDie()
     {
+        AudioManager.Instance.PlayEffectSound(crashSound, transform.position);
+
         GameManager.Instance.destroyedObjectCnt++;
 
         if (Random.Range(0, 100) < healthPackChance)

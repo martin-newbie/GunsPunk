@@ -17,6 +17,7 @@ public abstract class Monster : JumpAble
     // 앞으로 움직이는 로직에서는 뒤로 움직이는 애니메이션을 천천히 재생
     // 앞으로 빠르게 움직이는 로직에서는 앞으로 움직이는 애니메이션을 재생
     public string monsterHit => "RobotHit_" + Random.Range(1, 4).ToString();
+    public string crashSound = "RobotCrash";
 
     [Header("Monster AI")]
     public MonsterState state;
@@ -66,6 +67,7 @@ public abstract class Monster : JumpAble
     public virtual void OnDie()
     {
         GameManager.Instance.killMonsterCnt++;
+        AudioManager.Instance.PlayEffectSound(crashSound, transform.position);
         gameObject.layer = LayerMask.NameToLayer("Debris");
 
         if (nowCoroutine != null)

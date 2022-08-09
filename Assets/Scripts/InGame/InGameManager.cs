@@ -73,6 +73,8 @@ public class InGameManager : Singleton<InGameManager>
 
     public void AmmoEffect(Vector3 pos, int count)
     {
+        AudioManager.Instance.PlayEffectSound("AmmoItem_2", pos);
+
         ammoEffect.transform.position = pos;
 
         var emission = ammoEffect.emission;

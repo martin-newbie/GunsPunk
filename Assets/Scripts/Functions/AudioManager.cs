@@ -76,7 +76,7 @@ public class AudioManager : Singleton<AudioManager>
     public void PlayEffectSound(string key, Vector3 pos, bool loop = false)
     {
         AudioObject audio = Pop();
-        audio.PlayEffectSound(EffectAudioClips[key], pos, loop);
+        audio.PlaySound(EffectAudioClips[key], pos, loop);
     }
 
     AudioObject Pop()

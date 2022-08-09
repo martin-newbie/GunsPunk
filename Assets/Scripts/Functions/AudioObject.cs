@@ -14,12 +14,12 @@ public class AudioObject : MonoBehaviour
         manager = _manager;
     }
 
-    public void PlayEffectSound(AudioClip clip, Vector3 pos = default, bool loop = false)
+    public void PlaySound(AudioClip clip, Vector3 pos = default, bool loop = false)
     {
         transform.position = pos;
         Audio.clip = clip;
         Audio.loop = loop;
-        Audio.spatialBlend = 1f;
+        Audio.spatialBlend = 0f;
 
         Audio.Play();
 
