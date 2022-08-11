@@ -65,7 +65,7 @@ public class GameEnd : MonoBehaviour
 
     IEnumerator ResultCoroutine(int charLevel, float charExp, int userLevel, float userExp, float _distance, int _coin, float _exp)
     {
-
+        yield return new WaitForSeconds(2f);
         CharacterInfo curChar = GameManager.Instance.GetMainPlayer();
 
         // init part
