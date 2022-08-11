@@ -52,6 +52,8 @@ public class Grenade : MonoBehaviour
     {
         if (isAttackAble)
         {
+            AudioManager.Instance.PlayEffectSound("Grenade", transform.position);
+
             var hostile = Physics2D.OverlapCircleAll(transform.position, explosionRad, LayerMask.GetMask("Hostile"));
             if (hostile.Length > 0)
                 foreach (var item in hostile)
