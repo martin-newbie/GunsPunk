@@ -3158,6 +3158,7 @@ MonoBehaviour:
   roundCoin: 0
   roundDistance: 0
   ammoEffect: {fileID: 402571123}
+  tutorialTrigger: 0
 --- !u!4 &1082696162
 Transform:
   m_ObjectHideFlags: 0

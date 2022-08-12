@@ -253,8 +253,123 @@ public class InGameManager : Singleton<InGameManager>
 
         isGameActive = true;
 
+        yield return StartCoroutine(TutorialCoroutine());
+
         hurdleSpawn_coroutine = StartCoroutine(HurdleCoroutine());
         monsterSpawn_coroutine = StartCoroutine(MonsterCoroutine());
+    }
+
+    [HideInInspector] public bool tutorialTrigger;
+    IEnumerator TutorialCoroutine()
+    {
+        void TutorialCheat()
+        {
+            if (CurPlayer.AmmoCount < CurPlayer.MaxAmmo) CurPlayer.AmmoCount = CurPlayer.MaxAmmo;
+            if (CurPlayer.HP < CurPlayer.maxHP) CurPlayer.HP = CurPlayer.maxHP;
+        }
+
+        // 튜토리얼에 오신 것을 환영합니다
+        yield return new WaitForSeconds(1f);
+
+        // 오른쪽 화면을 위, 아래로 스와이프하여 움직여보세요
+        Time.timeScale = 0f;
+        while (!tutorialTrigger)
+        {
+            yield return null;
+        }
+        tutorialTrigger = false;
+
+        Time.timeScale = 1f;
+        // 잘 하셨습니다
+
+        // 왼쪽 버튼을 눌러 총을 쏴보세요
+        while (!tutorialTrigger)
+        {
+            TutorialCheat();
+            yield return null;
+        }
+        tutorialTrigger = false;
+        // 잘 하셨습니다
+
+        // 앞에서 나오는 장애물을 부셔보세요
+        Entity SpawnTutorialHurdle()
+        {
+            Entity temp = SpawnHurdle();
+            return temp;
+        }
+
+        Entity tutorialHurdle = SpawnTutorialHurdle();
+        while (tutorialHurdle.isAlive)
+        {
+            TutorialCheat();
+            if (tutorialHurdle.transform.position.y <= -8.5f)
+            {
+                // 장애물을 부셔보세요
+                tutorialHurdle = SpawnTutorialHurdle();
+            }
+            yield return null;
+        }
+        // 잘 하셨습니다
+
+        // 앞에서 나오는 적을 처치하세요
+        Monster tutorialMonster = SpawnMonsters(1);
+        while (tutorialMonster.isAlive)
+        {
+            TutorialCheat();
+            yield return null;
+        }
+        // 잘 하셨습니다
+
+        // 장애물 처치시 랜덤으로 아이템을 드랍합니다
+        Hurdle SpawnHealthHurdle()
+        {
+            Hurdle temp = SpawnHurdle().GetComponent<Hurdle>();
+            temp.ammunitionChance = -1f;
+            temp.healthPackChance = 101f;
+
+            return temp;
+        }
+
+        Hurdle healthHurdle = SpawnHealthHurdle();
+        while (healthHurdle.isAlive)
+        {
+            TutorialCheat();
+            if (healthHurdle.transform.position.y <= -8.5f)
+            {
+                // 장애물을 부셔보세요
+                healthHurdle = SpawnHealthHurdle();
+            }
+            yield return null;
+        }
+        // 잘 하셨습니다
+
+        // 탄약 아이템도 드랍합니다
+        Hurdle SpawnAmmoHurdle()
+        {
+            Hurdle temp = SpawnHurdle().GetComponent<Hurdle>();
+            temp.ammunitionChance = 101f;
+            temp.healthPackChance = -1f;
+            return temp;
+        }
+
+        Hurdle ammoHurdle = SpawnAmmoHurdle();
+        while (ammoHurdle.isAlive)
+        {
+            TutorialCheat();
+            if (ammoHurdle.transform.position.y <= -8.5f)
+            {
+                // 장애물을 부셔보세요
+                ammoHurdle = SpawnAmmoHurdle();
+            }
+        }
+        // 잘 하셨습니다
+        // 랜덤한 확률로 장애물 피격시 폭발하게 되는데 이때 데미지를 입게 됩니다
+
+        // 수고하셨습니다
+        // 튜토리얼을 종료합니다
+        // 즐겁게 플레이 하시기 바랍니다
+
+        yield break;
     }
 
     IEnumerator HurdleCoroutine()
