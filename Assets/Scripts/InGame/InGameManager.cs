@@ -264,9 +264,11 @@ public class InGameManager : Singleton<InGameManager>
     }
 
     [HideInInspector] public bool tutorialTrigger = true;
+    [HideInInspector] public bool tutorialTrigger2 = true;
     IEnumerator TutorialCoroutine()
     {
         tutorialTrigger = false;
+        tutorialTrigger2 = false;
 
         void TutorialCheat()
         {
@@ -288,12 +290,12 @@ public class InGameManager : Singleton<InGameManager>
         yield return new WaitForSeconds(4f);
 
         InGameUIManager.Instance.PrintMessage("Press right button to fire weapon");
-        while (!tutorialTrigger)
+        while (!tutorialTrigger2)
         {
             TutorialCheat();
             yield return null;
         }
-        tutorialTrigger = false;
+        tutorialTrigger2 = false;
         InGameUIManager.Instance.PrintMessage("Well done");
         yield return new WaitForSeconds(4f);
 

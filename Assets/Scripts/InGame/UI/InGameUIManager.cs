@@ -134,7 +134,7 @@ public class InGameUIManager : Singleton<InGameUIManager>
 
     public void OnPointerDown()
     {
-        if (!InGameManager.Instance.tutorialTrigger) InGameManager.Instance.tutorialTrigger = true;
+        if (!InGameManager.Instance.tutorialTrigger2) InGameManager.Instance.tutorialTrigger2 = true;
         InGameManager.Instance.CurPlayer.OnAttackStart();
     }
 
