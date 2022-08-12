@@ -40,7 +40,7 @@ public class UpgradeContainer : MonoBehaviour, IRefresh
         _ => 0f,
     };
 
-    float value = kind switch
+    float value => kind switch
     {
         UpgradeKind.HP => GameManager.Instance.hpValue,
         UpgradeKind.AMMO => GameManager.Instance.ammoValue,
