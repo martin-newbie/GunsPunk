@@ -253,74 +253,85 @@ public class InGameManager : Singleton<InGameManager>
 
         isGameActive = true;
 
-        yield return StartCoroutine(TutorialCoroutine());
+
+        bool tutorialAble = PlayerPrefs.GetInt("Tutorial", 0) == 0;
+
+        if (tutorialAble)
+            yield return StartCoroutine(TutorialCoroutine());
 
         hurdleSpawn_coroutine = StartCoroutine(HurdleCoroutine());
         monsterSpawn_coroutine = StartCoroutine(MonsterCoroutine());
     }
 
-    [HideInInspector] public bool tutorialTrigger;
+    [HideInInspector] public bool tutorialTrigger = true;
     IEnumerator TutorialCoroutine()
     {
+        tutorialTrigger = false;
+
         void TutorialCheat()
         {
             if (CurPlayer.AmmoCount < CurPlayer.MaxAmmo) CurPlayer.AmmoCount = CurPlayer.MaxAmmo;
             if (CurPlayer.HP < CurPlayer.maxHP) CurPlayer.HP = CurPlayer.maxHP;
         }
 
-        // 튜토리얼에 오신 것을 환영합니다
-        yield return new WaitForSeconds(1f);
+        InGameUIManager.Instance.PrintMessage("Welcome to tutorial stage");
+        yield return new WaitForSeconds(4f);
 
-        // 오른쪽 화면을 위, 아래로 스와이프하여 움직여보세요
-        Time.timeScale = 0f;
+        InGameUIManager.Instance.PrintMessage("Swipe left side to move up and down");
         while (!tutorialTrigger)
         {
             yield return null;
         }
         tutorialTrigger = false;
 
-        Time.timeScale = 1f;
-        // 잘 하셨습니다
+        InGameUIManager.Instance.PrintMessage("Well done");
+        yield return new WaitForSeconds(4f);
 
-        // 왼쪽 버튼을 눌러 총을 쏴보세요
+        InGameUIManager.Instance.PrintMessage("Press right button to fire weapon");
         while (!tutorialTrigger)
         {
             TutorialCheat();
             yield return null;
         }
         tutorialTrigger = false;
-        // 잘 하셨습니다
+        InGameUIManager.Instance.PrintMessage("Well done");
+        yield return new WaitForSeconds(4f);
 
-        // 앞에서 나오는 장애물을 부셔보세요
-        Entity SpawnTutorialHurdle()
+        InGameUIManager.Instance.PrintMessage("Destroy hurdle coming from right");
+        Hurdle SpawnTutorialHurdle()
         {
-            Entity temp = SpawnHurdle();
+            Hurdle temp = SpawnHurdle().GetComponent<Hurdle>();
+            temp.ammunitionChance = -1f;
+            temp.healthPackChance = -1f;
+            temp.explosionChance = -1f;
             return temp;
         }
 
-        Entity tutorialHurdle = SpawnTutorialHurdle();
+        Hurdle tutorialHurdle = SpawnTutorialHurdle();
         while (tutorialHurdle.isAlive)
         {
             TutorialCheat();
-            if (tutorialHurdle.transform.position.y <= -8.5f)
+            if (tutorialHurdle.transform.position.x <= -8.5f)
             {
-                // 장애물을 부셔보세요
+                InGameUIManager.Instance.PrintMessage("Destroy hurdle");
                 tutorialHurdle = SpawnTutorialHurdle();
             }
             yield return null;
         }
-        // 잘 하셨습니다
+        InGameUIManager.Instance.PrintMessage("Well done");
+        yield return new WaitForSeconds(4f);
 
-        // 앞에서 나오는 적을 처치하세요
+        InGameUIManager.Instance.PrintMessage("Destroy monsters coming from right");
         Monster tutorialMonster = SpawnMonsters(1);
         while (tutorialMonster.isAlive)
         {
             TutorialCheat();
             yield return null;
         }
-        // 잘 하셨습니다
+        InGameUIManager.Instance.PrintMessage("Well done");
+        yield return new WaitForSeconds(4f);
 
-        // 장애물 처치시 랜덤으로 아이템을 드랍합니다
+        InGameUIManager.Instance.PrintMessage("Hurdle will drop hp item when it destroy");
         Hurdle SpawnHealthHurdle()
         {
             Hurdle temp = SpawnHurdle().GetComponent<Hurdle>();
@@ -334,16 +345,17 @@ public class InGameManager : Singleton<InGameManager>
         while (healthHurdle.isAlive)
         {
             TutorialCheat();
-            if (healthHurdle.transform.position.y <= -8.5f)
+            if (healthHurdle.transform.position.x <= -8.5f)
             {
-                // 장애물을 부셔보세요
+                InGameUIManager.Instance.PrintMessage("Destroy hurdle");
                 healthHurdle = SpawnHealthHurdle();
             }
             yield return null;
         }
-        // 잘 하셨습니다
+        InGameUIManager.Instance.PrintMessage("Well done");
+        yield return new WaitForSeconds(4f);
 
-        // 탄약 아이템도 드랍합니다
+        InGameUIManager.Instance.PrintMessage("Hurdle will also drop ammunition item when destroy");
         Hurdle SpawnAmmoHurdle()
         {
             Hurdle temp = SpawnHurdle().GetComponent<Hurdle>();
@@ -356,19 +368,30 @@ public class InGameManager : Singleton<InGameManager>
         while (ammoHurdle.isAlive)
         {
             TutorialCheat();
-            if (ammoHurdle.transform.position.y <= -8.5f)
+            if (ammoHurdle.transform.position.x <= -8.5f)
             {
                 // 장애물을 부셔보세요
                 ammoHurdle = SpawnAmmoHurdle();
             }
+            yield return null;
         }
-        // 잘 하셨습니다
-        // 랜덤한 확률로 장애물 피격시 폭발하게 되는데 이때 데미지를 입게 됩니다
+        InGameUIManager.Instance.PrintMessage("Well done");
+        yield return new WaitForSeconds(4f);
 
-        // 수고하셨습니다
-        // 튜토리얼을 종료합니다
-        // 즐겁게 플레이 하시기 바랍니다
+        InGameUIManager.Instance.PrintMessage("Hurdle could be explode in random chance");
+        yield return new WaitForSeconds(3f);
+        InGameUIManager.Instance.PrintMessage("The explosion can hit player so be careful");
+        yield return new WaitForSeconds(4f);
 
+        InGameUIManager.Instance.PrintMessage("Good job");
+        yield return new WaitForSeconds(3f);
+        InGameUIManager.Instance.PrintMessage("Tutorial is now end");
+        yield return new WaitForSeconds(3f);
+        InGameUIManager.Instance.PrintMessage("Have a fun game");
+        yield return new WaitForSeconds(3f);
+
+
+        PlayerPrefs.SetInt("Tutorial", 1);
         yield break;
     }
 

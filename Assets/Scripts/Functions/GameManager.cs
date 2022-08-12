@@ -248,6 +248,7 @@ public class GameManager : Singleton<GameManager>
         if (clear)
         {
             PlayerPrefs.DeleteKey("StatusSaveData");
+            PlayerPrefs.DeleteKey("Tutorial");
             return;
         }
         Save();

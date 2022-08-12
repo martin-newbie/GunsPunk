@@ -19,9 +19,10 @@ public class InGameUIManager : Singleton<InGameUIManager>
     public Image DamagedHud;
 
     [Header("Script Objects")]
+    public TouchField touchField;
     public PauseUI PauseObject;
     public GameEnd GameEndObject;
-
+    public NoticeMessage noticeObject;
 
     Coroutine damagedCoroutine;
     int roundCoin;
@@ -56,6 +57,11 @@ public class InGameUIManager : Singleton<InGameUIManager>
         PlayerHpGauge.fillAmount = hpCur / hpMax;
         FeverGauge.fillAmount = feverCur / feverMax;
         AmmoGauge.fillAmount = ammoCur / ammoMax;
+    }
+
+    public void PrintMessage(string message)
+    {
+        noticeObject.ShowMessage(message);
     }
 
     private void OnApplicationPause(bool pause)
@@ -128,6 +134,7 @@ public class InGameUIManager : Singleton<InGameUIManager>
 
     public void OnPointerDown()
     {
+        if (!InGameManager.Instance.tutorialTrigger) InGameManager.Instance.tutorialTrigger = true;
         InGameManager.Instance.CurPlayer.OnAttackStart();
     }
 

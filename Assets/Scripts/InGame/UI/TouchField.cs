@@ -23,6 +23,8 @@ public class TouchField : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         if (InGameManager.Instance.isGameActive)
         {
+            if (!InGameManager.Instance.tutorialTrigger) InGameManager.Instance.tutorialTrigger = true; 
+
             startPos = eventData.position;
             isDrag = true;
         }

@@ -43,6 +43,7 @@ public class Hurdle : Entity
             Destroy(gameObject);
         }
     }
+    
     Coroutine shakeCoroutine;
     public override void OnHit(float damage, Transform hit)
     {
@@ -107,5 +108,13 @@ public class Hurdle : Entity
     void Explosion()
     {
         Explosion temp = InGameManager.Instance.SpawnExplosion(transform.position);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            isAlive = false;
+        }
     }
 }
