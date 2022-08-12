@@ -83,9 +83,9 @@ public class GameManager : Singleton<GameManager>
     public float ammoIncrease = 0.15f;
     public float defIncrease = 0.05f;
 
-    public float hpValue => 1 + (hpIncrease * hpLevel);
-    public float ammoValue => 1 + (ammoIncrease * ammoLevel);
-    public float defValue => defIncrease * defLevel;
+    public float hpValue => 1 + (hpIncrease * (hpLevel - 1));
+    public float ammoValue => 1 + (ammoIncrease * (ammoLevel - 1));
+    public float defValue => defIncrease * (defLevel - 1);
 
 
     protected void Awake()

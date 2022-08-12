@@ -68,4 +68,9 @@ public class Grenade : MonoBehaviour
         }
 
     }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 }
