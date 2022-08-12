@@ -60,7 +60,7 @@ public class GameManager : Singleton<GameManager>
     public CharacterInfo[] charactersInfo;
 
     [Header("Status")]
-    public int curCoin;     // 무료 재화
+    public int coin;     // 무료 재화
     public int energy;      // 유료 재화
 
     [Header("Only for quest")]
@@ -70,6 +70,18 @@ public class GameManager : Singleton<GameManager>
     public int destroyedObjectCnt;      // 게임 플레이중 부순 장애물 수
     public int hitBulletCnt;            // 게임 플레이중 적 또는 장애물에 맞춘 총알의 수
     public int gamePlayCnt;             // 게임 플레이 횟수
+
+    [Header("Upgrade Status")]
+    public int hpLevel;
+    public int ammoLevel;
+    public int defLevel;
+
+    public int maxLevel = 10;
+
+    public float hpValue => 1 + (0.15f * hpLevel);
+    public float ammoValue => 1 + (0.15f * ammoLevel);
+    public float defValue => 1 + (0.15f * defLevel);
+
 
     protected void Awake()
     {
@@ -81,6 +93,13 @@ public class GameManager : Singleton<GameManager>
 
         FindSelectedCharacter();
         LoadJson();
+    }
+
+
+
+    public int GetUpgradeCost(int level)
+    {
+        return 300 * level;
     }
 
     public void SetUserExp(float _exp)
@@ -253,7 +272,7 @@ public class GameManager : Singleton<GameManager>
         save.userLevel = userLevel;
         save.userExp = userExp;
 
-        save.curCoin = curCoin;
+        save.curCoin = coin;
         save.energy = energy;
 
         save.bestScore = bestScore;
@@ -286,7 +305,7 @@ public class GameManager : Singleton<GameManager>
         userLevel = save.userLevel;
         userExp = save.userExp;
 
-        curCoin = save.curCoin;
+        coin = save.curCoin;
         energy = save.energy;
 
         bestScore = save.bestScore;

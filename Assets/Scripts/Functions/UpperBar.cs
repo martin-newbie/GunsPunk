@@ -11,7 +11,7 @@ public class UpperBar : Singleton<UpperBar>
 
     void Update()
     {
-        CoinTxt.text = string.Format("{0:0,#}", GameManager.Instance.curCoin);
+        CoinTxt.text = string.Format("{0:0,#}", GameManager.Instance.coin);
         EnergyTxt.text = string.Format("{0:0,#}", GameManager.Instance.energy);
     }
 

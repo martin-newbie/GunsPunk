@@ -59,7 +59,7 @@ public class GameEnd : MonoBehaviour
     {
         var reward = InGameManager.Instance.GetResult();
 
-        GameManager.Instance.curCoin += reward.roundCoin;
+        GameManager.Instance.coin += reward.roundCoin;
         result = StartCoroutine(ResultCoroutine(reward.charLevel, reward.charExp, reward.userLevel, reward.userExp, reward.roundDistance, reward.roundCoin, reward.roundExp));
     }
 

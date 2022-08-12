@@ -71,7 +71,7 @@ public class CharacterContainer : MonoBehaviour, IRefresh
 
             ValueIcons[(int)info.valueType].SetActive(true);
 
-            if (GameManager.Instance.curCoin < info.cost)
+            if (GameManager.Instance.coin < info.cost)
                 Cost.color = Color.red;
             else
                 Cost.color = Color.white;
@@ -103,7 +103,7 @@ public class CharacterContainer : MonoBehaviour, IRefresh
         switch (info.valueType)
         {
             case ValueType.Coin:
-                recruitAble = GameManager.Instance.curCoin >= info.cost;
+                recruitAble = GameManager.Instance.coin >= info.cost;
                 break;
             case ValueType.Energy:
                 recruitAble = GameManager.Instance.energy >= info.cost;
@@ -118,7 +118,7 @@ public class CharacterContainer : MonoBehaviour, IRefresh
             switch (info.valueType)
             {
                 case ValueType.Coin:
-                    GameManager.Instance.curCoin -= info.cost;
+                    GameManager.Instance.coin -= info.cost;
                     break;
                 case ValueType.Energy:
                     GameManager.Instance.energy -= info.cost;
