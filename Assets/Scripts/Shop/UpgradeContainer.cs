@@ -32,6 +32,22 @@ public class UpgradeContainer : MonoBehaviour, IRefresh
         _ => 0,
     };
 
+    float nextValue => kind switch
+    {
+        UpgradeKind.HP => GameManager.Instance.hpValue + GameManager.Instance.hpIncrease,
+        UpgradeKind.AMMO => GameManager.Instance.ammoValue + GameManager.Instance.ammoIncrease,
+        UpgradeKind.DEF => GameManager.Instance.defValue + GameManager.Instance.defIncrease,
+        _ => 0f,
+    };
+
+    float value = kind switch
+    {
+        UpgradeKind.HP => GameManager.Instance.hpValue,
+        UpgradeKind.AMMO => GameManager.Instance.ammoValue,
+        UpgradeKind.DEF => GameManager.Instance.defValue,
+        _ => 0f,
+    };
+
     bool upgradeAble => Level <= GameManager.Instance.maxLevel;
 
 
@@ -51,14 +67,6 @@ public class UpgradeContainer : MonoBehaviour, IRefresh
 
     public void Refresh()
     {
-        float value = kind switch
-        {
-            UpgradeKind.HP => GameManager.Instance.hpValue,
-            UpgradeKind.AMMO => GameManager.Instance.ammoValue,
-            UpgradeKind.DEF => GameManager.Instance.defValue,
-            _ => 0f,
-        };
-        float nextValue = upgradeAble ? value + 0.15f : 0f;
 
         if (upgradeAble)
         {

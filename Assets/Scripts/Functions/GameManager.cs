@@ -78,9 +78,14 @@ public class GameManager : Singleton<GameManager>
 
     public int maxLevel = 10;
 
-    public float hpValue => 1 + (0.15f * hpLevel);
-    public float ammoValue => 1 + (0.15f * ammoLevel);
-    public float defValue => 1 + (0.15f * defLevel);
+
+    public float hpIncrease = 0.15f;
+    public float ammoIncrease = 0.15f;
+    public float defIncrease = 0.05f;
+
+    public float hpValue => 1 + (hpIncrease * hpLevel);
+    public float ammoValue => 1 + (ammoIncrease * ammoLevel);
+    public float defValue => 1 + (defIncrease * defLevel);
 
 
     protected void Awake()

@@ -156,7 +156,7 @@ public abstract class PlayerBase : JumpAble
     {
         if (InGameManager.Instance.isGameActive)
         {
-            base.OnHit(damage, hit);
+            base.OnHit(damage - (damage * GameManager.Instance.defValue), hit);
 
             AudioManager.Instance.PlayEffectSound("PlayerHit", transform.position);
             InGameManager.Instance.Cam.ShakeForTime();
@@ -224,8 +224,8 @@ public abstract class PlayerBase : JumpAble
     public virtual void ItemHealth(float count = -1)
     {
         if (count == -1)
-            HP += HealthIncrease;
-        else HP += count;
+            HP += HealthIncrease * GameManager.Instance.hpValue;
+        else HP += count * GameManager.Instance.hpValue;
 
         InGameUIManager.Instance.HudEffect(Color.green);
 
@@ -237,7 +237,7 @@ public abstract class PlayerBase : JumpAble
 
         if (count == -1)
         {
-            count = AmmoIncrease;
+            count = (int)(AmmoIncrease * GameManager.Instance.ammoValue);
         }
 
         AmmoCount += count;
