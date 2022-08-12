@@ -81,6 +81,7 @@ public class UpgradeContainer : MonoBehaviour, IRefresh
     {
         if (upgradeAble && GameManager.Instance.coin >= cost)
         {
+            AudioManager.Instance.PlayUISound("Purchase");
             GameManager.Instance.coin -= cost;
 
             switch (kind)

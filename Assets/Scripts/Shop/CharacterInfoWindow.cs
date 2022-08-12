@@ -82,6 +82,7 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
 
     public void CharacterChoose()
     {
+        AudioManager.Instance.PlayUISound("SwitchClick");
         if (!info.isSelected)
         {
             // select main or sub

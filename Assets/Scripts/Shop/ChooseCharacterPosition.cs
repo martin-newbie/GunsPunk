@@ -35,6 +35,7 @@ public class ChooseCharacterPosition : MonoBehaviour, IPopUp
 
     void UIClose()
     {
+        AudioManager.Instance.PlayUISound("SetCharacter");
         ShopUIManager.Instance.Refresh();
         GameManager.Instance.PopupClose();
     }

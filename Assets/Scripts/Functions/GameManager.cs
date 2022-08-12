@@ -72,9 +72,9 @@ public class GameManager : Singleton<GameManager>
     public int gamePlayCnt;             // 게임 플레이 횟수
 
     [Header("Upgrade Status")]
-    public int hpLevel;
-    public int ammoLevel;
-    public int defLevel;
+    public int hpLevel = 1;
+    public int ammoLevel = 1;
+    public int defLevel = 1;
 
     public int maxLevel = 10;
 
@@ -86,7 +86,6 @@ public class GameManager : Singleton<GameManager>
     protected void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        //if (clear) PlayerPrefs.DeleteAll();
 
         charactersPrefab = Resources.LoadAll<PlayerBase>(prefabPath);
         charactersInfo = Resources.LoadAll<CharacterInfo>(scriptablePath);
@@ -241,6 +240,11 @@ public class GameManager : Singleton<GameManager>
 
     private void OnApplicationQuit()
     {
+        if (clear)
+        {
+            PlayerPrefs.DeleteKey("StatusSaveData");
+            return;
+        }
         Save();
     }
 
@@ -282,6 +286,10 @@ public class GameManager : Singleton<GameManager>
         save.hitBulletCnt = hitBulletCnt;
         save.gamePlayCnt = gamePlayCnt;
 
+        save.hpLevel = hpLevel;
+        ammoLevel = save.ammoLevel;
+        defLevel = save.defLevel;
+
         string jsonSave = JsonUtility.ToJson(save, true);
         return jsonSave;
     }
@@ -314,6 +322,10 @@ public class GameManager : Singleton<GameManager>
         destroyedObjectCnt = save.destroyedObjectCnt;
         hitBulletCnt = save.hitBulletCnt;
         gamePlayCnt = save.gamePlayCnt;
+
+        hpLevel = save.hpLevel;
+        ammoLevel = save.ammoLevel;
+        defLevel = save.defLevel;
     }
 }
 
@@ -334,4 +346,8 @@ public class DataSave
     public int destroyedObjectCnt;
     public int hitBulletCnt;
     public int gamePlayCnt;
+
+    public int hpLevel;
+    public int ammoLevel;
+    public int defLevel;
 }

@@ -85,6 +85,7 @@ public class CharacterContainer : MonoBehaviour, IRefresh
 
     public void Select()
     {
+        AudioManager.Instance.PlayUISound("SwitchClick");
         if (!info.isSelected)
             ShopUIManager.Instance.ChooseCharacterPos(info);
         else
@@ -115,6 +116,8 @@ public class CharacterContainer : MonoBehaviour, IRefresh
 
         if (recruitAble)
         {
+            AudioManager.Instance.PlayUISound("Sign");
+            AudioManager.Instance.PlayUISound("Purchase");
             switch (info.valueType)
             {
                 case ValueType.Coin:
@@ -128,6 +131,7 @@ public class CharacterContainer : MonoBehaviour, IRefresh
         }
         else
         {
+            AudioManager.Instance.PlayUISound("SwitchClick");
             //print message
             //not enought money
             MessageBoxContainer.Instance.OpenConfirmMessage(null, "Not enough coin or energy");
