@@ -267,6 +267,14 @@ public class GameManager : Singleton<GameManager>
     {
         string content = PlayerPrefs.GetString("StatusSaveData", "Default");
         if (content != "Default") SetJson(content);
+        else
+        {
+            foreach (var item in charactersInfo)
+            {
+                if (item.idx < 2) item.isUnlocked = true;
+                else item.isUnlocked = false;
+            }
+        }
     }
 
     public string SaveJson()
