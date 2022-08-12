@@ -391,7 +391,7 @@ public class InGameManager : Singleton<InGameManager>
         yield return new WaitForSeconds(3f);
         InGameUIManager.Instance.PrintMessage("Have a fun game");
         yield return new WaitForSeconds(3f);
-
+        TutorialCheat();
 
         PlayerPrefs.SetInt("Tutorial", 1);
         yield break;
