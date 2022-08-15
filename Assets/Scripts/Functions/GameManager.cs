@@ -42,7 +42,8 @@ public class GameManager : Singleton<GameManager>
     public bool clear;
 
     [Header("Path")]
-    public string scriptablePath = "Scriptable/CharacterInfo/";
+    public string characterInfoPath = "Scriptable/CharacterInfo/";
+    public string itemInfoPath = "Scriptable/ItemInfo/";
     public string prefabPath = "Prefabs/Player/Characters/";
 
     [Header("Player")]
@@ -58,6 +59,7 @@ public class GameManager : Singleton<GameManager>
     public int subPlayerIdx;
     public PlayerBase[] charactersPrefab;
     public CharacterInfo[] charactersInfo;
+    public ItemInfo[] itemsInfo;
 
     [Header("Status")]
     public int coin;     // 무료 재화
@@ -93,7 +95,8 @@ public class GameManager : Singleton<GameManager>
         DontDestroyOnLoad(gameObject);
 
         charactersPrefab = Resources.LoadAll<PlayerBase>(prefabPath);
-        charactersInfo = Resources.LoadAll<CharacterInfo>(scriptablePath);
+        charactersInfo = Resources.LoadAll<CharacterInfo>(characterInfoPath);
+        itemsInfo = Resources.LoadAll<ItemInfo>(itemInfoPath);
 
         FindSelectedCharacter();
         LoadJson();
@@ -301,8 +304,8 @@ public class GameManager : Singleton<GameManager>
         save.gamePlayCnt = gamePlayCnt;
 
         save.hpLevel = hpLevel;
-        ammoLevel = save.ammoLevel;
-        defLevel = save.defLevel;
+        save.ammoLevel = ammoLevel;
+        save.defLevel = defLevel;
 
         string jsonSave = JsonUtility.ToJson(save, true);
         return jsonSave;

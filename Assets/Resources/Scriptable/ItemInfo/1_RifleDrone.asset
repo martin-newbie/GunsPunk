@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f55690f12e47c3d44a5d884ed43ae00d, type: 3}
   m_Name: 1_RifleDrone
   m_EditorClassIdentifier: 
-  idx: 0
+  idx: 1
   count: 0
   cost: 1000

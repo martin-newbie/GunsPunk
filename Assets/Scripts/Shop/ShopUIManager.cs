@@ -26,9 +26,11 @@ public class ShopUIManager : Singleton<ShopUIManager>
     public Sprite[] UnselectButtonImg;
     public GameObject[] Windows;
     public CharacterContainer CharacterPrefab;
+    public ItemContainer ItemPrefab;
 
     [Header("Windows")]
     public RectTransform CharacterContents;
+    public RectTransform ItemContents;
     public ChooseCharacterPosition ChoosePos;
 
     [Header("Character Sprite")]
@@ -48,6 +50,12 @@ public class ShopUIManager : Singleton<ShopUIManager>
         {
             CharacterContainer temp = Instantiate(CharacterPrefab, CharacterContents);
             temp.Init(i);
+        }
+
+        for (int i = 0; i < GameManager.instance.itemsInfo.Length; i++)
+        {
+            ItemContainer temp = Instantiate(ItemPrefab, ItemContents);
+            temp.Init(GameManager.instance.itemsInfo[i]);
         }
 
         int shopIdx = PlayerPrefs.GetInt("ShopState", 0);

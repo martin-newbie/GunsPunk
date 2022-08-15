@@ -79,7 +79,7 @@ public class UpgradeContainer : MonoBehaviour, IRefresh
             CostTxt.text = "Max";
         }
         LevelTxt.text = "Lv. " + Level.ToString();
-
+        CostTxt.color = GameManager.Instance.coin >= cost ? Color.white : Color.red;
 
         UpgradeButton.gameObject.SetActive(upgradeAble);
         MaxButton.gameObject.SetActive(!upgradeAble);
