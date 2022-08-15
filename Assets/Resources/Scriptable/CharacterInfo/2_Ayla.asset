@@ -17,7 +17,7 @@ MonoBehaviour:
   trainingLevel: 0
   exp: 0
   characterName: AYLA
-  HP: 100
+  HP: 75
   HPIncrease: 15
   Ammo: 80
   AmmoIncrease: 10
