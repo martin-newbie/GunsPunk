@@ -17,6 +17,8 @@ public class AudioManager : Singleton<AudioManager>
 
     private void Awake()
     {
+        if (instance != null) Destroy(gameObject);
+
         DontDestroyOnLoad(gameObject);
     }
 

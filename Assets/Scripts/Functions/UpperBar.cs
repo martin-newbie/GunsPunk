@@ -17,6 +17,7 @@ public class UpperBar : Singleton<UpperBar>
 
     public void OpenSetting()
     {
-
+        Setting.Instance.gameObject.SetActive(true);
+        Setting.Instance.UIOn();
     }
 }
