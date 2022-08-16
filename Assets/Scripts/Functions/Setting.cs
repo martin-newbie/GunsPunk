@@ -50,7 +50,8 @@ public class Setting : Singleton<Setting>, IPopUp
 
     public void ButtonTutorial()
     {
-
+        PlayerPrefs.SetInt("Tutorial", 0);
+        LoadingSceneManager.LoadScene("InGameScene");
     }
 
     public void ButtonCredit()
