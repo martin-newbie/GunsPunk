@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="Item", menuName ="Item Information", order =int.MinValue)]
+[CreateAssetMenu(fileName ="Item", menuName ="Item Information", order =int.MinValue), System.Serializable]
 public class ItemInfo : ScriptableObject
 {
     public int idx;

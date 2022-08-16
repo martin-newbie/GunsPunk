@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: 1_RifleDrone
   m_EditorClassIdentifier: 
   idx: 1
-  count: 0
+  count: 99
   cost: 1000

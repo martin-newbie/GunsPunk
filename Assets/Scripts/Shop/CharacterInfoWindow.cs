@@ -112,6 +112,11 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
 
             info.trainingLevel++;
         }
+        else
+        {
+            AudioManager.Instance.PlayUISound("Error");
+            MessageBoxContainer.Instance.OpenConfirmMessage(null, "Not enought coin");
+        }
         CheckTrainingAble();
 
         ShopUIManager.Instance.Refresh();

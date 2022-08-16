@@ -105,6 +105,11 @@ public class UpgradeContainer : MonoBehaviour, IRefresh
                     break;
             }
         }
+        else
+        {
+            AudioManager.Instance.PlayUISound("Error");
+            MessageBoxContainer.Instance.OpenConfirmMessage(null, "Not enought coin");
+        }
 
         ShopUIManager.Instance.Refresh();
     }

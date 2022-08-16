@@ -7,18 +7,38 @@ using DG.Tweening;
 public class Setting : Singleton<Setting>, IPopUp
 {
     public Image mainObject;
+    public Slider BGM;
+    public Slider UI;
+    public Slider GAME;
 
-    private void Awake()
+    private void Start()
     {
         instance = this;
-
         gameObject.SetActive(false);
+    }
+
+    public void ValueChangeBGM()
+    {
+        AudioManager.instance.volumeBGM = BGM.value;
+    }
+
+    public void ValueChangeUI()
+    {
+        AudioManager.instance.volumeUI = UI.value;
+    }
+
+    public void ValueChangeGAME()
+    {
+        AudioManager.instance.volumeGAME = GAME.value;
     }
 
     public void UIOn()
     {
         GameManager.Instance.AddPopup(this);
 
+        BGM.value = AudioManager.instance.volumeBGM;
+        UI.value = AudioManager.instance.volumeUI;
+        GAME.value = AudioManager.instance.volumeGAME;
         mainObject.rectTransform.anchoredPosition = new Vector2(0f, -1500f);
         mainObject.rectTransform.DOAnchorPosY(-12f, 0.5f).SetEase(Ease.OutBack);
     }

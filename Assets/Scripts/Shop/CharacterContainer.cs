@@ -131,7 +131,7 @@ public class CharacterContainer : MonoBehaviour, IRefresh
         }
         else
         {
-            AudioManager.Instance.PlayUISound("SwitchClick");
+            AudioManager.Instance.PlayUISound("Error");
             //print message
             //not enought money
             MessageBoxContainer.Instance.OpenConfirmMessage(null, "Not enough coin or energy");

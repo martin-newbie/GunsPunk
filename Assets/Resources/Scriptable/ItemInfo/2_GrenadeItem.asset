@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: 2_GrenadeItem
   m_EditorClassIdentifier: 
   idx: 2
-  count: 0
+  count: 99
   cost: 1500

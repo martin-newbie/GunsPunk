@@ -260,8 +260,8 @@ public class GameManager : Singleton<GameManager>
     void Save()
     {
         string save = SaveJson();
+        Debug.Log(save);
         // at server
-
         // at local
         PlayerPrefs.SetString("StatusSaveData", save);
     }
@@ -284,9 +284,16 @@ public class GameManager : Singleton<GameManager>
     {
         DataSave save = new DataSave();
         save.CharactersInfo.Clear();
+        save.ItemsInfo.Clear();
+
         foreach (var item in charactersInfo)
         {
             save.CharactersInfo.Add(item);
+        }
+
+        foreach (var item in itemsInfo)
+        {
+            save.ItemsInfo.Add(item);
         }
 
         save.userName = userName;
@@ -326,6 +333,11 @@ public class GameManager : Singleton<GameManager>
             charactersInfo[i].isSelected = save.CharactersInfo[i].isSelected;
         }
 
+        for (int i = 0; i < save.ItemsInfo.Count; i++)
+        {
+            itemsInfo[i].count = save.ItemsInfo[i].count;
+        }
+
         userName = save.userName;
         userLevel = save.userLevel;
         userExp = save.userExp;
@@ -350,6 +362,7 @@ public class GameManager : Singleton<GameManager>
 public class DataSave
 {
     public List<CharacterInfo> CharactersInfo = new List<CharacterInfo>();
+    public List<ItemInfo> ItemsInfo = new List<ItemInfo>();
     public string userName;
     public int userLevel;
     public float userExp;

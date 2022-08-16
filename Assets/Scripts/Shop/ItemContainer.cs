@@ -34,7 +34,7 @@ public class ItemContainer : MonoBehaviour, IRefresh
 
     public void BuyButton()
     {
-        if(info.cost <= GameManager.Instance.coin)
+        if(info.cost <= GameManager.Instance.coin && info.count < 99)
         {
             AudioManager.Instance.PlayUISound("Cash");
             info.count++;
@@ -42,6 +42,11 @@ public class ItemContainer : MonoBehaviour, IRefresh
             GameManager.Instance.coin -= info.cost;
 
             ShopUIManager.Instance.Refresh();
+        }
+        else
+        {
+            AudioManager.Instance.PlayUISound("Error");
+            MessageBoxContainer.Instance.OpenConfirmMessage(null, "Not enought coin");
         }
     }
 }

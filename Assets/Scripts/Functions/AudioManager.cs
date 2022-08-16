@@ -2,8 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class AudioManager : Singleton<AudioManager>
 {
+
+    class VolumeSave
+    {
+        public float bgm = 1f;
+        public float ui = 1f;
+        public float game = 1f;
+    }
+
+    [SerializeField] bool clearSave;
 
     Dictionary<string, AudioClip> EffectAudioClips = new Dictionary<string, AudioClip>();
     Dictionary<string, AudioClip> BackgroundAudioClips = new Dictionary<string, AudioClip>();
@@ -15,11 +25,46 @@ public class AudioManager : Singleton<AudioManager>
 
     List<AudioObject> CurrentPlayAudio = new List<AudioObject>();
 
+    VolumeSave volumeSave = new VolumeSave();
+
+    public float volumeBGM = 1f;
+    public float volumeUI = 1f;
+    public float volumeGAME = 1f;
+
     private void Awake()
     {
         if (instance != null) Destroy(gameObject);
-
+        LoadVolume();
         DontDestroyOnLoad(gameObject);
+    }
+
+    void LoadVolume()
+    {
+        string data = PlayerPrefs.GetString("audio", "none");
+        if (data != "none")
+        {
+            volumeSave = JsonUtility.FromJson<VolumeSave>(data);
+
+            volumeBGM = volumeSave.bgm;
+            volumeUI = volumeSave.ui;
+            volumeGAME = volumeSave.game;
+        }
+        else
+        {
+            volumeSave = new VolumeSave();
+        }
+    }
+
+    void SaveVolume()
+    {
+        volumeSave.bgm = volumeBGM;
+        volumeSave.ui = volumeUI;
+        volumeSave.game = volumeGAME;
+
+        string data = JsonUtility.ToJson(volumeSave, true);
+        PlayerPrefs.SetString("audio", data);
+
+        if (clearSave) PlayerPrefs.DeleteKey("audio");
     }
 
     void Start()
@@ -41,6 +86,7 @@ public class AudioManager : Singleton<AudioManager>
         }
 
         SpawnAudioPrefab();
+        instance = this;
     }
 
     void SpawnAudioPrefab()
@@ -98,5 +144,15 @@ public class AudioManager : Singleton<AudioManager>
 
         audio.gameObject.SetActive(false);
         AudioStack.Push(audio);
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause) SaveVolume();
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveVolume();
     }
 }
