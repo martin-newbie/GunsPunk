@@ -102,8 +102,6 @@ public class GameManager : Singleton<GameManager>
         LoadJson();
     }
 
-
-
     public int GetUpgradeCost(int level)
     {
         return 300 * level;
@@ -237,7 +235,6 @@ public class GameManager : Singleton<GameManager>
         if (score > bestScore) bestScore = score;
     }
 
-
     private void OnApplicationPause(bool pause)
     {
         if (pause)
@@ -288,12 +285,14 @@ public class GameManager : Singleton<GameManager>
 
         foreach (var item in charactersInfo)
         {
-            save.CharactersInfo.Add(item);
+            CharacterSave temp = new CharacterSave(item.exp, item.level, item.trainingLevel, item.isUnlocked, item.isSelected);
+            save.CharactersInfo.Add(temp);
         }
 
         foreach (var item in itemsInfo)
         {
-            save.ItemsInfo.Add(item);
+            ItemSave temp = new ItemSave(item.count);
+            save.ItemsInfo.Add(temp);
         }
 
         save.userName = userName;
@@ -361,8 +360,8 @@ public class GameManager : Singleton<GameManager>
 [System.Serializable]
 public class DataSave
 {
-    public List<CharacterInfo> CharactersInfo = new List<CharacterInfo>();
-    public List<ItemInfo> ItemsInfo = new List<ItemInfo>();
+    public List<CharacterSave> CharactersInfo = new List<CharacterSave>();
+    public List<ItemSave> ItemsInfo = new List<ItemSave>();
     public string userName;
     public int userLevel;
     public float userExp;
@@ -380,4 +379,34 @@ public class DataSave
     public int hpLevel;
     public int ammoLevel;
     public int defLevel;
+}
+
+[System.Serializable]
+public class CharacterSave
+{
+    public float exp;
+    public int level;
+    public int trainingLevel;
+    public bool isUnlocked;
+    public bool isSelected;
+
+    public CharacterSave(float _exp, int _level, int _trLevl, bool _isUnlocked, bool _isSelected)
+    {
+        exp = _exp;
+        level = _level;
+        trainingLevel = _trLevl;
+        isUnlocked = _isUnlocked;
+        isSelected = _isSelected;
+    }
+}
+
+[System.Serializable]
+public class ItemSave
+{
+    public int count;
+
+    public ItemSave(int _count)
+    {
+        count = _count;
+    }
 }
