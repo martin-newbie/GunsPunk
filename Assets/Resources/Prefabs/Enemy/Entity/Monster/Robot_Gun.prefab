@@ -1008,6 +1008,7 @@ MonoBehaviour:
   curPosIdx: 0
   FeetPos: {fileID: 941165882532639296}
   TopPos: {fileID: 941165882605387406}
+  crashSound: RobotCrash
   state: 0
   nowActing: 0
   player: {fileID: 0}
@@ -1022,6 +1023,7 @@ MonoBehaviour:
   - {fileID: 2126155852}
   - {fileID: 1873981020}
   HitEffect: {fileID: 350406588170736969}
+  ExplosionEffect: {fileID: 5381535808297580045, guid: aa0f8ed85e897524db666e6a510cc25c, type: 3}
   standbyDelay: 1
   moveTime: 2
   startPosX: 7.5

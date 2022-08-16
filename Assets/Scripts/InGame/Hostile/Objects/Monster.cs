@@ -33,6 +33,7 @@ public abstract class Monster : JumpAble
 
     [Header("Effect")]
     public ParticleSystem HitEffect;
+    public GameObject ExplosionEffect;
 
     protected Animator anim;
 
@@ -66,6 +67,9 @@ public abstract class Monster : JumpAble
 
     public virtual void OnDie()
     {
+        if (ExplosionEffect != null)
+            Instantiate(ExplosionEffect, HitEffect.transform.position, Quaternion.identity);
+
         GameManager.Instance.killMonsterCnt++;
         AudioManager.Instance.PlayEffectSound(crashSound, transform.position);
         gameObject.layer = LayerMask.NameToLayer("Debris");
