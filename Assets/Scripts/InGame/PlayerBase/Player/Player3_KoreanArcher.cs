@@ -8,7 +8,7 @@ public class Player3_KoreanArcher : HoldFirePlayer
     public Bullet CommonArrow;
     public Bullet ChargedArrow;
     public int coinCount;
-
+    AudioObject arrowLoading;
     protected override string fireSound => "ArrowShoot";
 
     protected override void Skill()
@@ -40,5 +40,29 @@ public class Player3_KoreanArcher : HoldFirePlayer
         }
 
         return _bullet;
+    }
+
+    public override void OnAttackStart()
+    {
+        base.OnAttackStart();
+
+        if (AmmoCount > 0)
+        {
+            AudioManager.Instance.PlayEffectSound("ArrowLoad");
+            arrowLoading = AudioManager.Instance.PlayEffectSound("ArrowLoading");
+        }
+    }
+
+    public override void OnAttackEnd()
+    {
+        arrowLoading?.Audio.Stop();
+        if (curHold >= minHold)
+        {
+            if (curHold >= maxHold)
+                AudioManager.Instance.PlayEffectSound("ArrowPower");
+            AudioManager.Instance.PlayEffectSound("ArrowShoot");
+        }
+
+        base.OnAttackEnd();
     }
 }

@@ -121,10 +121,11 @@ public class AudioManager : Singleton<AudioManager>
         audio.PlayStaticSound(UIAudioClips[key]);
     }
 
-    public void PlayEffectSound(string key, Vector3 pos, bool loop = false)
+    public AudioObject PlayEffectSound(string key, Vector3 pos = default, bool loop = false)
     {
         AudioObject audio = Pop();
         audio.PlaySound(EffectAudioClips[key], pos, loop);
+        return audio;
     }
 
     AudioObject Pop()

@@ -2694,6 +2694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5a78bf29bd5f84fa90cfd3bdecf2f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clearSave: 0
   volumeBGM: 1
   volumeUI: 1
   volumeGAME: 1

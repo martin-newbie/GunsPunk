@@ -5033,7 +5033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f3e45b21d3c9a46906f04e3ac562d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 500
+  maxHP: 150
   HP: 0
   damage: 50
   moveSpeed: 10
@@ -5044,6 +5044,7 @@ MonoBehaviour:
   curPosIdx: 0
   FeetPos: {fileID: 9047405463209180770}
   TopPos: {fileID: 9047405463332710444}
+  crashSound: RobotCrash
   state: 0
   nowActing: 0
   player: {fileID: 0}
@@ -5051,6 +5052,7 @@ MonoBehaviour:
   Body: {fileID: 1382192184620820328}
   Parts: []
   HitEffect: {fileID: 1349732921093667927}
+  ExplosionEffect: {fileID: 0}
   attackExplosion: {fileID: 8758348878193151863, guid: d6f39825f4f182046af659f54241b305, type: 3}
   minX: -4.5
   isArrived: 0

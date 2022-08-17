@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class AudioObject : MonoBehaviour
 {
-    AudioSource Audio;
+    public AudioSource Audio;
     AudioManager manager;
 
     public void Init(AudioManager _manager)

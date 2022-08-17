@@ -55,13 +55,14 @@ public class Grenade : MonoBehaviour
             AudioManager.Instance.PlayEffectSound("Grenade", transform.position);
 
             var hostile = Physics2D.OverlapCircleAll(transform.position, explosionRad, LayerMask.GetMask("Hostile"));
+            Instantiate(explosion, hostile[0].transform.position, Quaternion.identity);
+
             if (hostile.Length > 0)
                 foreach (var item in hostile)
                 {
                     item.GetComponent<Entity>().OnHit(damage, transform);
                 }
 
-            Instantiate(explosion, transform.position, Quaternion.identity);
             isAttackAble = false;
 
             Destroy(gameObject);

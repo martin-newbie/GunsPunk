@@ -40,6 +40,11 @@ public class InGameManager : Singleton<InGameManager>
     public Canvas canvas;
     public GaugeContainer GaugePrefab;
 
+    [Header("Drone")]
+    public Drone[] Drones;
+    public Transform dronePos;
+    public Drone CurDrone;
+
     [Header("Object")]
     public Entity[] Hurdles;
     public Transform[] SpawnPoses;
@@ -50,6 +55,7 @@ public class InGameManager : Singleton<InGameManager>
     public Explosion explosion;
     public CameraController Cam;
     public AudioListener listener;
+    public AnimationEffect hpEffect;
 
     [Header("Values")]
     public float objectSpeed;
@@ -70,6 +76,11 @@ public class InGameManager : Singleton<InGameManager>
 
     Coroutine monsterSpawn_coroutine;
     Coroutine hurdleSpawn_coroutine;
+
+    public void HPEffect(Vector3 pos)
+    {
+        hpEffect.Play(pos);
+    }
 
     public void AmmoEffect(Vector3 pos, int count)
     {
@@ -125,6 +136,7 @@ public class InGameManager : Singleton<InGameManager>
         SubPlayer = temp;
         SubPlayer.gameObject.SetActive(false);
 
+
         SetHoldGaugeActive();
         GetRoundCoin(0);
         GameStart();
@@ -159,6 +171,7 @@ public class InGameManager : Singleton<InGameManager>
     public void GameOver()
     {
         isGameActive = false;
+        CurDrone.active = false;
         FindMonstersDestroy();
 
         StopCoroutine(hurdleSpawn_coroutine);
@@ -202,6 +215,7 @@ public class InGameManager : Singleton<InGameManager>
 
     IEnumerator PlayerSwapCoroutine()
     {
+        CurDrone.active = false;
 
         isRevived = true;
         InGameUIManager.Instance.SetPlayerHp(0, CurPlayer.maxHP);
@@ -253,6 +267,14 @@ public class InGameManager : Singleton<InGameManager>
 
         isGameActive = true;
 
+        int droneIdx = PlayerPrefs.GetInt("droneIdx", -1);
+        droneIdx = 1; // debug
+        if (droneIdx != -1)
+        {
+            Drone drone = Instantiate(Drones[droneIdx], dronePos.position, Quaternion.identity);
+            drone.Init(CurPlayer.transform, CurPlayer);
+            CurDrone = drone;
+        }
 
         bool tutorialAble = PlayerPrefs.GetInt("Tutorial", 0) == 0;
 
