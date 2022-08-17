@@ -37,16 +37,21 @@ public class Bullet : MonoBehaviour
     {
         if (collision.CompareTag("Hostile"))
         {
-            Entity entity = collision.GetComponent<Entity>();
-            if (entity != null && entity.isAlive)
-            {
-                GameManager.Instance.hitBulletCnt++;
+            AttackAction(collision);
+        }
+    }
 
-                entity.OnHit(damage, transform);
-                player.GetFever();
-                hitAction?.Invoke();
-                if (!notDestroy) Destroy(gameObject);
-            }
+    protected virtual void AttackAction(Collider2D collision)
+    {
+        Entity entity = collision.GetComponent<Entity>();
+        if (entity != null && entity.isAlive)
+        {
+            GameManager.Instance.hitBulletCnt++;
+
+            entity.OnHit(damage, transform);
+            player.GetFever();
+            hitAction?.Invoke();
+            if (!notDestroy) Destroy(gameObject);
         }
     }
 }

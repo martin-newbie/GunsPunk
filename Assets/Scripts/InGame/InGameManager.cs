@@ -268,7 +268,7 @@ public class InGameManager : Singleton<InGameManager>
         isGameActive = true;
 
         int droneIdx = PlayerPrefs.GetInt("droneIdx", -1);
-        droneIdx = 0; // debug
+        droneIdx = 1; // debug
         if (droneIdx != -1)
         {
             Drone drone = Instantiate(Drones[droneIdx], dronePos.position, Quaternion.identity);
