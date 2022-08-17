@@ -61,7 +61,7 @@ public class Grenade : MonoBehaviour
                     item.GetComponent<Entity>().OnHit(damage, transform);
                 }
 
-            Instantiate(explosion, transform.position, Quaternion.identity);
+            Instantiate(explosion, hostile[0].transform.position, Quaternion.identity);
             isAttackAble = false;
 
             Destroy(gameObject);

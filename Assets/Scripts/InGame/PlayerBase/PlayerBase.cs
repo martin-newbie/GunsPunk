@@ -228,6 +228,7 @@ public abstract class PlayerBase : JumpAble
         else HP += count * GameManager.Instance.hpValue;
 
         InGameUIManager.Instance.HudEffect(Color.green);
+        InGameManager.Instance.HPEffect(transform.position);
 
         if (HP >= maxHP) HP = maxHP;
     }

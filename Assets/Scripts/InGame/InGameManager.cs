@@ -50,6 +50,7 @@ public class InGameManager : Singleton<InGameManager>
     public Explosion explosion;
     public CameraController Cam;
     public AudioListener listener;
+    public AnimationEffect hpEffect;
 
     [Header("Values")]
     public float objectSpeed;
@@ -70,6 +71,11 @@ public class InGameManager : Singleton<InGameManager>
 
     Coroutine monsterSpawn_coroutine;
     Coroutine hurdleSpawn_coroutine;
+
+    public void HPEffect(Vector3 pos)
+    {
+        hpEffect.Play(pos);
+    }
 
     public void AmmoEffect(Vector3 pos, int count)
     {
