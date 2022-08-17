@@ -307,6 +307,7 @@ public class InGameManager : Singleton<InGameManager>
             temp.healthPackChance = -1f;
             temp.explosionChance = -1f;
             temp.maxHP = 1f;
+            temp.HP = 1f;
             return temp;
         }
 
@@ -341,6 +342,7 @@ public class InGameManager : Singleton<InGameManager>
             temp.ammunitionChance = -1f;
             temp.healthPackChance = 101f;
             temp.maxHP = 1f;
+            temp.HP = 1f;
 
             return temp;
         }
@@ -366,6 +368,7 @@ public class InGameManager : Singleton<InGameManager>
             temp.ammunitionChance = 101f;
             temp.healthPackChance = -1f;
             temp.maxHP = 1f;
+            temp.HP = 1f;
 
             return temp;
         }
