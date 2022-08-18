@@ -22,11 +22,12 @@ public class HomingMissile : Bullet
     [SerializeField] float posB = 0.45f;
 
 
-    public void Init(Transform _start, Transform _target, float _speed)
+    public void Init(Transform _start, Transform _target, float _speed, float _damage)
     {
         bulletObj.gameObject.SetActive(true);
         target = _target;
         speed = _speed;
+        damage = _damage;
         active = true;
         t = 0f;
 
@@ -74,20 +75,21 @@ public class HomingMissile : Bullet
 
     protected override void AttackAction(Collider2D collision)
     {
-        if (collision.transform == target)
-        {
-            active = false;
-            AudioManager.Instance.PlayEffectSound("Grenade");
-            Instantiate(explosion, transform.position, Quaternion.identity);
+    }
 
-            Collider2D[] objs = Physics2D.OverlapCircleAll(transform.position, radius, LayerMask.GetMask("Hostile"));
-            foreach (var item in objs)
+    void Attack()
+    {
+        active = false;
+        AudioManager.Instance.PlayEffectSound("Grenade");
+        Instantiate(explosion, transform.position, Quaternion.identity);
+
+        Collider2D[] objs = Physics2D.OverlapCircleAll(transform.position, radius, LayerMask.GetMask("Hostile"));
+        foreach (var item in objs)
+        {
+            Entity temp;
+            if (item.TryGetComponent(out temp))
             {
-                Entity temp;
-                if (item.TryGetComponent(out temp))
-                {
-                    temp.OnHit(damage, transform);
-                }
+                temp.OnHit(damage, transform);
             }
         }
     }
@@ -102,7 +104,12 @@ public class HomingMissile : Bullet
         {
             bulletObj.gameObject.SetActive(false);
             smokeEffect.Stop();
-            return;
+            Attack();
+
+            smokeEffect.transform.SetParent(null);
+            smokeEffect.transform.localScale = Vector3.one;
+            Destroy(smokeEffect.gameObject, 2f);
+            Destroy(gameObject);
         }
         t += Time.deltaTime * speed;
         DrawTrajectory();
@@ -110,7 +117,7 @@ public class HomingMissile : Bullet
 
     void FollowTarget()
     {
-        var dir = bulletObj.position - target.position;
+        var dir = (Vector2)bulletObj.position - point[3];
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         bulletObj.rotation = Quaternion.Euler(0, 0, angle + 180);
     }

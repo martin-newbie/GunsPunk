@@ -5,6 +5,8 @@ using UnityEngine;
 public class HomingDrone : Drone
 {
     [Header("Homing Drone")]
+    public float b_speed;
+    public float b_damage;
     public HomingMissile missile;
     public bool shootAble;
 
@@ -19,8 +21,8 @@ public class HomingDrone : Drone
             {
                 var target = monsters[Random.Range(0, monsters.Count)];
                 HomingMissile temp = Instantiate(missile, shootPos.position, Quaternion.identity);
-                temp.Init(shootPos, target.GetTransform(), speed);
-
+                temp.Init(shootPos, target.GetTransform(), b_speed, b_damage);
+                anim.SetTrigger("AttackTrigger");
                 shootAble = false;
             }
 

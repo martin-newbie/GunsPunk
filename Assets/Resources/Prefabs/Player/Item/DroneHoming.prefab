@@ -160,6 +160,8 @@ MonoBehaviour:
   speed: 6
   target: {fileID: 0}
   active: 0
+  b_speed: 1
+  b_damage: 25
   missile: {fileID: 8142927015448875674, guid: 01fe99ccd2c569340907d28c14050a5c, type: 3}
   shootAble: 0
 --- !u!1 &3373586051964705728
