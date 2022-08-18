@@ -26,7 +26,7 @@ public abstract class Drone : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         Vector2 pos = Vector2.Lerp(transform.position, (Vector2)target.position + offset, Time.deltaTime * speed);
         transform.position = pos;
@@ -36,10 +36,15 @@ public abstract class Drone : MonoBehaviour
         delay += Time.deltaTime;
         if(delay >= shootDelay)
         {
-            anim.SetTrigger("AttackTrigger");
-            Attack();
+            Shoot();
             delay = 0f;
         }
+    }
+
+    protected virtual void Shoot()
+    {
+        anim.SetTrigger("AttackTrigger");
+        Attack();
     }
 
     protected abstract Bullet Attack();

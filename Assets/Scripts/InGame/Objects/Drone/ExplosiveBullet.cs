@@ -8,12 +8,6 @@ public class ExplosiveBullet : Bullet
     public float radius;
     public GameObject explosion;
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius);
-    }
-
     protected override void AttackAction(Collider2D collision)
     {
         base.AttackAction(collision);

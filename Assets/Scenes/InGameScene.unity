@@ -3295,6 +3295,7 @@ MonoBehaviour:
   Drones:
   - {fileID: 1526039194859393478, guid: d7067e9f397d04947b7621e7a228cd13, type: 3}
   - {fileID: 7275255379940133766, guid: 70e71406e6614d34d83f1f9a73421e02, type: 3}
+  - {fileID: 3373586050852272466, guid: 313c1f4f1cf5ebf4cbdc9030c32f2007, type: 3}
   dronePos: {fileID: 1799875514}
   CurDrone: {fileID: 0}
   Hurdles:

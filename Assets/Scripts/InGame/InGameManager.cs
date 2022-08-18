@@ -27,6 +27,13 @@ public struct GameResult
     }
 }
 
+public interface IMonster
+{
+    void AddMonster();
+    void RemoveMonster();
+    Transform GetTransform();
+}
+
 public class InGameManager : Singleton<InGameManager>
 {
     [Header("Player")]
@@ -73,6 +80,9 @@ public class InGameManager : Singleton<InGameManager>
 
     [Header("Effects")]
     public ParticleSystem ammoEffect;
+
+    [Header("Enemy")]
+    public List<IMonster> CurMonsters = new List<IMonster>();
 
     Coroutine monsterSpawn_coroutine;
     Coroutine hurdleSpawn_coroutine;
@@ -268,7 +278,7 @@ public class InGameManager : Singleton<InGameManager>
         isGameActive = true;
 
         int droneIdx = PlayerPrefs.GetInt("droneIdx", -1);
-        droneIdx = 1; // debug
+        droneIdx = 2; // debug
         if (droneIdx != -1)
         {
             Drone drone = Instantiate(Drones[droneIdx], dronePos.position, Quaternion.identity);

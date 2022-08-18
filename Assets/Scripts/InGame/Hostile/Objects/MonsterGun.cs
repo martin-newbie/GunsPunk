@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterGun : Monster
+public class MonsterGun : Monster, IMonster
 {
 
 
@@ -18,6 +18,18 @@ public class MonsterGun : Monster
     public float fireDelay;
     public float b_speed;
     public float b_damage;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        AddMonster();
+    }
+
+    public override void OnDie()
+    {
+        base.OnDie();
+        RemoveMonster();
+    }
 
     protected override void Update()
     {
@@ -183,5 +195,20 @@ public class MonsterGun : Monster
         EnemyBullet temp = Instantiate(bullet, pos, rot);
         temp.Init(b_speed, b_damage);
         return temp;
+    }
+
+    public void AddMonster()
+    {
+        InGameManager.Instance.CurMonsters.Add(this);
+    }
+
+    public void RemoveMonster()
+    {
+        InGameManager.Instance.CurMonsters.Remove(this);
+    }
+
+    public Transform GetTransform()
+    {
+        return transform;
     }
 }

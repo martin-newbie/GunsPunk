@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class MonsterMelee : Monster
+public class MonsterMelee : Monster, IMonster
 {
 
     [Header("Monster Melee")]
@@ -19,6 +19,7 @@ public class MonsterMelee : Monster
     protected override void Awake()
     {
         base.Awake();
+        AddMonster();
         AtkCol.Init(damage);
     }
 
@@ -53,6 +54,7 @@ public class MonsterMelee : Monster
     public override void OnDie()
     {
         base.OnDie();
+        RemoveMonster();
         Destroy(AtkCol.gameObject);
     }
 
@@ -140,5 +142,20 @@ public class MonsterMelee : Monster
         nowActing = false;
         state = MonsterState.Standby;
         yield break;
+    }
+
+    public void AddMonster()
+    {
+        InGameManager.Instance.CurMonsters.Add(this);
+    }
+
+    public void RemoveMonster()
+    {
+        InGameManager.Instance.CurMonsters.Remove(this);
+    }
+
+    public Transform GetTransform()
+    {
+        return transform;
     }
 }
