@@ -29,11 +29,12 @@ public class ChooseMessage : MonoBehaviour, IPopUp
         AcceptButton.onClick.RemoveAllListeners();
         RefuseButton.onClick.RemoveAllListeners();
 
-        refuse += Close;
+        refuse += Refuse;
         refuse += manager.ClosePopup;
         accept += manager.ClosePopup;
 
         closeAction = refuse;
+        closeAction -= Refuse;
 
         AcceptButton.onClick.AddListener(() => accept?.Invoke());
         RefuseButton.onClick.AddListener(() => refuse?.Invoke());

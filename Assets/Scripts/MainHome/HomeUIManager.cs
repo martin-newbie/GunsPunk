@@ -9,6 +9,7 @@ public class HomeUIManager : MonoBehaviour
     public HomeQuest Quest;
     public HomeBestScore BestScore;
     public HomeProfile Profile;
+    public DroneSelect droneSelect;
 
     void Start()
     {
@@ -27,8 +28,16 @@ public class HomeUIManager : MonoBehaviour
 
     public void GameStart()
     {
-        GameManager.Instance.gamePlayCnt++;
-        LoadingSceneManager.LoadScene("InGameScene");
+        if(GameManager.Instance.itemsInfo[1].count > 0 || GameManager.Instance.itemsInfo[2].count > 0 || GameManager.Instance.itemsInfo[3].count > 0)
+        {
+            droneSelect.gameObject.SetActive(true);
+            droneSelect.UIOpen();
+        }
+        else
+        {
+            GameManager.Instance.gamePlayCnt++;
+            LoadingSceneManager.LoadScene("InGameScene");
+        }
     }
 
     public void Shop()
