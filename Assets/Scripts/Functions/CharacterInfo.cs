@@ -50,7 +50,7 @@ public class CharacterInfo : ScriptableObject
         }
     }
 
-    public bool TrainigAble()
+    public bool TrainingAble()
     {
         bool levelAble = (level / 10) > trainingLevel;
         bool maxAble = trainingLevel < maxTrainingLevel;

@@ -36,7 +36,7 @@ public class ItemContainer : MonoBehaviour, IRefresh
     {
         if(info.cost <= GameManager.Instance.coin && info.count < 99)
         {
-            AudioManager.Instance.PlayUISound("Cash");
+            AudioManager.Instance.PlayUISound("Purchase");
             info.count++;
 
             GameManager.Instance.coin -= info.cost;
