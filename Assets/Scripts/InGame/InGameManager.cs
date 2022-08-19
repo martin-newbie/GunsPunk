@@ -180,6 +180,7 @@ public class InGameManager : Singleton<InGameManager>
 
     public void GameOver()
     {
+        PlayerPrefs.SetInt("droneIdx", -1);
         isGameActive = false;
         CurDrone.active = false;
         FindMonstersDestroy();

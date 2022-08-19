@@ -66,11 +66,22 @@ public class HomingMissile : Bullet
 
     protected override void OnBecameInvisible()
     {
+        if (!active) Destroy(gameObject);
     }
 
     protected override void Update()
     {
-        FollowTarget();
+        try
+        {
+            point[3] = target.position;
+            FollowTarget();
+        }
+        catch (MissingReferenceException)
+        {
+            active = false;
+            transform.Translate(bulletObj.right * Time.deltaTime * speed);
+            throw;
+        }
     }
 
     protected override void AttackAction(Collider2D collision)
