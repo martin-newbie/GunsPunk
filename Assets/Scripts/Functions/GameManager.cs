@@ -89,6 +89,16 @@ public class GameManager : Singleton<GameManager>
     public float ammoValue => 1 + (ammoIncrease * (ammoLevel - 1));
     public float defValue => defIncrease * (defLevel - 1);
 
+    [Header("About Character")]
+    public int[] TrainingCost = new int[5]
+    {
+        1500,
+        3500,
+        4500,
+        9500,
+        500, // as energy
+    };
+
 
     protected void Awake()
     {
@@ -269,10 +279,17 @@ public class GameManager : Singleton<GameManager>
         if (content != "Default") SetJson(content);
         else
         {
+            int idx = 0;
             foreach (var item in charactersInfo)
             {
+                item.idx = idx;
+                item.level = 0;
+                item.trainingLevel = 0;
+                item.exp = 0;
+
                 if (item.idx < 2) item.isUnlocked = true;
                 else item.isUnlocked = false;
+                idx++;
             }
         }
     }

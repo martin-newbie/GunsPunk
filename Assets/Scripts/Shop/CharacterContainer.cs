@@ -33,6 +33,12 @@ public class CharacterContainer : MonoBehaviour, IRefresh
     public Image MainMark;
     public Image SubMark;
 
+    int value => info.valueType switch
+    {
+        ValueType.Coin => GameManager.Instance.coin,
+        ValueType.Energy => GameManager.Instance.energy,
+        _ => throw new System.NotImplementedException(),
+    };
 
     public void Init(int idx)
     {
@@ -71,7 +77,7 @@ public class CharacterContainer : MonoBehaviour, IRefresh
 
             ValueIcons[(int)info.valueType].SetActive(true);
 
-            if (GameManager.Instance.coin < info.cost)
+            if (value < info.cost)
                 Cost.color = Color.red;
             else
                 Cost.color = Color.white;

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: 1_Smith
   m_EditorClassIdentifier: 
   idx: 0
-  level: 0
+  level: 10
   trainingLevel: 0
-  exp: 0
+  exp: 144.75275
   characterName: SMITH
   HP: 100
   HPIncrease: 15
