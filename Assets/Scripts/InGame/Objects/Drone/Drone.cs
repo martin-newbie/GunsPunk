@@ -33,8 +33,13 @@ public abstract class Drone : MonoBehaviour
 
         if (!active) return;
 
+        DelayLogic();
+    }
+
+    protected virtual void DelayLogic()
+    {
         delay += Time.deltaTime;
-        if(delay >= shootDelay)
+        if (delay >= shootDelay)
         {
             Shoot();
             delay = 0f;

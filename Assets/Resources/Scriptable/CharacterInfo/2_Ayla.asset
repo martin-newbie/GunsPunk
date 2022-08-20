@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 2_Ayla
   m_EditorClassIdentifier: 
   idx: 1
-  level: 0
-  trainingLevel: 0
+  level: 30
+  trainingLevel: 3
   exp: 0
   characterName: AYLA
   HP: 75
@@ -32,6 +32,6 @@ MonoBehaviour:
   AmmoItemValue: 25
   HPItemValue: 25
   cost: 0
-  isUnlocked: 0
+  isUnlocked: 1
   valueType: 0
-  isSelected: 0
+  isSelected: 1

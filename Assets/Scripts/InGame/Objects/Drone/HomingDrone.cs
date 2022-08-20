@@ -17,7 +17,7 @@ public class HomingDrone : Drone
         if (shootAble)
         {
             var monsters = InGameManager.Instance.CurMonsters;
-            if(monsters.Count > 0)
+            if (monsters.Count > 0)
             {
                 var target = monsters[Random.Range(0, monsters.Count)];
                 HomingMissile temp = Instantiate(missile, shootPos.position, Quaternion.identity);
@@ -27,6 +27,12 @@ public class HomingDrone : Drone
             }
 
         }
+    }
+
+    protected override void DelayLogic()
+    {
+        if (!shootAble)
+            base.DelayLogic();
     }
 
     protected override void Shoot()
