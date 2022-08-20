@@ -33,7 +33,7 @@ public class DroneSelect : MonoBehaviour, IPopUp
         }
 
         Background.rectTransform.anchoredPosition = new Vector2(0f, -1400f);
-        Background.rectTransform.DOAnchorPosY(0f, 0.5f).SetEase(Ease.OutBack);
+        Background.rectTransform.DOAnchorPosY(90f, 0.5f).SetEase(Ease.OutBack);
     }
 
 
