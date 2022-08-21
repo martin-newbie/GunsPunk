@@ -46,6 +46,8 @@ public class CharacterContainer : MonoBehaviour, IRefresh
 
         CharacterIllustImage.sprite = ShopUIManager.Instance.CharactersIllustSprite[idx];
         CharacterProfileImage.sprite = ShopUIManager.Instance.CharactersProfileSprite[idx];
+        CharacterProfileImage.SetNativeSize();
+
         CharacterNameImage.sprite = ShopUIManager.Instance.CharactersNameSprite[idx];
 
         info = GameManager.Instance.charactersInfo[idx];

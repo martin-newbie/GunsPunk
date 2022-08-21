@@ -73,7 +73,10 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
         // todo
         CharacterIllustImage.sprite = CharacterIllustSprites[_info.idx];
         CharacterIllustImage.SetNativeSize();
+        
         CharacterName.sprite = CharacterNameSprites[_info.idx];
+        CharacterName.SetNativeSize();
+
         CharacterLevel.text = _info.level.ToString();
         CharacterLevelGauge.fillAmount = _info.exp / _info.maxExp;
         CharacterDesc.text = _info.description;

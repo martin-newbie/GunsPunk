@@ -19,5 +19,6 @@ public class UpperBar : Singleton<UpperBar>
     {
         Setting.Instance.gameObject.SetActive(true);
         Setting.Instance.UIOn();
+        AudioManager.instance.PlayUISound("SettingButton");
     }
 }

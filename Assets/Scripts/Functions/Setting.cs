@@ -45,6 +45,7 @@ public class Setting : Singleton<Setting>, IPopUp
 
     public void UIOff()
     {
+        AudioManager.instance.PlayUISound("SettingButton");
         GameManager.Instance.PopupClose();
     }
 

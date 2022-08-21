@@ -182,7 +182,10 @@ public class InGameManager : Singleton<InGameManager>
     {
         PlayerPrefs.SetInt("droneIdx", -1);
         isGameActive = false;
-        CurDrone.active = false;
+
+        if (CurDrone != null)
+            CurDrone.active = false;
+
         FindMonstersDestroy();
 
         StopCoroutine(hurdleSpawn_coroutine);
@@ -217,10 +220,10 @@ public class InGameManager : Singleton<InGameManager>
 
     void FindMonstersDestroy()
     {
-        var monsters = FindObjectsOfType<Monster>();
+        var monsters = CurMonsters;
         foreach (var m in monsters)
         {
-            StartCoroutine(m.DestroyMove());
+            StartCoroutine(m.GetTransform().GetComponent<Monster>().DestroyMove());
         }
     }
 
