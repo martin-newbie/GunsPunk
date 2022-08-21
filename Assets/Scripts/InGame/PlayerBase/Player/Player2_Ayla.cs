@@ -8,7 +8,7 @@ public class Player2_Ayla : SingleFirePlayer
 
     protected override void Skill()
     {
-        ItemHealth(maxHP * 0.25f);
+        ItemHealth(maxHP * 0.1f);
         isSkillActive = false;
     }
 }

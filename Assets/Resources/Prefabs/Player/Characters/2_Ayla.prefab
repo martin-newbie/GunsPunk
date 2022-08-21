@@ -238,8 +238,8 @@ MonoBehaviour:
   feverValue: 0
   AmmoCount: 0
   MaxAmmo: 150
-  AmmoIncrease: 20
-  HealthIncrease: 20
+  AmmoIncrease: 10
+  HealthIncrease: 10
   GunFireEffect: {fileID: 8556412379732059579}
   BulletShellEffect: {fileID: 8892618970967394246}
   FirePos: {fileID: 6010009858141683073}

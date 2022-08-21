@@ -89,6 +89,7 @@ public class InGameManager : Singleton<InGameManager>
 
     public void HPEffect(Vector3 pos)
     {
+        AudioManager.instance.PlayEffectSound("Health");
         hpEffect.Play(pos);
     }
 
