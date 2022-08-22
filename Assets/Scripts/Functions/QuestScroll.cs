@@ -14,13 +14,22 @@ public class QuestScroll : MonoBehaviour
 
     private void Awake()
     {
+        StartCoroutine(WaitUntilQuestExist());
+    }
+
+    IEnumerator WaitUntilQuestExist()
+    {
+        while (QuestManager.Instance.Quests == null || QuestManager.Instance.Quests.Count <= 0)
+        {
+            yield return null;
+        }
+
         foreach (var item in QuestManager.Instance.Quests)
         {
             QuestContainer temp = Instantiate(containerPrefab, content);
             temp.Init(item);
             questsList.Add(temp);
         }
-
     }
 
     private void Start()

@@ -4,7 +4,6 @@ using System.Linq;
 using UnityEngine;
 using Newtonsoft.Json;
 
-
 public class QuestManager : Singleton<QuestManager>
 {
     public string questSaveName = "QuestData";
@@ -17,18 +16,31 @@ public class QuestManager : Singleton<QuestManager>
         DontDestroyOnLoad(gameObject);
 
         string saveData = PlayerPrefs.GetString(questSaveName, "None");
-        if(saveData == "None")
+        if (saveData == "None")
         {
             // init quest
-            Quests.Add(new QuestData("BestScore!", "Get Over BestScore", ValueType.Coin, 100, 50, QuestType.BestScore));
-            Quests.Add(new QuestData("BestScore!!", "Get Over BestScore", ValueType.Coin, 200, 100, QuestType.BestScore));
-            Quests.Add(new QuestData("BestScore!!!", "Get Over BestScore", ValueType.Coin, 400, 200, QuestType.BestScore));
-            Quests.Add(new QuestData("BestScore!!!!", "Get Over BestScore", ValueType.Coin, 800, 600, QuestType.BestScore));
-            Quests.Add(new QuestData("BestScore!!!!!", "Get Over BestScore", ValueType.Coin, 1600, 1000, QuestType.BestScore));
-            Quests.Add(new QuestData("BestScore!!!!!!", "Get Over BestScore", ValueType.Coin, 3200, 2500, QuestType.BestScore));
-            Quests.Add(new QuestData("BestScore!!!!!!!", "Get Over BestScore", ValueType.Coin, 6400, 5000, QuestType.BestScore));
-            Quests.Add(new QuestData("BestScore!!!!!!!!", "Get Over BestScore", ValueType.Coin, 12800, 8000, QuestType.BestScore));
-            Quests.Add(new QuestData("BestScore!!!!!!!!!", "Get Over BestScore", ValueType.Coin, 25600, 12000, QuestType.BestScore));
+            var data = CSVReader.Read("QuestData");
+            Quests.Clear();
+            Debug.Log(data.Count);
+            for (int i = 0; i < data.Count; i++)
+            {
+                Debug.Log(data[i]["Name"]);
+                Debug.Log(data[i]["Desc"]);
+                Debug.Log(data[i]["RewardType"]);
+                Debug.Log(data[i]["RewardValue"]);
+                Debug.Log(data[i]["MaxProgress"]);
+                Debug.Log(data[i]["QuestType"]);
+
+                string name = (string)data[i]["Name"];
+                string desc = (string)data[i]["Desc"];
+                ValueType reType = (ValueType)int.Parse(data[i]["RewardType"].ToString());
+                int reValue = int.Parse(data[i]["RewardValue"].ToString());
+                float progress = float.Parse(data[i]["MaxProgress"].ToString());
+                QuestType quType = (QuestType)int.Parse(data[i]["QuestType"].ToString());
+
+                QuestData quest = new QuestData(name, desc, reType, reValue, progress, quType);
+                Quests.Add(quest);
+            }
 
             saveDataList.dataList = Quests.ToArray();
         }
