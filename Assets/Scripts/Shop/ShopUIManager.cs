@@ -40,6 +40,7 @@ public class ShopUIManager : Singleton<ShopUIManager>
 
     private void Start()
     {
+        CameraResolution.SetCameraResolution();
         for (int i = 0; i < Buttons.Length; i++)
         {
             int idx = i;

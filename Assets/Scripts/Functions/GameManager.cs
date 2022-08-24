@@ -3,6 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public static class CameraResolution
+{
+
+    public static void SetCameraResolution()
+    {
+        Camera cam = Camera.main;
+        Rect rt = cam.rect;
+
+        float scale_h = ((float)Screen.width / Screen.height) / (18.5f / 9f);
+        float scale_w = 1f / scale_h;
+
+        if (scale_h < 1)
+        {
+            rt.height = scale_h;
+            rt.y = (1f - scale_h) / 2f;
+        }
+        else
+        {
+            rt.width = scale_w;
+            rt.x = (1f - scale_w) / 2f;
+        }
+        cam.rect = rt;
+    }
+}
+
 public struct characterInfo
 {
     public int level;
@@ -102,6 +127,7 @@ public class GameManager : Singleton<GameManager>
 
     protected void Awake()
     {
+        CameraResolution.SetCameraResolution();
         DontDestroyOnLoad(gameObject);
 
         charactersPrefab = Resources.LoadAll<PlayerBase>(prefabPath);
@@ -290,6 +316,11 @@ public class GameManager : Singleton<GameManager>
                 if (item.idx < 2) item.isUnlocked = true;
                 else item.isUnlocked = false;
                 idx++;
+            }
+
+            foreach (var item in itemsInfo)
+            {
+                item.count = 0;
             }
         }
     }

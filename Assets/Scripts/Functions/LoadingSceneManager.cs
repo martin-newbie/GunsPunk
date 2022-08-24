@@ -12,6 +12,7 @@ public class LoadingSceneManager : MonoBehaviour
 
     void Start()
     {
+        CameraResolution.SetCameraResolution();
         StartCoroutine(LoadScene());
     }
 

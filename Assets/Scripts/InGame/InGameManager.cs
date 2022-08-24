@@ -130,6 +130,7 @@ public class InGameManager : Singleton<InGameManager>
 
     private void Start()
     {
+        CameraResolution.SetCameraResolution();
         PlayerPrefabs = GameManager.Instance.charactersPrefab;
 
         int playerIdx = GameManager.Instance.mainPlayerIdx;

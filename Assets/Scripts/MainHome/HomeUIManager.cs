@@ -13,6 +13,7 @@ public class HomeUIManager : MonoBehaviour
 
     void Start()
     {
+        CameraResolution.SetCameraResolution();
         Quest.Init(this);
         BestScore.Init(this);
         Profile.Init(this);
