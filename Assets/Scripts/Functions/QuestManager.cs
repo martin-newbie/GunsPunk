@@ -19,35 +19,38 @@ public class QuestManager : Singleton<QuestManager>
         if (saveData == "None")
         {
             // init quest
-            var data = CSVReader.Read("QuestData");
-            Quests.Clear();
-            Debug.Log(data.Count);
-            for (int i = 0; i < data.Count; i++)
-            {
-                Debug.Log(data[i]["Name"]);
-                Debug.Log(data[i]["Desc"]);
-                Debug.Log(data[i]["RewardType"]);
-                Debug.Log(data[i]["RewardValue"]);
-                Debug.Log(data[i]["MaxProgress"]);
-                Debug.Log(data[i]["QuestType"]);
-
-                string name = (string)data[i]["Name"];
-                string desc = (string)data[i]["Desc"];
-                ValueType reType = (ValueType)int.Parse(data[i]["RewardType"].ToString());
-                int reValue = int.Parse(data[i]["RewardValue"].ToString());
-                float progress = float.Parse(data[i]["MaxProgress"].ToString());
-                QuestType quType = (QuestType)int.Parse(data[i]["QuestType"].ToString());
-
-                QuestData quest = new QuestData(name, desc, reType, reValue, progress, quType);
-                Quests.Add(quest);
-            }
-
-            saveDataList.dataList = Quests.ToArray();
+            Quests = GetQuestCSV();
         }
         else
         {
             SetSaveData(saveData);
         }
+    }
+
+    List<Dictionary<string, object>> ReadQuestCSV()
+    {
+        return CSVReader.Read("QuestData");
+    }
+
+    List<QuestData> GetQuestCSV()
+    {
+        var data = ReadQuestCSV();
+        List<QuestData> result = new List<QuestData>();
+        Debug.Log(data.Count);
+        for (int i = 0; i < data.Count; i++)
+        {
+            string name = (string)data[i]["Name"];
+            string desc = (string)data[i]["Desc"];
+            ValueType reType = (ValueType)int.Parse(data[i]["RewardType"].ToString());
+            int reValue = int.Parse(data[i]["RewardValue"].ToString());
+            float progress = float.Parse(data[i]["MaxProgress"].ToString());
+            QuestType quType = (QuestType)int.Parse(data[i]["QuestType"].ToString());
+
+            QuestData quest = new QuestData(name, desc, reType, reValue, progress, quType);
+            result.Add(quest);
+        }
+
+        return result;
     }
 
     private void OnApplicationPause(bool pause)
@@ -74,6 +77,15 @@ public class QuestManager : Singleton<QuestManager>
     {
         saveDataList = JsonConvert.DeserializeObject<QuestDataSaveList>(saveData);
         Quests = saveDataList.dataList.ToList();
+        if (saveDataList.dataList.Count() != ReadQuestCSV().Count)
+        {
+            var result = GetQuestCSV();
+            for (int i = 0; i < Quests.Count && i > result.Count; i++)
+            {
+                result[i].isRewardAble = Quests[i].isRewardAble;
+            }
+            Quests = result;
+        }
     }
 }
 
