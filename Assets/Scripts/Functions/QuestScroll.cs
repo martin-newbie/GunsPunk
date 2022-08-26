@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class QuestScroll : MonoBehaviour
 {
@@ -29,6 +30,30 @@ public class QuestScroll : MonoBehaviour
             QuestContainer temp = Instantiate(containerPrefab, content);
             temp.Init(item);
             questsList.Add(temp);
+        }
+
+        var quests = from quest in questsList
+                     orderby quest.data.curProgress / quest.data.maxProgress descending
+                     select quest;
+
+        var questList = quests.ToList();
+        var already = questsList.FindAll((item) => !item.data.isRewardAble);
+
+        foreach (var item in already)
+        {
+            questList.Remove(item);
+        }
+
+        int idx = 0;
+        foreach (var item in questList)
+        {
+            item.transform.SetSiblingIndex(idx);
+            idx++;
+        }
+
+        foreach (var item in already)
+        {
+            item.transform.SetAsLastSibling();
         }
     }
 

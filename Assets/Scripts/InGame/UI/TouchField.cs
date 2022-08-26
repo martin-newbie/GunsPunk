@@ -30,11 +30,22 @@ public class TouchField : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         }
     }
 
+    float dragDelay = 0.2f;
+    float curDelay;
+
     public void OnDrag(PointerEventData eventData)
     {
         if (isDrag)
         {
             dragPos = eventData.position;
+            curDelay += Time.deltaTime;
+
+            if (curDelay >= dragDelay)
+            {
+                isDrag = false;
+                curDelay = 0f;
+                JumpFunction();
+            }
 
             if (dragPos.x < canvasRT.sizeDelta.x / 2 || dragPos.x > canvasRT.sizeDelta.x || dragPos.y > canvasRT.sizeDelta.y / 2 || dragPos.y < canvasRT.sizeDelta.y / -2)
             {
