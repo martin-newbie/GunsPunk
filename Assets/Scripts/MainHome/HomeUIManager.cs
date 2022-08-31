@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class HomeUIManager : MonoBehaviour
 {
+
+    [Header("UI")]
+    public Sprite[] characterIllustSprites;
+    public Image CharacterIllust;
+
     [Header("Divided UI")]
     public HomeQuest Quest;
     public HomeBestScore BestScore;
@@ -19,6 +24,9 @@ public class HomeUIManager : MonoBehaviour
         Profile.Init(this);
 
         SetValueText();
+
+        CharacterIllust.sprite = characterIllustSprites[GameManager.Instance.mainPlayerIdx];
+        CharacterIllust.SetNativeSize();
     }
 
     void SetValueText()

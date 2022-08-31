@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9455d23bc4d5c5e45a7cd11efc988586, type: 3}
+  m_Name: 4_Jade
+  m_EditorClassIdentifier: 
+  idx: 3
+  level: 0
+  trainingLevel: 0
+  exp: 0
+  characterName: JADE
+  HP: 125
+  HPIncrease: 10
+  Ammo: 130
+  AmmoIncrease: 20
+  Damage: 6
+  DamageIncrease: 0.4
+  Fever: 3
+  FeverIncrease: 1
+  bulletSpeed: 20
+  rpm: 900
+  SpreadPos: 0.15
+  SpreadRot: 2.3
+  AmmoItemValue: 35
+  HPItemValue: 15
+  cost: 5000
+  isUnlocked: 0
+  valueType: 0
+  isSelected: 0

@@ -5,14 +5,15 @@ using UnityEngine;
 public abstract class PlayerBase : JumpAble
 {
 
-    Animator anim;
+    protected Animator anim;
     [SerializeField] protected abstract string fireSound { get; }
 
     [Header("Status Value")]
     public float speed;
     public float fireRate;
-    protected float fireDelay => 1f / (fireRate / 60f);
+    protected virtual float fireDelay => 1f / (fireRate / 60f);
     protected float curDelay;
+    protected bool invincible = false;
 
     [Header("Gun Value")]
     public float spread_pos;
@@ -51,15 +52,6 @@ public abstract class PlayerBase : JumpAble
         AmmoIncrease = info.ammoItem;
         HealthIncrease = info.hpItem;
         speed = info.bulletSpeed;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(FeetPos.position, CheckRadius);
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(TopPos.position, CheckRadius);
     }
 
     protected virtual void Start()
@@ -154,7 +146,7 @@ public abstract class PlayerBase : JumpAble
 
     public override void OnHit(float damage, Transform hit)
     {
-        if (InGameManager.Instance.isGameActive)
+        if (InGameManager.Instance.isGameActive && !invincible)
         {
             base.OnHit(damage - (damage * GameManager.Instance.defValue), hit);
 

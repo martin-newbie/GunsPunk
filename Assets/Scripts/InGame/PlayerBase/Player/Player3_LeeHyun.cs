@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player3_KoreanArcher : HoldFirePlayer
+public class Player3_LeeHyun : HoldFirePlayer
 {
     [Header("Korean Archer")]
     public Bullet CommonArrow;
