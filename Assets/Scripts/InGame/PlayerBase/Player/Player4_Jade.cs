@@ -17,9 +17,16 @@ public class Player4_Jade : BurstFirePlayer
         invincible = true;
 
         anim.SetTrigger("SkillTrigger");
-        yield return new WaitForSeconds(2f);
+        float timer = 2f;
+        while (timer > 0f)
+        {
+            feverValue = (timer / 2f) * 100f;
+            timer -= Time.deltaTime;
+            yield return null;
+        }
 
         isActing = false;
         invincible = false;
+        isSkillActive = false;
     }
 }

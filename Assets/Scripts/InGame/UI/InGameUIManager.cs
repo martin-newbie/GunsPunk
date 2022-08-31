@@ -51,7 +51,7 @@ public class InGameUIManager : Singleton<InGameUIManager>
     {
         GameEndObject.gameObject.SetActive(false);
 
-        CurCharacterProfile.sprite = charactersProfileSprites[GameManager.instance.mainPlayerIdx];
+        SetCharacterProfileImage(GameManager.Instance.mainPlayerIdx);
     }
 
     private void Update()
@@ -63,6 +63,11 @@ public class InGameUIManager : Singleton<InGameUIManager>
         PlayerHpGauge.fillAmount = hpCur / hpMax;
         FeverGauge.fillAmount = feverCur / feverMax;
         AmmoGauge.fillAmount = ammoCur / ammoMax;
+    }
+
+    public void SetCharacterProfileImage(int idx)
+    {
+        CurCharacterProfile.sprite = charactersProfileSprites[idx];
     }
 
     public void PrintMessage(string message)

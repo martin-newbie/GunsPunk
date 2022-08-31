@@ -236,6 +236,7 @@ public class InGameManager : Singleton<InGameManager>
 
         isRevived = true;
         InGameUIManager.Instance.SetPlayerHp(0, CurPlayer.maxHP);
+        InGameUIManager.Instance.SetCharacterProfileImage(GameManager.Instance.subPlayerIdx);
 
         int curIdx = CurPlayer.curPosIdx;
         Vector3 spawnPos = PlayerPoses[curIdx].position;

@@ -11,12 +11,10 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         {
             if (instance == null)
             {
-                Debug.Log("no instance");
                 instance = FindObjectOfType<T>();
 
                 if (instance == null)
                 {
-                    Debug.Log("make new instance");
                     GameObject obj = new GameObject(typeof(T).Name);
                     instance = obj.AddComponent<T>();
                 }
