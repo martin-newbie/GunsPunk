@@ -16,6 +16,7 @@ public abstract class AutoFirePlayer : PlayerBase
 
     protected override void Update()
     {
+        if (!isAlive) return;
         base.Update();
 
         if (isFire)

@@ -293,7 +293,6 @@ public class GameManager : Singleton<GameManager>
     void Save()
     {
         string save = SaveJson();
-        Debug.Log(save);
         // at server
         // at local
         PlayerPrefs.SetString("StatusSaveData", save);

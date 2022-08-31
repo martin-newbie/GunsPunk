@@ -89,7 +89,7 @@ public class InGameManager : Singleton<InGameManager>
 
     public void HPEffect(Vector3 pos)
     {
-        AudioManager.instance.PlayEffectSound("Health");
+        AudioManager.Instance.PlayEffectSound("Health");
         hpEffect.Play(pos);
     }
 
@@ -231,7 +231,8 @@ public class InGameManager : Singleton<InGameManager>
 
     IEnumerator PlayerSwapCoroutine()
     {
-        CurDrone.active = false;
+        if (CurDrone != null)
+            CurDrone.active = false;
 
         isRevived = true;
         InGameUIManager.Instance.SetPlayerHp(0, CurPlayer.maxHP);
