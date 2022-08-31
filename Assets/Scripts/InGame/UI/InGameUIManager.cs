@@ -7,8 +7,12 @@ using Image = UnityEngine.UI.Image;
 
 public class InGameUIManager : Singleton<InGameUIManager>
 {
+    [Header("Sprite")]
+    public Sprite[] charactersProfileSprites;
 
     [Header("UI Objects")]
+    public Image CurCharacterProfile;
+
     public Image PlayerHpGauge;
     public Image FeverGauge;
     public Image AmmoGauge;
@@ -46,6 +50,8 @@ public class InGameUIManager : Singleton<InGameUIManager>
     private void Start()
     {
         GameEndObject.gameObject.SetActive(false);
+
+        CurCharacterProfile.sprite = charactersProfileSprites[GameManager.instance.mainPlayerIdx];
     }
 
     private void Update()

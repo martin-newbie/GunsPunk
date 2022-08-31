@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class GameEnd : MonoBehaviour
 {
+    public Sprite[] characterProfileSprites;
     bool already;
 
     [Header("Windows")]
@@ -18,6 +19,7 @@ public class GameEnd : MonoBehaviour
     public RectTransform secondNeedle;
 
     [Header("Result Object")]
+    public Image characterProfile;
     public Image UserLevelGauge;
     public Image CharacterLevelGauge;
     public Text UserLevel;
@@ -58,6 +60,7 @@ public class GameEnd : MonoBehaviour
     void OpenResult()
     {
         var reward = InGameManager.Instance.GetResult();
+        characterProfile.sprite = characterProfileSprites[GameManager.Instance.mainPlayerIdx];
 
         GameManager.Instance.coin += reward.roundCoin;
         result = StartCoroutine(ResultCoroutine(reward.charLevel, reward.charExp, reward.userLevel, reward.userExp, reward.roundDistance, reward.roundCoin, reward.roundExp));
