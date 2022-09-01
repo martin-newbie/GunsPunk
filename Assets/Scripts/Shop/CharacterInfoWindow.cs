@@ -170,7 +170,7 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
         CharacterStatusGraph.rightTop = info.ammo / 250f;
         CharacterStatusGraph.rightBot = info.damage / 30f;
         CharacterStatusGraph.leftBot = info.fever / 25f;
-        CharacterStatusGraph.leftTop = info.rpm / 2500f;
+        CharacterStatusGraph.leftTop = info.rpm / 1000f;
     }
 
     public void WindowClose()

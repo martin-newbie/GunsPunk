@@ -1,0 +1,90 @@
+
+hartmann ingame.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+기본무기
+  rotate: false
+  xy: 267, 2
+  size: 179, 73
+  orig: 179, 73
+  offset: 0, 0
+  index: -1
+머리
+  rotate: false
+  xy: 695, 48
+  size: 67, 78
+  orig: 67, 78
+  offset: 0, 0
+  index: -1
+몸
+  rotate: false
+  xy: 448, 2
+  size: 101, 124
+  orig: 101, 124
+  offset: 0, 0
+  index: -1
+발 뒤
+  rotate: true
+  xy: 325, 92
+  size: 34, 26
+  orig: 34, 27
+  offset: 0, 1
+  index: -1
+발 앞
+  rotate: true
+  xy: 353, 92
+  size: 34, 26
+  orig: 34, 27
+  offset: 0, 1
+  index: -1
+스킬 무기
+  rotate: false
+  xy: 2, 69
+  size: 238, 57
+  orig: 239, 58
+  offset: 1, 0
+  index: -1
+전완근 앞
+  rotate: false
+  xy: 95, 17
+  size: 87, 50
+  orig: 87, 50
+  offset: 0, 0
+  index: -1
+종아리 뒤
+  rotate: true
+  xy: 184, 18
+  size: 49, 81
+  orig: 49, 81
+  offset: 0, 0
+  index: -1
+종아리 앞
+  rotate: true
+  xy: 242, 77
+  size: 49, 81
+  orig: 49, 81
+  offset: 0, 0
+  index: -1
+팔 앞
+  rotate: true
+  xy: 2, 13
+  size: 54, 91
+  orig: 55, 93
+  offset: 1, 1
+  index: -1
+허벅지 뒤
+  rotate: true
+  xy: 551, 49
+  size: 77, 71
+  orig: 77, 71
+  offset: 0, 0
+  index: -1
+허벅지 앞
+  rotate: true
+  xy: 624, 50
+  size: 76, 69
+  orig: 76, 69
+  offset: 0, 0
+  index: -1
