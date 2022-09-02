@@ -9,6 +9,7 @@ public abstract class JumpAble : Entity
     protected Rigidbody2D RB;
 
     public bool isActing;
+    protected bool moveAble = true;
     protected bool goUpTrigger;
     protected bool goDownTrigger;
 
@@ -139,7 +140,7 @@ public abstract class JumpAble : Entity
 
     public void GoUp()
     {
-        if (curPosIdx < 2 && !isActing)
+        if (curPosIdx < 2 && !isActing && moveAble)
         {
             GoUpJump();
         }
@@ -155,7 +156,7 @@ public abstract class JumpAble : Entity
 
     public void GoDown()
     {
-        if (curPosIdx > 0 && !isActing)
+        if (curPosIdx > 0 && !isActing && moveAble)
         {
             GoDownJump();
         }

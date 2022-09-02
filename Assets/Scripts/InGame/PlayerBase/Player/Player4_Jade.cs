@@ -6,6 +6,17 @@ public class Player4_Jade : BurstFirePlayer
 {
     protected override string fireSound => "Assault_4";
 
+    [Header("Jade")]
+    public SpriteRenderer chain;
+    public Transform anchor;
+    public Transform endPos;
+
+    protected override void Update()
+    {
+        base.Update();
+        chain.size = new Vector2(anchor.localPosition.x, 0.14f);
+    }
+
     protected override void Skill()
     {
         StartCoroutine(SkillCoroutine());
@@ -13,19 +24,40 @@ public class Player4_Jade : BurstFirePlayer
 
     IEnumerator SkillCoroutine()
     {
-        isActing = true;
+        moveAble = false;
         invincible = true;
-
+        anim.SetBool("AttackAble", false);
         anim.SetTrigger("SkillTrigger");
-        float timer = 2f;
+
+        yield return new WaitForSeconds(0.3f);
+        chain.gameObject.SetActive(true);
+
+        float timer = 0f;
+        Vector3 originPos = anchor.position;
+
+        while (timer < 1f)
+        {
+            anchor.position = Vector3.Lerp(originPos, endPos.position, Mathf.Pow(timer / 1f, 0.75f));
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        anim.SetTrigger("SkillEnd");
+
+        timer = 1f;
+        originPos = anchor.localPosition;
         while (timer > 0f)
         {
-            feverValue = (timer / 2f) * 100f;
+            anchor.localPosition = Vector3.Lerp(Vector3.zero, originPos, timer / 1f);
             timer -= Time.deltaTime;
             yield return null;
         }
 
-        isActing = false;
+
+        chain.gameObject.SetActive(false);
+        anim.SetBool("AttackAble", true);
+
+        moveAble = true;
         invincible = false;
         isSkillActive = false;
     }

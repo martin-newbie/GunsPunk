@@ -26,6 +26,8 @@ public abstract class HoldFirePlayer : PlayerBase
         {
             if (curHold < maxHold)
                 curHold += Time.deltaTime;
+
+            if (curHold >= minHold) anim.SetBool("IsLoad", true);
         }
 
     }
@@ -35,14 +37,27 @@ public abstract class HoldFirePlayer : PlayerBase
 
         if (isHold && curHold >= maxHold)
         {
+            anim.SetTrigger("AttackTrigger");
             Bullet temp = FireBullet();
             temp.notDestroy = true;
         }
         else if (curHold >= minHold)
+        {
+            anim.SetTrigger("AttackTrigger");
             FireBullet();
+        }
+        else
+        {
+            LoadCancel();
+        }
 
         curHold = 0f;
         isHold = false;
+    }
+
+    protected virtual void LoadCancel()
+    {
+        anim.SetTrigger("LoadCancel");
     }
 
     public override void OnAttackStart()
@@ -54,6 +69,7 @@ public abstract class HoldFirePlayer : PlayerBase
     protected override Bullet FireBullet()
     {
         Bullet _bullet = null;
+        anim.SetBool("IsLoad", false);
 
         if (AmmoCount > 0)
         {

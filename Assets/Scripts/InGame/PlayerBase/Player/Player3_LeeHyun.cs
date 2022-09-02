@@ -46,6 +46,8 @@ public class Player3_LeeHyun : HoldFirePlayer
     {
         base.OnAttackStart();
 
+        if (isHold) anim.SetTrigger("LoadTrigger");
+
         if (AmmoCount > 0)
         {
             AudioManager.Instance.PlayEffectSound("ArrowLoad");

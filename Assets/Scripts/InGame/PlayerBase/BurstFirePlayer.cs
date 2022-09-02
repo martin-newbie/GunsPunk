@@ -20,7 +20,7 @@ public abstract class BurstFirePlayer : PlayerBase
 
     public override void OnAttackStart()
     {
-        if (fireAble)
+        if (fireAble && !isSkillActive)
             StartCoroutine(FireCoroutine());
     }
 
