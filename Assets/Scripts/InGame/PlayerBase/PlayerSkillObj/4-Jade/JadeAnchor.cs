@@ -11,6 +11,7 @@ public class JadeAnchor : MonoBehaviour
     {
         if (collision.CompareTag("Hostile"))
         {
+            AudioManager.Instance.PlayEffectSound("AnchorHit");
             collision.GetComponent<Entity>().OnHit(damage, transform);
         }
     }
