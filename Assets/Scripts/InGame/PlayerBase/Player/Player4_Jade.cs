@@ -37,7 +37,7 @@ public class Player4_Jade : BurstFirePlayer
 
         while (timer < 1f)
         {
-            anchor.position = Vector3.Lerp(originPos, endPos.position, Mathf.Sqrt(timer));
+            anchor.position = Vector3.Lerp(originPos, endPos.position, 1- Mathf.Pow(1 - (timer / 1f), 3));
             timer += Time.deltaTime;
             yield return null;
         }
@@ -48,7 +48,7 @@ public class Player4_Jade : BurstFirePlayer
         originPos = anchor.localPosition;
         while (timer > 0f)
         {
-            anchor.localPosition = Vector3.Lerp(Vector3.zero, originPos, timer / 1.3f);
+            anchor.localPosition = Vector3.Lerp(Vector3.zero, originPos, 1 - Mathf.Pow(1 - (timer / 1.3f), 3));
             timer -= Time.deltaTime;
             yield return null;
         }
