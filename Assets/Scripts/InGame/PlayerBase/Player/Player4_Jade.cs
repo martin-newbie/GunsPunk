@@ -10,11 +10,18 @@ public class Player4_Jade : BurstFirePlayer
     public SpriteRenderer chain;
     public Transform anchor;
     public Transform endPos;
+    Vector3 startPos;
+
+    protected override void Start()
+    {
+        base.Start();
+        startPos = anchor.localPosition;
+    }
 
     protected override void Update()
     {
         base.Update();
-        chain.size = new Vector2(anchor.localPosition.x, 0.14f);
+        chain.size = new Vector2(anchor.localPosition.x - startPos.x, 0.14f);
     }
 
     protected override void Skill()
@@ -29,32 +36,34 @@ public class Player4_Jade : BurstFirePlayer
         anim.SetBool("AttackAble", false);
         anim.SetTrigger("SkillTrigger");
 
-        yield return new WaitForSeconds(0.3f);
-        chain.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.45f);
+        anchor.gameObject.SetActive(true);
 
         float timer = 0f;
-        Vector3 originPos = anchor.position;
+        Vector3 originPos = anchor.localPosition;
 
         while (timer < 1f)
         {
-            anchor.position = Vector3.Lerp(originPos, endPos.position, 1- Mathf.Pow(1 - (timer / 1f), 3));
+            anchor.localPosition = Vector3.Lerp(originPos, endPos.localPosition, 1- Mathf.Pow(1 - (timer / 1f), 3));
             timer += Time.deltaTime;
             yield return null;
         }
 
-        anim.SetTrigger("SkillEnd");
+        anim.SetTrigger("SkillPull");
 
         timer = 1.3f;
         originPos = anchor.localPosition;
         while (timer > 0f)
         {
-            anchor.localPosition = Vector3.Lerp(Vector3.zero, originPos, 1 - Mathf.Pow(1 - (timer / 1.3f), 3));
+            anchor.localPosition = Vector3.Lerp(startPos, originPos, 1 - Mathf.Pow(1 - (timer / 1.3f), 3));
             timer -= Time.deltaTime;
             yield return null;
         }
 
+        anim.SetTrigger("SkillEnd");
 
-        chain.gameObject.SetActive(false);
+        yield return null;
+        anchor.gameObject.SetActive(false);
         anim.SetBool("AttackAble", true);
 
         moveAble = true;
