@@ -27,8 +27,8 @@ MonoBehaviour:
   FeverIncrease: 1
   bulletSpeed: 17
   rpm: 500
-  SpreadPos: 0.3
-  SpreadRot: 0.55
+  SpreadPos: 0.25
+  SpreadRot: 4.5
   AmmoItemValue: 55
   HPItemValue: 25
   cost: 15000

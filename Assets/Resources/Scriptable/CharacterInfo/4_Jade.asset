@@ -15,7 +15,7 @@ MonoBehaviour:
   idx: 3
   level: 0
   trainingLevel: 0
-  exp: 0
+  exp: 25.62617
   characterName: JADE
   HP: 125
   HPIncrease: 10
@@ -28,10 +28,10 @@ MonoBehaviour:
   bulletSpeed: 20
   rpm: 900
   SpreadPos: 0.15
-  SpreadRot: 2.3
+  SpreadRot: 3
   AmmoItemValue: 35
   HPItemValue: 15
   cost: 5000
-  isUnlocked: 0
+  isUnlocked: 1
   valueType: 0
-  isSelected: 0
+  isSelected: 1
