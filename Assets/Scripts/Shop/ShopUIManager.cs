@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -66,6 +67,14 @@ public class ShopUIManager : Singleton<ShopUIManager>
 
     private void Update()
     {
+    }
+
+    public void ChangeCharacterPos()
+    {
+        Action acceptAction = GameManager.instance.ChangeCharacterPos;
+        acceptAction += Refresh;
+
+        MessageBoxContainer.Instance.OpenChooseMessage(acceptAction, Refresh, "Are you want to change main and sub character?");
     }
 
     public void ChooseCharacterPos(CharacterInfo info)

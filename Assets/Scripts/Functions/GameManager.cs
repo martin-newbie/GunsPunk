@@ -134,8 +134,15 @@ public class GameManager : Singleton<GameManager>
         charactersInfo = Resources.LoadAll<CharacterInfo>(characterInfoPath);
         itemsInfo = Resources.LoadAll<ItemInfo>(itemInfoPath);
 
-        FindSelectedCharacter();
         LoadJson();
+        FindSelectedCharacter();
+    }
+
+    public void ChangeCharacterPos()
+    {
+        int temp = mainPlayerIdx;
+        mainPlayerIdx = subPlayerIdx;
+        subPlayerIdx = temp;
     }
 
     public int GetUpgradeCost(int level)
@@ -180,9 +187,6 @@ public class GameManager : Singleton<GameManager>
             item.isSelected = false;
         }
 
-        mainPlayerIdx = PlayerPrefs.GetInt("MainIdx", 0);
-        subPlayerIdx = PlayerPrefs.GetInt("SubIdx", 1);
-
         SetMainCharacter(mainPlayerIdx);
         SetSubCharacter(subPlayerIdx);
     }
@@ -203,7 +207,6 @@ public class GameManager : Singleton<GameManager>
 
         charactersInfo[idx].isSelected = true;
         mainPlayerIdx = idx;
-        PlayerPrefs.SetInt("MainIdx", mainPlayerIdx);
     }
 
     public void SetSubCharacter(int idx)
@@ -212,7 +215,6 @@ public class GameManager : Singleton<GameManager>
 
         charactersInfo[idx].isSelected = true;
         subPlayerIdx = idx;
-        PlayerPrefs.SetInt("SubIdx", subPlayerIdx);
     }
 
     private void Update()
@@ -360,6 +362,9 @@ public class GameManager : Singleton<GameManager>
         save.ammoLevel = ammoLevel;
         save.defLevel = defLevel;
 
+        save.mainChar = mainPlayerIdx;
+        save.subChar = subPlayerIdx;
+
         string jsonSave = JsonUtility.ToJson(save, true);
         return jsonSave;
     }
@@ -401,6 +406,9 @@ public class GameManager : Singleton<GameManager>
         hpLevel = save.hpLevel;
         ammoLevel = save.ammoLevel;
         defLevel = save.defLevel;
+
+        mainPlayerIdx = save.mainChar;
+        subPlayerIdx = save.subChar;
     }
 }
 
@@ -426,6 +434,9 @@ public class DataSave
     public int hpLevel;
     public int ammoLevel;
     public int defLevel;
+
+    public int mainChar = 0;
+    public int subChar = 1;
 }
 
 [System.Serializable]

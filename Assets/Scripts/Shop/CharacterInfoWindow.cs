@@ -139,7 +139,7 @@ public class CharacterInfoWindow : MonoBehaviour, IPopUp, IRefresh
         }
         else
         {
-            MessageBoxContainer.Instance.OpenConfirmMessage(null, "Already Selected");
+            ShopUIManager.Instance.ChangeCharacterPos();
         }
 
     }

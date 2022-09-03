@@ -97,7 +97,7 @@ public class CharacterContainer : MonoBehaviour, IRefresh
         if (!info.isSelected)
             ShopUIManager.Instance.ChooseCharacterPos(info);
         else
-            MessageBoxContainer.Instance.OpenConfirmMessage(null, "Already Selected");
+            ShopUIManager.Instance.ChangeCharacterPos();
 
     }
 

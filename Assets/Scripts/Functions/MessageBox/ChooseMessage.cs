@@ -30,6 +30,8 @@ public class ChooseMessage : MonoBehaviour, IPopUp
         RefuseButton.onClick.RemoveAllListeners();
 
         refuse += Refuse;
+        accept += Refuse;
+
         refuse += manager.ClosePopup;
         accept += manager.ClosePopup;
 
