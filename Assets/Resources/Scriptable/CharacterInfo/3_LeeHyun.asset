@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: 3_LeeHyun
   m_EditorClassIdentifier: 
   idx: 2
-  level: 0
+  level: 35
   trainingLevel: 0
-  exp: 0
+  exp: 32.88282
   characterName: LEEHYUN
   HP: 175
   HPIncrease: 25
@@ -34,4 +34,4 @@ MonoBehaviour:
   cost: 2500
   isUnlocked: 1
   valueType: 0
-  isSelected: 0
+  isSelected: 1
