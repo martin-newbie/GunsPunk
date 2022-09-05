@@ -80,8 +80,8 @@ public class GameManager : Singleton<GameManager>
     public float userMaxExp => GetUserMaxExp();
 
     [Header("Character")]
-    public int mainPlayerIdx;
-    public int subPlayerIdx;
+    public int mainPlayerIdx = 0;
+    public int subPlayerIdx = 1;
     public PlayerBase[] charactersPrefab;
     public CharacterInfo[] charactersInfo;
     public ItemInfo[] itemsInfo;

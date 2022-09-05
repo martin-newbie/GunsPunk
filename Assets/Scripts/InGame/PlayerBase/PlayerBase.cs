@@ -148,11 +148,11 @@ public abstract class PlayerBase : JumpAble
     {
         if (InGameManager.Instance.isGameActive && !invincible)
         {
-            base.OnHit(damage - (damage * GameManager.Instance.defValue), hit);
-
             AudioManager.Instance.PlayEffectSound("PlayerHit", transform.position);
             InGameManager.Instance.Cam.ShakeForTime();
             InGameUIManager.Instance.HudEffect(Color.red);
+
+            base.OnHit(damage - (damage * GameManager.Instance.defValue), hit);
         }
     }
 

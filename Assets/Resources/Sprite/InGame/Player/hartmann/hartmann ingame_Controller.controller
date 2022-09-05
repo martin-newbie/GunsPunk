@@ -1961,9 +1961,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: DieTrigger
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: AttackState
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7690327069742423267}
   m_Solo: 0
@@ -2205,9 +2202,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: DieTrigger
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: AttackState
-    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8990356286259515769}
   m_Solo: 0

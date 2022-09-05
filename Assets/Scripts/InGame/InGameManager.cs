@@ -227,7 +227,7 @@ public class InGameManager : Singleton<InGameManager>
         {
             try
             {
-                StartCoroutine(m.GetTransform().GetComponent<Monster>().DestroyMove());
+                StartCoroutine(m.GetTransform()?.GetComponent<Monster>()?.DestroyMove());
             }
             catch (MissingReferenceException)
             {
