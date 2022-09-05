@@ -45,4 +45,7 @@ public class MonsterBuster : Monster
         OnHit(maxHP, transform);
     }
 
+    protected override void RemoveAtList()
+    {
+    }
 }

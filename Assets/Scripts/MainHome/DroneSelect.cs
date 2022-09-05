@@ -82,6 +82,7 @@ public class DroneSelect : MonoBehaviour, IPopUp
         }
 
         GameManager.Instance.gamePlayCnt++;
+        PlayerPrefs.SetInt("droneIdx", curSelected);
         LoadingSceneManager.LoadScene("InGameScene");
     }
 

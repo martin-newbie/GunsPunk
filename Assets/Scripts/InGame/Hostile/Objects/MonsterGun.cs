@@ -27,8 +27,8 @@ public class MonsterGun : Monster, IMonster
 
     public override void OnDie()
     {
-        base.OnDie();
         RemoveMonster();
+        base.OnDie();
     }
 
     protected override void Update()
@@ -210,5 +210,10 @@ public class MonsterGun : Monster, IMonster
     public Transform GetTransform()
     {
         return transform;
+    }
+
+    protected override void RemoveAtList()
+    {
+        RemoveMonster();
     }
 }

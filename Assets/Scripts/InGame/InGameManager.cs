@@ -225,13 +225,7 @@ public class InGameManager : Singleton<InGameManager>
         var monsters = CurMonsters;
         foreach (var m in monsters)
         {
-            try
-            {
-                StartCoroutine(m.GetTransform()?.GetComponent<Monster>()?.DestroyMove());
-            }
-            catch (MissingReferenceException)
-            {
-            }
+            StartCoroutine(m.GetTransform().GetComponent<Monster>().DestroyMove(1));
         }
     }
 

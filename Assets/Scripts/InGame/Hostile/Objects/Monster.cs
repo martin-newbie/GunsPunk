@@ -47,6 +47,7 @@ public abstract class Monster : JumpAble
 
         nowActing = false;
         state = MonsterState.Appear;
+
     }
 
     public void Init(int idx)
@@ -113,9 +114,12 @@ public abstract class Monster : JumpAble
             yield return null;
         } while (true);
 
+        RemoveAtList();
         Destroy(gameObject);
         yield break;
     }
+
+    protected abstract void RemoveAtList();
 
     protected override void GoUpJump()
     {

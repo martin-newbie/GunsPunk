@@ -53,8 +53,8 @@ public class MonsterMelee : Monster, IMonster
 
     public override void OnDie()
     {
-        base.OnDie();
         RemoveMonster();
+        base.OnDie();
         Destroy(AtkCol.gameObject);
     }
 
@@ -157,5 +157,10 @@ public class MonsterMelee : Monster, IMonster
     public Transform GetTransform()
     {
         return transform;
+    }
+
+    protected override void RemoveAtList()
+    {
+        RemoveMonster();
     }
 }
