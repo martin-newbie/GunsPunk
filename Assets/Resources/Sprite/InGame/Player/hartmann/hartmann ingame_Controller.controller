@@ -1030,7 +1030,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.16670002
+    m_StopTime: 0.1667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -3067,12 +3067,12 @@ AnimatorStateMachine:
   - {fileID: 7027366768031832158}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: 5711384081923950044}
-    second:
-    - {fileID: -7717580402484690264}
   - first: {fileID: -629563594437700423}
     second:
     - {fileID: -5055216743042791075}
+  - first: {fileID: 5711384081923950044}
+    second:
+    - {fileID: -7717580402484690264}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
@@ -4049,12 +4049,12 @@ AnimatorStateMachine:
   - {fileID: -793927365957348535}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: 3780927859794305891}
-    second:
-    - {fileID: -2347266564673591960}
   - first: {fileID: 1985916477692049059}
     second:
     - {fileID: -1640475441604510805}
+  - first: {fileID: 3780927859794305891}
+    second:
+    - {fileID: -2347266564673591960}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
