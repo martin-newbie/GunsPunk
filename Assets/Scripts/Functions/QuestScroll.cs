@@ -69,11 +69,17 @@ public class QuestScroll : MonoBehaviour
         content.GetComponent<VerticalLayoutGroup>().enabled = false;
     }
 
-    private void Update()
+    public void OnScrollDrag()
+    {
+        SetQuestObjectsActive();
+    }
+
+    void SetQuestObjectsActive()
     {
         foreach (var item in questsList)
         {
             item.gameObject.SetActive(item.transform.position.y >= minpos.position.y && item.transform.position.y <= maxpos.position.y);
         }
     }
+
 }

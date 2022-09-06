@@ -38,16 +38,9 @@ public class TouchField : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         if (isDrag)
         {
             dragPos = eventData.position;
-            curDelay += Time.deltaTime;
+            float dist = Vector3.Distance(startPos, dragPos);
 
-            if (curDelay >= dragDelay)
-            {
-                isDrag = false;
-                curDelay = 0f;
-                JumpFunction();
-            }
-
-            if (dragPos.x < canvasRT.sizeDelta.x / 2 || dragPos.x > canvasRT.sizeDelta.x || dragPos.y > canvasRT.sizeDelta.y / 2 || dragPos.y < canvasRT.sizeDelta.y / -2)
+            if(dist >= 300f)
             {
                 isDrag = false;
                 JumpFunction();
